@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClubRRRR - קלאבר 360 | השקעות נדל"ן בארה"ב</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .countdown-digit {
+            transition: all 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gradient-bg {
+            background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+        }
+
+        input:focus {
+            outline: none;
+            ring: 2px;
+            ring-color: #facc15;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="gradient-bg text-white">
+
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+        <div class="max-w-6xl mx-auto px-4 py-16 relative z-10">
+            <div class="text-center space-y-8 animate-fade-in">
+                
+                <!-- Logo -->
+                <div class="flex justify-center mb-8">
+                    <img 
+                        src="ClubRRRR_logo.png" 
+                        alt="ClubRRRR Logo" 
+                        class="h-32 w-auto"
+                        onerror="this.style.display='none'"
+                    />
+                </div>
+
+                <div class="inline-block px-6 py-2 bg-yellow-500 text-slate-900 rounded-full font-bold text-sm">
+                    ליבוי השקעה לתוכנית קלאבר 360
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                    <span class="text-yellow-400">הדרך לבניית פורטפוליו</span>
+                    <br />
+                    <span class="text-white">נדל״ן בארה״ב</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+                    עם טכנולוגיות AI שמאתרת עסקאות מתחת למחיר השוק בשביליך,<br />
+                    טקטיקות מ"ומ מתקדמות לגיברת חזוים<br />
+                    ושיטות מימון ויצרתיות בסקייל גבוה
+                </p>
+
+                <!-- Countdown Timer -->
+                <div class="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto border border-blue-500/30">
+                    <p class="text-2xl font-bold text-yellow-400 mb-6">25.01.2026 בשעה 21:00 | ZOOM</p>
+                    <div class="grid grid-cols-4 gap-4 text-center">
+                        <div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl p-4">
+                            <div id="seconds" class="text-4xl font-bold countdown-digit">00</div>
+                            <div class="text-sm text-blue-200 mt-1">שניות</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl p-4">
+                            <div id="minutes" class="text-4xl font-bold countdown-digit">00</div>
+                            <div class="text-sm text-blue-200 mt-1">דקות</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl p-4">
+                            <div id="hours" class="text-4xl font-bold countdown-digit">00</div>
+                            <div class="text-sm text-blue-200 mt-1">שעות</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl p-4">
+                            <div id="days" class="text-4xl font-bold countdown-digit">00</div>
+                            <div class="text-sm text-blue-200 mt-1">ימים</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Form with Checkbox -->
+                <form id="form1" class="bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-md mx-auto space-y-4 border border-white/20">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="שם"
+                        class="w-full px-6 py-4 rounded-xl bg-white/90 text-slate-900 text-right placeholder-slate-500"
+                        required
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="אימייל"
+                        class="w-full px-6 py-4 rounded-xl bg-white/90 text-slate-900 text-right placeholder-slate-500"
+                        required
+                    />
+                    <input
+                        type="tel"
+                        name="phone"
+                        placeholder="טלפון"
+                        class="w-full px-6 py-4 rounded-xl bg-white/90 text-slate-900 text-right placeholder-slate-500"
+                        required
+                    />
+                    <!-- Checkbox for Marketing Consent -->
+                    <div class="flex items-start gap-3 bg-white/20 p-4 rounded-xl">
+                        <input
+                            type="checkbox"
+                            name="marketingConsent"
+                            id="consent1"
+                            class="mt-1 w-5 h-5 rounded border-2 border-yellow-400 text-yellow-400 focus:ring-2 focus:ring-yellow-400 cursor-pointer"
+                            required
+                        />
+                        <label for="consent1" class="text-sm text-blue-100 leading-relaxed cursor-pointer">
+                            אני מאשר/ת קבלת מידע שיווקי ותוכן מקצועי בדיוור במייל ויכול/ה להסיר את עצמי בכל עת
+                        </label>
+                    </div>
+                    <button
+                        type="submit"
+                        class="w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-slate-900 font-bold py-5 px-8 rounded-xl hover:from-yellow-500 hover:to-yellow-700 hover-scale transition-all duration-200 text-xl shadow-2xl"
+                    >
+                        לסיום שמירת המקום שלך בווביניר →
+                    </button>
+                </form>
+
+                <!-- WhatsApp Contact Button -->
+                <div class="mt-8">
+                    <a 
+                        href="https://wa.me/972512517705?text=%D7%94%D7%99%D7%99%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA%20%D7%A7%D7%9C%D7%90%D7%91%D7%A8%20360"
+                        target="_blank"
+                        class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-xl hover-scale transition-all duration-200 text-lg shadow-2xl"
+                    >
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        📞 יש שאלות? דברו איתנו בWhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="bg-slate-800/50 py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    על מה נדבר בווביניר?
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <div class="bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl p-8 border border-blue-500/30">
+                    <svg class="w-12 h-12 text-yellow-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-xl leading-relaxed">
+                        איך לזהות עסקאות במיקום ובמחיר האמיתיים בעזרת טכנולוגיות AI
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 rounded-2xl p-8 border border-slate-600/30 hover:border-blue-500/50 transition-all duration-300">
+                    <svg class="w-10 h-10 text-green-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-lg leading-relaxed">למי שלא מספיק להצטרף הרבה עסקאות בשטח והוסיפו לו את העסקאות הטובות</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 rounded-2xl p-8 border border-slate-600/30 hover:border-blue-500/50 transition-all duration-300">
+                    <svg class="w-10 h-10 text-green-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-lg leading-relaxed">למי שמרגיש חוסר ודאות ורוצה להבין את המספרים לעומק כדי לקבל החלטות מהירות בביטחון</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 rounded-2xl p-8 border border-slate-600/30 hover:border-blue-500/50 transition-all duration-300">
+                    <svg class="w-10 h-10 text-green-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-lg leading-relaxed">למי שמרגיש תקוע בלופ של ניתוחים שנגרים להסטנות וחוזר פעולה</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 rounded-2xl p-8 border border-slate-600/30 hover:border-blue-500/50 transition-all duration-300">
+                    <svg class="w-10 h-10 text-green-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-lg leading-relaxed">למי שרוצה לדעת איך למחאים טכניקות מימון לעסקה בצורה מדויקת</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 rounded-2xl p-8 border border-slate-600/30 hover:border-blue-500/50 transition-all duration-300">
+                    <svg class="w-10 h-10 text-green-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-lg leading-relaxed">למי שרוצה לדעת איך מנתהלים ומריויחים בג׳ונגל שנקרא off market</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 rounded-2xl p-8 border border-slate-600/30 hover:border-blue-500/50 transition-all duration-300">
+                    <svg class="w-10 h-10 text-green-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-lg leading-relaxed">למי שרוצה לנהל נכסים באופן עצמאי באמצעות טכנולוגיות AI</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 rounded-2xl p-8 border border-slate-600/30 hover:border-blue-500/50 transition-all duration-300">
+                    <svg class="w-10 h-10 text-green-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-lg leading-relaxed">למי שרוצה להצטרף לקהילת יומיים מתקדמים ולהירשף לשיתופי פעולה שמשתפים פעולה ועושים עסקאות יחד</p>
+                </div>
+            </div>
+
+            <!-- Second CTA with Checkbox -->
+            <div class="bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 rounded-2xl p-12 text-center border border-yellow-500/30">
+                <h3 class="text-3xl font-bold mb-6">
+                    ממלאים פרטים ומשריינים מקום בווביניר על תוכנית קלאבר 360
+                </h3>
+                <form id="form2" class="max-w-md mx-auto space-y-4">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="שם"
+                        class="w-full px-6 py-4 rounded-xl bg-white/90 text-slate-900 text-right placeholder-slate-500"
+                        required
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="אימייל"
+                        class="w-full px-6 py-4 rounded-xl bg-white/90 text-slate-900 text-right placeholder-slate-500"
+                        required
+                    />
+                    <input
+                        type="tel"
+                        name="phone"
+                        placeholder="טלפון"
+                        class="w-full px-6 py-4 rounded-xl bg-white/90 text-slate-900 text-right placeholder-slate-500"
+                        required
+                    />
+                    <!-- Checkbox -->
+                    <div class="flex items-start gap-3 bg-white/20 p-4 rounded-xl">
+                        <input
+                            type="checkbox"
+                            name="marketingConsent"
+                            id="consent2"
+                            class="mt-1 w-5 h-5 rounded border-2 border-yellow-400 text-yellow-400 cursor-pointer"
+                            required
+                        />
+                        <label for="consent2" class="text-sm text-blue-100 leading-relaxed cursor-pointer text-right">
+                            אני מאשר/ת קבלת מידע שיווקי ותוכן מקצועי בדיוור במייל ויכול/ה להסיר את עצמי בכל עת
+                        </label>
+                    </div>
+                    <button
+                        type="submit"
+                        class="w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-slate-900 font-bold py-5 px-8 rounded-xl hover:from-yellow-500 hover:to-yellow-700 hover-scale transition-all duration-200 text-xl shadow-2xl"
+                    >
+                        להרשמה לווביניר →
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Who Am I Section -->
+    <div class="bg-gradient-to-b from-slate-900 to-slate-800 py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-3xl p-12 border border-purple-500/30">
+                <div class="flex justify-center items-center gap-8 mb-8">
+                    <img 
+                        src="Main.png" 
+                        alt="איתי ודרור - מייסדי ClubRRRR" 
+                        class="w-full max-w-2xl rounded-2xl shadow-2xl border-4 border-yellow-400/30"
+                        onerror="this.style.display='none'"
+                    />
+                </div>
+                
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-8">
+                    מי אנחנו?
+                </h2>
+                <p class="text-2xl text-center mb-8 leading-relaxed">
+                    איתי ודרור מייסדי קהילת ClubRRRR ליומי נדל"ן בארה"ב
+                </p>
+                <div class="bg-slate-900/50 rounded-2xl p-8 space-y-6">
+                    <p class="text-xl leading-relaxed">
+                        ב-5 השנים האחרונות לקחנו הון עצמי של 250k והפכנו אותו לפורטפוליו של עשרת נכסים ע"י שיקוש
+                    </p>
+                    <p class="text-xl leading-relaxed">
+                        בטכנולוגיה, שיטות ניתוח ומימון מתקדמות וביעיקר רבולים. טעינה מהפודקאסט שלנו.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Sections -->
+    <div class="bg-slate-800/50 py-20">
+        <div class="max-w-6xl mx-auto px-4 space-y-12">
+            <!-- First Video -->
+            <div class="bg-slate-900/50 rounded-2xl p-8 border border-blue-500/30">
+                <div class="video-container rounded-xl overflow-hidden mb-6 shadow-2xl">
+                    <iframe 
+                        src="https://www.youtube.com/embed/0kFWhvTSV9E"
+                        title="לעבור יומות נדל״ן בארה״ב? משנעים? הצעה לפרק #13 בפודקאסט" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                    ></iframe>
+                </div>
+                <h3 class="text-2xl font-bold text-center">
+                    לעבור יומות נדל״ן בארה״ב? משנעים? הצעה לפרק #13 בפודקאסט
+                </h3>
+            </div>
+
+            <!-- Second Video -->
+            <div class="bg-slate-900/50 rounded-2xl p-8 border border-purple-500/30">
+                <div class="video-container rounded-xl overflow-hidden mb-6 shadow-2xl">
+                    <iframe 
+                        src="https://www.youtube.com/embed/Sk160hvuUa4"
+                        title="ניחוח עסקה והתמודדות עם שמאים" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                    ></iframe>
+                </div>
+                <h3 class="text-2xl font-bold text-center">
+                    ניחוח עסקה והתמודדות עם שמאים
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- ClubRRRR Description -->
+    <div class="bg-gradient-to-b from-slate-900 to-blue-900 py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">
+                    "קלאבר" היא משפחה של ניגניות נדל"ן בארה"ב
+                </h2>
+                <p class="text-2xl text-blue-100 leading-relaxed max-w-4xl mx-auto">
+                    קהילה אמיתית לא נשארת באונליין, ולכן בוגרי קלאבר נפגשים באופן קבוע
+                    למיטאפים, הרצאות, כנסים ושיתות לא פורמליות על עסקאות, מימון, טכנולוגיה וכה
+                    שבאמת קורה בשטח.
+                </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-yellow-500/10 to-yellow-600/10 rounded-3xl p-12 border border-yellow-500/30">
+                <p class="text-2xl leading-relaxed mb-8">
+                    בכל מפגש נולדות חבריות, ברקמות שותפויות ונעשות עסקאות. הנה הצעה קטנה למפגש
+                    האחרון קלאבר אקסלרטור 2025
+                </p>
+                
+                <!-- Third Video -->
+                <div class="video-container rounded-xl overflow-hidden mb-8 shadow-2xl">
+                    <iframe 
+                        src="https://www.youtube.com/embed/YtgYcHOahRs"
+                        title="יאיר יבליונוביץ' על קהילת קלאבר" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                    ></iframe>
+                </div>
+
+                <h3 class="text-3xl font-bold text-center mb-8">
+                    זה לא עוד וובינר רגיל על השקעות נדל"ן בארה"ב...
+                </h3>
+                
+                <div class="space-y-6 text-xl leading-relaxed">
+                    <p>
+                        אם מה שאתם מחפשים זה השקעה פאסיבית ושמישהו ידאג להשוואה שלכם - תחכמו
+                        לנו ולכם את הזמן 😊
+                    </p>
+                    <p>
+                        אבל אם אתם חולמים להרוויח מנדל"ן כדרך חייקם? אתם במקום הנכון!
+                    </p>
+                    <p class="text-2xl font-bold text-yellow-400">
+                        אנחנו אומרים את זה חד וחלק:
+                    </p>
+                    <p>
+                        ייקח זמן עד שתוכלו להפוך יומות נדל"ן בארה"ב לעיסוק המרכזי שלכם. אבל אם תבינו את
+                        זה נכון אתם הגיעו לשם.
+                    </p>
+                    <p class="text-2xl font-bold text-yellow-400">
+                        בקלאבר 360 אנחנו מלמדים אתכם את כל מה שעובד לנו בשטח - עשרת
+                        טקסיקות שגורמות לדברים לזוז
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Changer Section -->
+    <div class="bg-slate-900 py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">
+                    ומכר וכל בוגרי קלאבר מגיעים למקומות האלה עוד לפני שהופסקו לתוכנית את
+                    ה-Game Changer:
+                </h2>
+                <h3 class="text-3xl font-bold text-yellow-400 mb-12">
+                    אז מה ה- Game Changer שהופסקו בקלאבר 360?
+                </h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl p-8 border border-blue-500/30">
+                    <div class="text-5xl mb-6">1.</div>
+                    <p class="text-lg leading-relaxed">כלים טכנולוגיים שמאפשרים לנו להגיש מאות הצעות על נכסים מתחת למחיר השוק</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl p-8 border border-blue-500/30">
+                    <div class="text-5xl mb-6">2.</div>
+                    <p class="text-lg leading-relaxed">מעטפה מוכחים למשא ומתן, ניתוח עסקאות, מימון, מיסוי ומשפט</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl p-8 border border-blue-500/30">
+                    <div class="text-5xl mb-6">3.</div>
+                    <p class="text-lg leading-relaxed">שיעורי הרגול שבועיים בלייב - "ניתוח פתוח" לניתוח עסקאות מהשטח (בנוסף למפגש השבועי)</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-3xl p-12 space-y-8">
+                <p class="text-xl leading-relaxed">
+                    חברים, המשימה שלנו היא להפוך אתכם לניגניות בניתוח והגשת הצעות בדרך לבנית
+                    פורטפוליו נדל"ן בארה"ב
+                </p>
+                <p class="text-xl leading-relaxed">
+                    אז אם אתם מוכנים לעבוד קשה בשביל ליצור תוצאות ועסקאות הוויביר הזה בדיוק
+                    בשבילכם
+                </p>
+                <p class="text-xl leading-relaxed">
+                    ואנחנו מזמינים אתכם להגיע כדי ללמוד על התוכנית היחידה בארץ
+                </p>
+                <p class="text-xl leading-relaxed">
+                    שמשלבת טכנולוגיה מתקדמת, מימון, מומחי משא ומתן ויזמות נדל"ן בארה"ב
+                </p>
+            </div>
+
+            <!-- Final CTA with Checkbox -->
+            <div class="mt-16 bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 rounded-2xl p-12 text-center border border-yellow-500/30">
+                <h3 class="text-3xl font-bold mb-8">
+                    ממלאים פרטים ומשריינים מקום בווביניר על תוכנית קלאבר 360
+                </h3>
+                <form id="form3" class="max-w-md mx-auto space-y-4">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="שם"
+                        class="w-full px-6 py-4 rounded-xl bg-white/90 text-slate-900 text-right placeholder-slate-500"
+                        required
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="אימייל"
+                        class="w-full px-6 py-4 rounded-xl bg-white/90 text-slate-900 text-right placeholder-slate-500"
+                        required
+                    />
+                    <input
+                        type="tel"
+                        name="phone"
+                        placeholder="טלפון"
+                        class="w-full px-6 py-4 rounded-xl bg-white/90 text-slate-900 text-right placeholder-slate-500"
+                        required
+                    />
+                    <!-- Checkbox -->
+                    <div class="flex items-start gap-3 bg-white/20 p-4 rounded-xl">
+                        <input
+                            type="checkbox"
+                            name="marketingConsent"
+                            id="consent3"
+                            class="mt-1 w-5 h-5 rounded border-2 border-yellow-400 text-yellow-400 cursor-pointer"
+                            required
+                        />
+                        <label for="consent3" class="text-sm text-blue-100 leading-relaxed cursor-pointer text-right">
+                            אני מאשר/ת קבלת מידע שיווקי ותוכן מקצועי בדיוור במייל ויכול/ה להסיר את עצמי בכל עת
+                        </label>
+                    </div>
+                    <button
+                        type="submit"
+                        class="w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-slate-900 font-bold py-5 px-8 rounded-xl hover:from-yellow-500 hover:to-yellow-700 hover-scale transition-all duration-200 text-xl shadow-2xl"
+                    >
+                        לסיום שמירת המקום שלך בווביניר →
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="bg-slate-950 py-12 text-center">
+        <p class="text-blue-300">
+            נבנה באמצעות מערכת דפי הנחיתה של
+            <a href="#" class="text-yellow-400 hover:underline">רב מסד</a>
+        </p>
+    </div>
+
+    <!-- JavaScript for Countdown Timer and Form Handling -->
+    <script>
+        // Google Sheets Web App URL
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxfCRIgb1DaykOuYlpEWAjkvY3IC9UZ9xzY-3lBcZ1XGN5KTyzEonuoXmBBSbsrfqSh/exec';
+
+        // Countdown Timer
+        function updateCountdown() {
+            const targetDate = new Date('2026-01-25T21:00:00').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Form Handling with Google Sheets Integration
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const button = event.target.querySelector('button[type="submit"]');
+            const originalButtonText = button.textContent;
+            
+            // Disable button and show loading state
+            button.disabled = true;
+            button.textContent = '⏳ שולח...';
+            button.style.opacity = '0.7';
+            
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                marketingConsent: formData.get('marketingConsent') ? 'כן' : 'לא',
+                source: 'דף נחיתה ClubRRRR'
+            };
+            
+            try {
+                // Send data to Google Sheets
+                const response = await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Show success message
+                alert('✅ תודה על ההרשמה!\n\nהפרטים שלך נקלטו בהצלחה.\nניצור איתך קשר בקרוב! 🎉');
+                
+                // Log to console for debugging
+                console.log('✅ נשלח בהצלחה:', data);
+                
+                // Reset form
+                event.target.reset();
+                
+            } catch (error) {
+                console.error('❌ שגיאה בשליחה:', error);
+                alert('אופס! היתה בעיה בשליחת הטופס.\nאנא נסה שוב או צור איתנו קשר ישירות.');
+            } finally {
+                // Re-enable button
+                button.disabled = false;
+                button.textContent = originalButtonText;
+                button.style.opacity = '1';
+            }
+        }
+
+        // Attach form handlers
+        document.getElementById('form1').addEventListener('submit', handleFormSubmit);
+        document.getElementById('form2').addEventListener('submit', handleFormSubmit);
+        document.getElementById('form3').addEventListener('submit', handleFormSubmit);
+
+        // Smooth scroll for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Log page view
+        console.log('📊 ClubRRRR Landing Page Loaded - Google Sheets Integration Active');
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הפודקאסט - ClubRRRR</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-color: #DFB249; --gold-color: #DFB249; --dark-bg: #0A0A0A; --card-bg: rgba(255, 255, 255, 0.05); --text-white: #FFFFFF; --text-gray: #CCCCCC; }
+        body { font-family: 'Jost', sans-serif; background: var(--dark-bg); color: var(--text-white); overflow-x: hidden; line-height: 1.6; }
+        .top-bar { background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(18px); padding: 10px 0; text-align: center; }
+        .top-bar p { margin: 0; font-size: 14px; }
+        .top-bar a { color: var(--gold-color); text-decoration: none; font-weight: 600; }
+        .main-header { position: sticky; top: 0; z-index: 1000; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(223, 178, 73, 0.1); }
+        .header-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; max-width: 1400px; margin: 0 auto; }
+        .logo { display: flex; align-items: center; }
+        .logo-image { height: 75px; width: auto; transition: transform 0.3s; }
+        .logo-image:hover { transform: scale(1.05); }
+        .nav-menu { display: flex; gap: 40px; list-style: none; align-items: center; }
+        .nav-menu li { position: relative; }
+        .nav-menu a { color: var(--text-white); text-decoration: none; font-size: 16px; font-weight: 500; transition: color 0.3s; position: relative; padding: 10px 0; display: block; }
+        .nav-menu a:hover { color: var(--gold-color); }
+        .nav-menu a::after { content: ''; position: absolute; bottom: -5px; right: 0; width: 0; height: 2px; background: var(--gold-color); transition: width 0.3s; }
+        .nav-menu a:hover::after { width: 100%; }
+        .has-dropdown { position: relative; }
+        .dropdown-menu { position: absolute; top: 100%; right: 0; background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(10px); min-width: 250px; border-radius: 8px; padding: 10px 0; margin-top: 10px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); z-index: 1000; }
+        .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { padding: 12px 25px; color: var(--text-white); text-decoration: none; display: block; transition: all 0.3s; font-size: 15px; text-align: right; border-right: 3px solid transparent; }
+        .dropdown-item:hover { background: rgba(223, 178, 73, 0.15); color: var(--gold-color); border-right-color: var(--gold-color); }
+        .dropdown-item::after { display: none; }
+        .hero { background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(223, 178, 73, 0.1) 100%); padding: 120px 20px 80px; text-align: center; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; margin-bottom: 20px; background: linear-gradient(135deg, var(--gold-color) 0%, #FFFFFF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-gray); max-width: 900px; margin: 0 auto; line-height: 1.8; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .podcast-section { padding: 80px 0; }
+        .podcast-platforms { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 60px; }
+        .platform-btn { display: flex; align-items: center; gap: 15px; padding: 20px 40px; background: var(--card-bg); border: 2px solid rgba(223, 178, 73, 0.2); border-radius: 15px; text-decoration: none; color: var(--text-white); font-size: 1.2rem; font-weight: 600; transition: all 0.3s; }
+        .platform-btn:hover { transform: translateY(-5px); border-color: var(--gold-color); box-shadow: 0 15px 40px rgba(223, 178, 73, 0.3); }
+        .platform-btn i { font-size: 2rem; color: var(--gold-color); }
+        .episode-highlight { background: linear-gradient(135deg, rgba(223, 178, 73, 0.05) 0%, rgba(10, 10, 10, 0.8) 100%); border-radius: 20px; padding: 60px 40px; margin: 80px auto; text-align: center; }
+        .episode-highlight h2 { font-size: 2.5rem; color: var(--gold-color); margin-bottom: 20px; }
+        .episode-highlight p { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 30px; }
+        @media (max-width: 768px) { .header-container { flex-direction: column; padding: 15px 20px; gap: 15px; } .nav-menu { flex-wrap: wrap; justify-content: center; gap: 15px; } .hero { padding: 80px 20px 60px; } .podcast-platforms { flex-direction: column; align-items: center; } }
+    </style>
+</head>
+<body>
+    <div class="top-bar"><p><a href="index.html#events">Meet Up with ClubRRRR</a></p></div>
+    <header class="main-header">
+        <div class="header-container">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html#about">אודות</a></li>
+                    <li class="has-dropdown"><a href="index.html#programs">תכניות ושירותים</a>
+                        <div class="dropdown-menu">
+                            <a href="mentoring.html" class="dropdown-item">תכנית מנטורינג אישי</a>
+                            <a href="cluber360.html" class="dropdown-item">תכנית קלאבר 360</a>
+                            <a href="workshops.html" class="dropdown-item">סדנאות</a>
+                            <a href="ai-tools.html" class="dropdown-item">תוכנות AI</a>
+                        </div>
+                    </li>
+                    <li><a href="graduates.html">הבוגרים שלנו</a></li>
+                    <li class="has-dropdown"><a href="content.html">תוכן</a>
+                        <div class="dropdown-menu">
+                            <a href="podcast.html" class="dropdown-item">פודקאסט</a>
+                            <a href="hosts.html" class="dropdown-item">קלאברים מארחים</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#community">קהילה</a></li>
+                    <li><a href="index.html#events">אירועים</a></li>
+                    <li><a href="index.html#contact">צור קשר</a></li>
+                </ul>
+            </nav>
+            <a href="index.html" class="logo"><img src="ClubRRRRnew logo.png" alt="ClubRRRR Logo" class="logo-image"></a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>פודקאסט קלאברררר 🎙️</h1>
+                <p>נדל"ן בארה"ב, יזמות וטכנולוגיה - פרקים חדשים כל שבוע עם אורחים מיוחדים, סיפורי הצלחה, ואסטרטגיות מנצחות מהשטח</p>
+            </div>
+        </section>
+        <section class="podcast-section">
+            <div class="container">
+                <div class="podcast-platforms">
+                    <a href="https://open.spotify.com" target="_blank" class="platform-btn"><i class="fab fa-spotify"></i><span>Spotify</span></a>
+                    <a href="https://podcasts.apple.com" target="_blank" class="platform-btn"><i class="fab fa-apple"></i><span>Apple Podcasts</span></a>
+                    <a href="https://youtube.com" target="_blank" class="platform-btn"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+                    <a href="https://podcasts.google.com" target="_blank" class="platform-btn"><i class="fab fa-google"></i><span>Google Podcasts</span></a>
+                </div>
+                <div class="episode-highlight">
+                    <h2>הפרק האחרון שלנו</h2>
+                    <p>איך בוגרי קלאבר הצליחו לבנות פורטפוליו של מיליוני דולרים - שיחה עם 3 בוגרים מצליחים על האסטרטגיות שעבדו להם</p>
+                    <a href="https://open.spotify.com" target="_blank" style="display: inline-block; padding: 18px 50px; background: linear-gradient(135deg, var(--gold-color) 0%, rgba(223, 178, 73, 0.8) 100%); color: #000; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 1.2rem;">האזינו עכשיו</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

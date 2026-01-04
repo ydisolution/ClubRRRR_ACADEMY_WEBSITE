@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תכנית מנטורינג אישי - ClubRRRR</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #DFB249;
+            --gold-color: #DFB249;
+            --dark-bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .top-bar {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(18px);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .top-bar p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .top-bar a {
+            color: var(--gold-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .main-header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(18px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 75px;
+            width: auto;
+            transition: transform 0.3s;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold-color);
+        }
+
+        /* Hero Section */
+        .hero-page {
+            padding: 150px 40px 100px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
+        }
+
+        .hero-page h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--gold-color);
+        }
+
+        .hero-page p {
+            font-size: 24px;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .section-title .gold {
+            color: var(--gold-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-color);
+            box-shadow: 0 10px 40px rgba(223, 178, 73, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            color: var(--gold-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-white);
+        }
+
+        .feature-description {
+            font-size: 16px;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Program Details */
+        .program-details {
+            background: rgba(223, 178, 73, 0.1);
+            padding: 60px;
+            border-radius: 20px;
+            margin-bottom: 80px;
+        }
+
+        .program-details h3 {
+            font-size: 32px;
+            color: var(--gold-color);
+            margin-bottom: 30px;
+        }
+
+        .program-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .program-details li {
+            font-size: 18px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .program-details li:last-child {
+            border-bottom: none;
+        }
+
+        .program-details li i {
+            color: var(--gold-color);
+            font-size: 24px;
+        }
+
+        /* Registration Form */
+        .registration-section {
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.1) 0%, rgba(223, 178, 73, 0.05) 100%);
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .registration-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .registration-container h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+            color: var(--gold-color);
+        }
+
+        .registration-container p {
+            font-size: 18px;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        .registration-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-input {
+            padding: 18px 25px;
+            font-size: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-white);
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-family: 'Jost', sans-serif;
+            text-align: right;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold-color);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-submit {
+            padding: 18px 50px;
+            font-size: 18px;
+            font-weight: 600;
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            border: 2px solid var(--gold-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .form-submit:hover {
+            background: transparent;
+            color: var(--gold-color);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 60px 40px 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo-image {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            font-size: 18px;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: var(--text-gray);
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-page h1 {
+                font-size: 38px;
+            }
+
+            .hero-page p {
+                font-size: 18px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .program-details {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <p><a href="web_PM__index.html#events">Meet Up with ClubRRRR</a></p>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="web_PM__index.html#about">אודות</a></li>
+                    <li><a href="web_PM__index.html#programs">תכניות ושירותים</a></li>
+                    <li><a href="graduates.html">הבוגרים שלנו</a></li>
+                    <li><a href="content.html">תוכן</a></li>
+                    <li><a href="web_PM__index.html#community">קהילה</a></li>
+                    <li><a href="web_PM__index.html#contact">צור קשר</a></li>
+                </ul>
+            </nav>
+            <a href="clubrrrr-v5.html" class="logo">
+                <img src="./ClubRRRRnew logo.png" alt="ClubRRRR Logo" class="logo-image">
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-page">
+        <h1>תכנית מנטורינג אישי</h1>
+        <p>ליווי צמוד 1 על 1 בדרך לבניית פורטפוליו נדל"ן מצליח בארה"ב</p>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <h2 class="section-title">למה <span class="gold">מנטורינג אישי?</span></h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+                <h3 class="feature-title">ליווי אישי</h3>
+                <p class="feature-description">למידה והכשרה צמודה אחד על אחד עם מנטור מנוסה שמלווה אותך בכל שלב בדרך</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
+                <h3 class="feature-title">תכנית פרקטית</h3>
+                <p class="feature-description">למידה מעשית על יזמות נדל"ן בארה"ב וכל התהליך לרכישת נכס מקצה לקצה</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3 class="feature-title">תוכן מקיף</h3>
+                <p class="feature-description">שיעורים מוקלטים איכותיים שמכסים את כל ההיבטים של יזמות נדל"ן</p>
+            </div>
+        </div>
+
+        <!-- Program Details -->
+        <div class="program-details">
+            <h3>מה כלול בתכנית?</h3>
+            <ul>
+                <li>
+                    <i class="fas fa-video"></i>
+                    <span>שיעורים מוקלטים מקיפים - תוכן איכותי שניתן לצפות בו בקצב שלך</span>
+                </li>
+                <li>
+                    <i class="fas fa-comments"></i>
+                    <span>4 מפגשי Zoom לשאלות ותשובות - דיון ישיר עם המנטור ופתרון בעיות בזמן אמת</span>
+                </li>
+                <li>
+                    <i class="fas fa-users"></i>
+                    <span>מפגש פיזי אחד בסוף הקורס - מפגש עם כלל בוגרי המנטורינג שסיימו באותו רבעון</span>
+                </li>
+                <li>
+                    <i class="fas fa-chart-line"></i>
+                    <span>ליווי מלא בתהליך רכישת הנכס הראשון שלך</span>
+                </li>
+                <li>
+                    <i class="fas fa-certificate"></i>
+                    <span>תעודת סיום ומעבר לקהילת בוגרי ClubRRRR</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration-section">
+        <div class="registration-container">
+            <h2>מעוניין להצטרף?</h2>
+            <p>השאר פרטים ונחזור אליך בהקדם עם כל המידע על התכנית</p>
+            <form class="registration-form">
+                <input type="text" placeholder="שם מלא" class="form-input" required>
+                <input type="email" placeholder="כתובת אימייל" class="form-input" required>
+                <input type="tel" placeholder="מספר טלפון" class="form-input" required>
+                <textarea placeholder="ספר לנו קצת על עצמך ומדוע אתה מעוניין בתכנית" class="form-input" rows="4"></textarea>
+                <button type="submit" class="form-submit">שלח פרטים</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="./ClubRRRRnew logo.png" alt="ClubRRRR" class="footer-logo-image">
+            <p class="footer-text">בונים עושר, יוצרים הזדמנויות, משנים חיים.</p>
+            <p class="copyright">&copy; 2025 ClubRRRR. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+</body>
+</html>

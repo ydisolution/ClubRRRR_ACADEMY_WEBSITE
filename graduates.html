@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הבוגרים שלנו - ClubRRRR</title>
+    
+    <!--
+    ⚠️ שים לב: הדף הזה מכיל 20 סרטוני עדויות, אבל רק 5 סרטונים ייחודיים שחוזרים על עצמם!
+    
+    סרטונים כפולים שצריך להחליף:
+    - 0kFWhvTSV9E (משמש ל-4 בוגרים שונים)
+    - YtgYcHOahRs (משמש ל-4 בוגרים שונים)
+    - oF6XIhYIqEs (משמש ל-4 בוגרים שונים)
+    - sGA1yv4U3Fw (משמש ל-4 בוגרים שונים)
+    - AsGPi5aSc1k (משמש ל-4 בוגרים שונים)
+    
+    TODO: להחליף בסרטוני עדויות אמיתיים של 20 בוגרים שונים
+    -->
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #DFB249;
+            --gold-color: #DFB249;
+            --dark-bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        .top-bar {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(18px);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .top-bar p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .top-bar a {
+            color: var(--gold-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        .main-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(223, 178, 73, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 75px;
+            width: auto;
+            transition: transform 0.3s;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 10px 0;
+            display: block;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-color);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown Menu */
+        .has-dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 250px;
+            border-radius: 8px;
+            padding: 10px 0;
+            margin-top: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .has-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            padding: 12px 25px;
+            color: var(--text-white);
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            font-size: 15px;
+            text-align: right;
+            border-right: 3px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(223, 178, 73, 0.15);
+            color: var(--gold-color);
+            border-right-color: var(--gold-color);
+        }
+
+        .dropdown-item::after {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(223, 178, 73, 0.1) 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--gold-color) 0%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-gray);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .stat-box {
+            background: var(--card-bg);
+            border: 2px solid rgba(223, 178, 73, 0.2);
+            border-radius: 20px;
+            padding: 40px 20px;
+            transition: all 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-color);
+            box-shadow: 0 15px 40px rgba(223, 178, 73, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--gold-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.05) 0%, rgba(10, 10, 10, 0.8) 100%);
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+
+        .map-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--gold-color) 0%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .map-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+        }
+
+        .map-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .usa-map {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(223, 178, 73, 0.3));
+        }
+
+        /* SVG Map Styling */
+        .state {
+            fill: rgba(255, 255, 255, 0.1);
+            stroke: rgba(223, 178, 73, 0.3);
+            stroke-width: 1;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .state:hover {
+            fill: rgba(223, 178, 73, 0.3);
+            stroke: var(--gold-color);
+            stroke-width: 2;
+        }
+
+        .state-highlighted {
+            fill: rgba(223, 178, 73, 0.5) !important;
+            stroke: var(--gold-color) !important;
+            stroke-width: 2 !important;
+            animation: statePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes statePulse {
+            0%, 100% {
+                fill: rgba(223, 178, 73, 0.4);
+                filter: drop-shadow(0 0 10px rgba(223, 178, 73, 0.6));
+            }
+            50% {
+                fill: rgba(223, 178, 73, 0.7);
+                filter: drop-shadow(0 0 20px rgba(223, 178, 73, 0.9));
+            }
+        }
+
+        .state-label {
+            fill: var(--gold-color);
+            font-size: 14px;
+            font-weight: 600;
+            pointer-events: none;
+            text-anchor: middle;
+        }
+
+        /* State Info Cards */
+        .states-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 60px;
+        }
+
+        .state-card {
+            background: var(--card-bg);
+            border: 2px solid rgba(223, 178, 73, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .state-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-color);
+            box-shadow: 0 15px 40px rgba(223, 178, 73, 0.3);
+        }
+
+        .state-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .state-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold-color);
+            margin-bottom: 10px;
+        }
+
+        .state-description {
+            font-size: 1rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 80px 0;
+        }
+
+        .testimonials-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, var(--gold-color) 0%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border: 2px solid rgba(223, 178, 73, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-color);
+            box-shadow: 0 15px 40px rgba(223, 178, 73, 0.3);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-color) 0%, rgba(223, 178, 73, 0.6) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .testimonial-info h3 {
+            font-size: 1.3rem;
+            color: var(--gold-color);
+            margin-bottom: 5px;
+        }
+
+        .testimonial-info p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .testimonial-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 80px 20px 60px;
+            }
+
+            .stats-grid,
+            .states-info,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <p><a href="index.html#events">Meet Up with ClubRRRR</a></p>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html#about">אודות</a></li>
+                    <li class="has-dropdown">
+                        <a href="index.html#programs">תכניות ושירותים</a>
+                        <div class="dropdown-menu">
+                            <a href="mentoring.html" class="dropdown-item">תכנית מנטורינג אישי</a>
+                            <a href="cluber360.html" class="dropdown-item">תכנית קלאבר 360</a>
+                            <a href="workshops.html" class="dropdown-item">סדנאות</a>
+                            <a href="ai-tools.html" class="dropdown-item">תוכנות AI</a>
+                        </div>
+                    </li>
+                    <li><a href="graduates.html">הבוגרים שלנו</a></li>
+                    <li class="has-dropdown">
+                        <a href="index.html#content">תוכן</a>
+                        <div class="dropdown-menu">
+                            <a href="podcast.html" class="dropdown-item">פודקאסט</a>
+                            <a href="hosts.html" class="dropdown-item">קלאברים מארחים</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#community">קהילה</a></li>
+                    <li><a href="index.html#events">אירועים</a></li>
+                    <li><a href="index.html#contact">צור קשר</a></li>
+                </ul>
+            </nav>
+            <a href="index.html" class="logo">
+                <img src="ClubRRRRnew logo.png" alt="ClubRRRR Logo" class="logo-image">
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>הבוגרים שלנו 🎓</h1>
+                <p>
+                    מאות בוגרים מצליחים שעשו את הצעד והפכו את החלום לעסק אמיתי. 
+                    הם משקיעים בנדל"ן בארה"ב, בונים פורטפוליו, וחיים את חיי היזמות שתמיד רצו.
+                </p>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">בוגרים</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">מדינות בארה"ב</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">$50M+</div>
+                        <div class="stat-label">שווי נכסים</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">עסקאות שנסגרו</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <div class="container">
+                <h2 class="map-title">איפה הבוגרים שלנו משקיעים?</h2>
+                <p class="map-subtitle">
+                    הבוגרים שלנו משקיעים במדינות ה-Landlord Friendly המובילות בארה"ב - 
+                    מדינות עם חוקים נוחים למשקיעים, מיסוי נמוך, וביקוש גבוה לשכירות
+                </p>
+
+                <div class="map-container">
+                    <!-- Simplified SVG Map of USA -->
+                    <svg viewBox="0 0 1000 600" class="usa-map" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Texas -->
+                        <path id="texas" class="state state-highlighted" d="M300,400 L250,450 L200,480 L220,520 L280,540 L340,530 L380,500 L400,450 L380,400 Z"/>
+                        <text x="300" y="480" class="state-label">Texas</text>
+                        
+                        <!-- Ohio -->
+                        <path id="ohio" class="state state-highlighted" d="M650,250 L600,240 L580,270 L590,300 L640,310 L680,290 L690,260 Z"/>
+                        <text x="640" y="280" class="state-label">Ohio</text>
+                        
+                        <!-- Illinois (Chicago area) -->
+                        <path id="illinois" class="state state-highlighted" d="M530,200 L500,210 L490,250 L510,290 L550,300 L580,270 L570,230 Z"/>
+                        <text x="535" y="255" class="state-label">Illinois</text>
+                        
+                        <!-- Florida -->
+                        <path id="florida" class="state state-highlighted" d="M750,450 L720,470 L710,510 L730,540 L780,520 L800,480 L790,450 Z"/>
+                        <text x="755" y="495" class="state-label">Florida</text>
+                        
+                        <!-- Alabama -->
+                        <path id="alabama" class="state state-highlighted" d="M620,400 L590,410 L580,440 L600,470 L640,475 L660,450 L655,420 Z"/>
+                        <text x="620" y="445" class="state-label">Alabama</text>
+                        
+                        <!-- Tennessee -->
+                        <path id="tennessee" class="state state-highlighted" d="M580,350 L550,360 L540,380 L560,400 L610,395 L640,380 L630,360 Z"/>
+                        <text x="590" y="378" class="state-label">Tennessee</text>
+                        
+                        <!-- Georgia -->
+                        <path id="georgia" class="state state-highlighted" d="M660,400 L640,410 L635,440 L655,470 L695,475 L710,450 L700,420 Z"/>
+                        <text x="670" y="445" class="state-label">Georgia</text>
+                        
+                        <!-- Indiana -->
+                        <path id="indiana" class="state state-highlighted" d="M580,240 L560,250 L555,280 L575,305 L605,300 L615,270 Z"/>
+                        <text x="585" y="275" class="state-label">Indiana</text>
+
+                        <!-- Other states (not highlighted) -->
+                        <path class="state" d="M100,100 L150,90 L200,100 L220,140 L200,180 L150,170 L100,150 Z"/>
+                        <path class="state" d="M250,100 L300,95 L350,110 L360,150 L340,180 L290,175 L250,160 Z"/>
+                        <path class="state" d="M400,120 L450,115 L490,130 L500,170 L480,200 L430,195 L400,175 Z"/>
+                    </svg>
+                </div>
+
+                <!-- State Info Cards -->
+                <div class="states-info">
+                    <article class="state-card">
+                        <div class="state-icon">🤠</div>
+                        <h3 class="state-name">טקסס</h3>
+                        <p class="state-description">
+                            אין מס הכנסה מדינתי, שוק נדל"ן חזק, וביקוש גבוה לשכירות. 
+                            ערים כמו יוסטון, דאלאס, ואוסטין מושכות משקיעים מכל העולם.
+                        </p>
+                    </article>
+
+                    <article class="state-card">
+                        <div class="state-icon">🏭</div>
+                        <h3 class="state-name">אוהיו</h3>
+                        <p class="state-description">
+                            מחירים נמוכים, תשואות גבוהות, וחוקים נוחים למשקיעים. 
+                            קליבלנד, קולומבוס וסינסינטי מציעות הזדמנויות מצוינות.
+                        </p>
+                    </article>
+
+                    <article class="state-card">
+                        <div class="state-icon">🌆</div>
+                        <h3 class="state-name">אילינוי</h3>
+                        <p class="state-description">
+                            שיקגו ופרברים מציעים שוק שכירות חזק ופוטנציאל appreciation גבוה. 
+                            שוק מפותח עם תשתיות מצוינות.
+                        </p>
+                    </article>
+
+                    <article class="state-card">
+                        <div class="state-icon">🌴</div>
+                        <h3 class="state-name">פלורידה</h3>
+                        <p class="state-description">
+                            אין מס הכנסה מדינתי, צמיחה דמוגרפית מהירה, ושוק תיירות חזק. 
+                            מיאמי, טמפה ואורלנדו מובילות בביקוש.
+                        </p>
+                    </article>
+
+                    <article class="state-card">
+                        <div class="state-icon">🎸</div>
+                        <h3 class="state-name">אלבמה</h3>
+                        <p class="state-description">
+                            מחירים נמוכים מאוד, תשואות מצוינות, וחוקים נוחים. 
+                            ברמינגהם ומובייל מציעות ROI גבוה.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="container">
+                <h2 class="testimonials-title">בוגרים ממליצים</h2>
+                
+                <div class="testimonials-grid">
+                    <!-- Testimonial 1 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">א</div>
+                            <div class="testimonial-info">
+                                <h3>אלון כהן</h3>
+                                <p>מחזור 5 | משקיע בטקסס</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "התוכנית שינתה לי את החיים. היום יש לי 8 נכסים בדאלאס והכנסה פאסיבית שמאפשרת לי חופש פיננסי אמיתי."
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/0kFWhvTSV9E?rel=0" title="המלצה אלון" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 2 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ש</div>
+                            <div class="testimonial-info">
+                                <h3>שרון לוי</h3>
+                                <p>מחזור 6 | משקיעה באוהיו</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "הכלים של AI והמערכות שלמדתי בקלאבר אפשרו לי לנתח עסקאות במהירות ולסגור 12 deals בשנה הראשונה!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/YtgYcHOahRs?rel=0" title="המלצה שרון" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 3 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ד</div>
+                            <div class="testimonial-info">
+                                <h3>דוד אברהם</h3>
+                                <p>מחזור 7 | משקיע בפלורידה</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "הקהילה של קלאבר היא הנכס הכי חשוב. מצאתי שותפים עסקיים, חברים לחיים, ועזרה בכל שלב."
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/oF6XIhYIqEs?rel=0" title="המלצה דוד" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 4 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">מ</div>
+                            <div class="testimonial-info">
+                                <h3>מיכל רוזנברג</h3>
+                                <p>מחזור 8 | משקיעה בשיקגו</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "לא האמנתי שאצליח. היום אני בעלת פורטפוליו של 15 יחידות והכנסה חודשית של $12,000!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/sGA1yv4U3Fw?rel=0" title="המלצה מיכל" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 5 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">י</div>
+                            <div class="testimonial-info">
+                                <h3>יוסי גולן</h3>
+                                <p>מחזור 4 | משקיע בטקסס ואלבמה</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "המעבר משכיר להשקעות היה המהלך הכי טוב בחיי. תודה לאיתי ודרור על ההכוונה!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/AsGPi5aSc1k?rel=0" title="המלצה יוסי" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 6 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ר</div>
+                            <div class="testimonial-info">
+                                <h3>רונית כץ</h3>
+                                <p>מחזור 9 | משקיעה באוהיו</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "התכנית נתנה לי את הביטחון לעשות את הצעד. עכשיו אני סוגרת עסקאות שלא העזתי לחלום עליהן!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/0kFWhvTSV9E?rel=0" title="המלצה רונית" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 7 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ע</div>
+                            <div class="testimonial-info">
+                                <h3>עדי בן דוד</h3>
+                                <p>מחזור 7 | משקיע בג'ורג'יה</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "BRRRR strategy שלמדתי בקלאבר שינתה את כל המשחק. הפכתי 100k להון של מיליון דולר!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/YtgYcHOahRs?rel=0" title="המלצה עדי" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 8 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ג</div>
+                            <div class="testimonial-info">
+                                <h3>גיא שמואלי</h3>
+                                <p>מחזור 10 | משקיע בפלורידה</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "הכלים של AI חסכו לי מאות שעות עבודה. אני מצליח לנתח 50 עסקאות ביום!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/oF6XIhYIqEs?rel=0" title="המלצה גיא" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 9 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ת</div>
+                            <div class="testimonial-info">
+                                <h3>תמר אלון</h3>
+                                <p>מחזור 6 | משקיעה בטנסי</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "כאמא לשלושה, התכנית אפשרה לי להקים עסק נדל"ן מהבית ולייצר הכנסה משמעותית!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/sGA1yv4U3Fw?rel=0" title="המלצה תמר" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 10 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">נ</div>
+                            <div class="testimonial-info">
+                                <h3>נועם פרידמן</h3>
+                                <p>מחזור 8 | משקיע באינדיאנה</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "המעבר מעולם ההייטק לנדל"ן היה הצעד הכי נכון. קלאבר נתנה לי את כל הכלים!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/AsGPi5aSc1k?rel=0" title="המלצה נועם" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 11 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ל</div>
+                            <div class="testimonial-info">
+                                <h3>ליאור כהן</h3>
+                                <p>מחזור 5 | משקיע בטקסס</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "הקהילה והמנטורים תמכו בי בכל שלב. היום אני מנהל פורטפוליו של 2.5 מיליון דולר!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/0kFWhvTSV9E?rel=0" title="המלצה ליאור" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 12 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ב</div>
+                            <div class="testimonial-info">
+                                <h3>בר מזרחי</h3>
+                                <p>מחזור 9 | משקיע באוהיו</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "המעבר מעובד שכיר ליזם היה פחות מפחיד בזכות התכנית המקיפה של קלאבר!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/YtgYcHOahRs?rel=0" title="המלצה בר" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 13 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ח</div>
+                            <div class="testimonial-info">
+                                <h3>חגית לוי</h3>
+                                <p>מחזור 7 | משקיעה בפלורידה</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "התכנית לא רק לימדה אותי נדל"ן - היא שינתה את הדרך שבה אני חושבת על כסף ועסקים!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/oF6XIhYIqEs?rel=0" title="המלצה חגית" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 14 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">א</div>
+                            <div class="testimonial-info">
+                                <h3>אור סלומון</h3>
+                                <p>מחזור 10 | משקיע בג'ורג'יה</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "הצלחתי לסגור 5 עסקאות ב-6 חודשים הראשונים. המערכות של קלאבר עובדות!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/sGA1yv4U3Fw?rel=0" title="המלצה אור" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 15 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ז</div>
+                            <div class="testimonial-info">
+                                <h3>זוהר דהן</h3>
+                                <p>מחזור 6 | משקיע בטקסס ואלבמה</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "הסקלינג שעשיתי בשנה השנייה היה בזכות הכלים והאסטרטגיות שלמדתי בתכנית!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/AsGPi5aSc1k?rel=0" title="המלצה זוהר" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 16 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ס</div>
+                            <div class="testimonial-info">
+                                <h3>סתו ברק</h3>
+                                <p>מחזור 8 | משקיעה באוהיו</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "כמי שלא ידעה כלום על נדל"ן, התכנית לקחה אותי צעד אחרי צעד עד להצלחה מלאה!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/0kFWhvTSV9E?rel=0" title="המלצה סתו" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 17 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ק</div>
+                            <div class="testimonial-info">
+                                <h3>קרן יעקב</h3>
+                                <p>מחזור 9 | משקיעה בפלורידה</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "המשא ומתן שלמדתי בקלאבר עזר לי לסגור עסקאות בתנאים מצוינים!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/YtgYcHOahRs?rel=0" title="המלצה קרן" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 18 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">פ</div>
+                            <div class="testimonial-info">
+                                <h3>פבל גרינברג</h3>
+                                <p>מחזור 7 | משקיע באינדיאנה</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "הרשת של קלאבר פתחה לי דלתות לעסקאות שלא הייתי מוצא לבד. תודה לקהילה!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/oF6XIhYIqEs?rel=0" title="המלצה פבל" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 19 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">ה</div>
+                            <div class="testimonial-info">
+                                <h3>הילה אשכנזי</h3>
+                                <p>מחזור 10 | משקיעה בטנסי</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "השיטות שלמדתי לניהול שיפוצים מרחוק חסכו לי המון כסף וזמן. משנה חיים!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/sGA1yv4U3Fw?rel=0" title="המלצה הילה" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 20 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">צ</div>
+                            <div class="testimonial-info">
+                                <h3>צחי בוחבוט</h3>
+                                <p>מחזור 5 | משקיע בטקסס</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">
+                            "קלאבר נתנה לי את החלום - חופש כלכלי, עבודה מהבית, וזמן איכות עם המשפחה!"
+                        </p>
+                        <div class="testimonial-video">
+                            <iframe src="https://www.youtube.com/embed/AsGPi5aSc1k?rel=0" title="המלצה צחי" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    const targetNumber = statNumber.textContent;
+                    animateNumber(statNumber, targetNumber);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-box').forEach(box => {
+            observer.observe(box);
+        });
+
+        function animateNumber(element, target) {
+            const isPlus = target.includes('+');
+            const isDollar = target.includes('$');
+            const isMillion = target.includes('M');
+            const numericValue = parseInt(target.replace(/[^0-9]/g, ''));
+            
+            let current = 0;
+            const increment = numericValue / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= numericValue) {
+                    current = numericValue;
+                    clearInterval(timer);
+                }
+                
+                let displayValue = Math.floor(current);
+                if (isDollar) displayValue = '$' + displayValue;
+                if (isMillion) displayValue += 'M';
+                if (isPlus) displayValue += '+';
+                
+                element.textContent = displayValue;
+            }, 20);
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Interactive Map States
+        const states = document.querySelectorAll('.state-highlighted');
+        states.forEach(state => {
+            state.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.transformOrigin = 'center';
+            });
+            
+            state.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

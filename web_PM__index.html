@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClubRRRR - Your Success Starts Here</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #DFB249;
+            --gold-color: #DFB249;
+            --dark-bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+        }
+
+        /* Header Section */
+        .top-bar {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(18px);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .top-bar p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .top-bar a {
+            color: var(--gold-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Header */
+        .main-header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(18px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 75px;
+            width: auto;
+            transition: transform 0.3s;
+            margin-top: 5px;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 10px 0;
+            display: block;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-color);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown Menu */
+        .has-dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 250px;
+            border-radius: 8px;
+            padding: 10px 0;
+            margin-top: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .has-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            padding: 12px 25px;
+            color: var(--text-white);
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            font-size: 15px;
+            text-align: right;
+            border-right: 3px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(223, 178, 73, 0.15);
+            color: var(--gold-color);
+            border-right-color: var(--gold-color);
+        }
+
+        .dropdown-item::after {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 40px;
+            text-align: center;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw;
+            min-height: 100vh;
+            min-width: 177.77vh;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        @media (max-aspect-ratio: 16/9) {
+            .hero-video {
+                height: 100vh;
+                width: 177.77vh;
+            }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.7);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 .gold {
+            color: var(--gold-color);
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .hero-btn-primary {
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            border: 2px solid var(--gold-color);
+        }
+
+        .hero-btn-primary:hover {
+            background: transparent;
+            color: var(--gold-color);
+        }
+
+        .hero-btn-secondary {
+            background: transparent;
+            color: var(--text-white);
+            border: 2px solid var(--text-white);
+        }
+
+        .hero-btn-secondary:hover {
+            background: var(--text-white);
+            color: var(--dark-bg);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-white);
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Section with Statistics */
+        .about-section {
+            position: relative;
+            padding: 100px 40px 150px;
+            background-color: var(--dark-bg);
+            background-image: url('./community-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        .about-background {
+            display: none;
+        }
+
+        .about-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.75) 100%);
+            z-index: 1;
+        }
+
+        .about-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-header {
+            text-align: right;
+            margin-bottom: 60px;
+        }
+
+        .about-content-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 500px;
+        }
+
+        .about-image-container {
+            flex: 0 0 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .founders-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .founders-image:hover {
+            box-shadow: 0 0 40px rgba(223, 178, 73, 0.8),
+                        0 0 80px rgba(223, 178, 73, 0.6),
+                        0 0 120px rgba(223, 178, 73, 0.4);
+            transform: scale(1.05);
+        }
+
+        .about-title {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .about-description {
+            font-size: 20px;
+            line-height: 1.8;
+            color: var(--text-gray);
+            max-width: 900px;
+            margin: 0 auto 40px;
+            text-align: right;
+        }
+
+        .about-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: transparent;
+            color: var(--gold-color);
+            border: 2px solid var(--gold-color);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .about-button:hover {
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            transform: translateX(-5px);
+        }
+
+        .about-button i {
+            margin-left: 10px;
+        }
+
+        /* Statistics Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+            margin-top: 100px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 40px 20px;
+            border: 2px solid rgba(223, 178, 73, 0.3);
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item:hover {
+            border-color: var(--gold-color);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(223, 178, 73, 0.3);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--gold-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--text-gray);
+            line-height: 1.4;
+        }
+
+        /* Programs & Services Section */
+        .resources-section {
+            padding: 100px 40px;
+            background: var(--dark-bg);
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title .gold {
+            color: var(--gold-color);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .program-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(223, 178, 73, 0.2);
+            border-color: var(--gold-color);
+        }
+
+        .program-image-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .program-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .program-card:hover .program-image {
+            transform: scale(1.1);
+        }
+
+        .program-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .program-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--gold-color);
+        }
+
+        .program-description {
+            font-size: 16px;
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .program-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--gold-color);
+            border: 2px solid var(--gold-color);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s;
+            align-self: flex-start;
+        }
+
+        .program-btn:hover {
+            background: var(--gold-color);
+            color: var(--dark-bg);
+        }
+
+        .program-btn i {
+            margin-left: 8px;
+        }
+
+        /* Resources Section - OLD */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .resource-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(223, 178, 73, 0.2);
+            border-color: var(--gold-color);
+        }
+
+        .resource-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .resource-content {
+            padding: 30px;
+        }
+
+        .resource-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--gold-color);
+        }
+
+        .resource-description {
+            font-size: 16px;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Community Section */
+        .community-section {
+            padding: 100px 40px;
+            background: #f5f5f5;
+            text-align: center;
+        }
+
+        .community-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .community-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--dark-bg);
+        }
+
+        .community-description {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .community-social-brands {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .brand-logo:hover {
+            transform: translateY(-5px);
+        }
+
+        .brand-logo i {
+            font-size: 40px;
+        }
+
+        .brand-logo span {
+            font-size: 24px;
+            font-weight: 600;
+            font-family: 'Jost', sans-serif;
+        }
+
+        /* YouTube */
+        .youtube-brand i {
+            color: #FF0000;
+        }
+
+        .youtube-brand span {
+            color: #000;
+        }
+
+        /* Instagram */
+        .instagram-brand i {
+            color: #000;
+        }
+
+        .instagram-brand span {
+            color: #000;
+            font-family: 'Brush Script MT', cursive;
+            font-style: italic;
+        }
+
+        /* Facebook */
+        .facebook-brand i {
+            color: #1877F2;
+        }
+
+        .facebook-brand span {
+            color: #1877F2;
+            font-weight: 500;
+        }
+
+        /* Spotify */
+        .spotify-brand i {
+            color: #1DB954;
+        }
+
+        .spotify-brand span {
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* TikTok */
+        .tiktok-brand i {
+            color: #000;
+        }
+
+        .tiktok-brand span {
+            color: #000;
+            font-weight: 700;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 80px 40px;
+            background: var(--dark-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: var(--text-white);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-input {
+            padding: 15px 25px;
+            font-size: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-white);
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-family: 'Jost', sans-serif;
+            text-align: right;
+            min-width: 200px;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold-color);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-submit {
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            border: 2px solid var(--gold-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Jost', sans-serif;
+            white-space: nowrap;
+        }
+
+        .form-submit:hover {
+            background: transparent;
+            color: var(--gold-color);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 60px 40px 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gold-color);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-logo-image {
+            height: 60px;
+            width: auto;
+        }
+
+        .footer-text {
+            font-size: 18px;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-white);
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: var(--text-gray);
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .about-title {
+                font-size: 42px;
+            }
+
+            .about-content-wrapper {
+                flex-direction: column;
+            }
+
+            .about-text {
+                min-width: 100%;
+            }
+
+            .about-image-container {
+                flex: 0 0 auto;
+            }
+
+            .founders-image {
+                max-width: 350px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            }
+
+            .stat-item {
+                width: 180px;
+                height: 180px;
+                padding: 30px 15px;
+            }
+
+            .stat-number {
+                font-size: 42px;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .about-title {
+                font-size: 36px;
+            }
+
+            .about-description {
+                font-size: 18px;
+            }
+
+            .founders-image {
+                max-width: 300px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .header-container {
+                padding: 0 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .logo-image {
+                height: 55px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item {
+                width: 160px;
+                height: 160px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .stat-label {
+                font-size: 14px;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .program-image-wrapper {
+                height: 200px;
+            }
+
+            .community-title {
+                font-size: 36px;
+            }
+
+            .community-description {
+                font-size: 18px;
+            }
+
+            .brand-logo {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .brand-logo i {
+                font-size: 32px;
+            }
+
+            .brand-logo span {
+                font-size: 18px;
+            }
+
+            .newsletter-title {
+                font-size: 24px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .form-input {
+                width: 100%;
+            }
+
+            .form-submit {
+                width: 100%;
+            }
+
+            .footer-logo-image {
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .about-title {
+                font-size: 28px;
+            }
+
+            .founders-image {
+                max-width: 100%;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item {
+                width: 200px;
+                height: 200px;
+            }
+
+            .stat-number {
+                font-size: 42px;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .program-content {
+                padding: 30px 20px;
+            }
+
+            .program-image-wrapper {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <p><a href="#events">Meet Up with ClubRRRR</a></p>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#about">אודות</a></li>
+                    <li class="has-dropdown">
+                        <a href="#programs">ClubRRRR ACADEMY</a>
+                        <div class="dropdown-menu">
+                            <a href="mentoring.html" class="dropdown-item">מנטורינג - לימוד צמוד עם איתי ודרור</a>
+                            <a href="cluber360.html" class="dropdown-item">ClubRRRR 360 - תכנית מקיפה</a>
+                            <a href="wholesale.html" class="dropdown-item">קורס Wholesale - איתור עסקאות</a>
+                            <a href="creative-financing.html" class="dropdown-item">Creative Financing - מימון יצירתי</a>
+                        </div>
+                    </li>
+                    <li><a href="graduates.html">הבוגרים שלנו</a></li>
+                    <li class="has-dropdown">
+                        <a href="content.html">תוכן</a>
+                        <div class="dropdown-menu">
+                            <a href="podcast.html" class="dropdown-item">פודקאסט</a>
+                            <a href="hosts.html" class="dropdown-item">קלאברים מארחים</a>
+                        </div>
+                    </li>
+                    <li><a href="#community">קהילה</a></li>
+                    <li><a href="#events">אירועים</a></li>
+                    <li><a href="#contact">צור קשר</a></li>
+                </ul>
+            </nav>
+            <a href="web_PM__index.html" class="logo">
+                <img src="./ClubRRRRnew logo.png" alt="ClubRRRR Logo" class="logo-image">
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Video Background -->
+        <div class="hero-video-container">
+            <iframe 
+                class="hero-video"
+                src="https://www.youtube-nocookie.com/embed/cS9GKtRPOzE?autoplay=1&mute=1&loop=1&playlist=cS9GKtRPOzE&controls=0&showinfo=0&autohide=1&modestbranding=1&vq=hd720&rel=0&enablejsapi=1&origin=https://clubrrrr.com&widgetid=1"
+                title="Background Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="hero-content">
+            <h1>ברוכים הבאים ל<span class="gold">ClubRRRR</span></h1>
+            <p>מנחה טלוויזיה. סופר. משקיע. יזם. דובר.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="hero-btn hero-btn-primary">הספר של ClubRRRR</a>
+                <a href="#contact" class="hero-btn hero-btn-secondary">השקע עם ClubRRRR</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.youtube.com/@clubrrrr" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/itai.aharon.315" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/clubrrrr/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@clubrrrr" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/company/clubrrrr" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with Statistics -->
+    <section class="about-section" id="about">
+        <img src="./community-background" alt="קהילת ClubRRRR" class="about-background">
+        <div class="about-overlay"></div>
+        <div class="about-container">
+            <div class="about-header">
+                <div class="about-content-wrapper">
+                    <div class="about-text">
+                        <h2 class="about-title">אודות איתי ודרור</h2>
+                        <p class="about-description">
+                            אנחנו איתי ודרור, ובחמש השנים האחרונות לקחנו הון עצמי של 250k והפכנו אותו לפורטפוליו של עשרות נכסים באמצעות יזמות נדל"ן בארה"ב.
+                            <br><br>
+                            יצרנו את פודקאסט קלאברררר - נדל"ן בארה"ב, יזמות וטכנולוגיה שמספק טעימה מעולם היזמות נדל"ן ואסטרטגיות מתקדמות.
+                            <br><br>
+                            והקמנו את תכנית קלאבר 360 - התכנית ללימודי יזמות נדל"ן בארה"ב המקיפה והמתקדמת ביותר. תכנית שמשלבת פרקטיקה, אסטרטגיות ואימוץ טכנולוגיות AI מתקדמות לאיתור וביצוע עסקאות נדל"ן בונזה!
+                        </p>
+                        <div style="text-align: left;">
+                            <a href="#programs" class="about-button">
+                                קרא עוד על איתי ודרור
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="about-image-container">
+                        <img src="./Main.png" alt="איתי ודרור" class="founders-image">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Grid -->
+            <div class="stats-grid">
+                <div class="stat-item" data-target="48">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">פרקים<br>בפודקאסט</div>
+                </div>
+                <div class="stat-item" data-target="500">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">בוגרי<br>BRRRR</div>
+                </div>
+                <div class="stat-item" data-target="640">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">שעות תוכן<br>מוקלט</div>
+                </div>
+                <div class="stat-item" data-target="12">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">מחזורים</div>
+                </div>
+                <div class="stat-item" data-target="200">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">מעל 200 אלף<br>צפיות</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs & Services Section -->
+    <section class="resources-section" id="programs">
+        <h2 class="section-title">קורסי <span class="gold">ClubRRRR ACADEMY</span></h2>
+        <div class="programs-grid">
+            <!-- מנטורינג -->
+            <div class="program-card">
+                <div class="program-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop" alt="מנטורינג צמוד" class="program-image">
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">מנטורינג - לימוד צמוד</h3>
+                    <p class="program-description">ליווי אישי ומקצועי מאיתי ודרור. קבל הדרכה אישית, ייעוץ אסטרטגי ותמיכה ישירה בכל שלב בדרך להצלחה שלך בעולם הנדל"ן. למידה צמודה עם המומחים.</p>
+                    <a href="mentoring.html" class="program-btn">למד עוד <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <!-- ClubRRRR 360 -->
+            <div class="program-card">
+                <div class="program-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop" alt="תכנית קלאבר 360" class="program-image">
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">ClubRRRR 360</h3>
+                    <p class="program-description">התכנית המקיפה והמתקדמת ביותר ללימודי יזמות נדל"ן בארה"ב. תכנית שמשלבת פרקטיקה, אסטרטגיות ואימוץ טכנולוגיות AI מתקדמות לאיתור וביצוע עסקאות נדל"ן.</p>
+                    <a href="cluber360.html" class="program-btn">למד עוד <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <!-- Wholesale -->
+            <div class="program-card">
+                <div class="program-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=800&fit=crop" alt="קורס Wholesale" class="program-image">
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">קורס Wholesale</h3>
+                    <p class="program-description">איך להיות Wholesaler מצליח שמאתר עסקאות משתלמות, עולה על חוזים ומרוויח מהעברת זכויות. למד את כל השיטות לאיתור נכסים, ניתוח עסקאות, בניית רשת קונים ומערכות CRM.</p>
+                    <a href="wholesale.html" class="program-btn">למד עוד <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <!-- Creative Financing -->
+            <div class="program-card">
+                <div class="program-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=1200&h=800&fit=crop" alt="Creative Financing" class="program-image">
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">Creative Financing</h3>
+                    <p class="program-description">אסטרטגיות מתקדמות לרכישת נכסים בצורה יצירתית ללא הון: Sub2, Seller Financing, Novation, Pad Split ועוד. למד איך לרכוש נדל"ן עם מינימום הון, פריסת תשלום ומבני עסקה חכמים.</p>
+                    <a href="creative-financing.html" class="program-btn">למד עוד <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community-section" id="community">
+        <div class="community-container">
+            <h2 class="community-title">הצטרף לקהילה</h2>
+            <p class="community-description">
+                "קהילה" הפכה לאחת מהמילים כמו "סינרגיה" או "אופטימלי", אבל ברגע שתצטרף לקהילה הזו של Go-Givers, אתה באמת נכנס לרשת של אנשים בעלי חשיבה דומה שנמצאים במסלול מהיר להצלחה.
+            </p>
+            <div class="community-social-brands">
+                <a href="https://www.youtube.com/@clubrrrr" target="_blank" class="brand-logo youtube-brand">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://www.instagram.com/clubrrrr/" target="_blank" class="brand-logo instagram-brand">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.facebook.com/itai.aharon.315" target="_blank" class="brand-logo facebook-brand">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>facebook</span>
+                </a>
+                <a href="https://open.spotify.com/show/3B1bKvjosoMfET4HRJAAaP" target="_blank" class="brand-logo spotify-brand">
+                    <i class="fab fa-spotify"></i>
+                    <span>Spotify</span>
+                </a>
+                <a href="https://www.tiktok.com/@clubrrrr" target="_blank" class="brand-logo tiktok-brand">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2 class="newsletter-title">קבל עדכונים מאיתי ודרור</h2>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="text" name="name" placeholder="שם מלא" class="form-input" required>
+                <input type="email" name="email" placeholder="מייל" class="form-input" required>
+                <input type="tel" name="phone" placeholder="מספר טלפון" class="form-input" required>
+                <button type="submit" class="form-submit">קבל/י עדכונים</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./ClubRRRRnew logo.png" alt="ClubRRRR" class="footer-logo-image">
+            </div>
+            <p class="footer-text">בונים עושר, יוצרים הזדמנויות, משנים חיים.</p>
+            <div class="footer-social">
+                <a href="https://www.youtube.com/@clubrrrr" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/itai.aharon.315" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/clubrrrr/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@clubrrrr" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/company/clubrrrr" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 ClubRRRR. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Counter Animation
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const duration = 2000;
+            const stepTime = duration / 100;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString('he-IL');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString('he-IL');
+                }
+            }, stepTime);
+        }
+
+        // Intersection Observer for counter animation
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    const numberElement = entry.target.querySelector('.stat-number');
+                    const target = parseInt(entry.target.getAttribute('data-target'));
+                    animateCounter(numberElement, target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all stat items
+        document.querySelectorAll('.stat-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Newsletter Form Submission
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxfCRIgb1DaykOuYlpEWAjkvY3IC9UZ9xzY-3lBcZ1XGN5KTyzEonuoXmBBSbsrfqSh/exec';
+        
+        document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            
+            button.textContent = 'שולח...';
+            button.disabled = true;
+            
+            try {
+                const response = await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    alert('תודה! נרשמת בהצלחה לקבלת עדכונים');
+                    this.reset();
+                } else {
+                    alert('אופס! משהו השתבש. נסה שוב מאוחר יותר.');
+                }
+            } catch (error) {
+                alert('אופס! משהו השתבש. נסה שוב מאוחר יותר.');
+            } finally {
+                button.textContent = originalText;
+                button.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

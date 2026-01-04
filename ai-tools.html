@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תוכנות AI מתקדמות - ClubRRRR</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #DFB249;
+            --gold-color: #DFB249;
+            --dark-bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .top-bar {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(18px);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .top-bar p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .top-bar a {
+            color: var(--gold-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .main-header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(18px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 75px;
+            width: auto;
+            transition: transform 0.3s;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-color);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown Menu */
+        .has-dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 250px;
+            border-radius: 8px;
+            padding: 10px 0;
+            margin-top: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .has-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            padding: 12px 25px;
+            color: var(--text-white);
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            font-size: 15px;
+            text-align: right;
+            border-right: 3px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(223, 178, 73, 0.15);
+            color: var(--gold-color);
+            border-right-color: var(--gold-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 40px 80px;
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.1) 0%, rgba(10, 10, 10, 0.95) 100%);
+            border-bottom: 1px solid rgba(223, 178, 73, 0.2);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--gold-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(223, 178, 73, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .about-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--gold-color);
+        }
+
+        .about-text {
+            font-size: 20px;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .about-highlight {
+            color: var(--text-white);
+            font-weight: 600;
+        }
+
+        /* Tools Grid */
+        .tools-section {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--text-white);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+            gap: 40px;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 50px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-color);
+            box-shadow: 0 20px 60px rgba(223, 178, 73, 0.3);
+        }
+
+        .tool-card:hover::before {
+            opacity: 1;
+        }
+
+        .tool-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s;
+        }
+
+        .tool-card:hover .tool-logo {
+            border-color: var(--gold-color);
+            transform: scale(1.05);
+        }
+
+        .tool-logo img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .tool-logo i {
+            font-size: 60px;
+            color: var(--gold-color);
+        }
+
+        .tool-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-white);
+            text-align: center;
+        }
+
+        .tool-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .tool-features {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .tool-features li {
+            padding: 12px 0;
+            padding-right: 30px;
+            position: relative;
+            font-size: 16px;
+            color: var(--text-gray);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tool-features li:last-child {
+            border-bottom: none;
+        }
+
+        .tool-features li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--gold-color);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .coming-soon-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 60px 40px 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .about-content {
+                padding: 40px 30px;
+            }
+
+            .about-title {
+                font-size: 32px;
+            }
+
+            .about-text {
+                font-size: 16px;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .tool-card {
+                padding: 30px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <p><a href="#contact">Meet Up with ClubRRRR</a></p>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html#about">אודות</a></li>
+                    <li class="has-dropdown">
+                        <a href="#programs">תכניות ושירותים</a>
+                        <div class="dropdown-menu">
+                            <a href="mentoring.html" class="dropdown-item">תכנית מנטורינג אישי</a>
+                            <a href="cluber360.html" class="dropdown-item">תכנית קלאבר 360</a>
+                            <a href="workshops.html" class="dropdown-item">סדנאות</a>
+                            <a href="ai-tools.html" class="dropdown-item">תוכנות AI</a>
+                        </div>
+                    </li>
+                    <li><a href="graduates.html">הבוגרים שלנו</a></li>
+                    <li class="has-dropdown">
+                        <a href="content.html">תוכן</a>
+                        <div class="dropdown-menu">
+                            <a href="podcast.html" class="dropdown-item">פודקאסט</a>
+                            <a href="hosts.html" class="dropdown-item">קלאברים מארחים</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#community">קהילה</a></li>
+                    <li><a href="index.html#events">אירועים</a></li>
+                    <li><a href="index.html#contact">צור קשר</a></li>
+                </ul>
+            </nav>
+            <a href="index.html" class="logo">
+                <img src="./ClubRRRRnew logo.png" alt="ClubRRRR Logo" class="logo-image">
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">תוכנות AI מתקדמות לנדל"ן</h1>
+            <p class="hero-subtitle">טכנולוגיה חכמה שפותחה במיוחד עבור משקיעי ClubRRRR</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2 class="about-title">איך זה התחיל?</h2>
+            <p class="about-text">
+                <span class="about-highlight">דרור זרבוני</span>, שותף ומייסד ClubRRRR, מביא עמו שנות ניסיון רבות מעולם ההייטק הישראלי. 
+                בעברו שימש כ<span class="about-highlight">מנכ"ל חברות תוכנה</span> ומוביל פרויקטים טכנולוגיים מורכבים.
+            </p>
+            <p class="about-text">
+                כאשר דרור ו<span class="about-highlight">איתי אהרון</span> החליטו לשלב את המומחיות הטכנולוגית עם הידע והניסיון שצברו בעולם הנדל"ן האמריקאי, 
+                נולדה חזון ייחודי: <span class="about-highlight">לפתח כלים טכנולוגיים מתקדמים שיעניקו לחברי ClubRRRR יתרון אמיתי בשוק</span>.
+            </p>
+            <p class="about-text">
+                השילוב בין הבנה עמוקה של השוק האמריקאי, ניסיון מעשי בביצוע מאות עסקאות, וידע טכנולוגי מתקדם - 
+                הוביל ליצירת <span class="about-highlight">פלטפורמות AI ייעודיות</span> שמאפשרות לקלאברים לאתר עסקאות, 
+                לנתח נכסים, ולקבל החלטות מושכלות במהירות ובדיוק שלא היו אפשריים בעבר.
+            </p>
+            <p class="about-text">
+                <span class="about-highlight">התוכנות שפיתחנו זמינות בלעדית לחברי ClubRRRR</span> - 
+                כי אנחנו מאמינים שהצלחה אמיתית נמדדת בהצלחה של הקהילה שלנו.
+            </p>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools-section">
+        <h2 class="section-title">הכלים שלנו</h2>
+        <div class="tools-grid">
+            <!-- SendOffers -->
+            <a href="https://sendoffers.net/" target="_blank" class="tool-card">
+                <div class="tool-logo">
+                    <i class="fas fa-paper-plane"></i>
+                    <!-- TODO: Replace with actual Sendoffers logo -->
+                </div>
+                <h3 class="tool-title">SendOffers</h3>
+                <p class="tool-description">
+                    חבר בין משקיעים חכמים למומחי נדל"ן מקצועיים
+                </p>
+                <ul class="tool-features">
+                    <li>הצטרף לקהילה של משקיעי נדל"ן מצליחים</li>
+                    <li>אוטומציה חכמה לאיתור וניתוח נכסים</li>
+                    <li>התחבר לסוכנים ושתף תובנות</li>
+                    <li>צמח את תיק ההשקעות שלך מהר יותר</li>
+                </ul>
+            </a>
+
+            <!-- DealScore -->
+            <div class="tool-card">
+                <div class="tool-logo">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="tool-title">DealScore</h3>
+                <p class="tool-description">
+                    מערכת ניתוח חכמה לכדאיות עסקאות נדל"ן
+                </p>
+                <ul class="tool-features">
+                    <li>ניתוח אוטומטי של שווי נכס</li>
+                    <li>הערכת עלויות שיפוץ מבוססת AI</li>
+                    <li>חיזוי פוטנציאל השכרה לפי עסקאות אחרונות</li>
+                    <li>ציון כדאיות מבוסס נתונים</li>
+                    <li>קבל חוות דעת מקצועית מבוגרי ClubRRRR</li>
+                    <li>תיאום פגישות ייעוץ לניתוח העסקה</li>
+                </ul>
+            </div>
+
+            <!-- Tool 3 - Coming Soon -->
+            <div class="tool-card coming-soon">
+                <span class="coming-soon-badge">בקרוב</span>
+                <div class="tool-logo">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="tool-title">כלי AI חדש</h3>
+                <p class="tool-description">
+                    בקרוב - כלי נוסף שישדרג את המשחק שלך
+                </p>
+            </div>
+
+            <!-- Tool 4 - Coming Soon -->
+            <div class="tool-card coming-soon">
+                <span class="coming-soon-badge">בקרוב</span>
+                <div class="tool-logo">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="tool-title">כלי AI חדש</h3>
+                <p class="tool-description">
+                    בקרוב - כלי נוסף שישדרג את המשחק שלך
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2025 ClubRRRR. כל הזכויות שמורות.</p>
+            <div class="footer-links">
+                <a href="index.html">דף הבית</a>
+                <a href="index.html#about">אודות</a>
+                <a href="index.html#contact">צור קשר</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

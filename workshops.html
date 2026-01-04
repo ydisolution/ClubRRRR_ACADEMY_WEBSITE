@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סדנאות - ClubRRRR</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #DFB249;
+            --gold-color: #DFB249;
+            --dark-bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        .top-bar {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(18px);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .top-bar p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .top-bar a {
+            color: var(--gold-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        .main-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(223, 178, 73, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 75px;
+            width: auto;
+            transition: transform 0.3s;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 10px 0;
+            display: block;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-color);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown Menu */
+        .has-dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 250px;
+            border-radius: 8px;
+            padding: 10px 0;
+            margin-top: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .has-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            padding: 12px 25px;
+            color: var(--text-white);
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            font-size: 15px;
+            text-align: right;
+            border-right: 3px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(223, 178, 73, 0.15);
+            color: var(--gold-color);
+            border-right-color: var(--gold-color);
+        }
+
+        .dropdown-item::after {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(223, 178, 73, 0.1) 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--gold-color) 0%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Workshops Grid */
+        .workshops-section {
+            padding: 80px 0;
+        }
+
+        .workshops-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .workshop-card {
+            background: var(--card-bg);
+            border: 2px solid rgba(223, 178, 73, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .workshop-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-color);
+            box-shadow: 0 20px 50px rgba(223, 178, 73, 0.3);
+        }
+
+        .workshop-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.2) 0%, rgba(10, 10, 10, 0.8) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .workshop-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(223, 178, 73, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .workshop-card:hover .workshop-image::before {
+            opacity: 1;
+        }
+
+        .workshop-content {
+            padding: 30px;
+        }
+
+        .workshop-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold-color);
+            margin-bottom: 15px;
+        }
+
+        .workshop-description {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .workshop-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .workshop-features li {
+            padding: 8px 0;
+            color: var(--text-gray);
+            font-size: 1rem;
+            position: relative;
+            padding-right: 25px;
+        }
+
+        .workshop-features li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--gold-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .workshop-cta {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--gold-color) 0%, rgba(223, 178, 73, 0.8) 100%);
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+
+        .workshop-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(223, 178, 73, 0.4);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.05) 0%, rgba(10, 10, 10, 0.8) 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 80px auto;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .info-section h2 {
+            font-size: 2.5rem;
+            color: var(--gold-color);
+            margin-bottom: 20px;
+        }
+
+        .info-section p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            background: var(--card-bg);
+            border: 2px solid var(--gold-color);
+            border-radius: 15px;
+            padding: 50px;
+            text-align: center;
+            margin: 80px auto;
+            max-width: 800px;
+        }
+
+        .contact-cta h2 {
+            font-size: 2.2rem;
+            color: var(--gold-color);
+            margin-bottom: 20px;
+        }
+
+        .contact-cta p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, var(--gold-color) 0%, rgba(223, 178, 73, 0.8) 100%);
+            color: #000;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(223, 178, 73, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 80px 20px 60px;
+            }
+
+            .workshops-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-section,
+            .contact-cta {
+                padding: 40px 20px;
+            }
+
+            .workshop-image {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <p><a href="index.html#events">Meet Up with ClubRRRR</a></p>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html#about">אודות</a></li>
+                    <li class="has-dropdown">
+                        <a href="index.html#programs">תכניות ושירותים</a>
+                        <div class="dropdown-menu">
+                            <a href="mentoring.html" class="dropdown-item">תכנית מנטורינג אישי</a>
+                            <a href="cluber360.html" class="dropdown-item">תכנית קלאבר 360</a>
+                            <a href="workshops.html" class="dropdown-item">סדנאות</a>
+                            <a href="ai-tools.html" class="dropdown-item">תוכנות AI</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#graduates">הבוגרים שלנו</a></li>
+                    <li class="has-dropdown">
+                        <a href="index.html#content">תוכן</a>
+                        <div class="dropdown-menu">
+                            <a href="podcast.html" class="dropdown-item">פודקאסט</a>
+                            <a href="hosts.html" class="dropdown-item">קלאברים מארחים</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#community">קהילה</a></li>
+                    <li><a href="index.html#events">אירועים</a></li>
+                    <li><a href="index.html#contact">צור קשר</a></li>
+                </ul>
+            </nav>
+            <a href="index.html" class="logo">
+                <img src="ClubRRRRnew logo.png" alt="ClubRRRR Logo" class="logo-image">
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>הסדנאות שלנו</h1>
+                <p>סדנאות מתקדמות ליזמות נדל"ן בארה"ב - למידה מעשית, כלים מתקדמים, וידע שמביא תוצאות</p>
+            </div>
+        </section>
+
+        <!-- Workshops Section -->
+        <section class="workshops-section">
+            <div class="container">
+                <div class="workshops-grid">
+                    <!-- Workshop 1: BRRRR -->
+                    <article class="workshop-card">
+                        <div class="workshop-image">
+                            🏘️
+                        </div>
+                        <div class="workshop-content">
+                            <h3 class="workshop-title">סדנת BRRRR</h3>
+                            <p class="workshop-description">
+                                למדו את אסטרטגיית BRRRR המתקדמת - Buy, Rehab, Rent, Refinance, Repeat. 
+                                השיטה המוכחת לבניית פורטפוליו נדל"ן בארה"ב עם מינימום הון עצמי.
+                            </p>
+                            <ul class="workshop-features">
+                                <li>איתור נכסים מתאימים לאסטרטגיית BRRRR</li>
+                                <li>חישוב ARV וניתוח כדאיות</li>
+                                <li>ניהול תהליך השיפוץ מרחוק</li>
+                                <li>מימון חוזר ומשיכת הון</li>
+                                <li>סקלינג הפורטפוליו</li>
+                            </ul>
+                            <a href="#contact" class="workshop-cta">הצטרפו לסדנה</a>
+                        </div>
+                    </article>
+
+                    <!-- Workshop 2: Scaling -->
+                    <article class="workshop-card">
+                        <div class="workshop-image">
+                            📈
+                        </div>
+                        <div class="workshop-content">
+                            <h3 class="workshop-title">סדנת סקלינג</h3>
+                            <p class="workshop-description">
+                                איך להעביר את העסק שלכם לשלב הבא? למדו את כל הטכניקות להגדלת 
+                                הפורטפוליו שלכם בצורה חכמה ויעילה.
+                            </p>
+                            <ul class="workshop-features">
+                                <li>בניית מערכת לסקלינג מהיר</li>
+                                <li>גיוס משקיעים ושותפויות אסטרטגיות</li>
+                                <li>אוטומציה של תהליכים עסקיים</li>
+                                <li>בניית צוות מקצועי</li>
+                                <li>ניהול מספר פרויקטים במקביל</li>
+                            </ul>
+                            <a href="#contact" class="workshop-cta">הצטרפו לסדנה</a>
+                        </div>
+                    </article>
+
+                    <!-- Workshop 3: Road Map -->
+                    <article class="workshop-card">
+                        <div class="workshop-image">
+                            🗺️
+                        </div>
+                        <div class="workshop-content">
+                            <h3 class="workshop-title">סדנת Road Map לחברה היזמית</h3>
+                            <p class="workshop-description">
+                                תכננו את המסלול העסקי שלכם בצורה מקצועית. למדו איך לבנות 
+                                תוכנית עסקית מנצחת ולהוציא אותה לפועל.
+                            </p>
+                            <ul class="workshop-features">
+                                <li>בניית תוכנית עסקית מקצועית</li>
+                                <li>הגדרת יעדים ואבני דרך</li>
+                                <li>ניתוח שוק ותחרות</li>
+                                <li>תכנון פיננסי ותזרימי</li>
+                                <li>מעקב והתאמת התוכנית</li>
+                            </ul>
+                            <a href="#contact" class="workshop-cta">הצטרפו לסדנה</a>
+                        </div>
+                    </article>
+
+                    <!-- Workshop 4: Renovations -->
+                    <article class="workshop-card">
+                        <div class="workshop-image">
+                            🔨
+                        </div>
+                        <div class="workshop-content">
+                            <h3 class="workshop-title">סדנת שיפוצים</h3>
+                            <p class="workshop-description">
+                                התמחו בניהול שיפוצים מרחוק. למדו איך להעריך עלויות, לבנות SOW 
+                                מדויק, ולנהל קבלנים ביעילות מקסימלית.
+                            </p>
+                            <ul class="workshop-features">
+                                <li>הערכת היקף ועלויות שיפוץ</li>
+                                <li>בניית SOW (Scope of Work) מקצועי</li>
+                                <li>איתור וניהול קבלנים</li>
+                                <li>ניהול תקציב ולוחות זמנים</li>
+                                <li>בקרת איכות מרחוק</li>
+                            </ul>
+                            <a href="#contact" class="workshop-cta">הצטרפו לסדנה</a>
+                        </div>
+                    </article>
+
+                    <!-- Workshop 5: Negotiation -->
+                    <article class="workshop-card">
+                        <div class="workshop-image">
+                            🤝
+                        </div>
+                        <div class="workshop-content">
+                            <h3 class="workshop-title">סדנת משא ומתן</h3>
+                            <p class="workshop-description">
+                                שפרו את יכולות המו"מ שלכם והפכו לסוגרי עסקאות מקצועיים. 
+                                טכניקות מתקדמות לניהול משא ומתן ולסגירת חוזים.
+                            </p>
+                            <ul class="workshop-features">
+                                <li>טכניקות משא ומתן מתקדמות</li>
+                                <li>קריאת שפת גוף והבנת מניעים</li>
+                                <li>בניית leverage במשא ומתן</li>
+                                <li>סגירת עסקאות בתנאים מיטביים</li>
+                                <li>טיפול בהתנגדויות ודחיות</li>
+                            </ul>
+                            <a href="#contact" class="workshop-cta">הצטרפו לסדנה</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="info-section">
+            <div class="container">
+                <h2>למה הסדנאות שלנו?</h2>
+                <p>
+                    כל הסדנאות שלנו נבנו על בסיס הניסיון המעשי שלנו בשטח. אנחנו לא מלמדים תיאוריה - 
+                    אנחנו מעבירים כלים, מערכות וטכניקות שעובדות במציאות.
+                </p>
+                <p>
+                    הסדנאות משלבות הרצאות, תרגול מעשי, case studies אמיתיים, וליווי אישי לאורך הדרך.
+                </p>
+                <p style="color: var(--gold-color); font-weight: 600; font-size: 1.3rem; margin-top: 30px;">
+                    💡 כל סדנה כוללת גישה למערכות AI, כלים דיגיטליים, וטמפלייטים מוכנים לשימוש מיידי!
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact CTA -->
+        <section class="contact-cta" id="contact">
+            <div class="container">
+                <h2>מעוניינים להצטרף לסדנה?</h2>
+                <p>השאירו פרטים ונחזור אליכם עם כל המידע על הסדנאות הקרובות</p>
+                <a href="index.html#contact" class="contact-btn">צרו קשר עכשיו</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

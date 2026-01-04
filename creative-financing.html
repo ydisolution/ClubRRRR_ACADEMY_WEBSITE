@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Financing - אסטרטגיות מימון יצירתי | ClubRRRR ACADEMY</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #DFB249;
+            --gold-color: #DFB249;
+            --dark-bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        .top-bar {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(18px);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .top-bar p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .top-bar a {
+            color: var(--gold-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        .main-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(223, 178, 73, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 75px;
+            width: auto;
+            transition: transform 0.3s;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 10px 0;
+            display: block;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold-color);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(223, 178, 73, 0.1) 100%);
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #DFB249 0%, #F4D88A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .hero .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(223, 178, 73, 0.4);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--gold-color);
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            max-width: 900px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        /* Strategy Section */
+        .strategy-section {
+            margin-bottom: 100px;
+            padding: 60px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 2px solid rgba(223, 178, 73, 0.3);
+        }
+
+        .strategy-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(223, 178, 73, 0.2);
+        }
+
+        .strategy-icon {
+            font-size: 4rem;
+            color: var(--gold-color);
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .strategy-title {
+            font-size: 2.5rem;
+            color: var(--gold-color);
+            margin-bottom: 10px;
+        }
+
+        .strategy-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        .strategy-content {
+            display: grid;
+            gap: 40px;
+        }
+
+        .content-block {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 12px;
+            border-right: 4px solid var(--gold-color);
+        }
+
+        .content-block h3 {
+            font-size: 1.8rem;
+            color: var(--text-white);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .content-block h3 i {
+            color: var(--gold-color);
+        }
+
+        .content-block p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .content-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-block ul li {
+            padding: 12px 0;
+            color: var(--text-gray);
+            position: relative;
+            padding-right: 30px;
+            line-height: 1.7;
+        }
+
+        .content-block ul li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--gold-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .pros, .cons {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .pros {
+            border-right: 4px solid #4CAF50;
+        }
+
+        .cons {
+            border-right: 4px solid #FF5252;
+        }
+
+        .pros h4, .cons h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pros h4 {
+            color: #4CAF50;
+        }
+
+        .cons h4 {
+            color: #FF5252;
+        }
+
+        /* Example Box */
+        .example-box {
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.1) 0%, rgba(10, 10, 10, 0.5) 100%);
+            padding: 40px;
+            border-radius: 16px;
+            border: 2px solid rgba(223, 178, 73, 0.3);
+            margin-top: 30px;
+        }
+
+        .example-box h4 {
+            font-size: 1.5rem;
+            color: var(--gold-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .example-box p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .example-numbers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .number-item {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .number-label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .number-value {
+            font-size: 1.8rem;
+            color: var(--gold-color);
+            font-weight: 700;
+        }
+
+        /* Registration Section */
+        .registration-section {
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.1) 0%, rgba(10, 10, 10, 0.95) 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .registration-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(223, 178, 73, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text-white);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(223, 178, 73, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--text-white);
+            font-size: 1rem;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold-color);
+        }
+
+        .submit-btn {
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            padding: 18px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(223, 178, 73, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(223, 178, 73, 0.1);
+        }
+
+        .footer p {
+            color: var(--text-gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .strategy-section {
+                padding: 30px 20px;
+            }
+
+            .strategy-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="top-bar">
+        <p><a href="web_PM__index.html#events">Meet Up with ClubRRRR</a></p>
+    </div>
+
+    <header class="main-header">
+        <div class="header-container">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="web_PM__index.html#about">אודות</a></li>
+                    <li><a href="web_PM__index.html#programs">תכניות</a></li>
+                    <li><a href="graduates.html">בוגרים</a></li>
+                    <li><a href="content.html">תוכן</a></li>
+                    <li><a href="web_PM__index.html#contact">צור קשר</a></li>
+                </ul>
+            </nav>
+            <a href="web_PM__index.html" class="logo">
+                <img src="./ClubRRRRnew logo.png" alt="ClubRRRR ACADEMY" class="logo-image">
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Creative Financing</h1>
+            <p>אסטרטגיות מתקדמות לרכישת נכסים בצורה יצירתית - ללא הון, עם פריסת תשלום, ומבני עסקה חכמים שמאפשרים לך להתחיל להשקיע גם אם אין לך מזומן או אשראי מושלם</p>
+            <a href="#register" class="cta-button">השאר פרטים לפגישת ייעוץ</a>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">מהו Creative Financing?</h2>
+            <p class="intro-text">
+                Creative Financing הוא גישה שבה משקיעים רוכשים נדל"ן בדרכים לא מסורתיות, ללא צורך במשכנתא בנקאית או הון התחלתי גדול. 
+                השימוש באסטרטגיות אלו מאפשר להתחיל להשקיע מיד, לנצל הזדמנויות שאחרים מפספסים, ולבנות פורטפוליו גם ללא תנאים "מושלמים".
+            </p>
+        </div>
+    </section>
+
+    <!-- Sub2 Strategy -->
+    <section class="content-section">
+        <div class="container">
+            <div class="strategy-section">
+                <div class="strategy-header">
+                    <div class="strategy-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div>
+                        <h2 class="strategy-title">Subject-To (Sub2)</h2>
+                        <p class="strategy-subtitle">רכישת נכס "נשוא למשכנתא קיימת"</p>
+                    </div>
+                </div>
+
+                <div class="strategy-content">
+                    <div class="content-block">
+                        <h3><i class="fas fa-info-circle"></i> מה זה Sub2?</h3>
+                        <p>
+                            ב-Subject-To אתה רוכש את הנכס אבל המשכנתא נשארת על שם המוכר המקורי. אתה משלם את התשלומים החודשיים שלו, 
+                            אבל הבעלות (Deed) עוברת אליך. זוהי דרך מצוינת לרכוש נכס ללא צורך בהכשרה למשכנתא חדשה או הון התחלתי רב.
+                        </p>
+                    </div>
+
+                    <div class="content-block">
+                        <h3><i class="fas fa-cogs"></i> איך זה עובד?</h3>
+                        <ul>
+                            <li>המוכר מעביר לך את הבעלות (Deed) על הנכס</li>
+                            <li>המשכנתא הקיימת נשארת על שמו של המוכר</li>
+                            <li>אתה מתחייב לשלם את התשלומים החודשיים למלווה</li>
+                            <li>אתה מקבל את כל הזכויות בנכס - יכול להשכיר, למכור, לשפץ</li>
+                            <li>המוכר משוחרר מהנטל החודשי ומסיים את החוב</li>
+                            <li>אתה בונה equity ללא צורך באשראי שלך</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-block">
+                        <h3><i class="fas fa-user-check"></i> מתי מתאים?</h3>
+                        <ul>
+                            <li>מוכר במצוקה פיננסית שלא יכול לשלם את המשכנתא</li>
+                            <li>נכס במצב foreclosure או pre-foreclosure</li>
+                            <li>משכנתא עם ריבית נמוכה שכדאי "לרשת"</li>
+                            <li>מוכר צריך למכור מהר (גירושין, פטירה, מעבר עבודה)</li>
+                            <li>הנכס שווה יותר ממה שחייבים עליו (יש equity)</li>
+                            <li>קונה ללא אשראי טוב או הון לדמי קדימה</li>
+                        </ul>
+                    </div>
+
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4><i class="fas fa-thumbs-up"></i> יתרונות</h4>
+                            <ul>
+                                <li>ללא צורך באשראי או הכשרה למשכנתא</li>
+                                <li>דמי קדימה מינימליים או בכלל אפס</li>
+                                <li>"ירושת" ריבית נמוכה מהמוכר</li>
+                                <li>תהליך מהיר - ללא בנקים</li>
+                                <li>בניית equity מיידית</li>
+                                <li>גמישות במבנה העסקה</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4><i class="fas fa-exclamation-triangle"></i> סיכונים ואתגרים</h4>
+                            <ul>
+                                <li>Due-on-Sale Clause - הבנק יכול לדרוש פירעון מלא</li>
+                                <li>תלות במוכר - אם לא משתף פעולה יש בעיה</li>
+                                <li>הלוואה נשארת על שם המוכר (משפיע על האשראי שלו)</li>
+                                <li>צריך למצוא מוכר motivated מאוד</li>
+                                <li>צריך יועץ משפטי מנוסה</li>
+                                <li>ביטוח Title מורכב יותר</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <h4><i class="fas fa-calculator"></i> דוגמה מספרית</h4>
+                        <p>
+                            <strong>הנכס:</strong> בית בשווי $200,000<br>
+                            <strong>יתרת משכנתא:</strong> $150,000 (ריבית 3.5%)<br>
+                            <strong>Equity:</strong> $50,000<br>
+                            <strong>תשלום חודשי:</strong> $1,200<br>
+                            <strong>שכר דירה פוטנציאלי:</strong> $1,800
+                        </p>
+                        <div class="example-numbers">
+                            <div class="number-item">
+                                <div class="number-label">השקעה התחלתית</div>
+                                <div class="number-value">$5,000</div>
+                            </div>
+                            <div class="number-item">
+                                <div class="number-label">Cash Flow חודשי</div>
+                                <div class="number-value">$600</div>
+                            </div>
+                            <div class="number-item">
+                                <div class="number-label">Equity מיידי</div>
+                                <div class="number-value">$50,000</div>
+                            </div>
+                            <div class="number-item">
+                                <div class="number-label">ROI שנתי</div>
+                                <div class="number-value">144%</div>
+                            </div>
+                        </div>
+                        <p style="margin-top: 20px;">
+                            <strong>התוצאה:</strong> רכשת נכס עם $50K equity, משלם $1,200/חודש, מרוויח $1,800 משכירות = 
+                            $600 cash flow + בניית equity + רווח ממס!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seller Financing Strategy -->
+            <div class="strategy-section">
+                <div class="strategy-header">
+                    <div class="strategy-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div>
+                        <h2 class="strategy-title">Seller Financing</h2>
+                        <p class="strategy-subtitle">המוכר הופך למלווה שלך</p>
+                    </div>
+                </div>
+
+                <div class="strategy-content">
+                    <div class="content-block">
+                        <h3><i class="fas fa-info-circle"></i> מה זה Seller Financing?</h3>
+                        <p>
+                            במקום לקחת משכנתא מהבנק, המוכר מממן לך את הקנייה. אתה משלם לו תשלומים חודשיים עם ריבית שמסכמים ביניכם, 
+                            והוא משמש בעצם כ"בנק" שלך. זה Win-Win: המוכר מוכר את הנכס ומקבל תשלומים קבועים + ריבית, 
+                            ואתה קונה ללא הכשרה למשכנתא.
+                        </p>
+                    </div>
+
+                    <div class="content-block">
+                        <h3><i class="fas fa-cogs"></i> איך זה עובד?</h3>
+                        <ul>
+                            <li>מסכמים על מחיר הנכס, ריבית, ותקופת החזר</li>
+                            <li>אתה מפקיד Down Payment (בדרך כלל 10-20%)</li>
+                            <li>חותמים על Promissory Note (שטר חוב) ו-Mortgage/Deed of Trust</li>
+                            <li>הבעלות עוברת אליך מיד (או לאחר תשלום מלא - תלוי במבנה)</li>
+                            <li>אתה משלם למוכר תשלומים חודשיים כמו למשכנתא רגילה</li>
+                            <li>בסוף התקופה - Balloon Payment או Refinance למשכנתא רגילה</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-block">
+                        <h3><i class="fas fa-user-check"></i> מתי מתאים?</h3>
+                        <ul>
+                            <li>מוכר שמחזיק את הנכס free & clear (ללא משכנתא)</li>
+                            <li>מוכר מבוגר שרוצה הכנסה קבועה לפנסיה</li>
+                            <li>נכס שקשה למכור בשוק הרגיל</li>
+                            <li>קונה ללא אשראי מספיק טוב למשכנתא בנקאית</li>
+                            <li>מוכר שלא ממהר לקבל את כל הכסף מיד</li>
+                            <li>נכס בסכום נמוך שבנקים לא רוצים למממן</li>
+                        </ul>
+                    </div>
+
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4><i class="fas fa-thumbs-up"></i> יתרונות</h4>
+                            <ul>
+                                <li>ללא צורך באישור בנק או תהליך הכשרה ארוך</li>
+                                <li>גמישות בתנאים (ריבית, תקופה, Down Payment)</li>
+                                <li>עלויות סגירה נמוכות יותר</li>
+                                <li>תהליך מהיר - סוגרים תוך ימים</li>
+                                <li>בונה אשראי גם אם אין לך היסטוריה</li>
+                                <li>המוכר מקבל ריבית טובה על "ההשקעה" שלו</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4><i class="fas fa-exclamation-triangle"></i> סיכונים ואתגרים</h4>
+                            <ul>
+                                <li>צריך Down Payment (בדרך כלל 10-20%)</li>
+                                <li>לרוב יש Balloon Payment אחרי 3-7 שנים</li>
+                                <li>ריבית עשויה להיות גבוהה יותר מבנק</li>
+                                <li>קשה למצוא מוכרים שמוכנים לזה</li>
+                                <li>צריך Due Diligence מדוקדק על הנכס</li>
+                                <li>צריך עו"ד נדל"ן למסמכים נכונים</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <h4><i class="fas fa-calculator"></i> דוגמה מספרית</h4>
+                        <p>
+                            <strong>מחיר הנכס:</strong> $150,000<br>
+                            <strong>Down Payment:</strong> $15,000 (10%)<br>
+                            <strong>סכום מימון:</strong> $135,000<br>
+                            <strong>ריבית:</strong> 6% לשנה<br>
+                            <strong>תקופה:</strong> 30 שנה (עם Balloon אחרי 5 שנים)
+                        </p>
+                        <div class="example-numbers">
+                            <div class="number-item">
+                                <div class="number-label">תשלום חודשי</div>
+                                <div class="number-value">$809</div>
+                            </div>
+                            <div class="number-item">
+                                <div class="number-label">שכר דירה</div>
+                                <div class="number-value">$1,400</div>
+                            </div>
+                            <div class="number-item">
+                                <div class="number-label">Cash Flow חודשי</div>
+                                <div class="number-value">$591</div>
+                            </div>
+                            <div class="number-item">
+                                <div class="number-label">Balloon לאחר 5 שנים</div>
+                                <div class="number-value">$127,000</div>
+                            </div>
+                        </div>
+                        <p style="margin-top: 20px;">
+                            <strong>התוצאה:</strong> השקעת $15K, מרוויח $591/חודש, ובעוד 5 שנים תעשה Refinance או תמכור 
+                            (הנכס יתמחר ל-$180K+) ותרוויח!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Novation Strategy -->
+            <div class="strategy-section">
+                <div class="strategy-header">
+                    <div class="strategy-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div>
+                        <h2 class="strategy-title">Novation</h2>
+                        <p class="strategy-subtitle">החלפת חייב במשכנתא עם הסכמת הבנק</p>
+                    </div>
+                </div>
+
+                <div class="strategy-content">
+                    <div class="content-block">
+                        <h3><i class="fas fa-info-circle"></i> מה זה Novation?</h3>
+                        <p>
+                            Novation היא עסקה שבה המלווה (הבנק) מסכים באופן רשמי להחליף את החייב במשכנתא. 
+                            במקום שהמוכר ישאר חייב, הבנק מעביר את ההלוואה על שמך (או על שם קונה אחר). 
+                            זה שונה מ-Sub2 - כאן הבנק מעורב ומאשר, אז אין סיכון של Due-on-Sale Clause.
+                        </p>
+                    </div>
+
+                    <div class="content-block">
+                        <h3><i class="fas fa-cogs"></i> איך זה עובד?</h3>
+                        <ul>
+                            <li>מוצא מוכר שיש לו משכנתא קיימת עם תנאים טובים</li>
+                            <li>מגיש בקשה לבנק להעביר את ההלוואה על שמך</li>
+                            <li>הבנק בודק את האשראי והיכולת הפיננסית שלך</li>
+                            <li>אם מאושר - הבנק משחרר את המוכר מהחוב</li>
+                            <li>ההלוואה עוברת על שמך עם אותם תנאים (או דומים)</li>
+                            <li>המוכר יוצא חופשי, אתה נכנס במקומו</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-block">
+                        <h3><i class="fas fa-user-check"></i> מתי מתאים?</h3>
+                        <ul>
+                            <li>יש לך אשראי סביר אבל רוצה להימנע מ-Origination חדשה</li>
+                            <li>המשכנתא הקיימת היא FHA/VA עם תנאים מצוינים</li>
+                            <li>ריבית השוק עלתה והמשכנתא הקיימת טובה יותר</li>
+                            <li>המוכר רוצה "יציאה נקייה" ללא השפעה על האשראי</li>
+                            <li>הנכס במצב foreclosure והבנק מוכן לשתף פעולה</li>
+                            <li>יש FHA Assumable Loan שאפשר לקחת</li>
+                        </ul>
+                    </div>
+
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4><i class="fas fa-thumbs-up"></i> יתרונות</h4>
+                            <ul>
+                                <li>אין סיכון של Due-on-Sale - הבנק מעורב ומסכים</li>
+                                <li>המוכר משוחרר לגמרי מהחוב</li>
+                                <li>יכול "לרשת" ריבית נמוכה</li>
+                                <li>עלויות נמוכות יותר מהלוואה חדשה</li>
+                                <li>לגיטימי 100% - הכל legal ורשמי</li>
+                                <li>אפשרות עם FHA/VA Assumable Loans</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4><i class="fas fa-exclamation-triangle"></i> סיכונים ואתגרים</h4>
+                            <ul>
+                                <li>צריך אשראי טוב - הבנק בודק אותך</li>
+                                <li>לא כל הלוואות ניתנות להעברה (Assumable)</li>
+                                <li>תהליך יכול לקחת זמן - אישורים בירוקרטיים</li>
+                                <li>לפעמים צריך לשלם Assumption Fee</li>
+                                <li>הבנק יכול לדרוש Down Payment נוסף</li>
+                                <li>קשה למצוא בנקים שמוכנים לזה</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <h4><i class="fas fa-calculator"></i> דוגמה מספרית</h4>
+                        <p>
+                            <strong>מחיר הנכס:</strong> $250,000<br>
+                            <strong>משכנתא קיימת (FHA Assumable):</strong> $200,000<br>
+                            <strong>ריבית קיימת:</strong> 3.25%<br>
+                            <strong>ריבית שוק נוכחית:</strong> 7%<br>
+                            <strong>Equity:</strong> $50,000
+                        </p>
+                        <div class="example-numbers">
+                            <div class="number-item">
+                                <div class="number-label">תשלום חודשי (3.25%)</div>
+                                <div class="number-value">$870</div>
+                            </div>
+                            <div class="number-item">
+                                <div class="number-label">לעומת משכנתא חדשה (7%)</div>
+                                <div class="number-value">$1,330</div>
+                            </div>
+                            <div class="number-item">
+                                <div class="number-label">חיסכון חודשי</div>
+                                <div class="number-value">$460</div>
+                            </div>
+                            <div class="number-item">
+                                <div class="number-label">חיסכון ל-30 שנה</div>
+                                <div class="number-value">$165,600</div>
+                            </div>
+                        </div>
+                        <p style="margin-top: 20px;">
+                            <strong>התוצאה:</strong> במקום לקחת משכנתא חדשה עם ריבית 7%, אתה "יורש" משכנתא ב-3.25% 
+                            וחוסך $460 בחודש - זה $165K לאורך 30 שנה!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pad Split Strategy -->
+            <div class="strategy-section">
+                <div class="strategy-header">
+                    <div class="strategy-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <h2 class="strategy-title">Pad Split</h2>
+                        <p class="strategy-subtitle">השכרת חדרים פרטיים במקום יחידה שלמה</p>
+                    </div>
+                </div>
+
+                <div class="strategy-content">
+                    <div class="content-block">
+                        <h3><i class="fas fa-info-circle"></i> מה זה Pad Split?</h3>
+                        <p>
+                            Pad Split (או Room Rental Strategy) היא אסטרטגיה שבה אתה קונה בית/דירה גדולה ומשכיר כל חדר בנפרד, 
+                            במקום להשכיר את כל הנכס ליחידה משפחתית אחת. כל דייר משלם שכ"ד נפרד על החדר שלו + גישה למטבח/סלון משותפים. 
+                            זה מגדיל דרמטית את ההכנסה מהנכס.
+                        </p>
+                    </div>
+
+                    <div class="content-block">
+                        <h3><i class="fas fa-cogs"></i> איך זה עובד?</h3>
+                        <ul>
+                            <li>קונה נכס עם מספר חדרי שינה (3-5 חדרים אופטימלי)</li>
+                            <li>משפץ כל חדר להיות "יחידה" פרטית (מנעול, מיטה, שולחן)</li>
+                            <li>משאיר מטבח, סלון, חדרי רחצה כשטחים משותפים</li>
+                            <li>משכיר כל חדר בנפרד - בדרך כלל לעובדים, סטודנטים, או travelers</li>
+                            <li>כל דייר חותם חוזה חודשי או שנתי נפרד</li>
+                            <li>גובה דמי ניהול ו"All utilities included" במחיר גבוה</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-block">
+                        <h3><i class="fas fa-user-check"></i> מתי מתאים?</h3>
+                        <ul>
+                            <li>אזורים עם ביקוש גבוה לדיור זול (ליד אוניברסיטאות, בתי חולים, מפעלים)</li>
+                            <li>נכסים גדולים עם חדרים מרובים</li>
+                            <li>שכונות עם עובדים מעבר ומהגרים</li>
+                            <li>כשרוצה למקסם Cash Flow מנכס בודד</li>
+                            <li>כשיש צורך בגמישות - דייר עוזב, רק חדר אחד פנוי</li>
+                            <li>מותר על פי Zoning המקומי (לבדוק!)</li>
+                        </ul>
+                    </div>
+
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4><i class="fas fa-thumbs-up"></i> יתרונות</h4>
+                            <ul>
+                                <li>הכנסה גבוהה פי 2-3 מהשכרה רגילה</li>
+                                <li>פיזור סיכון - אם דייר אחד עוזב, שאר החדרים ממשיכים לשלם</li>
+                                <li>ביקוש גבוה לחדרים זולים</li>
+                                <li>Turnover מהיר - קל למצוא דיירים חדשים</li>
+                                <li>דיירים פחות "עקשניים" - מודעים שזה זמני</li>
+                                <li>Cash Flow מטורף - ROI של 20-40%</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4><i class="fas fa-exclamation-triangle"></i> סיכונים ואתגרים</h4>
+                            <ul>
+                                <li>ניהול אינטנסיבי - הרבה דיירים, הרבה בעיות</li>
+                                <li>Turnover גבוה - צריך למלא חדרים כל הזמן</li>
+                                <li>בעיות בין דיירים (רעש, ניקיון, מריבות)</li>
+                                <li>לא חוקי בכל מקום - צריך לבדוק Zoning</li>
+                                <li>שחיקה גבוהה - צביעה, ניקוי, תיקונים תכופים</li>
+                                <li>דורש נוכחות או Property Manager טוב</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <h4><i class="fas fa-calculator"></i> דוגמה מספרית</h4>
+                        <p>
+                            <strong>הנכס:</strong> בית 4 חדרי שינה<br>
+                            <strong>שכ"ד רגילה למשפחה:</strong> $1,500/חודש<br>
+                            <strong>שכ"ד לחדר ב-Pad Split:</strong> $600/חודש<br>
+                            <strong>משכנתא + הוצאות:</strong> $1,200/חודש
+                        </p>
+                        <div class="example-numbers">
+                            <div class="number-item">
+                                <div class="number-label">הכנסה משכירות רגילה</div>
+                                <div class="number-value">$1,500</div>
+                            </div>
+                            <div class="number-item">
+                                <div class="number-label">הכנסה מ-Pad Split (4 חדרים)</div>
+                                <div class="number-value">$2,400</div>
+                            </div>
+                            <div class="number-item">
+                                <div class="number-label">Cash Flow רגיל</div>
+                                <div class="number-value">$300</div>
+                            </div>
+                            <div class="number-item">
+                                <div class="number-label">Cash Flow עם Pad Split</div>
+                                <div class="number-value">$1,200</div>
+                            </div>
+                        </div>
+                        <p style="margin-top: 20px;">
+                            <strong>התוצאה:</strong> במקום $300/חודש, אתה מרוויח $1,200/חודש - פי 4! 
+                            זה $14,400 לשנה מנכס בודד. אם תעשה את זה ב-5 נכסים = $72K בשנה פסיבי!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration -->
+    <section class="registration-section" id="register">
+        <div class="container">
+            <h2 class="section-title">מעוניין ללמוד Creative Financing?</h2>
+            <p class="intro-text">השאר פרטים ונחזור אליך לתיאום פגישת ייעוץ אישית</p>
+            
+            <form class="registration-form" id="creativeFinancingForm">
+                <div class="form-group">
+                    <label for="name">שם מלא <span style="color: #ff6b6b;">*</span></label>
+                    <input type="text" id="name" name="name" placeholder="הכנס את שמך המלא" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">כתובת אימייל <span style="color: #ff6b6b;">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="הכנס את כתובת האימייל שלך" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">מספר טלפון <span style="color: #ff6b6b;">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="הכנס את מספר הטלפון שלך" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">איזו אסטרטגיה מעניינת אותך במיוחד? (אופציונלי)</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Sub2, Seller Financing, Novation, Pad Split, או הכל..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">שלח פרטים ותיאום פגישה 📞</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ClubRRRR ACADEMY. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form Submission
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxfCRIgb1DaykOuYlpEWAjkvY3IC9UZ9xzY-3lBcZ1XGN5KTyzEonuoXmBBSbsrfqSh/exec';
+        
+        document.getElementById('creativeFinancingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            formData.append('course', 'Creative Financing');
+            
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            
+            button.textContent = 'שולח...';
+            button.disabled = true;
+            
+            try {
+                const response = await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    alert('תודה! פרטיך נקלטו בהצלחה. ניצור איתך קשר בקרוב לתיאום פגישת ייעוץ 🎉');
+                    this.reset();
+                } else {
+                    alert('אופס! משהו השתבש. נסה שוב מאוחר יותר.');
+                }
+            } catch (error) {
+                alert('אופס! משהו השתבש. נסה שוב מאוחר יותר.');
+            } finally {
+                button.textContent = originalText;
+                button.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

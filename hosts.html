@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קלאברים מארחים - ClubRRRR</title>
+    
+    <!--
+    ⚠️ שים לב: הדף הזה מכיל 6 פרקים, אבל השתמש באותם 5-6 סרטונים שחוזרים גם ב-graduates.html
+    
+    TODO: להחליף בסרטוני "Clubbers Host" אמיתיים - בוגרים שמארחים ומספרים את הסיפור שלהם
+    -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-color: #DFB249; --gold-color: #DFB249; --dark-bg: #0A0A0A; --card-bg: rgba(255, 255, 255, 0.05); --text-white: #FFFFFF; --text-gray: #CCCCCC; }
+        body { font-family: 'Jost', sans-serif; background: var(--dark-bg); color: var(--text-white); overflow-x: hidden; line-height: 1.6; }
+        .top-bar { background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(18px); padding: 10px 0; text-align: center; }
+        .top-bar p { margin: 0; font-size: 14px; }
+        .top-bar a { color: var(--gold-color); text-decoration: none; font-weight: 600; }
+        .main-header { position: sticky; top: 0; z-index: 1000; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(223, 178, 73, 0.1); }
+        .header-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; max-width: 1400px; margin: 0 auto; }
+        .logo { display: flex; align-items: center; }
+        .logo-image { height: 75px; width: auto; transition: transform 0.3s; }
+        .logo-image:hover { transform: scale(1.05); }
+        .nav-menu { display: flex; gap: 40px; list-style: none; align-items: center; }
+        .nav-menu li { position: relative; }
+        .nav-menu a { color: var(--text-white); text-decoration: none; font-size: 16px; font-weight: 500; transition: color 0.3s; position: relative; padding: 10px 0; display: block; }
+        .nav-menu a:hover { color: var(--gold-color); }
+        .nav-menu a::after { content: ''; position: absolute; bottom: -5px; right: 0; width: 0; height: 2px; background: var(--gold-color); transition: width 0.3s; }
+        .nav-menu a:hover::after { width: 100%; }
+        .has-dropdown { position: relative; }
+        .dropdown-menu { position: absolute; top: 100%; right: 0; background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(10px); min-width: 250px; border-radius: 8px; padding: 10px 0; margin-top: 10px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); z-index: 1000; }
+        .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { padding: 12px 25px; color: var(--text-white); text-decoration: none; display: block; transition: all 0.3s; font-size: 15px; text-align: right; border-right: 3px solid transparent; }
+        .dropdown-item:hover { background: rgba(223, 178, 73, 0.15); color: var(--gold-color); border-right-color: var(--gold-color); }
+        .dropdown-item::after { display: none; }
+        .hero { background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(223, 178, 73, 0.1) 100%); padding: 120px 20px 80px; text-align: center; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; margin-bottom: 20px; background: linear-gradient(135deg, var(--gold-color) 0%, #FFFFFF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-gray); max-width: 900px; margin: 0 auto; line-height: 1.8; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .hosts-section { padding: 80px 0; }
+        .hosts-description { background: var(--card-bg); border: 2px solid rgba(223, 178, 73, 0.2); border-radius: 20px; padding: 40px; margin: 60px auto; max-width: 900px; text-align: center; }
+        .hosts-description h2 { font-size: 2.2rem; color: var(--gold-color); margin-bottom: 20px; }
+        .hosts-description p { font-size: 1.2rem; color: var(--text-gray); line-height: 1.8; margin-bottom: 15px; }
+        .episodes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 60px; }
+        .episode-card { background: var(--card-bg); border: 2px solid rgba(223, 178, 73, 0.2); border-radius: 20px; padding: 30px; transition: all 0.3s; }
+        .episode-card:hover { transform: translateY(-5px); border-color: var(--gold-color); box-shadow: 0 15px 40px rgba(223, 178, 73, 0.3); }
+        .episode-number { font-size: 1rem; color: var(--gold-color); font-weight: 600; margin-bottom: 10px; }
+        .episode-title { font-size: 1.5rem; font-weight: 700; color: var(--text-white); margin-bottom: 15px; }
+        .episode-host { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 20px; }
+        .episode-video { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; }
+        .episode-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        @media (max-width: 768px) { .header-container { flex-direction: column; padding: 15px 20px; gap: 15px; } .nav-menu { flex-wrap: wrap; justify-content: center; gap: 15px; } .hero { padding: 80px 20px 60px; } .episodes-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="top-bar"><p><a href="index.html#events">Meet Up with ClubRRRR</a></p></div>
+    <header class="main-header">
+        <div class="header-container">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html#about">אודות</a></li>
+                    <li class="has-dropdown"><a href="index.html#programs">תכניות ושירותים</a>
+                        <div class="dropdown-menu">
+                            <a href="mentoring.html" class="dropdown-item">תכנית מנטורינג אישי</a>
+                            <a href="cluber360.html" class="dropdown-item">תכנית קלאבר 360</a>
+                            <a href="workshops.html" class="dropdown-item">סדנאות</a>
+                            <a href="ai-tools.html" class="dropdown-item">תוכנות AI</a>
+                        </div>
+                    </li>
+                    <li><a href="graduates.html">הבוגרים שלנו</a></li>
+                    <li class="has-dropdown"><a href="content.html">תוכן</a>
+                        <div class="dropdown-menu">
+                            <a href="podcast.html" class="dropdown-item">פודקאסט</a>
+                            <a href="hosts.html" class="dropdown-item">קלאברים מארחים</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#community">קהילה</a></li>
+                    <li><a href="index.html#events">אירועים</a></li>
+                    <li><a href="index.html#contact">צור קשר</a></li>
+                </ul>
+            </nav>
+            <a href="index.html" class="logo"><img src="ClubRRRRnew logo.png" alt="ClubRRRR Logo" class="logo-image"></a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>קלאברים מארחים 🎬</h1>
+                <p>בוגרים מצליחים מארחים את הקהילה ומשתפים בניסיון, אסטרטגיות וטיפים מעשיים מהשטח</p>
+            </div>
+        </section>
+        <section class="hosts-section">
+            <div class="container">
+                <div class="hosts-description">
+                    <h2>על התכנית</h2>
+                    <p>קלאברים מארחים היא תכנית ייחודית שבה בוגרים מצליחים של התכנית לוקחים את התפקיד של המארחים.</p>
+                    <p>כל פרק מציג בוגר/ת שמשתפים בסיפור ההצלחה שלהם, האסטרטגיות שעבדו עבורם, והטעויות שהם למדו מהן.</p>
+                    <p style="color: var(--gold-color); font-weight: 600; font-size: 1.3rem; margin-top: 30px;">💡 למידה אמיתית מאנשים שעשו את זה בפועל!</p>
+                </div>
+                <div class="episodes-grid">
+                    <article class="episode-card">
+                        <div class="episode-number">פרק #1</div>
+                        <h3 class="episode-title">מ-0 ל-15 יחידות בשנתיים</h3>
+                        <p class="episode-host">עם דניאל כהן - משקיע בטקסס</p>
+                        <div class="episode-video">
+                            <iframe src="https://www.youtube.com/embed/0kFWhvTSV9E?rel=0" title="פרק 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+                    <article class="episode-card">
+                        <div class="episode-number">פרק #2</div>
+                        <h3 class="episode-title">BRRRR Strategy בפועל</h3>
+                        <p class="episode-host">עם שרון לוי - משקיעה באוהיו</p>
+                        <div class="episode-video">
+                            <iframe src="https://www.youtube.com/embed/YtgYcHOahRs?rel=0" title="פרק 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+                    <article class="episode-card">
+                        <div class="episode-number">פרק #3</div>
+                        <h3 class="episode-title">שיפוצים מרחוק - המדריך המלא</h3>
+                        <p class="episode-host">עם יוסי גולן - משקיע בפלורידה</p>
+                        <div class="episode-video">
+                            <iframe src="https://www.youtube.com/embed/oF6XIhYIqEs?rel=0" title="פרק 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+                    <article class="episode-card">
+                        <div class="episode-number">פרק #4</div>
+                        <h3 class="episode-title">גיוס משקיעים והקמת קרן</h3>
+                        <p class="episode-host">עם מיכל רוזנברג - יזמת בשיקגו</p>
+                        <div class="episode-video">
+                            <iframe src="https://www.youtube.com/embed/sGA1yv4U3Fw?rel=0" title="פרק 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+                    <article class="episode-card">
+                        <div class="episode-number">פרק #5</div>
+                        <h3 class="episode-title">מעובד שכיר ליזם במשרה מלאה</h3>
+                        <p class="episode-host">עם עדי בן דוד - משקיע בג'ורג'יה</p>
+                        <div class="episode-video">
+                            <iframe src="https://www.youtube.com/embed/AsGPi5aSc1k?rel=0" title="פרק 5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+                    <article class="episode-card">
+                        <div class="episode-number">פרק #6</div>
+                        <h3 class="episode-title">משא ומתן - הטכניקות שעובדות</h3>
+                        <p class="episode-host">עם רונית כץ - משקיעה באוהיו</p>
+                        <div class="episode-video">
+                            <iframe src="https://www.youtube.com/embed/0kFWhvTSV9E?rel=0" title="פרק 6" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
