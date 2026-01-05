@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרשמה - ClubRRRR ACADEMY</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-color: #DFB249;
+            --dark-bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 100%);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .register-container {
+            width: 100%;
+            max-width: 550px;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-container img {
+            height: 80px;
+            width: auto;
+            margin-bottom: 20px;
+        }
+
+        .logo-container h1 {
+            font-size: 1.8rem;
+            color: var(--gold-color);
+            margin-bottom: 10px;
+        }
+
+        .logo-container p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .register-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(223, 178, 73, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text-white);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid rgba(223, 178, 73, 0.3);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--text-white);
+            font-size: 1rem;
+            font-family: 'Jost', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--gold-color);
+            box-shadow: 0 0 0 3px rgba(223, 178, 73, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(204, 204, 204, 0.5);
+        }
+
+        .password-requirements {
+            margin-top: 10px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .requirement {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 5px 0;
+            color: var(--text-gray);
+        }
+
+        .requirement.valid {
+            color: #4CAF50;
+        }
+
+        .requirement i {
+            font-size: 0.8rem;
+        }
+
+        .password-toggle {
+            position: relative;
+        }
+
+        .password-toggle i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .password-toggle i:hover {
+            color: var(--gold-color);
+        }
+
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .terms-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .terms-checkbox a {
+            color: var(--gold-color);
+            text-decoration: none;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Jost', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(223, 178, 73, 0.4);
+        }
+
+        .register-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(223, 178, 73, 0.2);
+        }
+
+        .divider span {
+            padding: 0 15px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px;
+            border: 1px solid rgba(223, 178, 73, 0.3);
+            border-radius: 10px;
+            background: #fff;
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .social-btn:hover {
+            border-color: var(--gold-color);
+            transform: translateY(-2px);
+        }
+
+        .social-btn i {
+            font-size: 1.3rem;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .login-link a {
+            color: var(--gold-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .login-link a:hover {
+            opacity: 0.8;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-home a {
+            color: var(--text-gray);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .back-home a:hover {
+            color: var(--gold-color);
+        }
+
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert.success {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: #4CAF50;
+        }
+
+        .alert.error {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            color: #f44336;
+        }
+
+        @media (max-width: 768px) {
+            .register-card {
+                padding: 30px 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .logo-container h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <a href="web_PM__index.html">
+                <img src="./ClubRRRRnew logo.png" alt="ClubRRRR ACADEMY">
+            </a>
+            <h1>הצטרף ל-ClubRRRR ACADEMY</h1>
+            <p>צור חשבון חדש והתחל את המסע שלך</p>
+        </div>
+
+        <!-- Register Card -->
+        <div class="register-card">
+            <!-- Alert -->
+            <div id="alert" class="alert"></div>
+
+            <!-- Form -->
+            <form id="registerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">שם פרטי</label>
+                        <input 
+                            type="text" 
+                            id="firstName" 
+                            name="firstName" 
+                            placeholder="שם פרטי"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">שם משפחה</label>
+                        <input 
+                            type="text" 
+                            id="lastName" 
+                            name="lastName" 
+                            placeholder="שם משפחה"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">אימייל</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="your.email@example.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">מספר טלפון</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        placeholder="050-1234567"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">סיסמה</label>
+                    <div class="password-toggle">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="••••••••"
+                            required
+                        >
+                        <i class="fas fa-eye" id="togglePassword"></i>
+                    </div>
+                    <div class="password-requirements">
+                        <div class="requirement" id="req-length">
+                            <i class="fas fa-circle"></i>
+                            <span>לפחות 8 תווים</span>
+                        </div>
+                        <div class="requirement" id="req-uppercase">
+                            <i class="fas fa-circle"></i>
+                            <span>אות גדולה אחת לפחות</span>
+                        </div>
+                        <div class="requirement" id="req-number">
+                            <i class="fas fa-circle"></i>
+                            <span>ספרה אחת לפחות</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">אימות סיסמה</label>
+                    <div class="password-toggle">
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            name="confirmPassword" 
+                            placeholder="••••••••"
+                            required
+                        >
+                        <i class="fas fa-eye" id="toggleConfirmPassword"></i>
+                    </div>
+                </div>
+
+                <div class="terms-checkbox">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">
+                        אני מסכים/ה ל<a href="#" target="_blank">תנאי השימוש</a> 
+                        ו<a href="#" target="_blank">מדיניות הפרטיות</a> של ClubRRRR ACADEMY
+                    </label>
+                </div>
+
+                <button type="submit" class="register-btn" id="registerBtn">
+                    <i class="fas fa-user-plus"></i> צור חשבון
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="divider">
+                <span>או הירשם עם</span>
+            </div>
+
+            <!-- Google Signup -->
+            <button class="social-btn" id="googleSignupBtn">
+                <i class="fab fa-google"></i>
+                המשך עם Google
+            </button>
+
+            <!-- Login Link -->
+            <div class="login-link">
+                כבר יש לך חשבון? <a href="login.html">התחבר</a>
+            </div>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="back-home">
+            <a href="web_PM__index.html">
+                <i class="fas fa-arrow-right"></i>
+                חזרה לדף הבית
+            </a>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        // Password Toggle
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const password = document.getElementById('password');
+            const icon = this;
+            
+            if (password.type === 'password') {
+                password.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                password.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+
+        document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+            const password = document.getElementById('confirmPassword');
+            const icon = this;
+            
+            if (password.type === 'password') {
+                password.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                password.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+
+        // Password Validation
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            
+            // Length
+            if (password.length >= 8) {
+                document.getElementById('req-length').classList.add('valid');
+            } else {
+                document.getElementById('req-length').classList.remove('valid');
+            }
+            
+            // Uppercase
+            if (/[A-Z]/.test(password)) {
+                document.getElementById('req-uppercase').classList.add('valid');
+            } else {
+                document.getElementById('req-uppercase').classList.remove('valid');
+            }
+            
+            // Number
+            if (/\d/.test(password)) {
+                document.getElementById('req-number').classList.add('valid');
+            } else {
+                document.getElementById('req-number').classList.remove('valid');
+            }
+        });
+
+        // Register Form Submit
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const terms = document.getElementById('terms').checked;
+            const btn = document.getElementById('registerBtn');
+            
+            // Validation
+            if (!Auth.validateEmail(email)) {
+                showAlert('כתובת אימייל לא תקינה', 'error');
+                return;
+            }
+            
+            const passwordValidation = Auth.validatePassword(password);
+            if (!passwordValidation.valid) {
+                showAlert(passwordValidation.message, 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showAlert('הסיסמאות אינן תואמות', 'error');
+                return;
+            }
+            
+            if (!terms) {
+                showAlert('יש לאשר את תנאי השימוש', 'error');
+                return;
+            }
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> יוצר חשבון...';
+            
+            try {
+                await Auth.register(email, password, firstName, lastName);
+                showAlert('החשבון נוצר בהצלחה! מעביר אותך להתחברות...', 'success');
+                
+                // Auto-login after registration
+                setTimeout(async () => {
+                    await Auth.loginWithEmail(email, password, true);
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+            } catch (error) {
+                showAlert(error.message || 'שגיאה ביצירת החשבון', 'error');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-user-plus"></i> צור חשבון';
+            }
+        });
+
+        // Google Signup
+        document.getElementById('googleSignupBtn').addEventListener('click', async function() {
+            // Simulate Google OAuth signup
+            const mockGoogleUser = {
+                email: 'newuser@gmail.com',
+                displayName: 'משתמש חדש'
+            };
+            
+            try {
+                await Auth.loginWithGoogle(mockGoogleUser);
+                showAlert('נרשמת בהצלחה עם Google!', 'success');
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+            } catch (error) {
+                showAlert('שגיאה בהרשמה עם Google', 'error');
+            }
+        });
+
+        // Show Alert
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = `alert ${type}`;
+            alert.style.display = 'block';
+            
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 5000);
+        }
+
+        // Check if already logged in
+        if (Auth.isLoggedIn()) {
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>

@@ -136,6 +136,29 @@
             width: 100%;
         }
 
+        /* Login Button */
+        .nav-menu .login-btn {
+            background: linear-gradient(135deg, var(--gold-color) 0%, #F4D88A 100%);
+            color: var(--dark-bg) !important;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-menu .login-btn::after {
+            display: none;
+        }
+
+        .nav-menu .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(223, 178, 73, 0.4);
+        }
+
+        .nav-menu .login-btn i {
+            margin-left: 5px;
+        }
+
         /* Dropdown Menu */
         .has-dropdown {
             position: relative;
@@ -1117,6 +1140,7 @@
         <div class="header-container">
             <nav>
                 <ul class="nav-menu">
+                    <li><a href="login.html" class="login-btn"><i class="fas fa-user"></i> אזור אישי</a></li>
                     <li><a href="#about">אודות</a></li>
                     <li class="has-dropdown">
                         <a href="#programs">ClubRRRR ACADEMY</a>
