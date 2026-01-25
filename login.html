@@ -506,13 +506,13 @@
                 displayName: 'משתמש Google'
             };
             
-            try {
-                await Auth.loginWithGoogle(mockGoogleUser);
+            const result = authGuard.loginWithGoogle(mockGoogleUser);
+            if (result.success) {
                 showAlert('התחברת בהצלחה עם Google!', 'success');
                 setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1500);
-            } catch (error) {
+                    authGuard.redirectAfterLogin();
+                }, 1200);
+            } else {
                 showAlert('שגיאה בהתחברות עם Google', 'error');
             }
         });

@@ -3,8 +3,10 @@ class AuthGuard {
     constructor() {
         this.protectedPages = [
             'dashboard.html',
+            'user-dashboard.html',
             'academy.html',
             'events.html',
+            'ai-tools.html',
             'community.html',
             'investments.html',
             'services.html',
@@ -51,13 +53,49 @@ class AuthGuard {
                 email: user.email,
                 role: user.role || 'member',
                 avatar: user.avatar || this.generateAvatar(user.name),
-                memberSince: user.memberSince || new Date().toISOString()
+                memberSince: user.memberSince || new Date().toISOString(),
+                stats: user.stats || { investments: 0, courses: 0, events: 0, connections: 0 }
             }));
             localStorage.setItem('clubrrrr_token', token);
             return { success: true, user };
         }
 
         return { success: false, message: 'אימייל או סיסמה שגויים' };
+    }
+
+    // התחברות/רישום דרך Google (סימולציה פרונטלית)
+    loginWithGoogle(googleUser) {
+        const users = JSON.parse(localStorage.getItem('clubrrrr_users') || '[]');
+        let user = users.find(u => u.email === googleUser.email);
+
+        if (!user) {
+            user = {
+                id: this.generateId(),
+                name: googleUser.displayName || 'משתמש Google',
+                email: googleUser.email,
+                password: '',
+                role: 'member',
+                avatar: this.generateAvatar(googleUser.displayName || 'G'),
+                memberSince: new Date().toISOString(),
+                stats: { investments: 0, courses: 0, events: 0, connections: 0 }
+            };
+            users.push(user);
+            localStorage.setItem('clubrrrr_users', JSON.stringify(users));
+        }
+
+        const token = this.generateToken();
+        localStorage.setItem('clubrrrr_user', JSON.stringify({
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            avatar: user.avatar,
+            memberSince: user.memberSince,
+            stats: user.stats
+        }));
+        localStorage.setItem('clubrrrr_token', token);
+
+        return { success: true, user };
     }
 
     register(userData) {
@@ -81,7 +119,8 @@ class AuthGuard {
             stats: {
                 investments: 0,
                 courses: 0,
-                events: 0
+                events: 0,
+                connections: 0
             }
         };
 
@@ -107,7 +146,7 @@ class AuthGuard {
     redirectAfterLogin() {
         const redirectUrl = localStorage.getItem('clubrrrr_redirect');
         localStorage.removeItem('clubrrrr_redirect');
-        window.location.href = redirectUrl || 'dashboard.html';
+        window.location.href = redirectUrl || 'user-dashboard.html';
     }
 
     loadUserData() {

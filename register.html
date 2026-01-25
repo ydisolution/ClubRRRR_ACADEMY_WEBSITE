@@ -596,13 +596,13 @@
                 displayName: 'משתמש חדש'
             };
             
-            try {
-                await Auth.loginWithGoogle(mockGoogleUser);
+            const result = authGuard.loginWithGoogle(mockGoogleUser);
+            if (result.success) {
                 showAlert('נרשמת בהצלחה עם Google!', 'success');
                 setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1500);
-            } catch (error) {
+                    authGuard.redirectAfterLogin();
+                }, 1200);
+            } else {
                 showAlert('שגיאה בהרשמה עם Google', 'error');
             }
         });
