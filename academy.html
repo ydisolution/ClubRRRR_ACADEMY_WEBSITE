@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מסלולי הלימוד - ClubRRRR ACADEMY</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Accessibility Module -->
+    <link rel="stylesheet" href="accessibility.css">
+    
+    <!-- Language Switcher -->
+    <link rel="stylesheet" href="language-switcher.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-color: #DFB249;
+            --dark-bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .main-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(18px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(223, 178, 73, 0.1);
+            padding: 15px 0;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 70px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold-color);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 150px 30px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(223, 178, 73, 0.1) 100%);
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #DFB249 0%, #F4D88A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        /* Learning Path */
+        .learning-path {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 30px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--gold-color);
+        }
+
+        .path-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+        }
+
+        /* Vertical Line */
+        .path-container::before {
+            content: '';
+            position: absolute;
+            right: 50%;
+            top: 100px;
+            bottom: 100px;
+            width: 3px;
+            background: linear-gradient(180deg, var(--gold-color) 0%, rgba(223, 178, 73, 0.3) 100%);
+            transform: translateX(50%);
+        }
+
+        .path-step {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(223, 178, 73, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .path-step:hover {
+            border-color: var(--gold-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(223, 178, 73, 0.2);
+        }
+
+        .step-number {
+            position: absolute;
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold-color) 0%, #F4D88A 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-bg);
+            box-shadow: 0 5px 20px rgba(223, 178, 73, 0.4);
+        }
+
+        .step-badge {
+            display: inline-block;
+            background: rgba(223, 178, 73, 0.2);
+            color: var(--gold-color);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .step-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-white);
+        }
+
+        .step-description {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .step-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-gray);
+        }
+
+        .feature-item i {
+            color: var(--gold-color);
+            font-size: 1.2rem;
+        }
+
+        .step-cta {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .step-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(223, 178, 73, 0.4);
+        }
+
+        /* Specializations */
+        .specializations {
+            max-width: 1400px;
+            margin: 80px auto;
+            padding: 0 30px;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .spec-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(223, 178, 73, 0.2);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold-color) 0%, #F4D88A 100%);
+        }
+
+        .spec-card:hover {
+            border-color: var(--gold-color);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(223, 178, 73, 0.3);
+        }
+
+        .spec-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.2) 0%, rgba(223, 178, 73, 0.05) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .spec-icon i {
+            font-size: 2rem;
+            color: var(--gold-color);
+        }
+
+        .spec-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--text-white);
+        }
+
+        .spec-description {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .spec-highlights {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .spec-highlights li {
+            padding: 8px 0;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spec-highlights li::before {
+            content: '✓';
+            color: var(--gold-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .spec-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .spec-link:hover {
+            gap: 12px;
+        }
+
+        /* Info Box */
+        .info-box {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 50px;
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.1) 0%, rgba(10, 10, 10, 0.8) 100%);
+            border: 2px solid var(--gold-color);
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .info-box h3 {
+            font-size: 2rem;
+            color: var(--gold-color);
+            margin-bottom: 20px;
+        }
+
+        .info-box p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        .info-box .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .info-box .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(223, 178, 73, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .path-container::before {
+                display: none;
+            }
+
+            .step-number {
+                position: static;
+                margin-bottom: 20px;
+            }
+
+            .spec-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="login.html"><i class="fas fa-user"></i> אזור אישי</a></li>
+                    <li><a href="web_PM__index.html#about">אודות</a></li>
+                    <li><a href="academy.html">מסלולי לימוד</a></li>
+                    <li><a href="graduates.html">בוגרים</a></li>
+                    <li><a href="content.html">תוכן</a></li>
+                    <li><a href="web_PM__index.html#contact">צור קשר</a></li>
+                </ul>
+            </nav>
+            <a href="web_PM__index.html" class="logo">
+                <img src="./ClubRRRRnew logo.png" alt="ClubRRRR ACADEMY">
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>מסלולי הלימוד ב-ClubRRRR ACADEMY</h1>
+        <p>האקדמיה כולה מסלולי התמחות מותאמים אישית - ממנטורינג צמוד ועד התמחויות מתקדמות בתחומי הנדל"ן</p>
+    </section>
+
+    <!-- Learning Path -->
+    <section class="learning-path">
+        <h2 class="section-title">המסלול הלימודי המלא</h2>
+        
+        <div class="path-container">
+            <!-- Step 1: Mentoring -->
+            <div class="path-step">
+                <div class="step-number">1</div>
+                <span class="step-badge">שלב חובה למתחילים</span>
+                <h3 class="step-title">מנטורינג אישי - לימוד צמוד</h3>
+                <p class="step-description">
+                    עבור סטודנטים שמגיעים ללא ניסיון קודם בנדל"ן, המסלול מתחיל בליווי אישי ומקצועי צמוד עם איתי ודרור - מומחי הנדל"ן המובילים בישראל. זהו שלב יסודי שמניח את הבסיס להצלחה בתחום.
+                </p>
+                <div class="step-features">
+                    <div class="feature-item">
+                        <i class="fas fa-user-tie"></i>
+                        <span>ליווי אישי 1-על-1</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-video"></i>
+                        <span>פגישות Zoom שבועיות</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-book"></i>
+                        <span>חומרי לימוד מותאמים</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-whatsapp"></i>
+                        <span>תמיכה ב-WhatsApp</span>
+                    </div>
+                </div>
+                <a href="mentoring.html" class="step-cta">למידע נוסף על המנטורינג <i class="fas fa-arrow-left"></i></a>
+            </div>
+
+            <!-- Step 2: ClubRRRR 360 -->
+            <div class="path-step">
+                <div class="step-number">2</div>
+                <span class="step-badge">תכנית ליבה</span>
+                <h3 class="step-title">ClubRRRR 360 - התכנית המקיפה</h3>
+                <p class="step-description">
+                    לאחר המנטורינג, כל סטודנט עובר לתכנית ClubRRRR 360 - התכנית המקיפה והמעמיקה ביותר ללימודי נדל"ן בארה"ב. התכנית כוללת את כל הידע הנדרש להצלחה בשוק הנדל"ן האמריקאי, מהתחלה ועד סגירת עסקה.
+                </p>
+                <div class="step-features">
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>אנליזה פיננסית</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-landmark"></i>
+                        <span>מימון וחוקים</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-home"></i>
+                        <span>סוגי נכסים</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <span>בניית צוות</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-handshake"></i>
+                        <span>ניהול עסקאות</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-tools"></i>
+                        <span>שיפוצים ותחזוקה</span>
+                    </div>
+                </div>
+                <a href="Cluber360.html" class="step-cta">למידע נוסף על ClubRRRR 360 <i class="fas fa-arrow-left"></i></a>
+            </div>
+
+            <!-- Step 3: Specialization -->
+            <div class="path-step">
+                <div class="step-number">3</div>
+                <span class="step-badge">בחירת התמחות</span>
+                <h3 class="step-title">התמחות מתקדמת</h3>
+                <p class="step-description">
+                    בסיום תכנית ClubRRRR 360, כל סטודנט יכול לבחור להתמחות באסטרטגיה ספציפית שמתאימה לו ולמטרות העסקיות שלו. ההתמחויות מעמיקות בתחום מסוים ומקנות מומחיות ברמה גבוהה.
+                </p>
+                <div class="step-features">
+                    <div class="feature-item">
+                        <i class="fas fa-search-dollar"></i>
+                        <span>Wholesale - איתור עסקאות</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-file-signature"></i>
+                        <span>Subject-To (SUB2)</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-home-heart"></i>
+                        <span>Section 8 Housing</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Creative Financing</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-building"></i>
+                        <span>Fix & Flip</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-plus"></i>
+                        <span>והתמחויות נוספות</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specializations Grid -->
+    <section class="specializations">
+        <h2 class="section-title">התמחויות מתקדמות זמינות</h2>
+        
+        <div class="spec-grid">
+            <!-- Wholesale -->
+            <div class="spec-card">
+                <div class="spec-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3 class="spec-title">Wholesale</h3>
+                <p class="spec-description">
+                    התמחות באיתור עסקאות רווחיות והעברתן למשקיעים. אסטרטגיה מצוינת למי שרוצה להתחיל עם השקעה מינימלית.
+                </p>
+                <ul class="spec-highlights">
+                    <li>6 שיטות לאיתור עסקאות</li>
+                    <li>בניית רשימת קונים</li>
+                    <li>ניתוח עסקאות (ARV, 70% Rule)</li>
+                    <li>מערכות CRM ואוטומציה</li>
+                </ul>
+                <a href="wholesale.html" class="spec-link">
+                    לפרטים נוספים <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+
+            <!-- SUB2 -->
+            <div class="spec-card">
+                <div class="spec-icon">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <h3 class="spec-title">Subject-To (SUB2)</h3>
+                <p class="spec-description">
+                    רכישת נכסים כאשר המשכנתא הקיימת נשארת על שם המוכר - אסטרטגיה מתקדמת לרכישה ללא מימון בנקאי מסורתי.
+                </p>
+                <ul class="spec-highlights">
+                    <li>מבנה עסקאות SUB2</li>
+                    <li>הגנה משפטית</li>
+                    <li>ניהול תזרים מזומנים</li>
+                    <li>זיהוי מוכרים מתאימים</li>
+                </ul>
+                <a href="creative-financing.html#sub2" class="spec-link">
+                    לפרטים נוספים <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+
+            <!-- Section 8 -->
+            <div class="spec-card">
+                <div class="spec-icon">
+                    <i class="fas fa-home-heart"></i>
+                </div>
+                <h3 class="spec-title">Section 8 Housing</h3>
+                <p class="spec-description">
+                    השכרת נכסים באמצעות תוכנית הדיור הממשלתית - תזרים מזומנים יציב ומובטח עם תמיכה ממשלתית.
+                </p>
+                <ul class="spec-highlights">
+                    <li>הסמכה לתוכנית Section 8</li>
+                    <li>בחירת שוקים מתאימים</li>
+                    <li>ניהול דיירי Section 8</li>
+                    <li>מקסום תשואות</li>
+                </ul>
+                <a href="#contact" class="spec-link">
+                    לפרטים נוספים <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+
+            <!-- Creative Financing -->
+            <div class="spec-card">
+                <div class="spec-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="spec-title">Creative Financing</h3>
+                <p class="spec-description">
+                    אסטרטגיות מימון יצירתי מתקדמות - SUB2, Seller Financing, Novation, Pad Split ועוד.
+                </p>
+                <ul class="spec-highlights">
+                    <li>4+ אסטרטגיות מימון</li>
+                    <li>מבנה עסקאות מורכבות</li>
+                    <li>משא ומתן עם מוכרים</li>
+                    <li>דוגמאות וחישובים מעשיים</li>
+                </ul>
+                <a href="creative-financing.html" class="spec-link">
+                    לפרטים נוספים <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+
+            <!-- Fix & Flip -->
+            <div class="spec-card">
+                <div class="spec-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3 class="spec-title">Fix & Flip</h3>
+                <p class="spec-description">
+                    רכישת נכסים דורשי שיפוץ, שיפוצם ומכירתם ברווח - אסטרטגיה למשקיעים אקטיביים.
+                </p>
+                <ul class="spec-highlights">
+                    <li>זיהוי נכסים פוטנציאליים</li>
+                    <li>אומדן עלויות שיפוץ</li>
+                    <li>ניהול קבלנים מרחוק</li>
+                    <li>אסטרטגיות מכירה</li>
+                </ul>
+                <a href="#contact" class="spec-link">
+                    בקרוב <i class="fas fa-clock"></i>
+                </a>
+            </div>
+
+            <!-- BRRRR Method -->
+            <div class="spec-card">
+                <div class="spec-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3 class="spec-title">BRRRR Method</h3>
+                <p class="spec-description">
+                    Buy, Rehab, Rent, Refinance, Repeat - אסטרטגיה לבניית תיק נכסים מניבים.
+                </p>
+                <ul class="spec-highlights">
+                    <li>רכישה ושיפוץ אסטרטגי</li>
+                    <li>מימון מחדש (Refinance)</li>
+                    <li>בניית תיק נכסים</li>
+                    <li>ניהול השקעות לטווח ארוך</li>
+                </ul>
+                <a href="#contact" class="spec-link">
+                    בקרוב <i class="fas fa-clock"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Box -->
+    <section class="info-box">
+        <h3><i class="fas fa-graduation-cap"></i> מוכן להצטרף ל-ClubRRRR ACADEMY?</h3>
+        <p>צור איתנו קשר עוד היום והתחל את המסע שלך לעצמאות פיננסית דרך השקעות נדל"ן בארה"ב</p>
+        <a href="web_PM__index.html#contact" class="cta-btn">
+            <i class="fas fa-envelope"></i> צור קשר עכשיו
+        </a>
+    </section>
+
+    <!-- Language Switcher -->
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
+
+    <!-- Accessibility Module -->
+    <script src="accessibility.js"></script>
+</body>
+</html>

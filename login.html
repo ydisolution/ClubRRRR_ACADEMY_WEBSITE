@@ -13,6 +13,12 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Accessibility Module -->
+    <link rel="stylesheet" href="accessibility.css">
+    
+    <!-- Language Switcher -->
+    <link rel="stylesheet" href="language-switcher.css">
+    
     <!-- Google Sign-In -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     
@@ -448,10 +454,26 @@
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const email = document.getElementById('email').value;
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             const remember = document.getElementById('remember').checked;
             const btn = document.getElementById('loginBtn');
+            
+            // Check for admin login
+            if (email === 'admin' && password === 'Admin2212!') {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> מתחבר כמנהל...';
+                
+                // Save admin session
+                sessionStorage.setItem('clubrrrrAdmin', 'true');
+                sessionStorage.setItem('adminLoginTime', Date.now());
+                
+                showAlert('התחברת כמנהל! מעביר אותך...', 'success');
+                setTimeout(() => {
+                    window.location.href = 'admin-panel.html';
+                }, 1500);
+                return;
+            }
             
             // Validate
             if (!Auth.validateEmail(email)) {
@@ -511,5 +533,12 @@
             window.location.href = 'dashboard.html';
         }
     </script>
+    
+    <!-- Language Switcher -->
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
+    
+    <!-- Accessibility Module -->
+    <script src="accessibility.js"></script>
 </body>
 </html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>התחברות מנהל - ClubRRRR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-color: #DFB249;
+            --dark-bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-white);
+        }
+
+        .admin-login-container {
+            max-width: 450px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(223, 178, 73, 0.3);
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold-color) 0%, #F4D88A 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: var(--dark-bg);
+        }
+
+        .login-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold-color);
+            margin-bottom: 10px;
+        }
+
+        .login-subtitle {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-white);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold-color);
+            font-size: 1.1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px 45px 15px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(223, 178, 73, 0.3);
+            border-radius: 10px;
+            color: var(--text-white);
+            font-size: 1rem;
+            font-family: 'Jost', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold-color);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gold-color) 0%, #F4D88A 100%);
+            border: none;
+            border-radius: 10px;
+            color: var(--dark-bg);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(223, 178, 73, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            background: rgba(255, 50, 50, 0.1);
+            border: 1px solid rgba(255, 50, 50, 0.3);
+            color: #ff5050;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back-link a {
+            color: var(--gold-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .back-link a:hover {
+            color: #F4D88A;
+        }
+
+        @media (max-width: 768px) {
+            .login-card {
+                padding: 40px 30px;
+            }
+
+            .login-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <h1 class="login-title">התחברות מנהל</h1>
+                <p class="login-subtitle">ClubRRRR Admin Panel</p>
+            </div>
+
+            <div id="errorMessage" class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                שם משתמש או סיסמה שגויים
+            </div>
+
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label class="form-label" for="username">שם משתמש</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user input-icon"></i>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            class="form-input" 
+                            placeholder="הזן שם משתמש"
+                            required
+                            autocomplete="username"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">סיסמה</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            class="form-input" 
+                            placeholder="הזן סיסמה"
+                            required
+                            autocomplete="current-password"
+                        >
+                    </div>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> התחבר
+                </button>
+            </form>
+
+            <div class="back-link">
+                <a href="web_PM__index.html">
+                    <i class="fas fa-arrow-right"></i> חזרה לאתר
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Admin credentials
+        const ADMIN_USERNAME = 'admin';
+        const ADMIN_PASSWORD = 'Admin2212!';
+
+        const loginForm = document.getElementById('adminLoginForm');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Display credentials on page for debugging
+        console.log('Expected Username:', ADMIN_USERNAME);
+        console.log('Expected Password:', ADMIN_PASSWORD);
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+
+            console.log('Entered Username:', username);
+            console.log('Entered Password:', password);
+            console.log('Username Match:', username === ADMIN_USERNAME);
+            console.log('Password Match:', password === ADMIN_PASSWORD);
+
+            // Simple validation
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                // Save admin session
+                sessionStorage.setItem('clubrrrrAdmin', 'true');
+                sessionStorage.setItem('adminLoginTime', Date.now());
+                
+                // Redirect to admin panel
+                window.location.href = 'admin-panel.html';
+            } else {
+                // Show error with details
+                errorMessage.innerHTML = `<i class="fas fa-exclamation-circle"></i> שם משתמש או סיסמה שגויים<br><small style="font-size: 0.85rem; margin-top: 5px; display: block;">נסה: admin / Admin2212!</small>`;
+                errorMessage.classList.add('show');
+                
+                // Shake animation
+                loginForm.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    loginForm.style.animation = '';
+                }, 500);
+
+                // Hide error after 5 seconds
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                }, 5000);
+            }
+        });
+
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                75% { transform: translateX(10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

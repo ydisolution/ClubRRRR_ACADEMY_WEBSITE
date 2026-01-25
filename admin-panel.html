@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פאנל ניהול - ClubRRRR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-color: #DFB249;
+            --dark-bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 100%);
+            color: var(--text-white);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .admin-header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 20px 40px;
+            border-bottom: 2px solid rgba(223, 178, 73, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .admin-logo i {
+            font-size: 2rem;
+            color: var(--gold-color);
+        }
+
+        .admin-logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logout-btn {
+            background: rgba(255, 50, 50, 0.2);
+            border: 1px solid rgba(255, 50, 50, 0.4);
+            color: #ff5050;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Jost', sans-serif;
+            font-size: 1rem;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 50, 50, 0.3);
+        }
+
+        /* Main Content */
+        .admin-container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 40px;
+        }
+
+        .admin-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--gold-color);
+        }
+
+        .admin-subtitle {
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .admin-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .admin-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(223, 178, 73, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text-white);
+            display: block;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-color);
+            box-shadow: 0 15px 40px rgba(223, 178, 73, 0.3);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold-color) 0%, #F4D88A 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--dark-bg);
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-management {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(223, 178, 73, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--gold-color);
+        }
+
+        .add-instructor-btn {
+            background: linear-gradient(135deg, var(--gold-color) 0%, #F4D88A 100%);
+            border: none;
+            color: var(--dark-bg);
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .add-instructor-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(223, 178, 73, 0.4);
+        }
+
+        /* Instructors Grid */
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .instructor-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(223, 178, 73, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .instructor-image-preview {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(223, 178, 73, 0.1);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .instructor-image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .instructor-image-preview i {
+            font-size: 3rem;
+            color: var(--gold-color);
+        }
+
+        .instructor-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gold-color);
+            margin-bottom: 5px;
+        }
+
+        .instructor-course {
+            font-size: 0.9rem;
+            color: rgba(223, 178, 73, 0.7);
+            margin-bottom: 15px;
+        }
+
+        .instructor-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .edit-btn, .delete-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .edit-btn {
+            background: rgba(100, 150, 255, 0.2);
+            color: #6496ff;
+            border: 1px solid rgba(100, 150, 255, 0.4);
+        }
+
+        .edit-btn:hover {
+            background: rgba(100, 150, 255, 0.3);
+        }
+
+        .delete-btn {
+            background: rgba(255, 50, 50, 0.2);
+            color: #ff5050;
+            border: 1px solid rgba(255, 50, 50, 0.4);
+        }
+
+        .delete-btn:hover {
+            background: rgba(255, 50, 50, 0.3);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border: 2px solid rgba(223, 178, 73, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--gold-color);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-gray);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--gold-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-white);
+            font-weight: 500;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(223, 178, 73, 0.3);
+            border-radius: 8px;
+            color: var(--text-white);
+            font-family: 'Jost', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--gold-color);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gold-color) 0%, #F4D88A 100%);
+            border: none;
+            border-radius: 10px;
+            color: var(--dark-bg);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Jost', sans-serif;
+            margin-top: 10px;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(223, 178, 73, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .admin-header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .admin-container {
+                padding: 0 20px;
+            }
+
+            .admin-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="admin-logo">
+            <i class="fas fa-shield-halved"></i>
+            <h1>פאנל ניהול ClubRRRR</h1>
+        </div>
+        <div class="admin-user">
+            <span><i class="fas fa-user-shield"></i> Admin</span>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> התנתק
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="admin-container">
+        <h2 class="admin-title">ברוך הבא, Admin</h2>
+        <p class="admin-subtitle">ניהול אתר ClubRRRR ACADEMY</p>
+
+        <!-- Quick Actions Cards -->
+        <div class="admin-cards">
+            <a href="web_PM__index.html" target="_blank" class="admin-card">
+                <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3 class="card-title">צפה באתר</h3>
+                <p class="card-description">פתח את האתר בחלון חדש וצפה בשינויים</p>
+            </a>
+
+            <a href="#team" class="admin-card">
+                <div class="card-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="card-title">ניהול צוות</h3>
+                <p class="card-description">הוסף, ערוך ומחק מרצים מהאתר</p>
+            </a>
+
+            <a href="TEAM_MANAGEMENT_INSTRUCTIONS.md" target="_blank" class="admin-card">
+                <div class="card-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="card-title">הוראות שימוש</h3>
+                <p class="card-description">קרא את המדריך המלא לניהול המרצים</p>
+            </a>
+        </div>
+
+        <!-- Team Management -->
+        <div class="team-management" id="team">
+            <div class="section-header">
+                <h3 class="section-title">ניהול צוות המרצים</h3>
+                <button class="add-instructor-btn" onclick="openAddModal()">
+                    <i class="fas fa-plus"></i> הוסף מרצה
+                </button>
+            </div>
+
+            <div class="instructors-grid" id="instructorsGrid">
+                <!-- Instructors will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal" id="instructorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">הוסף מרצה חדש</h3>
+                <button class="close-modal" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="instructorForm">
+                <input type="hidden" id="instructorIndex">
+                
+                <div class="form-group">
+                    <label class="form-label">שם המרצה *</label>
+                    <input type="text" id="instructorName" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">שם הקורס *</label>
+                    <input type="text" id="courseName" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">תיאור ביוגרפי *</label>
+                    <textarea id="instructorBio" class="form-textarea" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">URL תמונה *</label>
+                    <input type="url" id="imageUrl" class="form-input" 
+                           placeholder="https://example.com/image.jpg" required>
+                    <small style="color: var(--text-gray); font-size: 0.85rem;">
+                        הדבק כתובת URL של תמונה או השתמש בשירות כמו imgur.com
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">LinkedIn (אופציונלי)</label>
+                    <input type="url" id="linkedinUrl" class="form-input" 
+                           placeholder="https://linkedin.com/in/username">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Instagram (אופציונלי)</label>
+                    <input type="url" id="instagramUrl" class="form-input" 
+                           placeholder="https://instagram.com/username">
+                </div>
+
+                <button type="submit" class="form-submit">
+                    <i class="fas fa-save"></i> שמור מרצה
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="team-manager.js"></script>
+    <script>
+        // Check authentication
+        function checkAuth() {
+            const isAdmin = sessionStorage.getItem('clubrrrrAdmin');
+            const loginTime = sessionStorage.getItem('adminLoginTime');
+            
+            // Check if logged in and session is valid (24 hours)
+            if (!isAdmin || !loginTime || (Date.now() - loginTime > 24 * 60 * 60 * 1000)) {
+                window.location.href = 'admin-login.html';
+            }
+        }
+
+        // Logout function
+        function logout() {
+            if (confirm('האם אתה בטוח שברצונך להתנתק?')) {
+                sessionStorage.removeItem('clubrrrrAdmin');
+                sessionStorage.removeItem('adminLoginTime');
+                window.location.href = 'admin-login.html';
+            }
+        }
+
+        // Run auth check
+        checkAuth();
+
+        // Modal functions
+        function openAddModal() {
+            document.getElementById('modalTitle').textContent = 'הוסף מרצה חדש';
+            document.getElementById('instructorForm').reset();
+            document.getElementById('instructorIndex').value = '';
+            document.getElementById('instructorModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('instructorModal').classList.remove('show');
+        }
+
+        // Close modal on outside click
+        document.getElementById('instructorModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Load instructors on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadInstructors();
+        });
+    </script>
+</body>
+</html>

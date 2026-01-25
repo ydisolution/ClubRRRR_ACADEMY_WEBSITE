@@ -13,6 +13,12 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Accessibility Module -->
+    <link rel="stylesheet" href="accessibility.css">
+    
+    <!-- Language Switcher -->
+    <link rel="stylesheet" href="language-switcher.css">
+    
     <style>
         * {
             margin: 0;
@@ -678,6 +684,160 @@
             line-height: 1.6;
         }
 
+        /* Team ClubRRRR Section */
+        .team-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(223, 178, 73, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .team-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .team-member {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(223, 178, 73, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-color);
+            box-shadow: 0 20px 60px rgba(223, 178, 73, 0.3);
+        }
+
+        .team-member-image {
+            position: relative;
+            width: 100%;
+            padding-top: 100%; /* 1:1 Aspect Ratio */
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.1) 0%, rgba(10, 10, 10, 0.5) 100%);
+        }
+
+        .instructor-photo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            padding: 20px;
+            transition: transform 0.4s ease;
+        }
+
+        .team-member:hover .instructor-photo {
+            transform: scale(1.05);
+        }
+
+        .team-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .team-member:hover .team-overlay {
+            opacity: 1;
+        }
+
+        .team-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .team-social a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(223, 178, 73, 0.2);
+            border: 2px solid var(--gold-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .team-social a:hover {
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+        }
+
+        .team-member-info {
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        .instructor-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold-color);
+            margin-bottom: 8px;
+        }
+
+        .instructor-course {
+            font-size: 0.95rem;
+            color: rgba(223, 178, 73, 0.8);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .instructor-bio {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
         /* Community Section */
         .community-section {
             padding: 100px 40px;
@@ -1143,8 +1303,9 @@
                     <li><a href="login.html" class="login-btn"><i class="fas fa-user"></i> אזור אישי</a></li>
                     <li><a href="#about">אודות</a></li>
                     <li class="has-dropdown">
-                        <a href="#programs">ClubRRRR ACADEMY</a>
+                        <a href="academy.html">ClubRRRR ACADEMY</a>
                         <div class="dropdown-menu">
+                            <a href="academy.html" class="dropdown-item"><i class="fas fa-graduation-cap"></i> מסלולי הלימוד המלאים</a>
                             <a href="mentoring.html" class="dropdown-item">מנטורינג - לימוד צמוד עם איתי ודרור</a>
                             <a href="cluber360.html" class="dropdown-item">ClubRRRR 360 - תכנית מקיפה</a>
                             <a href="wholesale.html" class="dropdown-item">קורס Wholesale - איתור עסקאות</a>
@@ -1162,6 +1323,14 @@
                     <li><a href="#community">קהילה</a></li>
                     <li><a href="#events">אירועים</a></li>
                     <li><a href="#contact">צור קשר</a></li>
+                    <!-- Language Switcher -->
+                    <li id="language-switcher">
+                        <div id="language-toggle">
+                            <span class="lang-option" data-lang="he">עברית</span>
+                            <span class="lang-separator">|</span>
+                            <span class="lang-option" data-lang="en">English</span>
+                        </div>
+                    </li>
                 </ul>
             </nav>
             <a href="web_PM__index.html" class="logo">
@@ -1184,12 +1353,8 @@
             </iframe>
         </div>
         <div class="hero-content">
-            <h1>ברוכים הבאים ל<span class="gold">ClubRRRR</span></h1>
-            <p>מנחה טלוויזיה. סופר. משקיע. יזם. דובר.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="hero-btn hero-btn-primary">הספר של ClubRRRR</a>
-                <a href="#contact" class="hero-btn hero-btn-secondary">השקע עם ClubRRRR</a>
-            </div>
+            <h1><span class="gold">ClubRRRR ACADEMY</span></h1>
+            <p>ברוכים הבאים לאקדמיה הגדולה בישראל ללימודי יזמות נדל"ן בארה"ב</p>
             <div class="social-icons">
                 <a href="https://www.youtube.com/@clubrrrr" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.facebook.com/itai.aharon.315" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1252,6 +1417,137 @@
                     <div class="stat-label">מעל 200 אלף<br>צפיות</div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Team ClubRRRR Section -->
+    <section class="team-section" id="team">
+        <div class="team-container">
+            <h2 class="section-title">הצוות שלנו <span class="gold">Team ClubRRRR</span></h2>
+            <p class="team-subtitle">המרצים המקצועיים שלנו - מומחים בתחומם עם ניסיון מוכח בשטח</p>
+            
+            <div class="team-grid">
+                <!-- Instructor 1: נועם בן נון -->
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://via.placeholder.com/300x300/1a1a1a/DFB249?text=נועם+בן+נון" alt="נועם בן נון" class="instructor-photo">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="instructor-name">נועם בן נון</h3>
+                        <p class="instructor-course">Wholesale</p>
+                        <p class="instructor-bio">מומחה לאיתור עסקאות נדל"ן משתלמות עם ניסיון של עשרות עסקאות מוצלחות</p>
+                    </div>
+                </div>
+
+                <!-- Instructor 2: ברד ושלי זריהן -->
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://via.placeholder.com/300x300/1a1a1a/DFB249?text=ברד+ושלי+זריהן" alt="ברד ושלי זריהן" class="instructor-photo">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="instructor-name">ברד ושלי זריהן</h3>
+                        <p class="instructor-course">Tax Sale</p>
+                        <p class="instructor-bio">מומחים בתחום Tax Sale עם ניסיון רב שנים ומאות עסקאות מוצלחות</p>
+                    </div>
+                </div>
+
+                <!-- Instructor 3 - Placeholder -->
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://via.placeholder.com/300x300/1a1a1a/DFB249?text=מרצה+3" alt="מרצה 3" class="instructor-photo">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="instructor-name">שם המרצה</h3>
+                        <p class="instructor-course">שם הקורס</p>
+                        <p class="instructor-bio">תיאור קצר על המרצה והניסיון שלו בתחום</p>
+                    </div>
+                </div>
+
+                <!-- Instructor 4 - Placeholder -->
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://via.placeholder.com/300x300/1a1a1a/DFB249?text=מרצה+4" alt="מרצה 4" class="instructor-photo">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="instructor-name">שם המרצה</h3>
+                        <p class="instructor-course">שם הקורס</p>
+                        <p class="instructor-bio">תיאור קצר על המרצה והניסיון שלו בתחום</p>
+                    </div>
+                </div>
+
+                <!-- Instructor 5 - Placeholder -->
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://via.placeholder.com/300x300/1a1a1a/DFB249?text=מרצה+5" alt="מרצה 5" class="instructor-photo">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="instructor-name">שם המרצה</h3>
+                        <p class="instructor-course">שם הקורס</p>
+                        <p class="instructor-bio">תיאור קצר על המרצה והניסיון שלו בתחום</p>
+                    </div>
+                </div>
+
+                <!-- Instructor 6 - Placeholder -->
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://via.placeholder.com/300x300/1a1a1a/DFB249?text=מרצה+6" alt="מרצה 6" class="instructor-photo">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="instructor-name">שם המרצה</h3>
+                        <p class="instructor-course">שם הקורס</p>
+                        <p class="instructor-bio">תיאור קצר על המרצה והניסיון שלו בתחום</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Instructions (Hidden Comment) -->
+            <!-- 
+            להוספת/עריכת מרצה:
+            1. החלף את ה-src של התמונה עם הנתיב לתמונה האמיתית
+            2. עדכן את שם המרצה ב-h3
+            3. עדכן את שם הקורס ב-p.instructor-course
+            4. עדכן את התיאור ב-p.instructor-bio
+            5. עדכן לינקים למדיה חברתית אם רלוונטי
+            
+            דוגמה:
+            <img src="./images/instructors/noam-ben-nun.jpg" alt="נועם בן נון">
+            -->
         </div>
     </section>
 
@@ -1459,5 +1755,12 @@
             }
         });
     </script>
+    
+    <!-- Language Switcher -->
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
+    
+    <!-- Accessibility Module -->
+    <script src="accessibility.js"></script>
 </body>
 </html>

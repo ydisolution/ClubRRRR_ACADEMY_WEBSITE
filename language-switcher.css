@@ -1,0 +1,69 @@
+/* Language Switcher - In Navigation */
+
+/* Container */
+#language-switcher {
+    display: inline-block;
+    position: relative;
+}
+
+/* Toggle Button - Simple Text Style */
+#language-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    font-family: 'Jost', sans-serif;
+}
+
+/* Language Options */
+.lang-option {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.lang-option:hover {
+    color: #DFB249;
+}
+
+.lang-option.active {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.lang-option.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: #DFB249;
+}
+
+/* Separator */
+.lang-separator {
+    color: rgba(223, 178, 73, 0.4);
+    font-size: 16px;
+    font-weight: 300;
+}
+
+
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    #language-toggle {
+        padding: 6px 10px;
+    }
+    
+    #language-toggle .current-lang {
+        font-size: 12px;
+    }
+    
+    #language-toggle i {
+        font-size: 14px;
+    }
+}
