@@ -532,7 +532,7 @@
         });
 
         // Register Form Submit
-        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const firstName = document.getElementById('firstName').value;
@@ -545,14 +545,13 @@
             const btn = document.getElementById('registerBtn');
             
             // Validation
-            if (!Auth.validateEmail(email)) {
-                showAlert('כתובת אימייל לא תקינה', 'error');
+            if (!email || !password || !firstName || !lastName) {
+                showAlert('נא למלא את כל השדות החובה', 'error');
                 return;
             }
             
-            const passwordValidation = Auth.validatePassword(password);
-            if (!passwordValidation.valid) {
-                showAlert(passwordValidation.message, 'error');
+            if (password.length < 6) {
+                showAlert('הסיסמה חייבת להכיל לפחות 6 תווים', 'error');
                 return;
             }
             
@@ -569,17 +568,21 @@
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> יוצר חשבון...';
             
-            try {
-                await Auth.register(email, password, firstName, lastName);
-                showAlert('החשבון נוצר בהצלחה! מעביר אותך להתחברות...', 'success');
-                
-                // Auto-login after registration
-                setTimeout(async () => {
-                    await Auth.loginWithEmail(email, password, true);
-                    window.location.href = 'dashboard.html';
+            // רישום עם מערכת החדשה
+            const result = authGuard.register({
+                name: `${firstName} ${lastName}`,
+                email: email,
+                phone: phone,
+                password: password
+            });
+            
+            if (result.success) {
+                showAlert('החשבון נוצר בהצלחה! מעביר אותך...', 'success');
+                setTimeout(() => {
+                    authGuard.redirectAfterLogin();
                 }, 1500);
-            } catch (error) {
-                showAlert(error.message || 'שגיאה ביצירת החשבון', 'error');
+            } else {
+                showAlert(result.message || 'שגיאה ביצירת החשבון', 'error');
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fas fa-user-plus"></i> צור חשבון';
             }
@@ -617,10 +620,13 @@
         }
 
         // Check if already logged in
-        if (Auth.isLoggedIn()) {
-            window.location.href = 'dashboard.html';
+        if (authGuard.isAuthenticated()) {
+            window.location.href = 'user-dashboard.html';
         }
     </script>
+    
+    <!-- Auth Guard -->
+    <script src="auth-guard.js"></script>
     
     <!-- Language Switcher -->
     <script src="translations.js"></script>

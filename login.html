@@ -451,12 +451,11 @@
         });
 
         // Login Form Submit
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
-            const remember = document.getElementById('remember').checked;
             const btn = document.getElementById('loginBtn');
             
             // Check for admin login
@@ -475,23 +474,25 @@
                 return;
             }
             
-            // Validate
-            if (!Auth.validateEmail(email)) {
-                showAlert('כתובת אימייל לא תקינה', 'error');
+            // Validate email
+            if (!email || !password) {
+                showAlert('נא למלא את כל השדות', 'error');
                 return;
             }
             
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> מתחבר...';
             
-            try {
-                await Auth.loginWithEmail(email, password, remember);
+            // התחברות עם מערכת החדשה
+            const result = authGuard.login(email, password);
+            
+            if (result.success) {
                 showAlert('התחברת בהצלחה! מעביר אותך...', 'success');
                 setTimeout(() => {
-                    window.location.href = 'dashboard.html';
+                    authGuard.redirectAfterLogin();
                 }, 1500);
-            } catch (error) {
-                showAlert(error.message || 'אימייל או סיסמה שגויים', 'error');
+            } else {
+                showAlert(result.message || 'אימייל או סיסמה שגויים', 'error');
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> התחבר';
             }
@@ -529,10 +530,13 @@
         }
 
         // Check if already logged in
-        if (Auth.isLoggedIn()) {
-            window.location.href = 'dashboard.html';
+        if (authGuard.isAuthenticated()) {
+            window.location.href = 'user-dashboard.html';
         }
     </script>
+    
+    <!-- Auth Guard -->
+    <script src="auth-guard.js"></script>
     
     <!-- Language Switcher -->
     <script src="translations.js"></script>
