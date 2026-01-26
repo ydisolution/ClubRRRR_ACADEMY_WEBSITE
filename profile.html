@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פרופיל משתמש - ClubRRRR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary-gold:#F4CE69; --dark-navy:#1E293B; --light-navy:#334155; --bg-dark:#0F172A; --card-bg:#1E293B; --text-white:#F8FAFC; --text-gray:#CBD5E1; }
+        body { font-family:'Heebo',sans-serif; background:var(--bg-dark); color:var(--text-white); min-height:100vh; }
+        .container{max-width:960px;margin:40px auto;padding:20px}
+        .card{background:var(--card-bg);padding:24px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);margin-bottom:16px}
+        h1{margin-bottom:12px}
+        .banner{background:rgba(244,206,105,0.12);border:1px solid rgba(244,206,105,0.5);color:var(--primary-gold);padding:12px;border-radius:12px;margin-bottom:16px;display:none}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+        label{display:block;margin-bottom:8px;color:var(--text-gray)}
+        input{width:100%;padding:12px;border-radius:10px;border:1px solid transparent;background:var(--light-navy);color:var(--text-white);font-family:'Heebo',sans-serif}
+        input:focus{outline:none;border-color:var(--primary-gold)}
+        .btn{padding:12px 18px;border-radius:10px;border:none;background:var(--primary-gold);color:var(--dark-navy);font-weight:700;cursor:pointer;margin-top:10px}
+        .link{color:var(--text-gray);text-decoration:none;margin-top:10px;display:inline-block}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>פרופיל והשלמת פרטים</h1>
+        <div id="completionBanner" class="banner">נא להשלים מספר טלפון כדי לקבל גישה מלאה.</div>
+        <div class="card">
+            <div class="grid">
+                <div>
+                    <label>שם מלא</label>
+                    <input id="nameInput" placeholder="שם מלא">
+                </div>
+                <div>
+                    <label>אימייל</label>
+                    <input id="emailInput" placeholder="email@example.com" type="email">
+                </div>
+                <div>
+                    <label>טלפון</label>
+                    <input id="phoneInput" placeholder="050-1234567" type="tel">
+                </div>
+            </div>
+            <button class="btn" id="saveBtn"><i class="fas fa-save"></i> שמור פרופיל</button>
+            <a href="user-dashboard.html" class="link">חזרה לדשבורד</a>
+        </div>
+    </div>
+
+    <script src="auth-guard.js"></script>
+    <script>
+        function loadProfile() {
+            const user = getCurrentUser();
+            if (!user) return;
+            document.getElementById('nameInput').value = user.name || '';
+            document.getElementById('emailInput').value = user.email || '';
+            document.getElementById('phoneInput').value = user.phone || '';
+            document.getElementById('completionBanner').style.display = user.phone ? 'none' : 'block';
+        }
+
+        function saveProfile() {
+            const name = document.getElementById('nameInput').value.trim();
+            const email = document.getElementById('emailInput').value.trim();
+            const phone = document.getElementById('phoneInput').value.trim();
+            if (!name || !email) { alert('שם ואימייל חובה'); return; }
+            const user = getCurrentUser();
+            if (!user) { window.location.href = 'login.html'; return; }
+            const updated = { ...user, name, email, phone };
+            localStorage.setItem('clubrrrr_user', JSON.stringify(updated));
+            document.getElementById('completionBanner').style.display = phone ? 'none' : 'block';
+            alert('פרופיל נשמר');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProfile);
+        document.getElementById('saveBtn').addEventListener('click', saveProfile);
+    </script>
+</body>
+</html>

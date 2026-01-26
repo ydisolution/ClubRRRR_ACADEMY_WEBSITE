@@ -18,6 +18,19 @@
     
     <!-- Language Switcher -->
     <link rel="stylesheet" href="language-switcher.css">
+    <script src="auth-guard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = getCurrentUser();
+            if (!user) { return; }
+            const chip = document.getElementById('userChip');
+            const avatar = document.getElementById('userAvatarChip');
+            const name = document.getElementById('userNameChip');
+            name.textContent = user.name;
+            avatar.textContent = user.name.charAt(0).toUpperCase();
+            chip.style.display = 'inline-flex';
+        });
+    </script>
     
     <style>
         * {
@@ -72,6 +85,28 @@
             gap: 30px;
             align-items: center;
         }
+        .user-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 999px;
+            border: 1px solid rgba(223,178,73,0.3);
+            color: var(--text-white);
+            font-size: 0.95rem;
+        }
+        .user-chip .avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #DFB249 0%, #F4D88A 100%);
+            color: #0A0A0A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
 
         .nav-menu a {
             color: var(--text-white);
@@ -102,6 +137,10 @@
 
         .hero-section p {
             font-size: 1.3rem;
+            <div class="user-chip" id="userChip" style="display:none">
+                <span class="avatar" id="userAvatarChip">?</span>
+                <span id="userNameChip">משתמש</span>
+            </div>
             color: var(--text-gray);
             max-width: 800px;
             margin: 0 auto 40px;

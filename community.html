@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קהילת קלאבר - ClubRRRR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary-gold:#F4CE69; --dark-navy:#1E293B; --light-navy:#334155; --bg-dark:#0F172A; --card-bg:#1E293B; --text-white:#F8FAFC; --text-gray:#CBD5E1; --success:#10B981; }
+        body { font-family:'Heebo',sans-serif; background:var(--bg-dark); color:var(--text-white); min-height:100vh; }
+        .sidebar{position:fixed;right:0;top:0;width:280px;height:100vh;background:var(--dark-navy);padding:30px 20px;overflow-y:auto}
+        .logo{font-size:28px;font-weight:800;color:var(--primary-gold);text-align:center;margin-bottom:10px}
+        .nav-menu{list-style:none}
+        .nav-link{display:flex;align-items:center;gap:12px;padding:14px 18px;color:var(--text-gray);text-decoration:none;border-radius:12px}
+        .nav-link:hover,.nav-link.active{background:var(--light-navy);color:var(--primary-gold)}
+        .logout-btn{margin-top:20px;width:100%;padding:14px;background:rgba(239,68,68,.1);color:#EF4444;border:1px solid #EF4444;border-radius:12px;cursor:pointer}
+        .main{margin-right:280px;padding:40px}
+        .page-header{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;margin-bottom:25px}
+        .title-wrap h1{margin:0;font-size:32px;font-weight:800}
+        .title-wrap p{margin:6px 0 0;color:var(--text-gray)}
+        .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+        .stat-card{background:var(--card-bg);padding:18px;border-radius:14px;text-align:center}
+        .stat-value{font-size:28px;font-weight:800;color:var(--primary-gold)}
+        .stat-label{color:var(--text-gray);font-size:13px}
+        .tabs{display:flex;gap:10px;margin:20px 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+        .tab{padding:12px 16px;background:transparent;border:none;color:var(--text-gray);cursor:pointer;border-bottom:3px solid transparent;font-weight:600}
+        .tab.active{color:var(--primary-gold);border-bottom-color:var(--primary-gold)}
+        .filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:20px}
+        .input{padding:12px 14px;border-radius:10px;border:1px solid transparent;background:var(--light-navy);color:var(--text-white)}
+        .input:focus{outline:none;border-color:var(--primary-gold)}
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+        .card{background:var(--card-bg);padding:18px;border-radius:14px;display:flex;flex-direction:column;gap:10px}
+        .avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#F4CE69,#EFBB43);display:flex;align-items:center;justify-content:center;color:var(--dark-navy);font-weight:800}
+        .name{font-weight:700}
+        .meta{color:var(--text-gray);font-size:13px}
+        .actions{display:flex;gap:8px;margin-top:8px}
+        .btn{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:var(--light-navy);color:var(--text-white);cursor:pointer;font-weight:600}
+        .btn.primary{background:var(--primary-gold);color:var(--dark-navy);border:none}
+        .announcement{background:var(--card-bg);padding:16px;border-radius:12px;border:1px dashed rgba(255,255,255,0.1)}
+        @media(max-width:1024px){.sidebar{display:none}.main{margin:0;padding:20px}}
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">ClubRRRR</div>
+        <ul class="nav-menu">
+            <li><a class="nav-link" href="user-dashboard.html"><i class="fas fa-home"></i> דשבורד</a></li>
+            <li><a class="nav-link" href="investments.html"><i class="fas fa-chart-line"></i> השקעות</a></li>
+            <li><a class="nav-link" href="services.html"><i class="fas fa-briefcase"></i> שירותים</a></li>
+            <li><a class="nav-link" href="ai-tools.html"><i class="fas fa-robot"></i> כלים טכנולוגיים</a></li>
+            <li><a class="nav-link" href="academy.html"><i class="fas fa-graduation-cap"></i> Academy</a></li>
+            <li><a class="nav-link" href="events.html"><i class="fas fa-calendar-alt"></i> אירועים</a></li>
+            <li><a class="nav-link active" href="community.html"><i class="fas fa-users"></i> קהילה</a></li>
+        </ul>
+        <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> התנתק</button>
+    </aside>
+
+    <main class="main">
+        <div class="page-header">
+            <div class="title-wrap">
+                <h1>קהילת קלאבר</h1>
+                <p>התחבר למשקיעי נדל"ן, שתף ניסיון והעמק קשרים</p>
+            </div>
+            <button class="btn primary" onclick="alert('פרסום הודעה יגיע בקרוב')"><i class="fas fa-plus"></i> פרסם הודעה</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card"><div class="stat-value" id="ratingAvg">4.8</div><div class="stat-label">דירוג ממוצע</div></div>
+            <div class="stat-card"><div class="stat-value" id="announcementsCount">4</div><div class="stat-label">הודעות בקהילה</div></div>
+            <div class="stat-card"><div class="stat-value" id="activeMembers">0</div><div class="stat-label">חברים פעילים</div></div>
+            <div class="stat-card"><div class="stat-value" id="totalMembers">4</div><div class="stat-label">סה"כ חברים</div></div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="members">חברי קהילה</button>
+            <button class="tab" data-tab="announcements">הודעות</button>
+            <button class="tab" data-tab="activity">פעילות</button>
+        </div>
+
+        <div class="filters">
+            <input id="searchMember" class="input" placeholder="חפש חבר קהילה...">
+            <select id="locationFilter" class="input">
+                <option value="">כל המיקומים</option>
+                <option value="miami">מיאמי</option>
+                <option value="atlanta">אטלנטה</option>
+                <option value="online">און-ליין</option>
+            </select>
+            <select id="domainFilter" class="input">
+                <option value="">כל התחומים</option>
+                <option value="investor">השקעות</option>
+                <option value="wholesale">Wholesale</option>
+                <option value="finance">מימון</option>
+            </select>
+        </div>
+
+        <div id="membersTab" class="cards"></div>
+        <div id="announcementsTab" class="announcement" style="display:none"></div>
+        <div id="activityTab" class="cards" style="display:none"></div>
+    </main>
+
+    <script src="auth-guard.js"></script>
+    <script>
+        const members = [
+            { name:'Itai Aharon', email:'itai@example.com', location:'miami', domain:'investor', active:false },
+            { name:'YDISolutions', email:'ydi@example.com', location:'atlanta', domain:'finance', active:false },
+            { name:'shlomi david', email:'shlomi@example.com', location:'online', domain:'investor', active:false },
+            { name:'office back office', email:'obo@example.com', location:'online', domain:'wholesale', active:false }
+        ];
+
+        const announcements = [
+            { title:'הודעה 1', body:'עדכון מערכת וובינר חדש השבוע.' },
+            { title:'הודעה 2', body:'נפתח שרשור חונכות מתקדם.' }
+        ];
+
+        const activities = [
+            { icon:'fa-user-plus', text:'משתמש חדש הצטרף לקהילה', time:'עכשיו' },
+            { icon:'fa-bullhorn', text:'פורסמה הודעה חדשה', time:'לפני שעה' }
+        ];
+
+        function loadUser() {
+            const user = getCurrentUser();
+            if (!user) return;
+            document.getElementById('activeMembers').textContent = user.stats?.connections || 0;
+        }
+
+        function renderMembers(list) {
+            const wrap = document.getElementById('membersTab');
+            if (!list.length) { wrap.innerHTML = '<p style="color:var(--text-gray)">לא נמצאו חברים</p>'; return; }
+            wrap.innerHTML = list.map(m => `
+                <div class="card">
+                    <div class="avatar">${m.name.charAt(0)}</div>
+                    <div class="name">${m.name}</div>
+                    <div class="meta">${m.email}</div>
+                    <div class="meta">${m.location} • ${m.domain}</div>
+                    <div class="actions">
+                        <button class="btn" onclick="alert('הודעה תישלח בקרוב')">שלח הודעה</button>
+                        <button class="btn primary" onclick="alert('בקשת חיבור נשלחה')">בקש חיבור</button>
+                    </div>
+                </div>`).join('');
+        }
+
+        function renderAnnouncements() {
+            const wrap = document.getElementById('announcementsTab');
+            wrap.innerHTML = announcements.map(a => `<div style="margin-bottom:10px"><strong>${a.title}</strong><div class="meta">${a.body}</div></div>`).join('');
+        }
+
+        function renderActivity() {
+            const wrap = document.getElementById('activityTab');
+            wrap.innerHTML = activities.map(a => `<div class="card"><div class="meta"><i class="fas ${a.icon}"></i> ${a.text}</div><div class="meta">${a.time}</div></div>`).join('');
+        }
+
+        function filterMembers() {
+            const term = document.getElementById('searchMember').value.toLowerCase();
+            const loc = document.getElementById('locationFilter').value;
+            const dom = document.getElementById('domainFilter').value;
+            const filtered = members.filter(m => {
+                const matchTerm = !term || m.name.toLowerCase().includes(term) || m.email.toLowerCase().includes(term);
+                const matchLoc = !loc || m.location === loc;
+                const matchDom = !dom || m.domain === dom;
+                return matchTerm && matchLoc && matchDom;
+            });
+            renderMembers(filtered);
+        }
+
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const key = tab.dataset.tab;
+                document.getElementById('membersTab').style.display = key === 'members' ? 'grid' : 'none';
+                document.getElementById('announcementsTab').style.display = key === 'announcements' ? 'block' : 'none';
+                document.getElementById('activityTab').style.display = key === 'activity' ? 'grid' : 'none';
+            });
+        });
+
+        document.getElementById('searchMember').addEventListener('input', filterMembers);
+        document.getElementById('locationFilter').addEventListener('change', filterMembers);
+        document.getElementById('domainFilter').addEventListener('change', filterMembers);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUser();
+            renderMembers(members);
+            renderAnnouncements();
+            renderActivity();
+        });
+    </script>
+</body>
+</html>

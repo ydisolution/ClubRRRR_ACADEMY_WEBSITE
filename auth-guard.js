@@ -10,6 +10,7 @@ class AuthGuard {
             'community.html',
             'investments.html',
             'services.html',
+            'profile.html',
             'admin-panel.html'
         ];
         this.init();
@@ -54,6 +55,7 @@ class AuthGuard {
                 role: user.role || 'member',
                 avatar: user.avatar || this.generateAvatar(user.name),
                 memberSince: user.memberSince || new Date().toISOString(),
+                phone: user.phone || '',
                 stats: user.stats || { investments: 0, courses: 0, events: 0, connections: 0 }
             }));
             localStorage.setItem('clubrrrr_token', token);
@@ -77,6 +79,7 @@ class AuthGuard {
                 role: 'member',
                 avatar: this.generateAvatar(googleUser.displayName || 'G'),
                 memberSince: new Date().toISOString(),
+                phone: googleUser.phone || '',
                 stats: { investments: 0, courses: 0, events: 0, connections: 0 }
             };
             users.push(user);
@@ -91,6 +94,7 @@ class AuthGuard {
             role: user.role,
             avatar: user.avatar,
             memberSince: user.memberSince,
+            phone: user.phone || '',
             stats: user.stats
         }));
         localStorage.setItem('clubrrrr_token', token);

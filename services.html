@@ -47,37 +47,44 @@
         <div class="header">
             <h1>שירותים מקצועיים לעסקאות נדל"ן</h1>
             <p style="color:var(--text-gray)">בחר מומחים שילוו אותך בעסקאות שלך</p>
+            <div id="servicesWelcome" style="color:var(--text-gray); margin-top:6px"></div>
         </div>
-        <div class="grid">
-            <div class="card">
-                <h3>ייעוץ מס נדל"ן</h3>
-                <div class="meta">ר"ח שרה לוי • 30 קרדיטים</div>
-                <div class="features">תכנון מס, אופטימיזציה, אסטרטגיות למשקיעי נדל"ן</div>
-                <div class="cta">
-                    <button class="btn">צפה בפרטים</button>
-                    <button class="btn primary">קבע פגישה</button>
-                </div>
-            </div>
-            <div class="card">
-                <h3>שירותי רואת חשבון</h3>
-                <div class="meta">CPA Sarah Johnson • 45 קרדיטים</div>
-                <div class="features">ניהול כספים, דוחות, תכנון מס</div>
-                <div class="cta">
-                    <button class="btn">צפה בפרטים</button>
-                    <button class="btn primary">קבע פגישה</button>
-                </div>
-            </div>
-            <div class="card">
-                <h3>ברוקר נדל"ן</h3>
-                <div class="meta">Lisa Martinez Realty • חינם</div>
-                <div class="features">דיל-פלו, שוק מקומי, ליווי עסקאות</div>
-                <div class="cta">
-                    <button class="btn">צפה בפרטים</button>
-                    <button class="btn primary">צור קשר</button>
-                </div>
-            </div>
-        </div>
+        <div class="grid" id="servicesGrid"></div>
     </main>
     <script src="auth-guard.js"></script>
+    <script>
+        const services = [
+            { title:'ייעוץ מס נדל"ן', meta:'ר"ח שרה לוי • 30 קרדיטים', features:'תכנון מס, אופטימיזציה, אסטרטגיות למשקיעי נדל"ן', cta:'קבע פגישה' },
+            { title:'שירותי רואת חשבון', meta:'CPA Sarah Johnson • 45 קרדיטים', features:'ניהול כספים, דוחות, תכנון מס', cta:'קבע פגישה' },
+            { title:'ברוקר נדל"ן', meta:'Lisa Martinez Realty • חינם', features:'דיל-פלו, שוק מקומי, ליווי עסקאות', cta:'צור קשר' }
+        ];
+
+        function loadUser() {
+            const user = getCurrentUser();
+            if (user) {
+                const stats = user.stats || {};
+                document.getElementById('servicesWelcome').textContent = `שלום ${user.name.split(' ')[0]}, אנשי מקצוע זמינים • קורסים פעילים: ${stats.courses || 0}`;
+            }
+        }
+
+        function renderServices() {
+            const wrap = document.getElementById('servicesGrid');
+            wrap.innerHTML = services.map(s => `
+                <div class="card">
+                    <h3>${s.title}</h3>
+                    <div class="meta">${s.meta}</div>
+                    <div class="features">${s.features}</div>
+                    <div class="cta">
+                        <button class="btn">צפה בפרטים</button>
+                        <button class="btn primary">${s.cta}</button>
+                    </div>
+                </div>`).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUser();
+            renderServices();
+        });
+    </script>
 </body>
 </html>
