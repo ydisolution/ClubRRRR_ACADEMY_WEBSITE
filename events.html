@@ -515,9 +515,14 @@
 
     <!-- Main Content -->
     <main class="main-content">
+        <!-- Completion Banner -->
+        <div id="completionBanner" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.5);color:#10B981;padding:12px;border-radius:12px;margin-bottom:16px;display:none;">
+            <i class="fas fa-check-circle"></i> פרופיל שלם! אתה מוכן להשתתף באירועים.
+        </div>
+
         <!-- Page Header -->
         <div class="page-header">
-            <h1 class="page-title">אירועים ומיטאפים</h1>
+            <h1 class="page-title" id="eventsGreeting">אירועים ומיטאפים</h1>
             <p class="page-subtitle">השתתף באירועים מקצועיים וצור קשרים עם משקיעים אחרים</p>
         </div>
 
@@ -528,8 +533,8 @@
                 <div class="stat-value" id="upcomingCount">10</div>
             </div>
             <div class="stat-box">
-                <div class="stat-label">השתתפות שלי</div>
-                <div class="stat-value" id="myEventsCount">2</div>
+                <div class="stat-label">השתתפויות שלי</div>
+                <div class="stat-value" id="myEventsCount">0</div>
             </div>
         </div>
 
@@ -630,6 +635,16 @@
                 document.getElementById('userName').textContent = user.name;
                 document.getElementById('userEmail').textContent = user.email;
                 document.getElementById('userAvatar').src = user.avatar;
+                document.getElementById('eventsGreeting').textContent = `אירועים ומיטאפים | ${user.name.split(' ')[0]}`;
+                
+                // Show banner if profile complete
+                if (user.phone) {
+                    document.getElementById('completionBanner').style.display = 'block';
+                }
+                
+                // Load registered events from localStorage
+                const registered = JSON.parse(localStorage.getItem('clubrrrr_events_registered') || '[]');
+                document.getElementById('myEventsCount').textContent = registered.length;
             }
         }
 
@@ -693,8 +708,20 @@
 
         // Register for event
         function registerForEvent(eventId) {
-            alert(`נרשמת בהצלחה לאירוע #${eventId}!`);
-            // כאן תהיה לוגיקה לשמירה ב-localStorage או שליחה לשרת
+            const user = getCurrentUser();
+            if (!user) { window.location.href = 'login.html'; return; }
+            if (!user.phone) { alert('נא להשלים את הפרופיל שלך קודם'); window.location.href = 'profile.html'; return; }
+            
+            const registered = JSON.parse(localStorage.getItem('clubrrrr_events_registered') || '[]');
+            if (!registered.includes(eventId)) {
+                registered.push(eventId);
+                localStorage.setItem('clubrrrr_events_registered', JSON.stringify(registered));
+                document.getElementById('myEventsCount').textContent = registered.length;
+                alert(`נרשמת בהצלחה לאירוע!`);
+                location.reload();
+            } else {
+                alert('אתה כבר רשום לאירוע זה');
+            }
         }
 
         // Filter events
