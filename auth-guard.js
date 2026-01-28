@@ -138,7 +138,7 @@ class AuthGuard {
     logout() {
         localStorage.removeItem('clubrrrr_user');
         localStorage.removeItem('clubrrrr_token');
-        window.location.href = 'login.html';
+        window.location.href = 'web_PM__index.html';
     }
 
     redirectToLogin() {
