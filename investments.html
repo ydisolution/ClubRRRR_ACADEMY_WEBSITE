@@ -3,315 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>השקעות - ClubRRRR</title>
+    <title>עסקאות להשקעה - ClubRRRR</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
-            --primary: #4F46E5;
-            --primary-light: #6366F1;
-            --accent: #EC4899;
-            --success: #10B981;
-            --warning: #F59E0B;
-            --dark: #1F2937;
-            --gray-50: #F9FAFB;
-            --gray-100: #F3F4F6;
-            --gray-200: #E5E7EB;
-            --gray-400: #9CA3AF;
-            --gray-600: #4B5563;
-            --white: #FFFFFF;
+            --gold-color: #DFB249;
+            --dark-bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
         }
+        
         body {
-            font-family: 'Heebo', sans-serif;
-            background: var(--gray-50);
-            color: var(--dark);
+            font-family: 'Jost', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-white);
             min-height: 100vh;
+            overflow-x: hidden;
         }
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            right: 0;
+
+        /* Header */
+        .main-header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(18px);
+            padding: 20px 0;
+            position: sticky;
             top: 0;
-            width: 280px;
-            height: 100vh;
-            background: var(--dark);
-            padding: 30px 20px;
-            overflow-y: auto;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .logo {
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
             font-size: 28px;
-            font-weight: 800;
-            color: var(--primary-light);
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        .user-profile {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        .user-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin: 0 auto 10px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
             font-weight: 700;
+            color: var(--gold-color);
         }
-        .user-name {
-            color: var(--white);
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .user-email {
-            color: var(--gray-400);
-            font-size: 12px;
-        }
+
         .nav-menu {
-            list-style: none;
-        }
-        .nav-link {
             display: flex;
+            gap: 40px;
+            list-style: none;
             align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            color: var(--gray-400);
+        }
+
+        .nav-menu a {
+            color: var(--text-white);
             text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 10px 0;
+            display: block;
         }
-        .nav-link:hover, .nav-link.active {
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary-light);
+
+        .nav-menu a:hover {
+            color: var(--gold-color);
         }
-        .logout-btn {
-            margin-top: 20px;
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-color);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
             width: 100%;
-            padding: 12px;
-            background: rgba(239, 68, 68, 0.1);
-            color: #EF4444;
-            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .logout-btn {
+            background: linear-gradient(135deg, var(--gold-color) 0%, #F4D88A 100%);
+            color: var(--dark-bg) !important;
+            padding: 10px 20px;
             border-radius: 8px;
-            cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
+
+        .logout-btn::after {
+            display: none !important;
+        }
+
         .logout-btn:hover {
-            background: #EF4444;
-            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(223, 178, 73, 0.4);
         }
-        /* Main */
-        .main {
-            margin-right: 280px;
-            padding: 40px;
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
         }
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--white);
-            padding: 40px;
-            border-radius: 16px;
-            margin-bottom: 40px;
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease-out;
         }
-        .header h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
+
+        .section-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
         }
-        .header p {
-            opacity: 0.95;
-            margin-bottom: 12px;
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
         }
-        .header .user-info {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        .grid {
+
+        /* Deal Cards Grid */
+        .deals-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
-        .card {
-            background: var(--white);
-            border-radius: 16px;
+
+        .deal-card {
+            background: var(--card-bg);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
             transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-        .card:hover {
+
+        .deal-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(79, 70, 229, 0.15);
+            box-shadow: 0 15px 40px rgba(223, 178, 73, 0.15);
+            border-color: var(--gold-color);
         }
-        .card-image {
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+
+        .deal-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.2) 0%, rgba(223, 178, 73, 0.05) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 64px;
-            color: rgba(255, 255, 255, 0.3);
+            font-size: 60px;
             position: relative;
         }
-        .card-badge {
+
+        .deal-badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--warning);
-            color: var(--white);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-        .card-content {
-            padding: 24px;
-        }
-        .card-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 6px;
-        }
-        .card-location {
-            color: var(--gray-600);
+            top: 15px;
+            right: 15px;
+            background: var(--gold-color);
+            color: var(--dark-bg);
+            padding: 8px 16px;
+            border-radius: 20px;
             font-size: 13px;
-            margin-bottom: 16px;
+            font-weight: 600;
         }
-        .stats-row {
+
+        .deal-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .deal-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-white);
+        }
+
+        .deal-location {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .deal-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(223, 178, 73, 0.2);
         }
-        .stat-item {
-            background: var(--gray-50);
-            padding: 12px;
-            border-radius: 8px;
+
+        .deal-stat {
             text-align: center;
         }
-        .stat-label {
-            color: var(--gray-600);
+
+        .deal-stat-label {
             font-size: 12px;
-            margin-bottom: 4px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
         }
-        .stat-value {
-            color: var(--primary);
+
+        .deal-stat-value {
+            font-size: 18px;
             font-weight: 700;
-            font-size: 16px;
+            color: var(--gold-color);
         }
-        .progress-bar {
-            height: 8px;
-            background: var(--gray-200);
-            border-radius: 10px;
-            margin-bottom: 16px;
-            overflow: hidden;
+
+        .progress-container {
+            margin-bottom: 20px;
         }
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--success) 0%, var(--primary) 100%);
-        }
+
         .progress-label {
             font-size: 12px;
-            color: var(--gray-600);
-            margin-bottom: 16px;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
         }
-        .cta {
+
+        .progress-bar {
             width: 100%;
-            padding: 12px;
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
+            height: 6px;
+            background: rgba(223, 178, 73, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-color), #F4D88A);
+            border-radius: 10px;
+        }
+
+        .deal-btn {
+            background: transparent;
+            color: var(--gold-color);
+            border: 2px solid var(--gold-color);
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
             font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            cursor: pointer;
         }
-        .cta:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
+
+        .deal-btn:hover {
+            background: var(--gold-color);
+            color: var(--dark-bg);
         }
-        @media (max-width: 1024px) {
-            .sidebar { display: none; }
-            .main { margin: 0; padding: 20px; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 40px 20px;
+            }
+
+            .header-container {
+                padding: 0 20px;
+            }
+
+            .section-header h1 {
+                font-size: 32px;
+            }
+
+            .deals-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="logo">ClubRRRR</div>
-        <div class="user-profile">
-            <div class="user-avatar" id="userAvatar">?</div>
-            <div class="user-name" id="userName">משתמש</div>
-            <div class="user-email" id="userEmail">email@example.com</div>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-text">ClubRRRR</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="dashboard.new.html"><i class="fas fa-home"></i> דשבורד</a></li>
+                    <li><a href="investments.new.html"><i class="fas fa-chart-line"></i> השקעות</a></li>
+                    <li><a href="services.new.html"><i class="fas fa-briefcase"></i> שירותים</a></li>
+                    <li><a href="academy.html"><i class="fas fa-graduation-cap"></i> Academy</a></li>
+                    <li><a href="events.new.html"><i class="fas fa-calendar-alt"></i> אירועים</a></li>
+                    <li><a href="community.html"><i class="fas fa-users"></i> קהילה</a></li>
+                    <li><a href="profile.html"><i class="fas fa-user"></i> פרופיל</a></li>
+                    <li><button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> התנתק</button></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="user-dashboard.html" class="nav-link"><i class="fas fa-home"></i> דשבורד</a></li>
-                <li><a href="investments.html" class="nav-link active"><i class="fas fa-chart-line"></i> השקעות</a></li>
-                <li><a href="services.html" class="nav-link"><i class="fas fa-briefcase"></i> שירותים</a></li>
-                <li><a href="ai-tools.html" class="nav-link"><i class="fas fa-robot"></i> כלים</a></li>
-                <li><a href="academy.html" class="nav-link"><i class="fas fa-graduation-cap"></i> Academy</a></li>
-                <li><a href="events.html" class="nav-link"><i class="fas fa-calendar-alt"></i> אירועים</a></li>
-                <li><a href="community.html" class="nav-link"><i class="fas fa-users"></i> קהילה</a></li>
-                <li><a href="profile.html" class="nav-link"><i class="fas fa-user"></i> פרופיל</a></li>
-            </ul>
-        </nav>
-        <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> התנתק</button>
-    </aside>
+    </header>
 
-    <main class="main">
-        <div class="header">
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="section-header">
             <h1>עסקאות להשקעה</h1>
-            <p>בחר מהזדמנויות ההשקעה הטובות ביותר בארה"ב</p>
-            <div class="user-info" id="welcomeUser"></div>
-        </div>
-        <div class="grid" id="dealsGrid"></div>
+            <p>בחר מהזדמנויות ההשקעה המומלצות שלנו בארה"ב</p>
+        </section>
+
+        <div class="deals-grid" id="dealsGrid"></div>
     </main>
 
     <script src="auth-guard.js"></script>
     <script>
         const deals = [
             {
-                icon: 'fa-store',
+                icon: '🏪',
                 title: 'מרכז קניות בטקסס',
-                location: 'אוסטין, טקסס • מסחרי',
+                location: 'אוסטין, טקסס',
                 yield: '14%',
                 price: '$5.0M',
                 capacity: 65,
                 duration: '3-5 שנים'
             },
             {
-                icon: 'fa-building',
+                icon: '🏢',
                 title: 'קומפלקס מגורים בפלורידה',
-                location: 'מיאמי, פלורידה • מגורים',
+                location: 'מיאמי, פלורידה',
                 yield: '12%',
                 price: '$2.5M',
                 capacity: 45,
                 duration: '4-6 שנים'
             },
             {
-                icon: 'fa-house-chimney',
+                icon: '🏗️',
                 title: 'פרויקט פיתוח דיור',
-                location: 'אטלנטה, ג\'ורג\'יה • פיתוח',
+                location: 'אטלנטה, ג\'ורג\'יה',
                 yield: '18%',
                 price: '$8.0M',
                 capacity: 85,
                 duration: '2-3 שנים'
             },
             {
-                icon: 'fa-warehouse',
+                icon: '🏭',
                 title: 'מחסן טכנולוגי חדש',
-                location: 'דלאס, טקסס • תעשייה',
+                location: 'דלאס, טקסס',
                 yield: '11%',
                 price: '$3.2M',
                 capacity: 40,
@@ -319,57 +386,57 @@
             }
         ];
 
-        function loadUser() {
-            const user = getCurrentUser();
-            if (user) {
-                document.getElementById('userName').textContent = user.name;
-                document.getElementById('userEmail').textContent = user.email;
-                document.getElementById('userAvatar').textContent = user.name.charAt(0).toUpperCase();
-                const stats = user.stats || {};
-                document.getElementById('welcomeUser').textContent = `📊 המשקיעים בפלטפורמה שלנו הרוויחו בממוצע 15% בשנה הקודמת`;
-            }
-        }
-
         function renderDeals() {
             const grid = document.getElementById('dealsGrid');
             grid.innerHTML = deals.map(d => `
-                <div class="card">
-                    <div class="card-image">
-                        <i class="fas ${d.icon}"></i>
-                        <div class="card-badge">${d.yield} תשואה</div>
+                <div class="deal-card">
+                    <div class="deal-image">
+                        ${d.icon}
+                        <div class="deal-badge">${d.yield} תשואה</div>
                     </div>
-                    <div class="card-content">
-                        <div class="card-title">${d.title}</div>
-                        <div class="card-location"><i class="fas fa-map-marker-alt"></i> ${d.location}</div>
+                    <div class="deal-content">
+                        <div class="deal-title">${d.title}</div>
+                        <div class="deal-location">
+                            <i class="fas fa-map-marker-alt" style="color: var(--gold-color);"></i>
+                            ${d.location}
+                        </div>
                         
-                        <div class="stats-row">
-                            <div class="stat-item">
-                                <div class="stat-label">השקעה</div>
-                                <div class="stat-value">${d.price}</div>
+                        <div class="deal-stats">
+                            <div class="deal-stat">
+                                <div class="deal-stat-label">השקעה</div>
+                                <div class="deal-stat-value">${d.price}</div>
                             </div>
-                            <div class="stat-item">
-                                <div class="stat-label">משך</div>
-                                <div class="stat-value">${d.duration}</div>
+                            <div class="deal-stat">
+                                <div class="deal-stat-label">משך</div>
+                                <div class="deal-stat-value">${d.duration}</div>
                             </div>
                         </div>
 
-                        <div class="progress-label">קיבולת מלאה: ${d.capacity}%</div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${d.capacity}%"></div>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>קיבולת</span>
+                                <span>${d.capacity}%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${d.capacity}%"></div>
+                            </div>
                         </div>
 
-                        <button class="cta" onclick="alert('בדיקת נאותות תתווסף בקרוב')">
-                            <i class="fas fa-arrow-left"></i> צפה בפרטים
+                        <button class="deal-btn" onclick="alert('בדיקת נאותות תתווסף בקרוב')">
+                            צפה בפרטים →
                         </button>
                     </div>
                 </div>
             `).join('');
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            loadUser();
-            renderDeals();
-        });
+        function logout() {
+            if (typeof logoutUser === 'function') {
+                logoutUser();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', renderDeals);
     </script>
 </body>
 </html>

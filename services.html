@@ -4,386 +4,418 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>שירותים מקצועיים - ClubRRRR</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
-            --primary: #4F46E5;
-            --primary-light: #6366F1;
-            --accent: #EC4899;
-            --success: #10B981;
-            --warning: #F59E0B;
-            --dark: #1F2937;
-            --gray-50: #F9FAFB;
-            --gray-100: #F3F4F6;
-            --gray-200: #E5E7EB;
-            --gray-400: #9CA3AF;
-            --gray-600: #4B5563;
-            --white: #FFFFFF;
+            --gold-color: #DFB249;
+            --dark-bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
         }
+        
         body {
-            font-family: 'Heebo', sans-serif;
-            background: var(--gray-50);
-            color: var(--dark);
+            font-family: 'Jost', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-white);
             min-height: 100vh;
+            overflow-x: hidden;
         }
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            right: 0;
+
+        /* Header */
+        .main-header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(18px);
+            padding: 20px 0;
+            position: sticky;
             top: 0;
-            width: 280px;
-            height: 100vh;
-            background: var(--dark);
-            padding: 30px 20px;
-            overflow-y: auto;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .logo {
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
             font-size: 28px;
-            font-weight: 800;
-            color: var(--primary-light);
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        .user-profile {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        .user-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin: 0 auto 10px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
             font-weight: 700;
+            color: var(--gold-color);
         }
-        .user-name {
-            color: var(--white);
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .user-email {
-            color: var(--gray-400);
-            font-size: 12px;
-        }
+
         .nav-menu {
-            list-style: none;
-        }
-        .nav-link {
             display: flex;
+            gap: 40px;
+            list-style: none;
             align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            color: var(--gray-400);
+        }
+
+        .nav-menu a {
+            color: var(--text-white);
             text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 10px 0;
+            display: block;
         }
-        .nav-link:hover, .nav-link.active {
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary-light);
+
+        .nav-menu a:hover {
+            color: var(--gold-color);
         }
-        .logout-btn {
-            margin-top: 20px;
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-color);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
             width: 100%;
-            padding: 12px;
-            background: rgba(239, 68, 68, 0.1);
-            color: #EF4444;
-            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .logout-btn {
+            background: linear-gradient(135deg, var(--gold-color) 0%, #F4D88A 100%);
+            color: var(--dark-bg) !important;
+            padding: 10px 20px;
             border-radius: 8px;
-            cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
+
+        .logout-btn::after {
+            display: none !important;
+        }
+
         .logout-btn:hover {
-            background: #EF4444;
-            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(223, 178, 73, 0.4);
         }
-        /* Main */
-        .main {
-            margin-right: 280px;
-            padding: 40px;
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
         }
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--white);
-            padding: 40px;
-            border-radius: 16px;
-            margin-bottom: 40px;
-        }
-        .header h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
-        .header p {
-            opacity: 0.95;
-            margin-bottom: 12px;
-        }
-        .header .user-info {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 28px;
-        }
-        .card {
-            background: var(--white);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(79, 70, 229, 0.15);
-        }
-        .card-header {
-            padding: 24px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--white);
+
+        .section-header {
             text-align: center;
-            position: relative;
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease-out;
         }
-        .card-icon {
+
+        .section-header h1 {
             font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(223, 178, 73, 0.15);
+            border-color: var(--gold-color);
+        }
+
+        .service-header {
+            padding: 40px 30px;
+            background: linear-gradient(135deg, rgba(223, 178, 73, 0.15) 0%, rgba(223, 178, 73, 0.05) 100%);
+            text-align: center;
+            border-bottom: 1px solid rgba(223, 178, 73, 0.2);
+        }
+
+        .service-icon {
+            font-size: 42px;
+            color: var(--gold-color);
             margin-bottom: 12px;
         }
-        .card-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 4px;
+
+        .service-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 6px;
         }
-        .card-subtitle {
-            font-size: 12px;
-            opacity: 0.85;
+
+        .service-provider {
+            font-size: 13px;
+            color: var(--text-gray);
         }
-        .card-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--warning);
-            color: var(--white);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
+
+        .service-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
-        .card-content {
-            padding: 24px;
-        }
-        .expertise-list {
-            margin-bottom: 16px;
-        }
-        .expertise-item {
+
+        .service-rating {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: var(--dark);
-            font-size: 13px;
-            margin-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
         }
-        .expertise-item i {
-            color: var(--success);
-        }
-        .rating {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 16px;
-            color: var(--dark);
-            font-size: 13px;
-        }
-        .stars {
-            color: var(--warning);
-        }
-        .divider {
-            height: 1px;
-            background: var(--gray-200);
-            margin: 16px 0;
-        }
-        .price-info {
-            background: var(--gray-50);
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-        }
-        .price-label {
-            color: var(--gray-600);
+
+        .service-stars {
+            color: var(--gold-color);
             font-size: 12px;
         }
-        .price {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
+
+        .service-expertise {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(223, 178, 73, 0.2);
         }
-        .actions {
+
+        .expertise-item {
             display: flex;
-            gap: 12px;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            line-height: 1.4;
         }
-        .btn {
+
+        .expertise-item i {
+            color: var(--gold-color);
+            font-size: 12px;
+        }
+
+        .service-price {
+            background: rgba(223, 178, 73, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .service-price-label {
+            font-size: 12px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .service-price-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--gold-color);
+        }
+
+        .service-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .service-btn {
             flex: 1;
             padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+            border-radius: 5px;
+            text-decoration: none;
             font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            cursor: pointer;
+            border: none;
         }
-        .btn-secondary {
-            background: var(--gray-100);
-            color: var(--dark);
+
+        .service-btn-secondary {
+            background: transparent;
+            color: var(--gold-color);
+            border: 2px solid rgba(223, 178, 73, 0.3);
         }
-        .btn-secondary:hover {
-            background: var(--gray-200);
+
+        .service-btn-secondary:hover {
+            background: rgba(223, 178, 73, 0.1);
+            border-color: var(--gold-color);
         }
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
+
+        .service-btn-primary {
+            background: transparent;
+            color: var(--gold-color);
+            border: 2px solid var(--gold-color);
         }
-        .btn-primary:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
+
+        .service-btn-primary:hover {
+            background: var(--gold-color);
+            color: var(--dark-bg);
         }
-        @media (max-width: 1024px) {
-            .sidebar { display: none; }
-            .main { margin: 0; padding: 20px; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 40px 20px;
+            }
+
+            .header-container {
+                padding: 0 20px;
+            }
+
+            .section-header h1 {
+                font-size: 32px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="logo">ClubRRRR</div>
-        <div class="user-profile">
-            <div class="user-avatar" id="userAvatar">?</div>
-            <div class="user-name" id="userName">משתמש</div>
-            <div class="user-email" id="userEmail">email@example.com</div>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-text">ClubRRRR</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="dashboard.new.html"><i class="fas fa-home"></i> דשבורד</a></li>
+                    <li><a href="investments.new.html"><i class="fas fa-chart-line"></i> השקעות</a></li>
+                    <li><a href="services.new.html"><i class="fas fa-briefcase"></i> שירותים</a></li>
+                    <li><a href="academy.html"><i class="fas fa-graduation-cap"></i> Academy</a></li>
+                    <li><a href="events.new.html"><i class="fas fa-calendar-alt"></i> אירועים</a></li>
+                    <li><a href="community.html"><i class="fas fa-users"></i> קהילה</a></li>
+                    <li><a href="profile.html"><i class="fas fa-user"></i> פרופיל</a></li>
+                    <li><button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> התנתק</button></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="user-dashboard.html" class="nav-link"><i class="fas fa-home"></i> דשבורד</a></li>
-                <li><a href="investments.html" class="nav-link"><i class="fas fa-chart-line"></i> השקעות</a></li>
-                <li><a href="services.html" class="nav-link active"><i class="fas fa-briefcase"></i> שירותים</a></li>
-                <li><a href="ai-tools.html" class="nav-link"><i class="fas fa-robot"></i> כלים</a></li>
-                <li><a href="academy.html" class="nav-link"><i class="fas fa-graduation-cap"></i> Academy</a></li>
-                <li><a href="events.html" class="nav-link"><i class="fas fa-calendar-alt"></i> אירועים</a></li>
-                <li><a href="community.html" class="nav-link"><i class="fas fa-users"></i> קהילה</a></li>
-                <li><a href="profile.html" class="nav-link"><i class="fas fa-user"></i> פרופיל</a></li>
-            </ul>
-        </nav>
-        <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> התנתק</button>
-    </aside>
+    </header>
 
-    <main class="main">
-        <div class="header">
-            <h1>שירותים מקצועיים לעסקאות נדל"ן</h1>
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="section-header">
+            <h1>שירותים מקצועיים</h1>
             <p>בחר מומחים שילוו אותך בעסקאות שלך</p>
-            <div class="user-info" id="servicesWelcome"></div>
-        </div>
-        <div class="grid" id="servicesGrid"></div>
+        </section>
+
+        <div class="services-grid" id="servicesGrid"></div>
     </main>
 
     <script src="auth-guard.js"></script>
     <script>
         const services = [
             {
-                icon: 'fas fa-calculator',
-                title: 'יעוץ מס נדל"ן',
-                subtitle: 'שרה לוי, EA',
-                price: '45 קרדיטים',
+                icon: '💰',
+                name: 'יעוץ מס נדל"ן',
+                provider: 'שרה לוי, EA',
                 rating: 4.8,
                 reviews: 127,
-                expertise: [
-                    'תכנון מס מתקדם',
-                    'אופטימיזציה אפטו',
-                    'סטרטגיות 1031',
-                    'דיווח IRS'
-                ]
+                price: '45 קרדיטים',
+                expertise: ['תכנון מס מתקדם', 'אופטימיזציה אפטו', 'סטרטגיות 1031', 'דיווח IRS']
             },
             {
-                icon: 'fas fa-briefcase',
-                title: 'שירותי רואת חשבון',
-                subtitle: 'Sarah Johnson, CPA',
-                price: '50 קרדיטים',
+                icon: '📊',
+                name: 'שירותי רואת חשבון',
+                provider: 'Sarah Johnson, CPA',
                 rating: 4.9,
                 reviews: 156,
-                expertise: [
-                    'ניהול כספים',
-                    'דוחות שנתיים',
-                    'תכנון מס',
-                    'ייעוץ עסקי'
-                ]
+                price: '50 קרדיטים',
+                expertise: ['ניהול כספים', 'דוחות שנתיים', 'תכנון מס', 'ייעוץ עסקי']
             },
             {
-                icon: 'fas fa-home',
-                title: 'סוכן נדל"ן מקצועי',
-                subtitle: 'Lisa Martinez Realty',
-                price: 'חינם לחברים',
+                icon: '🏠',
+                name: 'סוכן נדל"ן',
+                provider: 'Lisa Martinez Realty',
                 rating: 4.7,
                 reviews: 94,
-                expertise: [
-                    'חיפוש דילים',
-                    'ניתוח שוק',
-                    'משא ומתן',
-                    'סיום עסקאות'
-                ]
+                price: 'חינם לחברים',
+                expertise: ['חיפוש דילים', 'ניתוח שוק', 'משא ומתן', 'סיום עסקאות']
             },
             {
-                icon: 'fas fa-gavel',
-                title: 'ייעוץ משפטי',
-                subtitle: 'David Cohen, Esq.',
-                price: '60 קרדיטים',
+                icon: '⚖️',
+                name: 'ייעוץ משפטי',
+                provider: 'David Cohen, Esq.',
                 rating: 4.8,
                 reviews: 89,
-                expertise: [
-                    'הסכמים משפטיים',
-                    'הגנת עסקה',
-                    'כתב אישום',
-                    'דרישות יתר'
-                ]
+                price: '60 קרדיטים',
+                expertise: ['הסכמים משפטיים', 'הגנת עסקה', 'כתב אישור', 'דרישות יתר']
             }
         ];
-
-        function loadUser() {
-            const user = getCurrentUser();
-            if (user) {
-                document.getElementById('userName').textContent = user.name;
-                document.getElementById('userEmail').textContent = user.email;
-                document.getElementById('userAvatar').textContent = user.name.charAt(0).toUpperCase();
-                document.getElementById('servicesWelcome').textContent = `בחר משכימיים מהטובים ביותר - הכל מאומת ודירוג גבוה`;
-            }
-        }
 
         function renderServices() {
             const grid = document.getElementById('servicesGrid');
             grid.innerHTML = services.map(s => `
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="${s.icon}"></i></div>
-                        <div class="card-title">${s.title}</div>
-                        <div class="card-subtitle">${s.subtitle}</div>
-                        <div class="card-badge">${s.price}</div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">${s.icon}</div>
+                        <div class="service-name">${s.name}</div>
+                        <div class="service-provider">${s.provider}</div>
                     </div>
-                    <div class="card-content">
-                        <div class="rating">
-                            <div class="stars">★ ${s.rating}</div>
-                            <div>(${s.reviews} reviews)</div>
+                    <div class="service-content">
+                        <div class="service-rating">
+                            <span class="service-stars">★ ${s.rating}</span>
+                            <span style="color: var(--text-gray);">(${s.reviews} reviews)</span>
                         </div>
-                        <div class="expertise-list">
+                        
+                        <div class="service-expertise">
                             ${s.expertise.map(e => `
                                 <div class="expertise-item">
                                     <i class="fas fa-check-circle"></i>
@@ -391,34 +423,28 @@
                                 </div>
                             `).join('')}
                         </div>
-                        <div class="divider"></div>
-                        <div class="price-info">
-                            <div class="price-label">תעריף משלך:</div>
-                            <div class="price">${s.price}</div>
+
+                        <div class="service-price">
+                            <div class="service-price-label">תעריף:</div>
+                            <div class="service-price-value">${s.price}</div>
                         </div>
-                        <div class="actions">
-                            <button class="btn btn-secondary">צפה בפרטים</button>
-                            <button class="btn btn-primary">קבע פגישה</button>
+
+                        <div class="service-actions">
+                            <button class="service-btn service-btn-secondary" onclick="alert('צפייה בפרטים מלאים')">צפה בפרטים</button>
+                            <button class="service-btn service-btn-primary" onclick="alert('קביעת פגישה')">קבע פגישה</button>
                         </div>
                     </div>
                 </div>
             `).join('');
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            loadUser();
-            renderServices();
-        });
-    </script>
-</body>
-</html>
-                </div>`).join('');
+        function logout() {
+            if (typeof logoutUser === 'function') {
+                logoutUser();
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            loadUser();
-            renderServices();
-        });
+        document.addEventListener('DOMContentLoaded', renderServices);
     </script>
 </body>
 </html>
