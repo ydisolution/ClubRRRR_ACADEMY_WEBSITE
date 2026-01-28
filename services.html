@@ -3,448 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>שירותים מקצועיים - ClubRRRR</title>
-    
-    <!-- Fonts -->
+    <title>שירותים - ClubRRRR</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --gold-color: #DFB249;
-            --dark-bg: #0A0A0A;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text-white: #FFFFFF;
-            --text-gray: #CCCCCC;
-        }
-        
-        body {
-            font-family: 'Jost', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-white);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        .main-header {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(18px);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-text {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--gold-color);
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: var(--text-white);
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-            padding: 10px 0;
-            display: block;
-        }
-
-        .nav-menu a:hover {
-            color: var(--gold-color);
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold-color);
-            transition: width 0.3s;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .logout-btn {
-            background: linear-gradient(135deg, var(--gold-color) 0%, #F4D88A 100%);
-            color: var(--dark-bg) !important;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .logout-btn::after {
-            display: none !important;
-        }
-
-        .logout-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(223, 178, 73, 0.4);
-        }
-
-        /* Main Content */
-        .main-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 80px 40px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .section-header h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .section-header p {
-            font-size: 18px;
-            color: var(--text-gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(223, 178, 73, 0.15);
-            border-color: var(--gold-color);
-        }
-
-        .service-header {
-            padding: 40px 30px;
-            background: linear-gradient(135deg, rgba(223, 178, 73, 0.15) 0%, rgba(223, 178, 73, 0.05) 100%);
-            text-align: center;
-            border-bottom: 1px solid rgba(223, 178, 73, 0.2);
-        }
-
-        .service-icon {
-            font-size: 42px;
-            color: var(--gold-color);
-            margin-bottom: 12px;
-        }
-
-        .service-name {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .service-provider {
-            font-size: 13px;
-            color: var(--text-gray);
-        }
-
-        .service-content {
-            padding: 30px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-rating {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-
-        .service-stars {
-            color: var(--gold-color);
-            font-size: 12px;
-        }
-
-        .service-expertise {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(223, 178, 73, 0.2);
-        }
-
-        .expertise-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-            color: var(--text-gray);
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        .expertise-item i {
-            color: var(--gold-color);
-            font-size: 12px;
-        }
-
-        .service-price {
-            background: rgba(223, 178, 73, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .service-price-label {
-            font-size: 12px;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-        }
-
-        .service-price-value {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--gold-color);
-        }
-
-        .service-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: auto;
-        }
-
-        .service-btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.3s;
-            text-align: center;
-            cursor: pointer;
-            border: none;
-        }
-
-        .service-btn-secondary {
-            background: transparent;
-            color: var(--gold-color);
-            border: 2px solid rgba(223, 178, 73, 0.3);
-        }
-
-        .service-btn-secondary:hover {
-            background: rgba(223, 178, 73, 0.1);
-            border-color: var(--gold-color);
-        }
-
-        .service-btn-primary {
-            background: transparent;
-            color: var(--gold-color);
-            border: 2px solid var(--gold-color);
-        }
-
-        .service-btn-primary:hover {
-            background: var(--gold-color);
-            color: var(--dark-bg);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                padding: 40px 20px;
-            }
-
-            .header-container {
-                padding: 0 20px;
-            }
-
-            .section-header h1 {
-                font-size: 32px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .service-actions {
-                flex-direction: column;
-            }
-        }
+        :root { --primary-gold:#F4CE69; --dark-navy:#1E293B; --light-navy:#334155; --bg-dark:#0F172A; --card-bg:#1E293B; --text-white:#F8FAFC; --text-gray:#CBD5E1; --success:#10B981; }
+        body { font-family:'Heebo',sans-serif; background:var(--bg-dark); color:var(--text-white); min-height:100vh; }
+        .sidebar{position:fixed;right:0;top:0;width:280px;height:100vh;background:var(--dark-navy);padding:30px 20px;overflow-y:auto;z-index:1000}
+        .logo{font-size:28px;font-weight:800;color:var(--primary-gold);text-align:center;margin-bottom:10px}
+        .nav-menu{list-style:none}
+        .nav-link{display:flex;align-items:center;gap:12px;padding:14px 18px;color:var(--text-gray);text-decoration:none;border-radius:12px;font-size:14px}
+        .nav-link:hover,.nav-link.active{background:var(--light-navy);color:var(--primary-gold)}
+        .logout-btn{margin-top:20px;width:100%;padding:14px;background:rgba(239,68,68,.1);color:#EF4444;border:1px solid #EF4444;border-radius:12px;cursor:pointer;font-weight:600}
+        .main{margin-right:280px;padding:40px}
+        .page-header{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;margin-bottom:25px}
+        .title-wrap h1{margin:0;font-size:32px;font-weight:800}
+        .title-wrap p{margin:6px 0 0;color:var(--text-gray)}
+        .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+        .stat-card{background:var(--card-bg);padding:18px;border-radius:14px;text-align:center}
+        .stat-value{font-size:28px;font-weight:800;color:var(--primary-gold)}
+        .stat-label{color:var(--text-gray);font-size:13px}
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+        .card{background:var(--card-bg);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+        .card-image{width:100%;height:180px;background:linear-gradient(135deg,#F4CE69,#EFBB43);display:flex;align-items:center;justify-content:center;color:var(--dark-navy);font-size:60px;position:relative;overflow:hidden}
+        .card-image img{width:100%;height:100%;object-fit:cover}
+        .provider-badge{position:absolute;bottom:10px;right:10px;background:var(--primary-gold);color:var(--dark-navy);padding:8px 12px;border-radius:6px;font-weight:700;font-size:12px}
+        .card-content{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+        .card-title{font-weight:700;font-size:16px;color:var(--text-white)}
+        .card-meta{color:var(--text-gray);font-size:13px;display:flex;gap:8px;align-items:center}
+        .card-description{color:var(--text-gray);font-size:13px;line-height:1.4}
+        .rating-box{display:flex;gap:8px;align-items:center;padding:10px;background:rgba(244,206,105,0.1);border-radius:8px}
+        .stars{color:var(--primary-gold);font-size:13px}
+        .reviews-count{color:var(--text-gray);font-size:12px}
+        .expertise{padding:10px 0;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08)}
+        .expertise-item{display:flex;gap:8px;align-items:center;font-size:13px;padding:6px 0;color:var(--text-gray)}
+        .expertise-item i{color:var(--success)}
+        .price-box{font-size:18px;font-weight:800;color:var(--primary-gold);padding:10px 0}
+        .card-actions{display:flex;gap:8px;margin-top:auto}
+        .btn{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:var(--light-navy);color:var(--text-white);cursor:pointer;font-weight:600;font-size:13px}
+        .btn.primary{background:var(--primary-gold);color:var(--dark-navy);border:none}
+        .btn.danger{background:rgba(239,68,68,.1);color:#EF4444;border:1px solid #EF4444}
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:2000;align-items:center;justify-content:center}
+        .modal.active{display:flex}
+        .modal-content{background:var(--card-bg);border-radius:14px;padding:30px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto}
+        .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+        .modal-header h2{margin:0;color:var(--text-white)}
+        .modal-close{background:none;border:none;color:var(--text-white);font-size:24px;cursor:pointer}
+        .form-group{margin-bottom:15px;display:flex;flex-direction:column}
+        .form-group label{color:var(--text-gray);font-size:13px;margin-bottom:6px}
+        .form-group input,.form-group textarea,.form-group select{padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:var(--light-navy);color:var(--text-white);font-family:'Heebo',sans-serif}
+        .form-group textarea{resize:vertical;min-height:80px}
+        .form-actions{display:flex;gap:8px;margin-top:20px}
+        .admin-btn{position:absolute;top:10px;left:10px;background:var(--primary-gold);color:var(--dark-navy);border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-weight:600;font-size:12px}
+        @media(max-width:1024px){.sidebar{display:none}.main{margin:0;padding:20px}.cards{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}}
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="main-header">
-        <div class="header-container">
-            <div class="logo-text">ClubRRRR</div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="dashboard.new.html"><i class="fas fa-home"></i> דשבורד</a></li>
-                    <li><a href="investments.new.html"><i class="fas fa-chart-line"></i> השקעות</a></li>
-                    <li><a href="services.new.html"><i class="fas fa-briefcase"></i> שירותים</a></li>
-                    <li><a href="academy.html"><i class="fas fa-graduation-cap"></i> Academy</a></li>
-                    <li><a href="events.new.html"><i class="fas fa-calendar-alt"></i> אירועים</a></li>
-                    <li><a href="community.html"><i class="fas fa-users"></i> קהילה</a></li>
-                    <li><a href="profile.html"><i class="fas fa-user"></i> פרופיל</a></li>
-                    <li><button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> התנתק</button></li>
-                </ul>
-            </nav>
+    <aside class="sidebar">
+        <div class="logo">ClubRRRR</div>
+        <ul class="nav-menu">
+            <li><a class="nav-link" href="user-dashboard.html"><i class="fas fa-home"></i> דשבורד</a></li>
+            <li><a class="nav-link" href="investments.html"><i class="fas fa-chart-line"></i> השקעות</a></li>
+            <li><a class="nav-link active" href="services.html"><i class="fas fa-briefcase"></i> שירותים</a></li>
+            <li><a class="nav-link" href="ai-tools.html"><i class="fas fa-robot"></i> כלים טכנולוגיים</a></li>
+            <li><a class="nav-link" href="academy.html"><i class="fas fa-graduation-cap"></i> Academy</a></li>
+            <li><a class="nav-link" href="events.html"><i class="fas fa-calendar-alt"></i> אירועים</a></li>
+            <li><a class="nav-link" href="community.html"><i class="fas fa-users"></i> קהילה</a></li>
+        </ul>
+        <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> התנתק</button>
+    </aside>
+
+    <main class="main">
+        <div class="page-header">
+            <div class="title-wrap">
+                <h1>שירותים מקצועיים</h1>
+                <p>התחבר עם מומחים מהשדה כדי לקדם את העסק שלך</p>
+            </div>
+            <button class="btn primary" id="addServiceBtn"><i class="fas fa-plus"></i> הוסף שירות חדש</button>
         </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <section class="section-header">
-            <h1>שירותים מקצועיים</h1>
-            <p>בחר מומחים שילוו אותך בעסקאות שלך</p>
-        </section>
+        <div class="stats">
+            <div class="stat-card"><div class="stat-value" id="totalServices">4</div><div class="stat-label">סה"כ שירותים</div></div>
+            <div class="stat-card"><div class="stat-value" id="bookedServices">0</div><div class="stat-label">שירותים שהזמנת</div></div>
+            <div class="stat-card"><div class="stat-value" id="avgRating">4.8</div><div class="stat-label">דירוג ממוצע</div></div>
+            <div class="stat-card"><div class="stat-value" id="totalProviders">4</div><div class="stat-label">ספקים</div></div>
+        </div>
 
-        <div class="services-grid" id="servicesGrid"></div>
+        <div id="servicesContainer" class="cards"></div>
     </main>
+
+    <!-- Edit Service Modal -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">הוסף שירות חדש</h2>
+                <button class="modal-close" onclick="closeServiceModal()">&times;</button>
+            </div>
+            <div class="form-group">
+                <label>שם השירות</label>
+                <input type="text" id="serviceName" placeholder="שם השירות">
+            </div>
+            <div class="form-group">
+                <label>ספק השירות</label>
+                <input type="text" id="serviceProvider" placeholder="שם הספק">
+            </div>
+            <div class="form-group">
+                <label>תיאור</label>
+                <textarea id="serviceDescription" placeholder="תיאור מפורט של השירות"></textarea>
+            </div>
+            <div class="form-group">
+                <label>דירוג</label>
+                <input type="number" id="serviceRating" min="1" max="5" step="0.1" placeholder="4.8">
+            </div>
+            <div class="form-group">
+                <label>מספר ביקורות</label>
+                <input type="number" id="serviceReviews" placeholder="45">
+            </div>
+            <div class="form-group">
+                <label>מחיר (בדולרים)</label>
+                <input type="number" id="servicePrice" placeholder="99">
+            </div>
+            <div class="form-group">
+                <label>התמחות (הפרד בפסיקים)</label>
+                <input type="text" id="serviceExpertise" placeholder="ניתוח נכסים, הערכה, תכנון">
+            </div>
+            <div class="form-group">
+                <label>קישור תמונה (URL)</label>
+                <input type="text" id="serviceImage" placeholder="https://...">
+            </div>
+            <div class="form-actions">
+                <button class="btn" onclick="closeServiceModal()">ביטול</button>
+                <button class="btn primary" id="saveServiceBtn" onclick="saveService()">שמור</button>
+            </div>
+        </div>
+    </div>
 
     <script src="auth-guard.js"></script>
     <script>
-        const services = [
-            {
-                icon: '💰',
-                name: 'יעוץ מס נדל"ן',
-                provider: 'שרה לוי, EA',
-                rating: 4.8,
-                reviews: 127,
-                price: '45 קרדיטים',
-                expertise: ['תכנון מס מתקדם', 'אופטימיזציה אפטו', 'סטרטגיות 1031', 'דיווח IRS']
-            },
-            {
-                icon: '📊',
-                name: 'שירותי רואת חשבון',
-                provider: 'Sarah Johnson, CPA',
-                rating: 4.9,
-                reviews: 156,
-                price: '50 קרדיטים',
-                expertise: ['ניהול כספים', 'דוחות שנתיים', 'תכנון מס', 'ייעוץ עסקי']
-            },
-            {
-                icon: '🏠',
-                name: 'סוכן נדל"ן',
-                provider: 'Lisa Martinez Realty',
-                rating: 4.7,
-                reviews: 94,
-                price: 'חינם לחברים',
-                expertise: ['חיפוש דילים', 'ניתוח שוק', 'משא ומתן', 'סיום עסקאות']
-            },
-            {
-                icon: '⚖️',
-                name: 'ייעוץ משפטי',
-                provider: 'David Cohen, Esq.',
-                rating: 4.8,
-                reviews: 89,
-                price: '60 קרדיטים',
-                expertise: ['הסכמים משפטיים', 'הגנת עסקה', 'כתב אישור', 'דרישות יתר']
-            }
+        let services = [
+            { id:1, name:'יועץ מס ותכנון מס', provider:'דוד כהן CPA', description:'ייעוץ בנושא מס ותכנון קצבי', rating:4.8, reviews:45, price:150, expertise:['ניתוח מס','תכנון עתידות','דוחות מס'], image:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' },
+            { id:2, name:'הערכת נכסים CPA', provider:'משרד שפירא רו"ח', description:'הערכה מקצועית וביודוק של נכסים', rating:4.9, reviews:52, price:200, expertise:['הערכה בתחומים','ניתוח פיננסי','ביודוק'], image:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' },
+            { id:3, name:'ייעוץ קניית נכס', provider:'ישראל רילטור', description:'ייעוץ מקצועי בקניית נכסי השקעה', rating:4.7, reviews:38, price:100, expertise:['זיהוי הזדמנויות','משא ומתן','תיעוד'], image:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' },
+            { id:4, name:'ייעוץ משפטי וחוזים', provider:'משרד חוקי ברוד', description:'ייעוץ משפטי בעסקאות נדל"ן', rating:4.8, reviews:41, price:180, expertise:['חוקים וסדירות','עיון חוזים','הגנת זכויות'], image:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' }
         ];
+        let currentEditId = null;
+
+        function isAdmin() { return getCurrentUser()?.role === 'admin'; }
 
         function renderServices() {
-            const grid = document.getElementById('servicesGrid');
-            grid.innerHTML = services.map(s => `
-                <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon">${s.icon}</div>
-                        <div class="service-name">${s.name}</div>
-                        <div class="service-provider">${s.provider}</div>
+            const container = document.getElementById('servicesContainer');
+            container.innerHTML = services.map(s => {
+                const stars = '⭐'.repeat(Math.floor(s.rating)) + (s.rating % 1 ? '✨' : '');
+                return `
+                <div class="card">
+                    <div class="card-image" style="position:relative">
+                        <img src="${s.image}" alt="${s.name}" style="width:100%;height:100%;object-fit:cover">
+                        <div class="provider-badge">${s.provider}</div>
+                        ${isAdmin() ? `<button class="admin-btn" onclick="editService(${s.id})"><i class="fas fa-edit"></i> ערוך</button>` : ''}
                     </div>
-                    <div class="service-content">
-                        <div class="service-rating">
-                            <span class="service-stars">★ ${s.rating}</span>
-                            <span style="color: var(--text-gray);">(${s.reviews} reviews)</span>
+                    <div class="card-content">
+                        <div class="card-title">${s.name}</div>
+                        <div class="card-description">${s.description}</div>
+                        <div class="rating-box">
+                            <div class="stars">${stars}</div>
+                            <div class="reviews-count">${s.reviews} ביקורות</div>
                         </div>
-                        
-                        <div class="service-expertise">
-                            ${s.expertise.map(e => `
-                                <div class="expertise-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    ${e}
-                                </div>
-                            `).join('')}
+                        <div class="expertise">
+                            ${s.expertise.map(e => `<div class="expertise-item"><i class="fas fa-check"></i> ${e}</div>`).join('')}
                         </div>
-
-                        <div class="service-price">
-                            <div class="service-price-label">תעריף:</div>
-                            <div class="service-price-value">${s.price}</div>
-                        </div>
-
-                        <div class="service-actions">
-                            <button class="service-btn service-btn-secondary" onclick="alert('צפייה בפרטים מלאים')">צפה בפרטים</button>
-                            <button class="service-btn service-btn-primary" onclick="alert('קביעת פגישה')">קבע פגישה</button>
+                        <div class="price-box">$${s.price}</div>
+                        <div class="card-actions">
+                            <button class="btn" onclick="alert('תוכן לקרוא לספק בקרוב')"><i class="fas fa-phone"></i> פרטים</button>
+                            <button class="btn primary" onclick="bookService(${s.id})"><i class="fas fa-calendar"></i> הזמן</button>
+                            ${isAdmin() ? `<button class="btn danger" onclick="deleteService(${s.id})"><i class="fas fa-trash"></i></button>` : ''}
                         </div>
                     </div>
-                </div>
-            `).join('');
+                </div>`;
+            }).join('');
         }
 
-        function logout() {
-            if (typeof logoutUser === 'function') {
-                logoutUser();
+        function editService(id) {
+            const service = services.find(s => s.id === id);
+            if (!service) return;
+            currentEditId = id;
+            document.getElementById('modalTitle').textContent = 'ערוך שירות';
+            document.getElementById('serviceName').value = service.name;
+            document.getElementById('serviceProvider').value = service.provider;
+            document.getElementById('serviceDescription').value = service.description;
+            document.getElementById('serviceRating').value = service.rating;
+            document.getElementById('serviceReviews').value = service.reviews;
+            document.getElementById('servicePrice').value = service.price;
+            document.getElementById('serviceExpertise').value = service.expertise.join(', ');
+            document.getElementById('serviceImage').value = service.image;
+            document.getElementById('serviceModal').classList.add('active');
+        }
+
+        function saveService() {
+            const newService = {
+                name: document.getElementById('serviceName').value,
+                provider: document.getElementById('serviceProvider').value,
+                description: document.getElementById('serviceDescription').value,
+                rating: parseFloat(document.getElementById('serviceRating').value) || 0,
+                reviews: parseInt(document.getElementById('serviceReviews').value) || 0,
+                price: parseInt(document.getElementById('servicePrice').value) || 0,
+                expertise: document.getElementById('serviceExpertise').value.split(',').map(e => e.trim()),
+                image: document.getElementById('serviceImage').value
+            };
+
+            if (currentEditId) {
+                const service = services.find(s => s.id === currentEditId);
+                Object.assign(service, newService);
+            } else {
+                newService.id = Math.max(...services.map(s => s.id), 0) + 1;
+                services.push(newService);
+            }
+            closeServiceModal();
+            renderServices();
+        }
+
+        function deleteService(id) {
+            if (confirm('האם אתה בטוח?')) {
+                services = services.filter(s => s.id !== id);
+                renderServices();
             }
         }
 
-        document.addEventListener('DOMContentLoaded', renderServices);
+        function bookService(id) {
+            const user = getCurrentUser();
+            if (!user) { alert('אתה צריך להתחבר תחילה'); return; }
+            if (!user.bookedServices) user.bookedServices = [];
+            if (!user.bookedServices.includes(id)) {
+                user.bookedServices.push(id);
+                localStorage.setItem('clubrrrr_user', JSON.stringify(user));
+                document.getElementById('bookedServices').textContent = user.bookedServices.length;
+                alert('השירות הוזמן בהצלחה!');
+            } else {
+                alert('השירות כבר הוזמן');
+            }
+        }
+
+        function openServiceModal() {
+            currentEditId = null;
+            document.getElementById('modalTitle').textContent = 'הוסף שירות חדש';
+            document.getElementById('serviceName').value = '';
+            document.getElementById('serviceProvider').value = '';
+            document.getElementById('serviceDescription').value = '';
+            document.getElementById('serviceRating').value = '';
+            document.getElementById('serviceReviews').value = '';
+            document.getElementById('servicePrice').value = '';
+            document.getElementById('serviceExpertise').value = '';
+            document.getElementById('serviceImage').value = '';
+            document.getElementById('serviceModal').classList.add('active');
+        }
+
+        function closeServiceModal() { document.getElementById('serviceModal').classList.remove('active'); }
+
+        document.getElementById('addServiceBtn').addEventListener('click', () => {
+            if (!isAdmin()) { alert('רק מנהלים יכולים להוסיף שירותים'); return; }
+            openServiceModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = getCurrentUser();
+            if (user && user.bookedServices) {
+                document.getElementById('bookedServices').textContent = user.bookedServices.length;
+            }
+            document.getElementById('avgRating').textContent = (services.reduce((sum, s) => sum + s.rating, 0) / services.length).toFixed(1);
+            renderServices();
+        });
     </script>
 </body>
 </html>
