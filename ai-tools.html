@@ -3,652 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>תוכנות AI מתקדמות - ClubRRRR</title>
-    
-    <!-- Fonts -->
+    <title>כלים טכנולוגיים - ClubRRRR</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Accessibility Module -->
-    <link rel="stylesheet" href="accessibility.css">
-    
-    <!-- Language Switcher -->
-    <link rel="stylesheet" href="language-switcher.css">
-    <script src="auth-guard.js"></script>
-    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #DFB249;
-            --gold-color: #DFB249;
-            --dark-bg: #0A0A0A;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text-white: #FFFFFF;
-            --text-gray: #CCCCCC;
-        }
-
-        body {
-            font-family: 'Jost', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-white);
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        .top-bar {
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(18px);
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        .top-bar p {
-            margin: 0;
-            font-size: 14px;
-        }
-
-        .top-bar a {
-            color: var(--gold-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .main-header {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(18px);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-image {
-            height: 75px;
-            width: auto;
-            transition: transform 0.3s;
-        }
-
-        .logo-image:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: var(--text-white);
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-            padding: 10px 0;
-        }
-
-        .nav-menu a:hover {
-            color: var(--gold-color);
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold-color);
-            transition: width 0.3s;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-        .user-chip {display:inline-flex;align-items:center;gap:10px;padding:8px 14px;background:rgba(255,255,255,0.08);border-radius:999px;border:1px solid rgba(223,178,73,0.3);color:var(--text-white);font-size:0.95rem;}
-        .user-chip .avatar {width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#DFB249 0%,#F4D88A 100%);color:#0A0A0A;display:flex;align-items:center;justify-content:center;font-weight:700;}
-
-        /* Dropdown Menu */
-        .has-dropdown {
-            position: relative;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: rgba(10, 10, 10, 0.98);
-            backdrop-filter: blur(10px);
-            min-width: 250px;
-            border-radius: 8px;
-            padding: 10px 0;
-            margin-top: 10px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-
-        .has-dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-item {
-            padding: 12px 25px;
-            color: var(--text-white);
-            text-decoration: none;
-            display: block;
-            transition: all 0.3s;
-            font-size: 15px;
-            text-align: right;
-            border-right: 3px solid transparent;
-        }
-
-        .dropdown-item:hover {
-            background: rgba(223, 178, 73, 0.15);
-            color: var(--gold-color);
-            border-right-color: var(--gold-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 120px 40px 80px;
-            background: linear-gradient(135deg, rgba(223, 178, 73, 0.1) 0%, rgba(10, 10, 10, 0.95) 100%);
-            border-bottom: 1px solid rgba(223, 178, 73, 0.2);
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 56px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #FFFFFF 0%, var(--gold-color) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 24px;
-            color: var(--text-gray);
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 100px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about-content {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(223, 178, 73, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .about-title {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 30px;
-            color: var(--gold-color);
-        }
-
-        .about-text {
-            font-size: 20px;
-            line-height: 1.8;
-            color: var(--text-gray);
-            margin-bottom: 20px;
-        }
-
-        .about-highlight {
-            color: var(--text-white);
-            font-weight: 600;
-        }
-
-        /* Tools Grid */
-        .tools-section {
-            padding: 100px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 48px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 60px;
-            color: var(--text-white);
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
-            gap: 40px;
-        }
-
-        .tool-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 50px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-        }
-
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(223, 178, 73, 0.05) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold-color);
-            box-shadow: 0 20px 60px rgba(223, 178, 73, 0.3);
-        }
-
-        .tool-card:hover::before {
-            opacity: 1;
-        }
-
-        .tool-logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s;
-        }
-
-        .tool-card:hover .tool-logo {
-            border-color: var(--gold-color);
-            transform: scale(1.05);
-        }
-
-        .tool-logo img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-        }
-
-        .tool-logo i {
-            font-size: 60px;
-            color: var(--gold-color);
-        }
-
-        .tool-title {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-white);
-            text-align: center;
-        }
-
-        .tool-description {
-            font-size: 18px;
-            line-height: 1.8;
-            color: var(--text-gray);
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .tool-features {
-            list-style: none;
-            margin-top: 30px;
-        }
-
-        .tool-features li {
-            padding: 12px 0;
-            padding-right: 30px;
-            position: relative;
-            font-size: 16px;
-            color: var(--text-gray);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .tool-features li:last-child {
-            border-bottom: none;
-        }
-
-        .tool-features li::before {
-            content: '✓';
-            position: absolute;
-            right: 0;
-            color: var(--gold-color);
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .coming-soon {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .coming-soon:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        .coming-soon-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--gold-color);
-            color: var(--dark-bg);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 60px 40px 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-text {
-            color: var(--text-gray);
-            margin-bottom: 20px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footer-links a {
-            color: var(--text-white);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold-color);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 36px;
-            }
-
-            .hero-subtitle {
-                font-size: 18px;
-            }
-
-            .about-content {
-                padding: 40px 30px;
-            }
-
-            .about-title {
-                font-size: 32px;
-            }
-
-            .about-text {
-                font-size: 16px;
-            }
-
-            .tools-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 32px;
-            }
-
-            .tool-card {
-                padding: 30px;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-        }
+        :root { --primary-gold:#F4CE69; --dark-navy:#1E293B; --light-navy:#334155; --bg-dark:#0F172A; --card-bg:#1E293B; --text-white:#F8FAFC; --text-gray:#CBD5E1; --success:#10B981; }
+        body { font-family:'Heebo',sans-serif; background:var(--bg-dark); color:var(--text-white); min-height:100vh; }
+        .sidebar{position:fixed;right:0;top:0;width:280px;height:100vh;background:var(--dark-navy);padding:30px 20px;overflow-y:auto;z-index:1000}
+        .logo{font-size:28px;font-weight:800;color:var(--primary-gold);text-align:center;margin-bottom:10px}
+        .nav-menu{list-style:none}
+        .nav-link{display:flex;align-items:center;gap:12px;padding:14px 18px;color:var(--text-gray);text-decoration:none;border-radius:12px;font-size:14px}
+        .nav-link:hover,.nav-link.active{background:var(--light-navy);color:var(--primary-gold)}
+        .logout-btn{margin-top:20px;width:100%;padding:14px;background:rgba(239,68,68,.1);color:#EF4444;border:1px solid #EF4444;border-radius:12px;cursor:pointer;font-weight:600}
+        .main{margin-right:280px;padding:40px}
+        .page-header{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;margin-bottom:25px}
+        .title-wrap h1{margin:0;font-size:32px;font-weight:800}
+        .title-wrap p{margin:6px 0 0;color:var(--text-gray)}
+        .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+        .stat-card{background:var(--card-bg);padding:18px;border-radius:14px;text-align:center}
+        .stat-value{font-size:28px;font-weight:800;color:var(--primary-gold)}
+        .stat-label{color:var(--text-gray);font-size:13px}
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+        .card{background:var(--card-bg);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+        .card-image{width:100%;height:180px;background:linear-gradient(135deg,#F4CE69,#EFBB43);display:flex;align-items:center;justify-content:center;color:var(--dark-navy);font-size:60px;position:relative;overflow:hidden}
+        .card-image img{width:100%;height:100%;object-fit:cover}
+        .tool-badge{position:absolute;top:10px;left:10px;background:var(--primary-gold);color:var(--dark-navy);padding:6px 12px;border-radius:6px;font-weight:700;font-size:11px}
+        .card-content{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+        .card-title{font-weight:700;font-size:16px;color:var(--text-white)}
+        .card-meta{color:var(--text-gray);font-size:13px;display:flex;gap:8px;align-items:center}
+        .card-description{color:var(--text-gray);font-size:13px;line-height:1.4}
+        .features{padding:10px 0;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08)}
+        .feature-item{display:flex;gap:8px;align-items:center;font-size:13px;padding:6px 0;color:var(--text-gray)}
+        .feature-item i{color:var(--success)}
+        .card-actions{display:flex;gap:8px;margin-top:auto}
+        .btn{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:var(--light-navy);color:var(--text-white);cursor:pointer;font-weight:600;font-size:13px}
+        .btn.primary{background:var(--primary-gold);color:var(--dark-navy);border:none}
+        .btn.danger{background:rgba(239,68,68,.1);color:#EF4444;border:1px solid #EF4444}
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:2000;align-items:center;justify-content:center}
+        .modal.active{display:flex}
+        .modal-content{background:var(--card-bg);border-radius:14px;padding:30px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto}
+        .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+        .modal-header h2{margin:0;color:var(--text-white)}
+        .modal-close{background:none;border:none;color:var(--text-white);font-size:24px;cursor:pointer}
+        .form-group{margin-bottom:15px;display:flex;flex-direction:column}
+        .form-group label{color:var(--text-gray);font-size:13px;margin-bottom:6px}
+        .form-group input,.form-group textarea,.form-group select{padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:var(--light-navy);color:var(--text-white);font-family:'Heebo',sans-serif}
+        .form-group textarea{resize:vertical;min-height:80px}
+        .form-actions{display:flex;gap:8px;margin-top:20px}
+        .admin-btn{position:absolute;top:10px;left:10px;background:var(--primary-gold);color:var(--dark-navy);border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-weight:600;font-size:12px;z-index:10}
+        @media(max-width:1024px){.sidebar{display:none}.main{margin:0;padding:20px}.cards{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}}
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <p><a href="#contact">Meet Up with ClubRRRR</a></p>
+    <aside class="sidebar">
+        <div class="logo">ClubRRRR</div>
+        <ul class="nav-menu">
+            <li><a class="nav-link" href="user-dashboard.html"><i class="fas fa-home"></i> דשבורד</a></li>
+            <li><a class="nav-link" href="investments.html"><i class="fas fa-chart-line"></i> השקעות</a></li>
+            <li><a class="nav-link" href="services.html"><i class="fas fa-briefcase"></i> שירותים</a></li>
+            <li><a class="nav-link active" href="ai-tools.html"><i class="fas fa-robot"></i> כלים טכנולוגיים</a></li>
+            <li><a class="nav-link" href="academy.html"><i class="fas fa-graduation-cap"></i> Academy</a></li>
+            <li><a class="nav-link" href="events.html"><i class="fas fa-calendar-alt"></i> אירועים</a></li>
+            <li><a class="nav-link" href="community.html"><i class="fas fa-users"></i> קהילה</a></li>
+        </ul>
+        <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> התנתק</button>
+    </aside>
+
+    <main class="main">
+        <div class="page-header">
+            <div class="title-wrap">
+                <h1>כלים טכנולוגיים</h1>
+                <p>כלי AI וטכנולוגיה מתקדמים לניהול נדל"ן</p>
+            </div>
+            <button class="btn primary" id="addToolBtn"><i class="fas fa-plus"></i> הוסף כלי חדש</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card"><div class="stat-value" id="totalTools">6</div><div class="stat-label">סה"כ כלים</div></div>
+            <div class="stat-card"><div class="stat-value" id="freeTools">2</div><div class="stat-label">כלים חינמיים</div></div>
+            <div class="stat-card"><div class="stat-value" id="premiumTools">4</div><div class="stat-label">כלים פרימיום</div></div>
+            <div class="stat-card"><div class="stat-value" id="activeUsers">342</div><div class="stat-label">משתמשים פעילים</div></div>
+        </div>
+
+        <div id="toolsContainer" class="cards"></div>
+    </main>
+
+    <!-- Edit Tool Modal -->
+    <div id="toolModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">הוסף כלי חדש</h2>
+                <button class="modal-close" onclick="closeToolModal()">&times;</button>
+            </div>
+            <div class="form-group">
+                <label>שם הכלי</label>
+                <input type="text" id="toolName" placeholder="שם הכלי">
+            </div>
+            <div class="form-group">
+                <label>תיאור</label>
+                <textarea id="toolDescription" placeholder="תיאור מפורט של הכלי"></textarea>
+            </div>
+            <div class="form-group">
+                <label>סוג</label>
+                <select id="toolType">
+                    <option value="AI">AI</option>
+                    <option value="ניתוח נתונים">ניתוח נתונים</option>
+                    <option value="אוטומציה">אוטומציה</option>
+                    <option value="תקשורת">תקשורת</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>מחיר (בדולרים, 0 לחינמי)</label>
+                <input type="number" id="toolPrice" placeholder="0">
+            </div>
+            <div class="form-group">
+                <label>תכונות (הפרד בפסיקים)</label>
+                <input type="text" id="toolFeatures" placeholder="תכונה 1, תכונה 2, תכונה 3">
+            </div>
+            <div class="form-group">
+                <label>קישור לכלי</label>
+                <input type="text" id="toolUrl" placeholder="https://...">
+            </div>
+            <div class="form-group">
+                <label>קישור תמונה (URL)</label>
+                <input type="text" id="toolImage" placeholder="https://...">
+            </div>
+            <div class="form-actions">
+                <button class="btn" onclick="closeToolModal()">ביטול</button>
+                <button class="btn primary" id="saveToolBtn" onclick="saveTool()">שמור</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Header -->
-    <header class="main-header">
-        <div class="header-container">
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="index.html#about">אודות</a></li>
-                    <li class="has-dropdown">
-                        <a href="#programs">תכניות ושירותים</a>
-                        <div class="dropdown-menu">
-                            <a href="mentoring.html" class="dropdown-item">תכנית מנטורינג אישי</a>
-                            <a href="cluber360.html" class="dropdown-item">תכנית קלאבר 360</a>
-                            <a href="workshops.html" class="dropdown-item">סדנאות</a>
-                            <a href="ai-tools.html" class="dropdown-item">תוכנות AI</a>
-                        </div>
-                    </li>
-                    <li><a href="graduates.html">הבוגרים שלנו</a></li>
-                    <li class="has-dropdown">
-                        <a href="content.html">תוכן</a>
-                        <div class="dropdown-menu">
-                            <a href="podcast.html" class="dropdown-item">פודקאסט</a>
-                            <a href="hosts.html" class="dropdown-item">קלאברים מארחים</a>
-                        </div>
-                    </li>
-                    <li><a href="community.html">קהילה</a></li>
-                    <li><a href="events.html">אירועים</a></li>
-                    <li><a href="user-dashboard.html">האזור האישי</a></li>
-                </ul>
-            </nav>
-            <a href="index.html" class="logo">
-                <img src="./ClubRRRRnew logo.png" alt="ClubRRRR Logo" class="logo-image">
-            </a>
-            <div class="user-chip" id="userChip" style="display:none">
-                <span class="avatar" id="userAvatarChip">?</span>
-                <span id="userNameChip">משתמש</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">תוכנות AI מתקדמות לנדל"ן</h1>
-            <p class="hero-subtitle">טכנולוגיה חכמה שפותחה במיוחד עבור משקיעי ClubRRRR</p>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="about-content">
-            <h2 class="about-title">איך זה התחיל?</h2>
-            <p class="about-text">
-                <span class="about-highlight">דרור זרבוני</span>, שותף ומייסד ClubRRRR, מביא עמו שנות ניסיון רבות מעולם ההייטק הישראלי. 
-                בעברו שימש כ<span class="about-highlight">מנכ"ל חברות תוכנה</span> ומוביל פרויקטים טכנולוגיים מורכבים.
-            </p>
-            <p class="about-text">
-                כאשר דרור ו<span class="about-highlight">איתי אהרון</span> החליטו לשלב את המומחיות הטכנולוגית עם הידע והניסיון שצברו בעולם הנדל"ן האמריקאי, 
-                נולדה חזון ייחודי: <span class="about-highlight">לפתח כלים טכנולוגיים מתקדמים שיעניקו לחברי ClubRRRR יתרון אמיתי בשוק</span>.
-            </p>
-            <p class="about-text">
-                השילוב בין הבנה עמוקה של השוק האמריקאי, ניסיון מעשי בביצוע מאות עסקאות, וידע טכנולוגי מתקדם - 
-                הוביל ליצירת <span class="about-highlight">פלטפורמות AI ייעודיות</span> שמאפשרות לקלאברים לאתר עסקאות, 
-                לנתח נכסים, ולקבל החלטות מושכלות במהירות ובדיוק שלא היו אפשריים בעבר.
-            </p>
-            <p class="about-text">
-                <span class="about-highlight">התוכנות שפיתחנו זמינות בלעדית לחברי ClubRRRR</span> - 
-                כי אנחנו מאמינים שהצלחה אמיתית נמדדת בהצלחה של הקהילה שלנו.
-            </p>
-        </div>
-    </section>
-
-    <!-- Tools Section -->
-    <section class="tools-section">
-        <h2 class="section-title">הכלים שלנו</h2>
-        <div class="tools-grid">
-            <!-- SendOffers -->
-            <a href="https://sendoffers.net/" target="_blank" class="tool-card">
-                <div class="tool-logo">
-                    <i class="fas fa-paper-plane"></i>
-                    <!-- TODO: Replace with actual Sendoffers logo -->
-                </div>
-                <h3 class="tool-title">SendOffers</h3>
-                <p class="tool-description">
-                    חבר בין משקיעים חכמים למומחי נדל"ן מקצועיים
-                </p>
-                <ul class="tool-features">
-                    <li>הצטרף לקהילה של משקיעי נדל"ן מצליחים</li>
-                    <li>אוטומציה חכמה לאיתור וניתוח נכסים</li>
-                    <li>התחבר לסוכנים ושתף תובנות</li>
-                    <li>צמח את תיק ההשקעות שלך מהר יותר</li>
-                </ul>
-            </a>
-
-            <!-- DealScore -->
-            <div class="tool-card">
-                <div class="tool-logo">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3 class="tool-title">DealScore</h3>
-                <p class="tool-description">
-                    מערכת ניתוח חכמה לכדאיות עסקאות נדל"ן
-                </p>
-                <ul class="tool-features">
-                    <li>ניתוח אוטומטי של שווי נכס</li>
-                    <li>הערכת עלויות שיפוץ מבוססת AI</li>
-                    <li>חיזוי פוטנציאל השכרה לפי עסקאות אחרונות</li>
-                    <li>ציון כדאיות מבוסס נתונים</li>
-                    <li>קבל חוות דעת מקצועית מבוגרי ClubRRRR</li>
-                    <li>תיאום פגישות ייעוץ לניתוח העסקה</li>
-                </ul>
-            </div>
-
-            <!-- Tool 3 - Coming Soon -->
-            <div class="tool-card coming-soon">
-                <span class="coming-soon-badge">בקרוב</span>
-                <div class="tool-logo">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h3 class="tool-title">כלי AI חדש</h3>
-                <p class="tool-description">
-                    בקרוב - כלי נוסף שישדרג את המשחק שלך
-                </p>
-            </div>
-
-            <!-- Tool 4 - Coming Soon -->
-            <div class="tool-card coming-soon">
-                <span class="coming-soon-badge">בקרוב</span>
-                <div class="tool-logo">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h3 class="tool-title">כלי AI חדש</h3>
-                <p class="tool-description">
-                    בקרוב - כלי נוסף שישדרג את המשחק שלך
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-text">© 2025 ClubRRRR. כל הזכויות שמורות.</p>
-            <div class="footer-links">
-                <a href="index.html">דף הבית</a>
-                <a href="index.html#about">אודות</a>
-                <a href="index.html#contact">צור קשר</a>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- Language Switcher -->
-    <script src="translations.js"></script>
-    <script src="language-switcher.js"></script>
-    
-    <!-- Accessibility Module -->
-    <script src="accessibility.js"></script>
+    <script src="auth-guard.js"></script>
     <script>
+        let tools = [
+            { id:1, name:'AI Deal Analyzer', description:'ניתוח אוטומטי של עסקאות נדל"ן באמצעות בינה מלאכותית', type:'AI', price:0, features:['ניתוח ROI אוטומטי','דוחות מפורטים','השוואת נכסים'], url:'#', image:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop' },
+            { id:2, name:'Property Valuation AI', description:'הערכת שווי נכסים מבוססת AI עם דיוק גבוה', type:'AI', price:49, features:['הערכה מדויקת','ניתוח שוק','תחזיות מחיר'], url:'#', image:'https://images.unsplash.com/photo-1639322537228-f710d846310a?w=400&h=250&fit=crop' },
+            { id:3, name:'Market Trend Tracker', description:'מעקב אחר מגמות שוק בזמן אמת', type:'ניתוח נתונים', price:0, features:['גרפים אינטראקטיביים','התראות מחיר','ניתוח היסטורי'], url:'#', image:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop' },
+            { id:4, name:'Document Automation', description:'אוטומציה של מסמכים משפטיים וחוזים', type:'אוטומציה', price:79, features:['תבניות מוכנות','חתימות דיגיטליות','אחסון ענן'], url:'#', image:'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=250&fit=crop' },
+            { id:5, name:'Tenant Communication Hub', description:'מערכת תקשורת מרכזית עם דיירים', type:'תקשורת', price:29, features:['צ\'אט בזמן אמת','ניהול תשלומים','פורטל דיירים'], url:'#', image:'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop' },
+            { id:6, name:'Investment Calculator Pro', description:'מחשבון השקעות מתקדם לנדל"ן', type:'ניתוח נתונים', price:99, features:['חישובי ROI','סימולציות','דוחות פיננסיים'], url:'#', image:'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=250&fit=crop' }
+        ];
+        let currentEditId = null;
+
+        function isAdmin() { return getCurrentUser()?.role === 'admin'; }
+
+        function renderTools() {
+            const container = document.getElementById('toolsContainer');
+            container.innerHTML = tools.map(t => {
+                const priceText = t.price === 0 ? 'חינם' : `$${t.price}/חודש`;
+                const badgeColor = t.price === 0 ? 'background:#10B981' : 'background:#F4CE69';
+                return `
+                <div class="card">
+                    <div class="card-image" style="position:relative">
+                        <img src="${t.image}" alt="${t.name}" style="width:100%;height:100%;object-fit:cover">
+                        <div class="tool-badge" style="${badgeColor}">${t.type}</div>
+                        ${isAdmin() ? `<button class="admin-btn" onclick="editTool(${t.id})"><i class="fas fa-edit"></i> ערוך</button>` : ''}
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">${t.name}</div>
+                        <div class="card-description">${t.description}</div>
+                        <div class="features">
+                            ${t.features.map(f => `<div class="feature-item"><i class="fas fa-check"></i> ${f}</div>`).join('')}
+                        </div>
+                        <div class="card-meta" style="margin-top:10px;border-top:1px solid rgba(255,255,255,0.08);padding-top:10px">
+                            <strong style="color:var(--primary-gold)">${priceText}</strong>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn" onclick="window.open('${t.url}', '_blank')"><i class="fas fa-info-circle"></i> פרטים</button>
+                            <button class="btn primary" onclick="useTool(${t.id})"><i class="fas fa-rocket"></i> השתמש</button>
+                            ${isAdmin() ? `<button class="btn danger" onclick="deleteTool(${t.id})"><i class="fas fa-trash"></i></button>` : ''}
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function editTool(id) {
+            const tool = tools.find(t => t.id === id);
+            if (!tool) return;
+            currentEditId = id;
+            document.getElementById('modalTitle').textContent = 'ערוך כלי';
+            document.getElementById('toolName').value = tool.name;
+            document.getElementById('toolDescription').value = tool.description;
+            document.getElementById('toolType').value = tool.type;
+            document.getElementById('toolPrice').value = tool.price;
+            document.getElementById('toolFeatures').value = tool.features.join(', ');
+            document.getElementById('toolUrl').value = tool.url;
+            document.getElementById('toolImage').value = tool.image;
+            document.getElementById('toolModal').classList.add('active');
+        }
+
+        function saveTool() {
+            const newTool = {
+                name: document.getElementById('toolName').value,
+                description: document.getElementById('toolDescription').value,
+                type: document.getElementById('toolType').value,
+                price: parseInt(document.getElementById('toolPrice').value) || 0,
+                features: document.getElementById('toolFeatures').value.split(',').map(f => f.trim()),
+                url: document.getElementById('toolUrl').value,
+                image: document.getElementById('toolImage').value
+            };
+
+            if (currentEditId) {
+                const tool = tools.find(t => t.id === currentEditId);
+                Object.assign(tool, newTool);
+            } else {
+                newTool.id = Math.max(...tools.map(t => t.id), 0) + 1;
+                tools.push(newTool);
+            }
+            updateStats();
+            closeToolModal();
+            renderTools();
+        }
+
+        function deleteTool(id) {
+            if (confirm('האם אתה בטוח?')) {
+                tools = tools.filter(t => t.id !== id);
+                updateStats();
+                renderTools();
+            }
+        }
+
+        function useTool(id) {
+            const tool = tools.find(t => t.id === id);
+            if (!tool) return;
+            if (tool.url && tool.url !== '#') {
+                window.open(tool.url, '_blank');
+            } else {
+                alert(`פתיחת ${tool.name}...`);
+            }
+        }
+
+        function openToolModal() {
+            currentEditId = null;
+            document.getElementById('modalTitle').textContent = 'הוסף כלי חדש';
+            document.getElementById('toolName').value = '';
+            document.getElementById('toolDescription').value = '';
+            document.getElementById('toolType').value = 'AI';
+            document.getElementById('toolPrice').value = '';
+            document.getElementById('toolFeatures').value = '';
+            document.getElementById('toolUrl').value = '';
+            document.getElementById('toolImage').value = '';
+            document.getElementById('toolModal').classList.add('active');
+        }
+
+        function closeToolModal() { document.getElementById('toolModal').classList.remove('active'); }
+
+        function updateStats() {
+            document.getElementById('totalTools').textContent = tools.length;
+            document.getElementById('freeTools').textContent = tools.filter(t => t.price === 0).length;
+            document.getElementById('premiumTools').textContent = tools.filter(t => t.price > 0).length;
+        }
+
+        document.getElementById('addToolBtn').addEventListener('click', () => {
+            if (!isAdmin()) { alert('רק מנהלים יכולים להוסיף כלים'); return; }
+            openToolModal();
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
-            const user = getCurrentUser();
-            if (!user) return;
-            const chip = document.getElementById('userChip');
-            const avatar = document.getElementById('userAvatarChip');
-            const name = document.getElementById('userNameChip');
-            chip.style.display = 'inline-flex';
-            avatar.textContent = user.name.charAt(0).toUpperCase();
-            name.textContent = user.name;
+            updateStats();
+            renderTools();
         });
     </script>
 </body>
