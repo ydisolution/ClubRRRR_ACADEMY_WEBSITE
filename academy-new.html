@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy - ClubRRRR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary-gold:#F4CE69; --dark-navy:#1E293B; --light-navy:#334155; --bg-dark:#0F172A; --card-bg:#1E293B; --text-white:#F8FAFC; --text-gray:#CBD5E1; --success:#10B981; }
+        body { font-family:'Heebo',sans-serif; background:var(--bg-dark); color:var(--text-white); min-height:100vh; }
+        .sidebar{position:fixed;right:0;top:0;width:280px;height:100vh;background:var(--dark-navy);padding:30px 20px;overflow-y:auto;z-index:1000}
+        .logo{font-size:28px;font-weight:800;color:var(--primary-gold);text-align:center;margin-bottom:10px}
+        .nav-menu{list-style:none}
+        .nav-link{display:flex;align-items:center;gap:12px;padding:14px 18px;color:var(--text-gray);text-decoration:none;border-radius:12px;font-size:14px}
+        .nav-link:hover,.nav-link.active{background:var(--light-navy);color:var(--primary-gold)}
+        .logout-btn{margin-top:20px;width:100%;padding:14px;background:rgba(239,68,68,.1);color:#EF4444;border:1px solid #EF4444;border-radius:12px;cursor:pointer;font-weight:600}
+        .main{margin-right:280px;padding:40px}
+        .page-header{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;margin-bottom:25px}
+        .title-wrap h1{margin:0;font-size:32px;font-weight:800}
+        .title-wrap p{margin:6px 0 0;color:var(--text-gray)}
+        .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+        .stat-card{background:var(--card-bg);padding:18px;border-radius:14px;text-align:center}
+        .stat-value{font-size:28px;font-weight:800;color:var(--primary-gold)}
+        .stat-label{color:var(--text-gray);font-size:13px}
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+        .card{background:var(--card-bg);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+        .card-image{width:100%;height:180px;background:linear-gradient(135deg,#F4CE69,#EFBB43);display:flex;align-items:center;justify-content:center;color:var(--dark-navy);font-size:60px;position:relative;overflow:hidden}
+        .card-image img{width:100%;height:100%;object-fit:cover}
+        .course-level{position:absolute;top:10px;left:10px;background:var(--primary-gold);color:var(--dark-navy);padding:6px 12px;border-radius:6px;font-weight:700;font-size:11px}
+        .card-content{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+        .card-title{font-weight:700;font-size:16px;color:var(--text-white)}
+        .card-meta{color:var(--text-gray);font-size:13px;display:flex;gap:8px;align-items:center}
+        .card-description{color:var(--text-gray);font-size:13px;line-height:1.4}
+        .course-stats{display:flex;gap:16px;padding:10px 0;border-top:1px solid rgba(255,255,255,0.08);flex-wrap:wrap}
+        .stat-item{display:flex;gap:6px;align-items:center;font-size:13px}
+        .stat-item strong{color:var(--primary-gold)}
+        .card-actions{display:flex;gap:8px;margin-top:auto}
+        .btn{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:var(--light-navy);color:var(--text-white);cursor:pointer;font-weight:600;font-size:13px}
+        .btn.primary{background:var(--primary-gold);color:var(--dark-navy);border:none}
+        .btn.danger{background:rgba(239,68,68,.1);color:#EF4444;border:1px solid #EF4444}
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:2000;align-items:center;justify-content:center}
+        .modal.active{display:flex}
+        .modal-content{background:var(--card-bg);border-radius:14px;padding:30px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto}
+        .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+        .modal-header h2{margin:0;color:var(--text-white)}
+        .modal-close{background:none;border:none;color:var(--text-white);font-size:24px;cursor:pointer}
+        .form-group{margin-bottom:15px;display:flex;flex-direction:column}
+        .form-group label{color:var(--text-gray);font-size:13px;margin-bottom:6px}
+        .form-group input,.form-group textarea,.form-group select{padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:var(--light-navy);color:var(--text-white);font-family:'Heebo',sans-serif}
+        .form-group textarea{resize:vertical;min-height:80px}
+        .form-actions{display:flex;gap:8px;margin-top:20px}
+        .admin-btn{position:absolute;top:10px;left:10px;background:var(--primary-gold);color:var(--dark-navy);border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-weight:600;font-size:12px}
+        @media(max-width:1024px){.sidebar{display:none}.main{margin:0;padding:20px}.cards{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}}
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">ClubRRRR</div>
+        <ul class="nav-menu">
+            <li><a class="nav-link" href="user-dashboard.html"><i class="fas fa-home"></i> דשבורד</a></li>
+            <li><a class="nav-link" href="investments.html"><i class="fas fa-chart-line"></i> השקעות</a></li>
+            <li><a class="nav-link" href="services.html"><i class="fas fa-briefcase"></i> שירותים</a></li>
+            <li><a class="nav-link" href="ai-tools.html"><i class="fas fa-robot"></i> כלים טכנולוגיים</a></li>
+            <li><a class="nav-link active" href="academy.html"><i class="fas fa-graduation-cap"></i> Academy</a></li>
+            <li><a class="nav-link" href="events.html"><i class="fas fa-calendar-alt"></i> אירועים</a></li>
+            <li><a class="nav-link" href="community.html"><i class="fas fa-users"></i> קהילה</a></li>
+        </ul>
+        <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> התנתק</button>
+    </aside>
+
+    <main class="main">
+        <div class="page-header">
+            <div class="title-wrap">
+                <h1>Academy</h1>
+                <p>קורסים, סדנות וחומרי לימוד לצמיחה מקצועית</p>
+            </div>
+            <button class="btn primary" id="addCourseBtn"><i class="fas fa-plus"></i> הוסף קורס חדש</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card"><div class="stat-value" id="totalCourses">4</div><div class="stat-label">סה"כ קורסים</div></div>
+            <div class="stat-card"><div class="stat-value" id="enrolledCourses">0</div><div class="stat-label">קורסים שנרשמת אליהם</div></div>
+            <div class="stat-card"><div class="stat-value" id="completedCourses">0</div><div class="stat-label">קורסים שהשלמת</div></div>
+            <div class="stat-card"><div class="stat-value" id="totalStudents">890</div><div class="stat-label">סטודנטים בסה"כ</div></div>
+        </div>
+
+        <div id="coursesContainer" class="cards"></div>
+    </main>
+
+    <!-- Edit Course Modal -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">הוסף קורס חדש</h2>
+                <button class="modal-close" onclick="closeCourseModal()">&times;</button>
+            </div>
+            <div class="form-group">
+                <label>שם הקורס</label>
+                <input type="text" id="courseTitle" placeholder="שם הקורס">
+            </div>
+            <div class="form-group">
+                <label>תיאור</label>
+                <textarea id="courseDescription" placeholder="תיאור מפורט של הקורס"></textarea>
+            </div>
+            <div class="form-group">
+                <label>רמה</label>
+                <select id="courseLevel">
+                    <option value="מתחילים">מתחילים</option>
+                    <option value="בינוני">בינוני</option>
+                    <option value="מתקדם">מתקדם</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>משך הקורס (שעות)</label>
+                <input type="number" id="courseDuration" placeholder="40">
+            </div>
+            <div class="form-group">
+                <label>מספר סטודנטים</label>
+                <input type="number" id="courseStudents" placeholder="120">
+            </div>
+            <div class="form-group">
+                <label>דירוג</label>
+                <input type="number" id="courseRating" min="1" max="5" step="0.1" placeholder="4.8">
+            </div>
+            <div class="form-group">
+                <label>מחיר (בדולרים)</label>
+                <input type="number" id="coursePrice" placeholder="99">
+            </div>
+            <div class="form-group">
+                <label>קישור תמונה (URL)</label>
+                <input type="text" id="courseImage" placeholder="https://...">
+            </div>
+            <div class="form-actions">
+                <button class="btn" onclick="closeCourseModal()">ביטול</button>
+                <button class="btn primary" id="saveCourseBtn" onclick="saveCourse()">שמור</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth-guard.js"></script>
+    <script>
+        let courses = [
+            { id:1, title:'יסודות השקעות בנדל"ן', description:'קורס מלא ללימוד יסודות השקעות בנדל"ן', level:'מתחילים', duration:40, students:234, rating:4.8, price:99, image:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' },
+            { id:2, title:'מימון יצירתי ומתקדם', description:'טכניקות מימון יצירתיות וחכמות בנדל"ן', level:'מתקדם', duration:35, students:156, rating:4.9, price:149, image:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' },
+            { id:3, title:'ניתוח שווקים וטרנדים', description:'כל מה שצריך לדעת על ניתוח שוקי נדל"ן', level:'בינוני', duration:30, students:189, rating:4.7, price:79, image:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' },
+            { id:4, title:'Wholesale וקיפ שם', description:'הטכניקה המהירה ביותר לרווחים בנדל"ן', level:'בינוני', duration:25, students:312, rating:4.9, price:129, image:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' }
+        ];
+        let currentEditId = null;
+
+        function isAdmin() { return getCurrentUser()?.role === 'admin'; }
+
+        function renderCourses() {
+            const container = document.getElementById('coursesContainer');
+            container.innerHTML = courses.map(c => {
+                const stars = '⭐'.repeat(Math.floor(c.rating));
+                return `
+                <div class="card">
+                    <div class="card-image" style="position:relative">
+                        <img src="${c.image}" alt="${c.title}" style="width:100%;height:100%;object-fit:cover">
+                        <div class="course-level">${c.level}</div>
+                        ${isAdmin() ? `<button class="admin-btn" onclick="editCourse(${c.id})"><i class="fas fa-edit"></i> ערוך</button>` : ''}
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">${c.title}</div>
+                        <div class="card-description">${c.description}</div>
+                        <div class="course-stats">
+                            <div class="stat-item"><strong>${c.duration}h</strong></div>
+                            <div class="stat-item"><strong>${c.students}</strong> סטודנטים</div>
+                            <div class="stat-item">${stars} ${c.rating}</div>
+                        </div>
+                        <div class="card-meta" style="margin-top:10px;border-top:1px solid rgba(255,255,255,0.08);padding-top:10px">
+                            <strong style="color:var(--primary-gold)">$${c.price}</strong>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn primary" onclick="enrollCourse(${c.id})"><i class="fas fa-check"></i> הרשמה</button>
+                            ${isAdmin() ? `<button class="btn danger" onclick="deleteCourse(${c.id})"><i class="fas fa-trash"></i></button>` : ''}
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function editCourse(id) {
+            const course = courses.find(c => c.id === id);
+            if (!course) return;
+            currentEditId = id;
+            document.getElementById('modalTitle').textContent = 'ערוך קורס';
+            document.getElementById('courseTitle').value = course.title;
+            document.getElementById('courseDescription').value = course.description;
+            document.getElementById('courseLevel').value = course.level;
+            document.getElementById('courseDuration').value = course.duration;
+            document.getElementById('courseStudents').value = course.students;
+            document.getElementById('courseRating').value = course.rating;
+            document.getElementById('coursePrice').value = course.price;
+            document.getElementById('courseImage').value = course.image;
+            document.getElementById('courseModal').classList.add('active');
+        }
+
+        function saveCourse() {
+            const newCourse = {
+                title: document.getElementById('courseTitle').value,
+                description: document.getElementById('courseDescription').value,
+                level: document.getElementById('courseLevel').value,
+                duration: parseInt(document.getElementById('courseDuration').value) || 0,
+                students: parseInt(document.getElementById('courseStudents').value) || 0,
+                rating: parseFloat(document.getElementById('courseRating').value) || 0,
+                price: parseInt(document.getElementById('coursePrice').value) || 0,
+                image: document.getElementById('courseImage').value
+            };
+
+            if (currentEditId) {
+                const course = courses.find(c => c.id === currentEditId);
+                Object.assign(course, newCourse);
+            } else {
+                newCourse.id = Math.max(...courses.map(c => c.id), 0) + 1;
+                courses.push(newCourse);
+            }
+            closeCourseModal();
+            renderCourses();
+        }
+
+        function deleteCourse(id) {
+            if (confirm('האם אתה בטוח?')) {
+                courses = courses.filter(c => c.id !== id);
+                renderCourses();
+            }
+        }
+
+        function enrollCourse(id) {
+            const user = getCurrentUser();
+            if (!user) { alert('אתה צריך להתחבר תחילה'); return; }
+            const course = courses.find(c => c.id === id);
+            if (!course) return;
+            if (!user.enrolledCourses) user.enrolledCourses = [];
+            if (!user.enrolledCourses.includes(id)) {
+                user.enrolledCourses.push(id);
+                localStorage.setItem('clubrrrr_user', JSON.stringify(user));
+                document.getElementById('enrolledCourses').textContent = user.enrolledCourses.length;
+                alert('הרשמתך בהצלחה לקורס!');
+            } else {
+                alert('אתה כבר רשום לקורס זה');
+            }
+        }
+
+        function openCourseModal() {
+            currentEditId = null;
+            document.getElementById('modalTitle').textContent = 'הוסף קורס חדש';
+            document.getElementById('courseTitle').value = '';
+            document.getElementById('courseDescription').value = '';
+            document.getElementById('courseLevel').value = 'מתחילים';
+            document.getElementById('courseDuration').value = '';
+            document.getElementById('courseStudents').value = '';
+            document.getElementById('courseRating').value = '';
+            document.getElementById('coursePrice').value = '';
+            document.getElementById('courseImage').value = '';
+            document.getElementById('courseModal').classList.add('active');
+        }
+
+        function closeCourseModal() { document.getElementById('courseModal').classList.remove('active'); }
+
+        document.getElementById('addCourseBtn').addEventListener('click', () => {
+            if (!isAdmin()) { alert('רק מנהלים יכולים להוסיף קורסים'); return; }
+            openCourseModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = getCurrentUser();
+            if (user && user.enrolledCourses) {
+                document.getElementById('enrolledCourses').textContent = user.enrolledCourses.length;
+            }
+            document.getElementById('totalStudents').textContent = courses.reduce((sum, c) => sum + c.students, 0);
+            renderCourses();
+        });
+    </script>
+</body>
+</html>

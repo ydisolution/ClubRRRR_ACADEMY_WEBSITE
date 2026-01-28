@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אירועים - ClubRRRR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary-gold:#F4CE69; --dark-navy:#1E293B; --light-navy:#334155; --bg-dark:#0F172A; --card-bg:#1E293B; --text-white:#F8FAFC; --text-gray:#CBD5E1; --success:#10B981; }
+        body { font-family:'Heebo',sans-serif; background:var(--bg-dark); color:var(--text-white); min-height:100vh; }
+        .sidebar{position:fixed;right:0;top:0;width:280px;height:100vh;background:var(--dark-navy);padding:30px 20px;overflow-y:auto;z-index:1000}
+        .logo{font-size:28px;font-weight:800;color:var(--primary-gold);text-align:center;margin-bottom:10px}
+        .nav-menu{list-style:none}
+        .nav-link{display:flex;align-items:center;gap:12px;padding:14px 18px;color:var(--text-gray);text-decoration:none;border-radius:12px;font-size:14px}
+        .nav-link:hover,.nav-link.active{background:var(--light-navy);color:var(--primary-gold)}
+        .logout-btn{margin-top:20px;width:100%;padding:14px;background:rgba(239,68,68,.1);color:#EF4444;border:1px solid #EF4444;border-radius:12px;cursor:pointer;font-weight:600}
+        .main{margin-right:280px;padding:40px}
+        .page-header{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;margin-bottom:25px}
+        .title-wrap h1{margin:0;font-size:32px;font-weight:800}
+        .title-wrap p{margin:6px 0 0;color:var(--text-gray)}
+        .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+        .stat-card{background:var(--card-bg);padding:18px;border-radius:14px;text-align:center}
+        .stat-value{font-size:28px;font-weight:800;color:var(--primary-gold)}
+        .stat-label{color:var(--text-gray);font-size:13px}
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+        .card{background:var(--card-bg);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+        .card-image{width:100%;height:180px;background:linear-gradient(135deg,#F4CE69,#EFBB43);display:flex;align-items:center;justify-content:center;color:var(--dark-navy);font-size:60px;position:relative;overflow:hidden}
+        .card-image img{width:100%;height:100%;object-fit:cover}
+        .event-date{position:absolute;top:10px;left:10px;background:var(--primary-gold);color:var(--dark-navy);padding:8px 12px;border-radius:8px;font-weight:700;font-size:12px}
+        .card-content{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+        .card-title{font-weight:700;font-size:16px;color:var(--text-white)}
+        .card-meta{color:var(--text-gray);font-size:13px;display:flex;gap:8px;align-items:center}
+        .card-description{color:var(--text-gray);font-size:13px;line-height:1.4}
+        .card-stats{display:flex;gap:16px;padding:10px 0;border-top:1px solid rgba(255,255,255,0.08)}
+        .stat-item{display:flex;gap:6px;align-items:center;font-size:13px}
+        .stat-item strong{color:var(--primary-gold)}
+        .card-actions{display:flex;gap:8px;margin-top:auto}
+        .btn{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:var(--light-navy);color:var(--text-white);cursor:pointer;font-weight:600;font-size:13px}
+        .btn.primary{background:var(--primary-gold);color:var(--dark-navy);border:none}
+        .btn.danger{background:rgba(239,68,68,.1);color:#EF4444;border:1px solid #EF4444}
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:2000;align-items:center;justify-content:center}
+        .modal.active{display:flex}
+        .modal-content{background:var(--card-bg);border-radius:14px;padding:30px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto}
+        .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+        .modal-header h2{margin:0;color:var(--text-white)}
+        .modal-close{background:none;border:none;color:var(--text-white);font-size:24px;cursor:pointer}
+        .form-group{margin-bottom:15px;display:flex;flex-direction:column}
+        .form-group label{color:var(--text-gray);font-size:13px;margin-bottom:6px}
+        .form-group input,.form-group textarea,.form-group select{padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:var(--light-navy);color:var(--text-white);font-family:'Heebo',sans-serif}
+        .form-group textarea{resize:vertical;min-height:80px}
+        .form-actions{display:flex;gap:8px;margin-top:20px}
+        .admin-btn{position:absolute;top:10px;left:10px;background:var(--primary-gold);color:var(--dark-navy);border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-weight:600;font-size:12px}
+        @media(max-width:1024px){.sidebar{display:none}.main{margin:0;padding:20px}.cards{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}}
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">ClubRRRR</div>
+        <ul class="nav-menu">
+            <li><a class="nav-link" href="user-dashboard.html"><i class="fas fa-home"></i> דשבורד</a></li>
+            <li><a class="nav-link" href="investments.html"><i class="fas fa-chart-line"></i> השקעות</a></li>
+            <li><a class="nav-link" href="services.html"><i class="fas fa-briefcase"></i> שירותים</a></li>
+            <li><a class="nav-link" href="ai-tools.html"><i class="fas fa-robot"></i> כלים טכנולוגיים</a></li>
+            <li><a class="nav-link" href="academy.html"><i class="fas fa-graduation-cap"></i> Academy</a></li>
+            <li><a class="nav-link active" href="events.html"><i class="fas fa-calendar-alt"></i> אירועים</a></li>
+            <li><a class="nav-link" href="community.html"><i class="fas fa-users"></i> קהילה</a></li>
+        </ul>
+        <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> התנתק</button>
+    </aside>
+
+    <main class="main">
+        <div class="page-header">
+            <div class="title-wrap">
+                <h1>אירועים וכנסים</h1>
+                <p>הרשם לאירועים בעלי ערך וגדל יחד עם הקהילה</p>
+            </div>
+            <button class="btn primary" id="addEventBtn"><i class="fas fa-plus"></i> הוסף אירוע חדש</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card"><div class="stat-value" id="totalEvents">4</div><div class="stat-label">סה"כ אירועים</div></div>
+            <div class="stat-card"><div class="stat-value" id="registeredEvents">0</div><div class="stat-label">אירועים שנרשמת אליהם</div></div>
+            <div class="stat-card"><div class="stat-value" id="upcomingEvents">4</div><div class="stat-label">אירועים קרובים</div></div>
+            <div class="stat-card"><div class="stat-value" id="totalParticipants">900</div><div class="stat-label">משתתפים בסה"כ</div></div>
+        </div>
+
+        <div id="eventsContainer" class="cards"></div>
+    </main>
+
+    <!-- Edit Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">הוסף אירוע חדש</h2>
+                <button class="modal-close" onclick="closeEventModal()">&times;</button>
+            </div>
+            <div class="form-group">
+                <label>תאריך (YYYY-MM-DD)</label>
+                <input type="text" id="eventDate" placeholder="2025-06-15">
+            </div>
+            <div class="form-group">
+                <label>שעה</label>
+                <input type="text" id="eventTime" placeholder="18:00">
+            </div>
+            <div class="form-group">
+                <label>שם האירוע</label>
+                <input type="text" id="eventTitle" placeholder="שם האירוע">
+            </div>
+            <div class="form-group">
+                <label>תיאור</label>
+                <textarea id="eventDescription" placeholder="תיאור מפורט של האירוע"></textarea>
+            </div>
+            <div class="form-group">
+                <label>מיקום</label>
+                <input type="text" id="eventLocation" placeholder="מיקום האירוע">
+            </div>
+            <div class="form-group">
+                <label>מספר משתתפים נוכחיים</label>
+                <input type="number" id="eventParticipants" placeholder="0">
+            </div>
+            <div class="form-group">
+                <label>קיבולת מקסימלית</label>
+                <input type="number" id="eventCapacity" placeholder="100">
+            </div>
+            <div class="form-group">
+                <label>קישור תמונה (URL)</label>
+                <input type="text" id="eventImage" placeholder="https://...">
+            </div>
+            <div class="form-actions">
+                <button class="btn" onclick="closeEventModal()">ביטול</button>
+                <button class="btn primary" id="saveEventBtn" onclick="saveEvent()">שמור</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth-guard.js"></script>
+    <script>
+        let events = [
+            { id:1, title:'כנס נדל"ן בטקסס', date:'2025-06-15', time:'18:00', location:'דלאס, טקסס', description:'כנס בינלאומי לחידוש בנדל"ן וטכנולוגיה', participants:234, capacity:300, image:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' },
+            { id:2, title:'סדנה: מימון יצירתי', date:'2025-07-10', time:'19:30', location:'אונליין', description:'למדו טכניקות מימון מתקדמות ויצירתיות', participants:156, capacity:200, image:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' },
+            { id:3, title:'סיור נכס בטקסס', date:'2025-07-20', time:'10:00', location:'יוסטון, טקסס', description:'סיור בנכס התיפור דירוג AAA בעם מומחים', participants:89, capacity:120, image:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' },
+            { id:4, title:'ניתוח שוק וטרנדים', date:'2025-08-05', time:'17:00', location:'אונליין', description:'וובינר בזמן אמת לניתוח שוקי נדל"ן', participants:312, capacity:500, image:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop' }
+        ];
+        let currentEditId = null;
+
+        function isAdmin() { return getCurrentUser()?.role === 'admin'; }
+
+        function renderEvents() {
+            const container = document.getElementById('eventsContainer');
+            container.innerHTML = events.map(e => {
+                const progress = Math.round((e.participants / e.capacity) * 100);
+                return `
+                <div class="card">
+                    <div class="card-image" style="position:relative">
+                        <img src="${e.image}" alt="${e.title}" style="width:100%;height:100%;object-fit:cover">
+                        <div class="event-date">${new Date(e.date).toLocaleDateString('he-IL')}</div>
+                        ${isAdmin() ? `<button class="admin-btn" onclick="editEvent(${e.id})"><i class="fas fa-edit"></i> ערוך</button>` : ''}
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">${e.title}</div>
+                        <div class="card-description">${e.description}</div>
+                        <div class="card-meta">
+                            <i class="fas fa-clock"></i> ${e.time}
+                        </div>
+                        <div class="card-meta">
+                            <i class="fas fa-map-marker-alt"></i> ${e.location}
+                        </div>
+                        <div class="card-stats">
+                            <div class="stat-item"><strong>${e.participants}</strong> משתתפים</div>
+                            <div class="stat-item"><strong>${progress}%</strong> תפוסה</div>
+                        </div>
+                        <div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;margin:8px 0">
+                            <div style="height:100%;background:var(--primary-gold);width:${progress}%"></div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn primary" onclick="registerEvent(${e.id})"><i class="fas fa-check"></i> הירשם לאירוע</button>
+                            ${isAdmin() ? `<button class="btn danger" onclick="deleteEvent(${e.id})"><i class="fas fa-trash"></i></button>` : ''}
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function editEvent(id) {
+            const event = events.find(e => e.id === id);
+            if (!event) return;
+            currentEditId = id;
+            document.getElementById('modalTitle').textContent = 'ערוך אירוע';
+            document.getElementById('eventDate').value = event.date;
+            document.getElementById('eventTime').value = event.time;
+            document.getElementById('eventTitle').value = event.title;
+            document.getElementById('eventDescription').value = event.description;
+            document.getElementById('eventLocation').value = event.location;
+            document.getElementById('eventParticipants').value = event.participants;
+            document.getElementById('eventCapacity').value = event.capacity;
+            document.getElementById('eventImage').value = event.image;
+            document.getElementById('eventModal').classList.add('active');
+        }
+
+        function saveEvent() {
+            const newEvent = {
+                date: document.getElementById('eventDate').value,
+                time: document.getElementById('eventTime').value,
+                title: document.getElementById('eventTitle').value,
+                description: document.getElementById('eventDescription').value,
+                location: document.getElementById('eventLocation').value,
+                participants: parseInt(document.getElementById('eventParticipants').value) || 0,
+                capacity: parseInt(document.getElementById('eventCapacity').value) || 100,
+                image: document.getElementById('eventImage').value
+            };
+
+            if (currentEditId) {
+                const event = events.find(e => e.id === currentEditId);
+                Object.assign(event, newEvent);
+            } else {
+                newEvent.id = Math.max(...events.map(e => e.id), 0) + 1;
+                events.push(newEvent);
+            }
+            closeEventModal();
+            renderEvents();
+        }
+
+        function deleteEvent(id) {
+            if (confirm('האם אתה בטוח?')) {
+                events = events.filter(e => e.id !== id);
+                renderEvents();
+            }
+        }
+
+        function registerEvent(id) {
+            const user = getCurrentUser();
+            if (!user) { alert('אתה צריך להתחבר תחילה'); return; }
+            const event = events.find(e => e.id === id);
+            if (!event) return;
+            if (!user.registeredEvents) user.registeredEvents = [];
+            if (!user.registeredEvents.includes(id)) {
+                user.registeredEvents.push(id);
+                event.participants++;
+                localStorage.setItem('clubrrrr_user', JSON.stringify(user));
+                renderEvents();
+                alert('הרשמתך בהצלחה לאירוע!');
+            } else {
+                alert('אתה כבר רשום לאירוע זה');
+            }
+        }
+
+        function openEventModal() {
+            currentEditId = null;
+            document.getElementById('modalTitle').textContent = 'הוסף אירוע חדש';
+            document.getElementById('eventDate').value = '';
+            document.getElementById('eventTime').value = '';
+            document.getElementById('eventTitle').value = '';
+            document.getElementById('eventDescription').value = '';
+            document.getElementById('eventLocation').value = '';
+            document.getElementById('eventParticipants').value = '';
+            document.getElementById('eventCapacity').value = '';
+            document.getElementById('eventImage').value = '';
+            document.getElementById('eventModal').classList.add('active');
+        }
+
+        function closeEventModal() { document.getElementById('eventModal').classList.remove('active'); }
+
+        document.getElementById('addEventBtn').addEventListener('click', () => {
+            if (!isAdmin()) { alert('רק מנהלים יכולים להוסיף אירועים'); return; }
+            openEventModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = getCurrentUser();
+            if (user && user.registeredEvents) {
+                document.getElementById('registeredEvents').textContent = user.registeredEvents.length;
+            }
+            document.getElementById('totalParticipants').textContent = events.reduce((sum, e) => sum + e.participants, 0);
+            renderEvents();
+        });
+    </script>
+</body>
+</html>
