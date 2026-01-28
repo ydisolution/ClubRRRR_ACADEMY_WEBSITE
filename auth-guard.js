@@ -210,6 +210,37 @@ class AuthGuard {
 // יצירת instance גלובלי
 const authGuard = new AuthGuard();
 
+// יצירת משתמש admin ברירת מחדל אם לא קיים
+function createDefaultAdmin() {
+    const users = JSON.parse(localStorage.getItem('clubrrrr_users') || '[]');
+    const adminExists = users.find(u => u.role === 'admin');
+    
+    if (!adminExists) {
+        const admin = {
+            id: 'admin_' + Date.now(),
+            name: 'Admin',
+            email: 'admin@clubrrrr.com',
+            password: 'admin123',
+            phone: '',
+            role: 'admin',
+            avatar: authGuard.generateAvatar('Admin'),
+            memberSince: new Date().toISOString(),
+            stats: {
+                investments: 0,
+                courses: 0,
+                events: 0,
+                connections: 0
+            }
+        };
+        users.push(admin);
+        localStorage.setItem('clubrrrr_users', JSON.stringify(users));
+        console.log('Admin user created: admin@clubrrrr.com / admin123');
+    }
+}
+
+// יצירת admin בטעינת הדף
+createDefaultAdmin();
+
 // פונקציות גלובליות לשימוש בדפים
 function logout() {
     authGuard.logout();
