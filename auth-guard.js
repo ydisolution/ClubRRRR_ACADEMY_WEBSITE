@@ -212,12 +212,10 @@ const authGuard = new AuthGuard();
 
 // יצירת משתמש admin ברירת מחדל אם לא קיים
 function createDefaultAdmin() {
-    const users = JSON.parse(localStorage.getItem('clubrrrr_users') || '[]');
-    const adminExists = users.find(u => u.role === 'admin');
-    
-    if (!adminExists) {
-        const admin = {
-            id: 'admin_' + Date.now(),
+    // נקה את כל המשתמשים ויצור רק את האדמינים
+    const adminUsers = [
+        {
+            id: 'admin_1',
             name: 'Admin',
             email: 'admin@clubrrrr.com',
             password: 'admin123',
@@ -231,11 +229,28 @@ function createDefaultAdmin() {
                 events: 0,
                 connections: 0
             }
-        };
-        users.push(admin);
-        localStorage.setItem('clubrrrr_users', JSON.stringify(users));
-        console.log('Admin user created: admin@clubrrrr.com / admin123');
-    }
+        },
+        {
+            id: 'admin_2',
+            name: 'Office Admin',
+            email: 'office@clubrrrr.com',
+            password: 'office123',
+            phone: '',
+            role: 'admin',
+            avatar: authGuard.generateAvatar('Office'),
+            memberSince: new Date().toISOString(),
+            stats: {
+                investments: 0,
+                courses: 0,
+                events: 0,
+                connections: 0
+            }
+        }
+    ];
+    
+    // שמור רק את האדמינים
+    localStorage.setItem('clubrrrr_users', JSON.stringify(adminUsers));
+    console.log('Admin users created: admin@clubrrrr.com / admin123, office@clubrrrr.com / office123');
 }
 
 // יצירת admin בטעינת הדף

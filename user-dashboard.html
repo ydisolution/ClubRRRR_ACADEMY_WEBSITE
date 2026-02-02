@@ -126,6 +126,11 @@
                     <div class="card-title">כלים טכנולוגיים</div>
                     <div class="card-description">השתמש בכלים מבוססי AI</div>
                 </a>
+                <a href="user-management.html" class="card" id="userManagementCard" style="display:none">
+                    <div class="card-icon">👥</div>
+                    <div class="card-title">ניהול משתמשים</div>
+                    <div class="card-description">נהל משתמשים ותפקידים במערכת</div>
+                </a>
             </div>
         </div>
 
@@ -147,6 +152,11 @@
             document.getElementById('coursesStat').textContent = user.enrolledCourses?.length || 0;
             document.getElementById('eventsStat').textContent = user.registeredEvents?.length || 0;
             document.getElementById('connectionsStat').textContent = user.stats?.connections || 0;
+
+            // Show user management card only for admins
+            if (isAdmin()) {
+                document.getElementById('userManagementCard').style.display = 'block';
+            }
         }
 
         document.addEventListener('DOMContentLoaded', loadUserData);
