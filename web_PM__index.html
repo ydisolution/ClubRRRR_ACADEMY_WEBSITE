@@ -236,6 +236,9 @@
             overflow: hidden;
             z-index: 0;
             pointer-events: none;
+            background-image: url('https://img.youtube.com/vi/cS9GKtRPOzE/maxresdefault.jpg');
+            background-size: cover;
+            background-position: center;
         }
 
         .hero-video {
@@ -248,6 +251,7 @@
             min-width: 177.77vh;
             transform: translate(-50%, -50%);
             pointer-events: none;
+            border: 0;
         }
 
         @media (max-aspect-ratio: 16/9) {
@@ -1341,14 +1345,15 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Video Background -->
+        <!-- Video Background (YouTube poster as fallback while iframe loads) -->
         <div class="hero-video-container">
-            <iframe 
+            <iframe
                 class="hero-video"
-                src="https://www.youtube-nocookie.com/embed/cS9GKtRPOzE?autoplay=1&mute=1&loop=1&playlist=cS9GKtRPOzE&controls=0&showinfo=0&autohide=1&modestbranding=1&vq=hd720&rel=0&enablejsapi=1&origin=https://clubrrrr.com&widgetid=1"
+                src="https://www.youtube.com/embed/cS9GKtRPOzE?autoplay=1&mute=1&loop=1&playlist=cS9GKtRPOzE&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&iv_load_policy=3&disablekb=1&fs=0"
                 title="Background Video"
                 frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="autoplay; encrypted-media"
+                referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen>
             </iframe>
         </div>
