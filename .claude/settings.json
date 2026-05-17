@@ -21,7 +21,9 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8765/web_PM__index.html --max-time 3)",
       "Bash(gh --version)",
       "Bash(git checkout *)",
-      "Bash(git merge *)"
+      "Bash(git merge *)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:8765/team/__TRACKED_VAR__.png --max-time 4)",
+      "Bash(curl -s -o /dev/null -w \"shelly-zarihan.jpg -> %{http_code}\\\\n\" \"http://localhost:8765/team/shelly-zarihan.jpg\" --max-time 4)"
     ]
   }
 }

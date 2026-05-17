@@ -18,7 +18,7 @@
 /* Language Options */
 .lang-option {
     color: rgba(255, 255, 255, 0.6);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s;
@@ -47,7 +47,7 @@
 /* Separator */
 .lang-separator {
     color: rgba(223, 178, 73, 0.4);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 300;
 }
 
