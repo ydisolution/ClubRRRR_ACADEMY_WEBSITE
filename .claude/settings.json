@@ -23,7 +23,23 @@
       "Bash(git checkout *)",
       "Bash(git merge *)",
       "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:8765/team/__TRACKED_VAR__.png --max-time 4)",
-      "Bash(curl -s -o /dev/null -w \"shelly-zarihan.jpg -> %{http_code}\\\\n\" \"http://localhost:8765/team/shelly-zarihan.jpg\" --max-time 4)"
+      "Bash(curl -s -o /dev/null -w \"shelly-zarihan.jpg -> %{http_code}\\\\n\" \"http://localhost:8765/team/shelly-zarihan.jpg\" --max-time 4)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Enreroreneurship\\\\USA Real Estate\\\\ClubRRRR\\\\website like Pace Morby\" -File -Name)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Enreroreneurship\\\\USA Real Estate\\\\ClubRRRR\\\\website like Pace Morby\" -Recurse -File)",
+      "Bash(Select-Object -ExpandProperty Name)",
+      "Bash(Sort-Object)",
+      "Bash(Get-Unique)",
+      "Bash(cd \"c:\\\\Enreroreneurship\\\\USA Real Estate\\\\ClubRRRR\\\\website like Pace Morby\" && git log --oneline -10 2>nul)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Enreroreneurship\\\\USA Real Estate\\\\ClubRRRR\\\\website like Pace Morby\" -Recurse -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object FullName, Name)",
+      "Bash(Sort-Object FullName)",
+      "PowerShell(Get-ChildItem \"c:\\\\Enreroreneurship\\\\USA Real Estate\\\\ClubRRRR\\\\website like Pace Morby\" -File | Where-Object { $_.Extension -match '\\\\.\\(jpg|jpeg|png|JPG|JPEG|PNG\\)' } | Select-Object Name | Format-Table -AutoSize)",
+      "Bash(git mv *)",
+      "Bash(git rm *)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:8765/__TRACKED_VAR__ --max-time 5)"
+    ],
+    "additionalDirectories": [
+      "c:\\Enreroreneurship\\USA Real Estate\\ClubRRRR\\website like Pace Morby"
     ]
   }
 }
