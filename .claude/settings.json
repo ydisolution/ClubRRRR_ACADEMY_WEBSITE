@@ -36,7 +36,14 @@
       "PowerShell(Get-ChildItem \"c:\\\\Enreroreneurship\\\\USA Real Estate\\\\ClubRRRR\\\\website like Pace Morby\" -File | Where-Object { $_.Extension -match '\\\\.\\(jpg|jpeg|png|JPG|JPEG|PNG\\)' } | Select-Object Name | Format-Table -AutoSize)",
       "Bash(git mv *)",
       "Bash(git rm *)",
-      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:8765/__TRACKED_VAR__ --max-time 5)"
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:8765/__TRACKED_VAR__ --max-time 5)",
+      "Bash(curl -s -o /dev/null -w \"root: %{http_code}\\\\n\" \"https://ydisolution.github.io/ClubRRRR_ACADEMY_WEBSITE/\" --max-time 10)",
+      "Bash(curl -s -o /dev/null -w \"web_PM__index.html: %{http_code}\\\\n\" \"https://ydisolution.github.io/ClubRRRR_ACADEMY_WEBSITE/web_PM__index.html\" --max-time 10)",
+      "Bash(curl -s -o /dev/null -w \"cluber360.html: %{http_code}\\\\n\" \"https://ydisolution.github.io/ClubRRRR_ACADEMY_WEBSITE/cluber360.html\" --max-time 10)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' https://ydisolution.github.io/ClubRRRR_ACADEMY_WEBSITE/__TRACKED_VAR__ --max-time 10)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}  ClubRRRRnew logo.png\\\\n' https://ydisolution.github.io/ClubRRRR_ACADEMY_WEBSITE/ClubRRRRnew%20logo.png --max-time 10)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}  Main.png\\\\n' https://ydisolution.github.io/ClubRRRR_ACADEMY_WEBSITE/Main.png --max-time 10)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}  20250223_224151 Beer.jpg\\\\n' https://ydisolution.github.io/ClubRRRR_ACADEMY_WEBSITE/20250223_224151%20Beer.jpg --max-time 10)"
     ],
     "additionalDirectories": [
       "c:\\Enreroreneurship\\USA Real Estate\\ClubRRRR\\website like Pace Morby"
