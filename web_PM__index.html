@@ -756,10 +756,9 @@
         }
 
         .team-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 90px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
             margin-top: 70px;
         }
 
@@ -775,8 +774,9 @@
         }
 
         .team-member-image {
-            width: 270px;
-            height: 270px;
+            width: 100%;
+            max-width: 270px;
+            aspect-ratio: 1;
             border-radius: 50%;
             overflow: hidden;
             border: 2px solid rgba(223, 178, 73, 0.7);
@@ -808,6 +808,12 @@
             margin-top: 28px;
             text-align: center;
             letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         /* Community Section */
