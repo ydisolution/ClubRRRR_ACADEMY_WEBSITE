@@ -856,6 +856,145 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ===== Interactive Journey 360 ===== */
+        .journey-360 {
+            position: relative;
+            max-width: 1100px;
+            margin: 40px auto 18px;
+            aspect-ratio: 1808 / 1004;
+            border-radius: 16px;
+            overflow: visible;
+        }
+        .journey-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .hotspot {
+            position: absolute;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: 0;
+            border-radius: 50%;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+            padding: 0;
+            z-index: 2;
+        }
+        .hotspot::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(223, 178, 73, 0.55) 0%, rgba(223, 178, 73, 0) 70%);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            pointer-events: none;
+        }
+        .hotspot::after {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-color);
+            opacity: 0;
+            transform: scale(0.6);
+            transition: opacity 0.25s ease, transform 0.4s ease;
+            pointer-events: none;
+        }
+        .hotspot:hover::before,
+        .hotspot:focus-visible::before,
+        .hotspot.is-active::before {
+            opacity: 1;
+            animation: hotspot-pulse 1.6s ease-out infinite;
+        }
+        .hotspot:hover::after,
+        .hotspot:focus-visible::after,
+        .hotspot.is-active::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+        @keyframes hotspot-pulse {
+            0%   { transform: scale(0.85); opacity: 0.85; }
+            100% { transform: scale(1.7);  opacity: 0; }
+        }
+        .hotspot-tip {
+            position: absolute;
+            bottom: calc(100% + 16px);
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            width: 260px;
+            background: rgba(10, 10, 10, 0.96);
+            border: 1px solid var(--gold-color);
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.92rem;
+            line-height: 1.55;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            z-index: 5;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+        }
+        .hotspot-tip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 9px solid transparent;
+            border-top-color: var(--gold-color);
+        }
+        .hotspot-tip strong {
+            display: block;
+            color: var(--gold-color);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .hotspot:hover .hotspot-tip,
+        .hotspot:focus-visible .hotspot-tip,
+        .hotspot.is-active .hotspot-tip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        /* Tooltip below the dot for steps near the top of the image */
+        .hotspot.hotspot-below .hotspot-tip {
+            bottom: auto;
+            top: calc(100% + 16px);
+            transform: translateX(-50%) translateY(-8px);
+        }
+        .hotspot.hotspot-below .hotspot-tip::after {
+            top: auto;
+            bottom: 100%;
+            border-top-color: transparent;
+            border-bottom-color: var(--gold-color);
+        }
+        .hotspot.hotspot-below:hover .hotspot-tip,
+        .hotspot.hotspot-below:focus-visible .hotspot-tip,
+        .hotspot.hotspot-below.is-active .hotspot-tip {
+            transform: translateX(-50%) translateY(0);
+        }
+        .journey-hint {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            .hotspot { width: 32px; height: 32px; }
+            .hotspot-tip { width: 200px; font-size: 0.82rem; padding: 12px; }
+            .hotspot-tip strong { font-size: 0.95rem; }
+        }
     </style>
 </head>
 <body>
@@ -873,10 +1012,11 @@
                     <li class="has-dropdown">
                         <a href="index.html#programs">תכניות ושירותים</a>
                         <div class="dropdown-menu">
-                            <a href="mentoring.html" class="dropdown-item">תכנית מנטורינג אישי</a>
-                            <a href="cluber360.html" class="dropdown-item">תכנית קלאבר 360</a>
-                            <a href="workshops.html" class="dropdown-item">סדנאות</a>
-                            <a href="ai-tools.html" class="dropdown-item">תוכנות AI</a>
+                            <a href="cluber360.html" class="dropdown-item">תכנית ClubRRRR 360</a>
+                            <a href="club-prep.html" class="dropdown-item">מכינת ClubRRRR</a>
+                            <a href="acquisition.html" class="dropdown-item">קורס אקויזישין</a>
+                            <a href="coming-soon.html" class="dropdown-item">קורס JV - בקרוב</a>
+                            <a href="coming-soon.html" class="dropdown-item">קורס Tax Sale - בקרוב</a>
                         </div>
                     </li>
                     <li><a href="index.html#graduates">הבוגרים שלנו</a></li>
@@ -944,54 +1084,48 @@
         <!-- Topics Section -->
         <section class="section">
             <div class="container">
-                <h2 class="section-title">על מה נדבר בוובינר?</h2>
+                <h2 class="section-title">על מה נדבר בתכנית קלאבר 360</h2>
                 <div class="topics-grid">
                     <article class="topic-item">
-                        <div class="topic-icon">🤖</div>
-                        <h3>ניתוח עסקאות עם AI</h3>
-                        <p>איך לנתח יותר עסקאות ומהר באמצעות מערכות וטכנולוגיות AI</p>
+                        <div class="topic-icon">🏆</div>
+                        <h3>מהון עצמי מוגבל לפורטפוליו</h3>
+                        <p>איך לקחנו הון עצמי מוגבל ובנינו פורטפוליו של עשרות נכסי נדל"ן בארה"ב</p>
                     </article>
-                    
+
+                    <article class="topic-item">
+                        <div class="topic-icon">🤖</div>
+                        <h3>הכלים הטכנולוגיים וה-AI של קלאבר</h3>
+                        <p>חשיפת הכלים הטכנולוגיים וכלי ה-AI שפיתחנו, שמאפשרים לקהילת קלאבר לאתר עסקאות מתחת למחיר השוק בסקייל גבוה</p>
+                    </article>
+
                     <article class="topic-item">
                         <div class="topic-icon">💰</div>
                         <h3>סודות המימון האמריקאי</h3>
-                        <p>מימון ארוך טווח, קצר טווח, הלוואות גישור, וגיוס משקיעים</p>
+                        <p>הדרך לסקייל בלי תלות בכמה כסף יושב לך בחשבון הבנק</p>
                     </article>
-                    
+
                     <article class="topic-item">
-                        <div class="topic-icon">🎯</div>
-                        <h3>הגשת הצעות בביטחון</h3>
-                        <p>איך להגיש הצעות עם ודאות ושליטה במספרי העסקה ולהגדיל את כמות הסגירות</p>
+                        <div class="topic-icon">🌴</div>
+                        <h3>עסקאות בוננזה ב-Off Market</h3>
+                        <p>איך מגיעים לעסקאות בוננזה בג'ונגל של ה-Off Market, בזמן שרוב המשקיעים מפחדים להיכנס לשם</p>
                     </article>
-                    
-                    <article class="topic-item">
-                        <div class="topic-icon">🚀</div>
-                        <h3>פיתרון מימוני רב שכבתי</h3>
-                        <p>שהופך עסקאות בינוניות לעסקאות בונזה</p>
-                    </article>
-                    
-                    <article class="topic-item">
-                        <div class="topic-icon">🔍</div>
-                        <h3>איתור עסקאות מתחת למחיר שוק</h3>
-                        <p>איך לאתר עסקאות מתחת למחיר השוק בסקייל גבוה</p>
-                    </article>
-                    
-                    <article class="topic-item">
-                        <div class="topic-icon">📈</div>
-                        <h3>בניית סיסטם אישי</h3>
-                        <p>לקבלת עשרות עסקאות off market ביום</p>
-                    </article>
-                    
+
                     <article class="topic-item">
                         <div class="topic-icon">🤝</div>
-                        <h3>שיפור יכולת מו"מ</h3>
-                        <p>לשפר יכולת ניהול מו"מ ולסגור בפועל הרבה יותר חוזים</p>
+                        <h3>טקטיקות משא ומתן</h3>
+                        <p>מהן הטקטיקות לניהול משא ומתן שסוגרות בפועל הרבה יותר חוזים</p>
                     </article>
-                    
+
                     <article class="topic-item">
                         <div class="topic-icon">🔧</div>
-                        <h3>ניהול שיפוץ מרחוק</h3>
-                        <p>התמחות בניהול שיפוץ מרחוק - הערכת שיפוץ, בניית SOW וניהול התהליך מקצה לקצה</p>
+                        <h3>ניהול שיפוץ בביטחון</h3>
+                        <p>איך לנהל שיפוץ בביטחון ולחסוך עלויות באמצעות שימוש בטכנולוגיות מתקדמות</p>
+                    </article>
+
+                    <article class="topic-item">
+                        <div class="topic-icon">🧩</div>
+                        <h3>עסקאות קריאייטיביות</h3>
+                        <p>איך מבצעים עסקאות קריאייטיביות בסביבת ריבית גבוהה</p>
                     </article>
                 </div>
             </div>
@@ -1034,46 +1168,32 @@
                         עקבו אחרי המסלול הייחודי שלנו לבניית מומחיות בנדל"ן אמריקאי
                     </p>
                     
-                    <div class="path-container">
-                        <div class="investor-icon">👨‍💼</div>
-                        <div class="path-line"></div>
-                        <div class="house-icon">🏠</div>
-                        
-                        <div class="path-step step-1" title="מימון - למידת אסטרטגיות מימון מתקדמות">
-                            <span class="step-title">מימון</span>
-                            💰
-                        </div>
-                        
-                        <div class="path-step step-2" title="Deal Source - איתור מקורות עסקאות off-market">
-                            <span class="step-title">Deal Source</span>
-                            🔍
-                        </div>
-                        
-                        <div class="path-step step-3" title="ניתוח עסקה - כלי AI לניתוח מהיר ומדויק">
-                            <span class="step-title">ניתוח עסקה</span>
-                            📊
-                        </div>
-                        
-                        <div class="path-step step-4" title="הערכת שיפוץ - ניהול שיפוץ מרחוק">
-                            <span class="step-title">הערכת שיפוץ</span>
-                            🔧
-                        </div>
-                        
-                        <div class="path-step step-5" title="משא ומתן ואקוויזישן - טקטיקות מתקדמות">
-                            <span class="step-title">משא ומתן<br>ואקוויזישן</span>
-                            🤝
-                        </div>
-                        
-                        <div class="path-step step-6" title="הגשת הצעות SENDOFFERS - מערכות אוטומטיות">
-                            <span class="step-title">הגשת הצעות<br>SENDOFFERS</span>
-                            📋
-                        </div>
-                        
-                        <div class="path-step step-7" title="קלוזינג וחתימה - תהליכי סגירה מקצועיים">
-                            <span class="step-title">קלוזינג<br>וחתימה</span>
-                            🏠
-                        </div>
+                    <div class="journey-360" id="journey360">
+                        <img src="journey-360.png?v=4" alt="המסלול הלימודי בתכנית קלאבר 360" class="journey-bg">
+
+                        <button type="button" class="hotspot" style="left: 26.27%; top: 47.09%;" data-step="1" aria-label="מימון">
+                            <span class="hotspot-tip"><strong>1. מימון</strong>איך לבנות תיק מימון אמריקאי שמאפשר לך לסקייל.</span>
+                        </button>
+                        <button type="button" class="hotspot" style="left: 33.88%; top: 80%;" data-step="2" aria-label="DEAL SOURCE">
+                            <span class="hotspot-tip"><strong>2. DEAL SOURCE</strong>איתור עסקאות מתחת למחיר השוק ב-Off Market.</span>
+                        </button>
+                        <button type="button" class="hotspot" style="left: 41.66%; top: 60.28%;" data-step="3" aria-label="ניתוח עסקה">
+                            <span class="hotspot-tip"><strong>3. ניתוח עסקה</strong>כלי AI מתקדמים לניתוח עסקאות במהירות ובדיוק.</span>
+                        </button>
+                        <button type="button" class="hotspot hotspot-below" style="left: 49.97%; top: 41.32%;" data-step="4" aria-label="הערכת שיפוץ">
+                            <span class="hotspot-tip"><strong>4. הערכת שיפוץ</strong>ניהול שיפוץ מרחוק עם טכנולוגיה חכמה.</span>
+                        </button>
+                        <button type="button" class="hotspot" style="left: 56.36%; top: 66.43%;" data-step="5" aria-label="משא ומתן ואקוויזישן">
+                            <span class="hotspot-tip"><strong>5. משא ומתן ואקוויזישן</strong>טקטיקות שסוגרות הרבה יותר חוזים.</span>
+                        </button>
+                        <button type="button" class="hotspot" style="left: 63.10%; top: 80.67%;" data-step="6" aria-label="הגשת הצעות SENDOFFERS">
+                            <span class="hotspot-tip"><strong>6. הגשת הצעות SENDOFFERS</strong>המערכת שלנו לאוטומציה של עשרות הצעות ביום.</span>
+                        </button>
+                        <button type="button" class="hotspot" style="left: 69.65%; top: 52.03%;" data-step="7" aria-label="קלוזינג וחתימה">
+                            <span class="hotspot-tip"><strong>7. קלוזינג וחתימה</strong>סגירת העסקה ועד לקבלת המפתחות.</span>
+                        </button>
                     </div>
+                    <p class="journey-hint">ריחפו עם העכבר על נקודה במסלול לחשיפת תיאור השלב</p>
                 </div>
             </div>
         </section>
@@ -1350,6 +1470,26 @@
                 button.disabled = false;
             }
         });
+
+        // Journey 360 hotspots — tap-to-toggle on touch devices
+        (function() {
+            const journey = document.getElementById('journey360');
+            if (!journey) return;
+            const hotspots = journey.querySelectorAll('.hotspot');
+            hotspots.forEach(spot => {
+                spot.addEventListener('click', (e) => {
+                    const wasActive = spot.classList.contains('is-active');
+                    hotspots.forEach(s => s.classList.remove('is-active'));
+                    if (!wasActive) spot.classList.add('is-active');
+                });
+            });
+            // Close active hotspot when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!journey.contains(e.target)) {
+                    hotspots.forEach(s => s.classList.remove('is-active'));
+                }
+            });
+        })();
     </script>
     
     <!-- Language Switcher -->

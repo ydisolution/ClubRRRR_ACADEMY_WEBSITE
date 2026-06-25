@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClubRRRR - Your Success Starts Here</title>
+    <title>ClubRRRR Community - הבית לייזמי נדל"ן בארה"ב</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -557,7 +557,7 @@
 
         .programs-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 40px;
             max-width: 1400px;
             margin: 0 auto;
@@ -1265,6 +1265,243 @@
                 height: 180px;
             }
         }
+        /* ===== Community Activity Section ===== */
+        .community-activity-section {
+            padding: 100px 40px;
+            background: var(--dark-bg);
+        }
+        .community-inner { max-width: 1400px; margin: 0 auto; }
+        .community-lead {
+            text-align: center;
+            font-size: 20px;
+            color: var(--text-gray);
+            max-width: 820px;
+            margin: -30px auto 55px;
+            line-height: 1.8;
+        }
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .activity-card {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid rgba(223, 178, 73, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .activity-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold-color);
+            box-shadow: 0 18px 45px rgba(223, 178, 73, 0.2);
+        }
+        .activity-photo { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; }
+        .activity-photo img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .activity-card:hover .activity-photo img { transform: scale(1.08); }
+        .activity-icon {
+            position: absolute;
+            top: 18px; right: 18px;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: rgba(10, 10, 10, 0.75);
+            border: 2px solid var(--gold-color);
+            color: var(--gold-color);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .activity-body { padding: 24px; }
+        .activity-body h3 { color: var(--gold-color); font-size: 20px; margin-bottom: 10px; }
+        .activity-body p { color: var(--text-gray); font-size: 15px; line-height: 1.7; }
+
+        .collage-heading {
+            text-align: center;
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: 1.3rem;
+            max-width: 900px;
+            margin: 60px auto 30px;
+            line-height: 1.6;
+        }
+        .community-collage {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 50px;
+        }
+        .collage-item { aspect-ratio: 1; border-radius: 12px; overflow: hidden; }
+        .collage-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .collage-item:hover img { transform: scale(1.1); }
+
+        .community-magic {
+            text-align: center;
+            font-size: clamp(20px, 2.5vw, 28px);
+            font-weight: 700;
+            color: var(--gold-color);
+            max-width: 900px;
+            margin: 50px auto 0;
+            line-height: 1.6;
+        }
+        .community-join {
+            text-align: center;
+            margin-top: 70px;
+            padding-top: 50px;
+            border-top: 1px solid rgba(223, 178, 73, 0.15);
+        }
+        .community-join-title { font-size: 32px; font-weight: 700; color: var(--gold-color); margin-bottom: 16px; }
+        .community-join-text {
+            max-width: 700px; margin: 0 auto 30px;
+            color: var(--text-gray); font-size: 17px; line-height: 1.8;
+        }
+
+        /* ===== Academy lead + coming-soon badge ===== */
+        .academy-lead {
+            text-align: center;
+            font-size: 20px;
+            color: var(--text-gray);
+            max-width: 820px;
+            margin: -30px auto 55px;
+            line-height: 1.8;
+        }
+        .program-badge.badge-soon {
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--text-gray);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        /* ===== Graduates Testimonials Section ===== */
+        .graduates-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.97) 0%, rgba(30, 30, 30, 0.97) 100%);
+        }
+        .graduates-inner { max-width: 1300px; margin: 0 auto; }
+        .graduates-intro {
+            text-align: center;
+            font-size: 19px;
+            color: var(--text-gray);
+            max-width: 760px;
+            margin: -30px auto 55px;
+            line-height: 1.8;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(223, 178, 73, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .testimonial-video { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .testimonial-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .testimonial-caption { padding: 16px; text-align: center; color: var(--gold-color); font-weight: 600; font-size: 15px; }
+
+        /* ===== WhatsApp screenshots ===== */
+        .wa-heading { text-align: center; font-size: 26px; font-weight: 700; color: var(--gold-color); margin: 70px 0 35px; }
+        .wa-marquee {
+            position: relative;
+            overflow: hidden;
+            margin: 0 -40px;
+        }
+        .wa-scroller {
+            overflow-x: auto;
+            overflow-y: hidden;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            direction: ltr;
+            padding: 10px 60px;
+        }
+        .wa-scroller::-webkit-scrollbar { display: none; }
+        .wa-track {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+        }
+        .wa-nav {
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 90px;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: var(--gold-color);
+            font-size: 28px;
+            opacity: 0.65;
+            transition: opacity 0.3s ease, background 0.3s ease;
+            user-select: none;
+        }
+        .wa-nav:hover { opacity: 1; }
+        .wa-nav-left {
+            left: 0;
+            justify-content: flex-start;
+            padding-left: 18px;
+            background: linear-gradient(to right, rgba(10, 10, 10, 0.7) 0%, transparent 100%);
+        }
+        .wa-nav-right {
+            right: 0;
+            justify-content: flex-end;
+            padding-right: 18px;
+            background: linear-gradient(to left, rgba(10, 10, 10, 0.7) 0%, transparent 100%);
+        }
+        .wa-card { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 280px; transition: transform 0.4s ease; }
+        .wa-card:hover { transform: translateY(-6px); }
+        .wa-frame {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            min-height: 400px;
+            background: #0d0d0d;
+            border: 8px solid #1c1c1c;
+            border-radius: 34px;
+            padding-top: 26px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            outline: 1px solid rgba(223, 178, 73, 0.25);
+            overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            transition: border-color 0.4s ease;
+        }
+        .wa-card:hover .wa-frame { border-color: var(--gold-color); }
+        .wa-notch {
+            position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+            width: 110px; height: 18px; background: #1c1c1c; border-radius: 10px; z-index: 2;
+        }
+        .wa-shot { position: relative; z-index: 1; width: 100%; border-radius: 18px; display: block; }
+        .wa-placeholder {
+            position: absolute; inset: 0; z-index: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+            color: rgba(255, 255, 255, 0.35); padding: 40px 20px; text-align: center;
+        }
+        .wa-placeholder i { font-size: 46px; color: #25D366; opacity: 0.6; }
+        .wa-placeholder span { font-size: 14px; }
+        .wa-caption { margin-top: 16px; color: var(--gold-color); font-weight: 600; font-size: 15px; }
+
+        /* ===== Responsive for new sections ===== */
+        @media (max-width: 1024px) {
+            .programs-grid { grid-template-columns: repeat(2, 1fr); }
+            .activity-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .community-collage { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .programs-grid { grid-template-columns: 1fr; }
+            .activity-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .community-collage { grid-template-columns: repeat(2, 1fr); }
+            .wa-marquee { margin: 0 -20px; }
+            .wa-card { width: 240px; }
+            .community-activity-section, .graduates-section { padding: 70px 20px; }
+        }
     </style>
 </head>
 <body>
@@ -1281,13 +1518,13 @@
                     <li><a href="login.html" class="login-btn"><i class="fas fa-user"></i> אזור אישי</a></li>
                     <li><a href="#about">אודות</a></li>
                     <li class="has-dropdown">
-                        <a href="academy.html">ClubRRRR ACADEMY</a>
+                        <a href="#programs">ClubRRRR Academy</a>
                         <div class="dropdown-menu">
-                            <a href="academy.html" class="dropdown-item"><i class="fas fa-graduation-cap"></i> מסלולי הלימוד המלאים</a>
-                            <a href="mentoring.html" class="dropdown-item">מנטורינג - לימוד צמוד עם איתי ודרור</a>
-                            <a href="cluber360.html" class="dropdown-item">ClubRRRR 360 - תכנית מקיפה</a>
-                            <a href="wholesale.html" class="dropdown-item">קורס Wholesale - איתור עסקאות</a>
-                            <a href="creative-financing.html" class="dropdown-item">Creative Financing - מימון יצירתי</a>
+                            <a href="cluber360.html" class="dropdown-item">תכנית ClubRRRR 360</a>
+                            <a href="club-prep.html" class="dropdown-item">מכינת ClubRRRR</a>
+                            <a href="acquisition.html" class="dropdown-item">קורס אקויזישין</a>
+                            <a href="coming-soon.html" class="dropdown-item">קורס JV - בקרוב</a>
+                            <a href="coming-soon.html" class="dropdown-item">קורס Tax Sale - בקרוב</a>
                         </div>
                     </li>
                     <li><a href="graduates.html">הבוגרים שלנו</a></li>
@@ -1332,8 +1569,8 @@
             </iframe>
         </div>
         <div class="hero-content">
-            <h1><span class="gold">ClubRRRR ACADEMY</span></h1>
-            <p>ברוכים הבאים לאקדמיה הגדולה בישראל ללימודי יזמות נדל"ן בארה"ב</p>
+            <h1><span class="gold">ClubRRRR Community</span></h1>
+            <p>הבית לייזמי נדל"ן בארה"ב - הקהילה הגדולה בישראל של יזמים שעוזרים אחד לשני להצליח</p>
             <div class="social-icons">
                 <a href="https://www.youtube.com/@clubrrrr" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.facebook.com/itai.aharon.315" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1341,6 +1578,79 @@
                 <a href="https://www.tiktok.com/@clubrrrr" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                 <a href="https://www.linkedin.com/company/clubrrrr" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
+        </div>
+    </section>
+
+    <!-- Community Activity Section -->
+    <section class="community-activity-section" id="community">
+        <div class="community-inner">
+            <h2 class="section-title">קהילת <span class="gold">ClubRRRR</span></h2>
+            <p class="community-lead">קלאבר היא לא רק תוכנית לימודים - זו <strong style="color: var(--gold-color);">משפחה אמיתית</strong> של יזמים ויזמות נדל"ן. אנחנו נפגשים באופן קבוע במפגשי קהילה, אירועים, ואפילו טיולים משותפים.</p>
+
+            <div class="activity-grid">
+                <div class="activity-card">
+                    <div class="activity-photo"><img src="community/bar.jpg" alt="קלאברררר על הבר"></div>
+                    <div class="activity-icon"><i class="fas fa-beer-mug-empty"></i></div>
+                    <div class="activity-body">
+                        <h3>קלאברררר על הבר</h3>
+                        <p>מפגשים חברתיים בלתי-פורמליים שבהם נרקמות שותפויות ונסגרות עסקאות.</p>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-photo"><img src="community/accelerator.jpg" alt="מיטאפ Accelerator שנתי"></div>
+                    <div class="activity-icon"><i class="fas fa-people-group"></i></div>
+                    <div class="activity-body">
+                        <h3>מיטאפ Accelerator שנתי</h3>
+                        <p>כנס שנתי לחברי הקהילה בלבד - תוכן, נטוורקינג ואנרגיה של עשייה.</p>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-photo"><img src="community/whatsapp.jpg" alt="קבוצת וואטסאפ פרטית"></div>
+                    <div class="activity-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div class="activity-body">
+                        <h3>קבוצת וואטסאפ פרטית</h3>
+                        <p>לבוגרי הקהילה בלבד - מענה לכל שאלה, בכל שעה, מהקהילה כולה.</p>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-photo"><img src="community/collab.jpg" alt="שיתופי פעולה בין בוגרים"></div>
+                    <div class="activity-icon"><i class="fas fa-handshake"></i></div>
+                    <div class="activity-body">
+                        <h3>שיתופי פעולה בין בוגרים</h3>
+                        <p>בוגרים סוגרים עסקאות יחד - שותפויות אמיתיות שנולדות בקהילה.</p>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-photo"><img src="community/zoom.jpg" alt="מפגשי זום קהילתיים"></div>
+                    <div class="activity-icon"><i class="fas fa-video"></i></div>
+                    <div class="activity-body">
+                        <h3>מפגשי זום קהילתיים</h3>
+                        <p>מפגשים עם ערך ותוכן - לומדים, מתעדכנים ומתחברים מכל מקום.</p>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-photo"><img src="community/enrich.jpg" alt="מפגשי העשרה"></div>
+                    <div class="activity-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="activity-body">
+                        <h3>מפגשי העשרה</h3>
+                        <p>מומחים אורחים ותכנים מתקדמים שמרחיבים את הידע ואת הרשת.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="collage-heading">רגעים מהקהילה - <span style="color: var(--gold-color);">קהילת קלאבר</span> היא המקום שבו הקסם קורה, נרקמות שותפויות ונסגרות עסקאות!</h3>
+
+            <div class="community-collage">
+                <div class="collage-item"><img src="community/collage-1.jpg" alt="מפגש קהילת קלאבר"></div>
+                <div class="collage-item"><img src="community/collage-2.jpg" alt="מפגש קהילת קלאבר"></div>
+                <div class="collage-item"><img src="community/collage-3.jpg" alt="מפגש קהילת קלאבר"></div>
+                <div class="collage-item"><img src="community/collage-4.jpg" alt="מפגש קהילת קלאבר"></div>
+                <div class="collage-item"><img src="community/collage-5.jpg" alt="מפגש קהילת קלאבר"></div>
+                <div class="collage-item"><img src="community/collage-6.jpg" alt="מפגש קהילת קלאבר"></div>
+                <div class="collage-item"><img src="community/collage-7.jpg" alt="מפגש קהילת קלאבר"></div>
+                <div class="collage-item"><img src="community/collage-8.jpg" alt="מפגש קהילת קלאבר"></div>
+            </div>
+
         </div>
     </section>
 
@@ -1431,69 +1741,138 @@
         </div>
     </section>
 
-    <!-- Programs & Services Section -->
+    <!-- ClubRRRR Academy Section -->
     <section class="resources-section" id="programs">
-        <h2 class="section-title">קורסי <span class="gold">ClubRRRR ACADEMY</span></h2>
+        <h2 class="section-title"><span class="gold">ClubRRRR Academy</span></h2>
+        <p class="academy-lead">האקדמיה של הקהילה - כאן לומדים יזמות נדל"ן בארה"ב הלכה למעשה, מהבסיס ועד המומחיות. תכנית הדגל ClubRRRR 360 ומסלולים נוספים שייקחו אותך צעד אחר צעד.</p>
         <div class="programs-grid">
-            <!-- מנטורינג -->
-            <div class="program-card">
-                <div class="program-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop" alt="מנטורינג צמוד" class="program-image">
-                </div>
-                <div class="program-content">
-                    <h3 class="program-title">מנטורינג - לימוד צמוד</h3>
-                    <p class="program-description">ליווי אישי ומקצועי מאיתי ודרור. קבל הדרכה אישית, ייעוץ אסטרטגי ותמיכה ישירה בכל שלב בדרך להצלחה שלך בעולם הנדל"ן. למידה צמודה עם המומחים.</p>
-                    <a href="mentoring.html" class="program-btn">למד עוד <i class="fas fa-arrow-left"></i></a>
-                </div>
-            </div>
-
             <!-- ClubRRRR 360 -->
             <div class="program-card">
                 <div class="program-image-wrapper">
                     <span class="program-badge">מומלץ</span>
-                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop" alt="תכנית קלאבר 360" class="program-image">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop" alt="תכנית ClubRRRR 360" class="program-image">
                 </div>
                 <div class="program-content">
                     <h3 class="program-title">ClubRRRR 360</h3>
-                    <p class="program-description">התכנית המקיפה והמתקדמת ביותר ללימודי יזמות נדל"ן בארה"ב. תכנית שמשלבת פרקטיקה, אסטרטגיות ואימוץ טכנולוגיות AI מתקדמות לאיתור וביצוע עסקאות נדל"ן.</p>
+                    <p class="program-description">תכנית הדגל - המקיפה והמתקדמת ביותר ללימודי יזמות נדל"ן בארה"ב. משלבת פרקטיקה, אסטרטגיות וטכנולוגיות AI מתקדמות לאיתור וביצוע עסקאות.</p>
                     <a href="cluber360.html" class="program-btn">למד עוד <i class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
 
-            <!-- Wholesale -->
+            <!-- מכינת ClubRRRR -->
             <div class="program-card">
                 <div class="program-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=800&fit=crop" alt="קורס Wholesale" class="program-image">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=800&fit=crop" alt="מכינת ClubRRRR" class="program-image">
                 </div>
                 <div class="program-content">
-                    <h3 class="program-title">קורס Wholesale</h3>
-                    <p class="program-description">איך להיות Wholesaler מצליח שמאתר עסקאות משתלמות, עולה על חוזים ומרוויח מהעברת זכויות. למד את כל השיטות לאיתור נכסים, ניתוח עסקאות, בניית רשת קונים ומערכות CRM.</p>
-                    <a href="wholesale.html" class="program-btn">למד עוד <i class="fas fa-arrow-left"></i></a>
+                    <h3 class="program-title">מכינת ClubRRRR</h3>
+                    <p class="program-description">נקודת הפתיחה למי שמתחיל מאפס - ללא קורס בסיס או ניסיון קודם. המכינה מקנה את כל היסודות ומכשירה אותך בביטחון לתכנית ClubRRRR 360.</p>
+                    <a href="club-prep.html" class="program-btn">למד עוד <i class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
 
-            <!-- Creative Financing -->
+            <!-- אקויזישין -->
             <div class="program-card">
                 <div class="program-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=1200&h=800&fit=crop" alt="Creative Financing" class="program-image">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=800&fit=crop" alt="קורס אקויזישין" class="program-image">
                 </div>
                 <div class="program-content">
-                    <h3 class="program-title">Creative Financing</h3>
-                    <p class="program-description">אסטרטגיות מתקדמות לרכישת נכסים בצורה יצירתית ללא הון: Sub2, Seller Financing, Novation, Pad Split ועוד. למד איך לרכוש נדל"ן עם מינימום הון, פריסת תשלום ומבני עסקה חכמים.</p>
-                    <a href="creative-financing.html" class="program-btn">למד עוד <i class="fas fa-arrow-left"></i></a>
+                    <h3 class="program-title">קורס אקויזישין</h3>
+                    <p class="program-description">אומנות המשא ומתן והקלוזינג - איך לנהל מו"מ שמביא לעסקה, לסגור נכסים ולהגיע לקלוזינג בביטחון. הכלים המעשיים של הסוגרים הטובים בתחום.</p>
+                    <a href="acquisition.html" class="program-btn">למד עוד <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <!-- JV - בקרוב -->
+            <div class="program-card">
+                <div class="program-image-wrapper">
+                    <span class="program-badge badge-soon">בקרוב</span>
+                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&h=800&fit=crop" alt="קורס JV" class="program-image">
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">קורס JV - שיתופי פעולה</h3>
+                    <p class="program-description">איך לבנות שותפויות (Joint Ventures) חכמות, לחבר בין הון, ידע והזדמנויות, ולסגור עסקאות גדולות יותר ביחד. הקורס בדרך.</p>
+                    <a href="coming-soon.html" class="program-btn">בקרוב <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <!-- Tax Sale - בקרוב -->
+            <div class="program-card">
+                <div class="program-image-wrapper">
+                    <span class="program-badge badge-soon">בקרוב</span>
+                    <img src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=1200&h=800&fit=crop" alt="קורס Tax Sale" class="program-image">
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">קורס Tax Sale</h3>
+                    <p class="program-description">עולם ה-Tax Sale - רכישת נכסים דרך מכרזי מיסים, אחת הדרכים המעניינות להיכנס לעסקאות במחירים אטרקטיביים. הקורס בדרך.</p>
+                    <a href="coming-soon.html" class="program-btn">בקרוב <i class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Community Section -->
-    <section class="community-section" id="community">
-        <div class="community-container">
-            <h2 class="community-title">הצטרף לקהילה</h2>
-            <p class="community-description">
-                "קהילה" הפכה לאחת מהמילים כמו "סינרגיה" או "אופטימלי", אבל ברגע שתצטרף לקהילה הזו של Go-Givers, אתה באמת נכנס לרשת של אנשים בעלי חשיבה דומה שנמצאים במסלול מהיר להצלחה.
-            </p>
-            <div class="community-social-brands">
+    <!-- Graduates Testimonials Section -->
+    <section class="graduates-section" id="graduates">
+        <div class="graduates-inner">
+            <h2 class="section-title">בוגרי קהילת קלאבר <span class="gold">משתפים</span></h2>
+            <p class="graduates-intro">הם התחילו בדיוק מאיפה שאתה עכשיו. הבוגרים שלנו משתפים במסע, התוצאות, והקהילה שליוותה אותם - בסרטונים ובהמלצות אמיתיות מקבוצת הוואטסאפ.</p>
+
+            <!-- TODO: החלף את ה-VIDEO_ID בכל iframe בקישור YouTube אמיתי של עדות בוגר -->
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-video">
+                        <iframe src="https://www.youtube.com/embed/0kFWhvTSV9E?rel=0" title="עדות בוגר 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="testimonial-caption">בוגר/ת ClubRRRR 360</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-video">
+                        <iframe src="https://www.youtube.com/embed/YtgYcHOahRs?rel=0" title="עדות בוגר 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="testimonial-caption">בוגר/ת ClubRRRR 360</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-video">
+                        <iframe src="https://www.youtube.com/embed/oF6XIhYIqEs?rel=0" title="עדות בוגר 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="testimonial-caption">בוגר/ת ClubRRRR 360</div>
+                </div>
+            </div>
+
+            <h3 class="wa-heading">המלצות מקבוצת הוואטסאפ</h3>
+            <!-- TODO: הוסף צילומי מסך לתיקיית graduates/ (wa-1.jpg ... wa-9.jpg) -->
+            <div class="wa-marquee">
+                <div class="wa-scroller" id="waScroller">
+                    <div class="wa-track">
+                        <div class="wa-card"><div class="wa-frame"><div class="wa-notch"></div><img class="wa-shot" src="graduates/wa-1.jpg" alt="המלצת בוגר בוואטסאפ" onerror="this.remove()"><div class="wa-placeholder"><i class="fab fa-whatsapp"></i><span>צילום מסך יתווסף</span></div></div><div class="wa-caption">המלצת בוגר/ת</div></div>
+                        <div class="wa-card"><div class="wa-frame"><div class="wa-notch"></div><img class="wa-shot" src="graduates/wa-2.jpg" alt="המלצת בוגר בוואטסאפ" onerror="this.remove()"><div class="wa-placeholder"><i class="fab fa-whatsapp"></i><span>צילום מסך יתווסף</span></div></div><div class="wa-caption">המלצת בוגר/ת</div></div>
+                        <div class="wa-card"><div class="wa-frame"><div class="wa-notch"></div><img class="wa-shot" src="graduates/wa-3.jpg" alt="המלצת בוגר בוואטסאפ" onerror="this.remove()"><div class="wa-placeholder"><i class="fab fa-whatsapp"></i><span>צילום מסך יתווסף</span></div></div><div class="wa-caption">המלצת בוגר/ת</div></div>
+                        <div class="wa-card"><div class="wa-frame"><div class="wa-notch"></div><img class="wa-shot" src="graduates/wa-4.jpg" alt="המלצת בוגר בוואטסאפ" onerror="this.remove()"><div class="wa-placeholder"><i class="fab fa-whatsapp"></i><span>צילום מסך יתווסף</span></div></div><div class="wa-caption">המלצת בוגר/ת</div></div>
+                        <div class="wa-card"><div class="wa-frame"><div class="wa-notch"></div><img class="wa-shot" src="graduates/wa-5.jpg" alt="המלצת בוגר בוואטסאפ" onerror="this.remove()"><div class="wa-placeholder"><i class="fab fa-whatsapp"></i><span>צילום מסך יתווסף</span></div></div><div class="wa-caption">המלצת בוגר/ת</div></div>
+                        <div class="wa-card"><div class="wa-frame"><div class="wa-notch"></div><img class="wa-shot" src="graduates/wa-6.jpg" alt="המלצת בוגר בוואטסאפ" onerror="this.remove()"><div class="wa-placeholder"><i class="fab fa-whatsapp"></i><span>צילום מסך יתווסף</span></div></div><div class="wa-caption">המלצת בוגר/ת</div></div>
+                        <div class="wa-card"><div class="wa-frame"><div class="wa-notch"></div><img class="wa-shot" src="graduates/wa-7.jpg" alt="המלצת בוגר בוואטסאפ" onerror="this.remove()"><div class="wa-placeholder"><i class="fab fa-whatsapp"></i><span>צילום מסך יתווסף</span></div></div><div class="wa-caption">המלצת בוגר/ת</div></div>
+                        <div class="wa-card"><div class="wa-frame"><div class="wa-notch"></div><img class="wa-shot" src="graduates/wa-8.jpg" alt="המלצת בוגר בוואטסאפ" onerror="this.remove()"><div class="wa-placeholder"><i class="fab fa-whatsapp"></i><span>צילום מסך יתווסף</span></div></div><div class="wa-caption">המלצת בוגר/ת</div></div>
+                        <div class="wa-card"><div class="wa-frame"><div class="wa-notch"></div><img class="wa-shot" src="graduates/wa-9.jpg" alt="המלצת בוגר בוואטסאפ" onerror="this.remove()"><div class="wa-placeholder"><i class="fab fa-whatsapp"></i><span>צילום מסך יתווסף</span></div></div><div class="wa-caption">המלצת בוגר/ת</div></div>
+                    </div>
+                </div>
+                <div class="wa-nav wa-nav-left" data-dir="-1" aria-label="גלילה שמאלה"><i class="fas fa-chevron-left"></i></div>
+                <div class="wa-nav wa-nav-right" data-dir="1" aria-label="גלילה ימינה"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" id="contact">
+        <div class="newsletter-container">
+            <h2 class="newsletter-title">הצטרף לקהילה</h2>
+            <p class="community-join-text">"קהילה" הפכה למילה שחוקה - אבל ברגע שתצטרף לרשת הזו של Go-Givers, אתה נכנס באמת לקבוצה של אנשים בעלי חשיבה דומה שנמצאים במסלול מהיר להצלחה.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="text" name="name" placeholder="שם מלא" class="form-input" required>
+                <input type="email" name="email" placeholder="מייל" class="form-input" required>
+                <input type="tel" name="phone" placeholder="מספר טלפון" class="form-input" required>
+                <button type="submit" class="form-submit">השאר/י פרטים</button>
+            </form>
+            <div class="community-social-brands" style="margin-top: 45px;">
                 <a href="https://www.youtube.com/@clubrrrr" target="_blank" class="brand-logo youtube-brand">
                     <i class="fab fa-youtube"></i>
                     <span>YouTube</span>
@@ -1515,19 +1894,6 @@
                     <span>TikTok</span>
                 </a>
             </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter-section">
-        <div class="newsletter-container">
-            <h2 class="newsletter-title">קבל עדכונים מאיתי ודרור</h2>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="text" name="name" placeholder="שם מלא" class="form-input" required>
-                <input type="email" name="email" placeholder="מייל" class="form-input" required>
-                <input type="tel" name="phone" placeholder="מספר טלפון" class="form-input" required>
-                <button type="submit" class="form-submit">קבל/י עדכונים</button>
-            </form>
         </div>
     </section>
 
@@ -1636,6 +2002,31 @@
                 button.disabled = false;
             }
         });
+
+        // WhatsApp marquee — hover-controlled scroll
+        (function() {
+            const scroller = document.getElementById('waScroller');
+            if (!scroller) return;
+            const wrap = scroller.parentElement;
+            let rafId = null;
+            function start(dir) {
+                cancelAnimationFrame(rafId);
+                const step = () => {
+                    scroller.scrollLeft += dir * 4;
+                    rafId = requestAnimationFrame(step);
+                };
+                rafId = requestAnimationFrame(step);
+            }
+            function stop() {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+            wrap.querySelectorAll('.wa-nav').forEach(nav => {
+                const dir = parseInt(nav.dataset.dir, 10);
+                nav.addEventListener('mouseenter', () => start(dir));
+                nav.addEventListener('mouseleave', stop);
+            });
+        })();
     </script>
     
     <!-- Language Switcher -->
