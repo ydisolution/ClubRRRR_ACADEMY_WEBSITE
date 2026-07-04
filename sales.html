@@ -611,6 +611,78 @@
             border-radius: 20px;
             border: 1px dashed var(--gold-dim);
         }
+        .collage-heading {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-white);
+            max-width: 760px;
+            margin: 10px auto 30px;
+            line-height: 1.55;
+        }
+        .collage-heading .gold { color: var(--gold-color); }
+        .community-collage {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            max-width: 1000px;
+            margin: 0 auto 50px;
+        }
+        .collage-item {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+        }
+        .collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+        .collage-item:hover img { transform: scale(1.08); }
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+            max-width: 1050px;
+            margin: 0 auto 50px;
+        }
+        .activity-card {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .activity-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold-color);
+            box-shadow: 0 18px 45px rgba(223, 178, 73, 0.2);
+        }
+        .activity-photo { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; }
+        .activity-photo img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .activity-card:hover .activity-photo img { transform: scale(1.08); }
+        .activity-icon {
+            position: absolute;
+            top: 18px; right: 18px;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: rgba(10, 10, 10, 0.75);
+            border: 2px solid var(--gold-color);
+            color: var(--gold-color);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .activity-body { padding: 24px; }
+        .activity-body h3 { color: var(--gold-color); font-size: 20px; margin-bottom: 10px; }
+        .activity-body p { color: var(--text-gray); font-size: 15px; line-height: 1.7; }
 
         /* ───────── FOLD 7 — PERSONAS ───────── */
         .personas-grid {
@@ -696,36 +768,50 @@
             line-height: 1.7;
         }
         .mentor-card {
-            background: linear-gradient(135deg, rgba(223, 178, 73, 0.1), rgba(223, 178, 73, 0.03));
-            border: 1px solid var(--gold-color);
+            position: relative;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(223, 178, 73, 0.10), transparent 60%),
+                var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 18px;
-            padding: 36px;
+            padding: 48px 40px;
             text-align: center;
-            margin-bottom: 40px;
+            margin: 0 auto 40px;
+            max-width: 920px;
         }
         .mentor-card .mentor-icon {
-            width: 70px; height: 70px;
+            width: 66px; height: 66px;
             border-radius: 50%;
             background: var(--gold-color);
             color: #000;
-            font-size: 30px;
+            font-size: 28px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
+            box-shadow: 0 8px 26px rgba(223, 178, 73, 0.25);
         }
         .mentor-card h3 {
             color: var(--gold-color);
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
         .mentor-card p {
             color: var(--text-gray);
             font-size: 17px;
-            line-height: 1.8;
-            max-width: 780px;
+            line-height: 1.85;
+            max-width: 760px;
             margin: 0 auto;
+        }
+        .mentor-note {
+            margin: 24px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(223, 178, 73, 0.15);
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.75;
+            max-width: 700px;
         }
         .center-cta { text-align: center; margin-top: 30px; }
 
@@ -957,6 +1043,8 @@
         /* ───────── RESPONSIVE ───────── */
         @media (max-width: 1024px) {
             .videos-grid, .personas-grid, .week-grid, .testimonials-boom { grid-template-columns: repeat(2, 1fr); }
+            .community-collage { grid-template-columns: repeat(3, 1fr); }
+            .activity-grid { grid-template-columns: repeat(2, 1fr); }
             .founders-grid { grid-template-columns: 1fr; }
             .benefits-list { grid-template-columns: 1fr; }
             .reviews-collage { grid-template-columns: repeat(4, 1fr); }
@@ -966,6 +1054,8 @@
         @media (max-width: 640px) {
             .section { padding: 60px 0; }
             .videos-grid, .videos-grid.cols-2, .personas-grid, .week-grid, .testimonials-boom { grid-template-columns: 1fr; }
+            .community-collage { grid-template-columns: repeat(2, 1fr); }
+            .activity-grid { grid-template-columns: 1fr; }
             .vs-headers { grid-template-columns: 1fr; gap: 0; margin-bottom: 8px; }
             .vs-head.them { display: none; }
             .vs-row { grid-template-columns: 1fr; gap: 10px; padding: 18px 4px; }
@@ -994,7 +1084,6 @@
 <!-- ────────────── FOLD 1 — HERO ────────────── -->
 <section class="hero">
     <div class="container">
-        <span class="hero-tag">ClubRRRR · Real Estate Entrepreneurs Community</span>
         <h1>
             התוכנית <span class="gold">המתקדמת בישראל</span><br>
             ליזמות נדל"ן בארה"ב<br>
@@ -1178,6 +1267,69 @@
             <span class="community-placeholder-note">((איתי — לכתוב כאן טקסט על: מה גרם לכם לפתח את הקהילה, איך היא עוזרת לקלאברים במהלך התוכנית, ואיך היא ממשיכה לעזור לבוגרי קלאבר אחרי התוכנית. לציין את מפגשי הלייב כל שבועיים — תוכן שמתחדש כל הזמן ושמור להם עם גישה לכל החיים.))</span>
         </p>
 
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="activity-photo"><img src="community/bar.jpg" alt="קלאברררר על הבר" loading="lazy"></div>
+                <div class="activity-icon"><i class="fas fa-beer-mug-empty"></i></div>
+                <div class="activity-body">
+                    <h3>קלאברררר על הבר</h3>
+                    <p>מפגשים חברתיים בלתי-פורמליים שבהם נרקמות שותפויות ונסגרות עסקאות.</p>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="activity-photo"><img src="community/accelerator.jpg" alt="מיטאפ Accelerator שנתי" loading="lazy"></div>
+                <div class="activity-icon"><i class="fas fa-people-group"></i></div>
+                <div class="activity-body">
+                    <h3>מיטאפ Accelerator שנתי</h3>
+                    <p>כנס שנתי לחברי הקהילה בלבד — תוכן, נטוורקינג ואנרגיה של עשייה.</p>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="activity-photo"><img src="community/whatsapp.jpg" alt="קבוצת וואטסאפ פרטית" loading="lazy"></div>
+                <div class="activity-icon"><i class="fab fa-whatsapp"></i></div>
+                <div class="activity-body">
+                    <h3>קבוצת וואטסאפ פרטית</h3>
+                    <p>לחברי הקהילה בלבד — מענה לכל שאלה, בכל שעה, מהקהילה כולה.</p>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="activity-photo"><img src="community/collab.jpg" alt="שיתופי פעולה בין בוגרים" loading="lazy"></div>
+                <div class="activity-icon"><i class="fas fa-handshake"></i></div>
+                <div class="activity-body">
+                    <h3>שיתופי פעולה בין בוגרים</h3>
+                    <p>בוגרים סוגרים עסקאות יחד — שותפויות אמיתיות שנולדות בקהילה.</p>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="activity-photo"><img src="community/zoom.jpg" alt="מפגשי זום קהילתיים" loading="lazy"></div>
+                <div class="activity-icon"><i class="fas fa-video"></i></div>
+                <div class="activity-body">
+                    <h3>מפגשי זום קהילתיים</h3>
+                    <p>מפגשים עם ערך ותוכן — לומדים, מתעדכנים ומתחברים מכל מקום.</p>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="activity-photo"><img src="community/enrich.jpg" alt="מפגשי העשרה" loading="lazy"></div>
+                <div class="activity-icon"><i class="fas fa-lightbulb"></i></div>
+                <div class="activity-body">
+                    <h3>מפגשי העשרה</h3>
+                    <p>מומחים אורחים ותכנים מתקדמים שמרחיבים את הידע ואת הרשת.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="collage-heading">רגעים מהקהילה — <span class="gold">קלאבר</span> זה המקום שבו נרקמות שותפויות ונסגרות עסקאות</h3>
+        <div class="community-collage">
+            <div class="collage-item"><img src="community/collage-1.jpg" alt="מפגש קהילת קלאבר" loading="lazy"></div>
+            <div class="collage-item"><img src="community/collage-2.jpg" alt="מפגש קהילת קלאבר" loading="lazy"></div>
+            <div class="collage-item"><img src="community/collage-3.jpg" alt="מפגש קהילת קלאבר" loading="lazy"></div>
+            <div class="collage-item"><img src="community/collage-4.jpg" alt="מפגש קהילת קלאבר" loading="lazy"></div>
+            <div class="collage-item"><img src="community/collage-5.jpg" alt="מפגש קהילת קלאבר" loading="lazy"></div>
+            <div class="collage-item"><img src="community/collage-6.jpg" alt="מפגש קהילת קלאבר" loading="lazy"></div>
+            <div class="collage-item"><img src="community/collage-7.jpg" alt="מפגש קהילת קלאבר" loading="lazy"></div>
+            <div class="collage-item"><img src="community/collage-8.jpg" alt="מפגש קהילת קלאבר" loading="lazy"></div>
+        </div>
+
         <div class="videos-grid cols-2">
             <div class="video-card">
                 <div class="video-wrap" style="background:#111;display:flex;align-items:center;justify-content:center;color:#666;font-size:14px;text-align:center;padding:20px;"><span>((סרטון עדות שממחישה את הכוח של הקהילה))</span></div>
@@ -1242,27 +1394,37 @@
     <div class="container">
         <h2 class="section-title">אז יצאנו ל-10 שבועות של עבודה <span class="gold">בקצב גבוה</span><br>עם סכין בין השיניים, איך זה נראה מבפנים?</h2>
 
-        <div class="week-grid">
-            <div class="day-card">
-                <span class="day-num">יום 1</span>
-                <p>צופים בשיעור מוקלט ומקבלים משימות לביצוע</p>
+        <div class="diff-points">
+            <div class="diff-point">
+                <div class="diff-num">1</div>
+                <div>
+                    <h3>יום 1 · <span class="gold">לומדים ומקבלים משימות</span></h3>
+                    <p>צופים בשיעור מוקלט לפי הקצב שלכם, ויוצאים עם משימות ברורות לביצוע בשטח.</p>
+                </div>
             </div>
-            <div class="day-card">
-                <span class="day-num">יום 3</span>
-                <p>סשן תרגול עם קלאברים בוגרים</p>
+            <div class="diff-point">
+                <div class="diff-num">3</div>
+                <div>
+                    <h3>יום 3 · <span class="gold">מתרגלים עם בוגרים</span></h3>
+                    <p>סשן תרגול עם קלאברים בוגרים — יזמים שכבר חיים את הנדל"ן בארה"ב ביומיום ומעבירים את זה הלאה.</p>
+                </div>
             </div>
-            <div class="day-card">
-                <span class="day-num">יום 5</span>
-                <p>סשן מרכזי עם איתי ודרור</p>
+            <div class="diff-point">
+                <div class="diff-num">5</div>
+                <div>
+                    <h3>יום 5 · <span class="gold">סשן מרכזי עם איתי ודרור</span></h3>
+                    <p>המפגש השבועי המרכזי — סיכום, מענה על שאלות, והכוונה אישית קדימה אל השבוע הבא.</p>
+                </div>
             </div>
         </div>
 
         <div class="mentor-card">
             <div class="mentor-icon"><i class="fas fa-user-tie"></i></div>
+            <h3>המעטפת האישית שלך — 7 ימים בשבוע</h3>
             <p>
                 לכל אורך השבוע יש לך את <strong class="gold">המנטור האישי שלך</strong> לשיחות ופגישות בזום, <strong class="gold">חמ"ל עסקה*</strong> צמוד 7/24 אחד על אחד, ותמיכה מנטלית (כי לפעמים צריך ליטוף, ולפעמים בעיטה :)
             </p>
-            <p class="form-note" style="margin-top:18px;text-align:right;">* חמ"ל עסקה = מוקד תמיכה צמוד לעסקה ספציפית — הצוות זמין סביב השעון לכל שאלה בזמן אמת על העסקה שעל השולחן.</p>
+            <p class="mentor-note">* חמ"ל עסקה = מוקד תמיכה צמוד לעסקה ספציפית — הצוות זמין סביב השעון לכל שאלה בזמן אמת על העסקה שעל השולחן.</p>
         </div>
 
         <div class="center-cta">
