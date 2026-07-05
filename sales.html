@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>ClubRRRR — התוכנית המתקדמת בישראל ליזמות נדל"ן בארה"ב</title>
+    <title>ClubRRRR | התוכנית המתקדמת בישראל ליזמות נדל"ן בארה"ב</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,8 @@
             line-height: 1.6;
         }
         a { color: inherit; text-decoration: none; }
-        .gold { color: var(--gold-color); }
+        .gold { color: var(--gold-color); text-shadow: 0 0 14px rgba(223, 178, 73, 0.45); }
+        .white { color: var(--text-white); font-weight: 700; }
         strong { font-weight: 700; }
 
         /* Header */
@@ -57,6 +58,7 @@
             border-radius: 8px;
             font-weight: 700;
             font-size: 14px;
+            white-space: nowrap;
             transition: transform 0.3s, box-shadow 0.3s;
         }
         .header-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(223, 178, 73, 0.4); }
@@ -96,8 +98,9 @@
             border: 0;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 6px 26px rgba(223, 178, 73, 0.32);
         }
-        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 45px rgba(223, 178, 73, 0.4); }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(223, 178, 73, 0.55); }
         .cta-btn i { margin-right: 8px; transition: transform 0.3s; }
         .cta-btn:hover i { transform: translateX(-4px); }
         .cta-btn-ghost {
@@ -160,6 +163,8 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: none;
+            filter: drop-shadow(0 0 16px rgba(223, 178, 73, 0.5));
         }
         .hero-promise {
             font-size: clamp(28px, 4.5vw, 52px);
@@ -218,7 +223,7 @@
             font-size: 15px;
         }
         .video-quote {
-            padding: 6px 22px 22px;
+            padding: 24px 22px 18px;
             text-align: center;
             color: var(--text-gray);
             font-style: italic;
@@ -235,11 +240,6 @@
             line-height: 0.5;
             opacity: 0.6;
             margin-left: 4px;
-        }
-        .video-caption + .video-quote {
-            border-top: 1px dashed rgba(223, 178, 73, 0.12);
-            margin: 0 22px;
-            padding-top: 18px;
         }
         .video-caption small {
             display: block;
@@ -272,6 +272,7 @@
             opacity: 0.55;
             text-align: center;
             letter-spacing: -2px;
+            text-shadow: 0 0 22px rgba(223, 178, 73, 0.5);
         }
         .diff-point h3 {
             color: var(--text-white);
@@ -286,6 +287,31 @@
             font-size: 17px;
             line-height: 1.85;
             margin: 0;
+        }
+        .feature-list {
+            list-style: none;
+            margin: 6px 0 0;
+            padding: 0;
+        }
+        .feature-list li {
+            position: relative;
+            padding-right: 32px;
+            color: var(--text-gray);
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+        .feature-list li:last-child { margin-bottom: 0; }
+        .feature-list li::before {
+            content: '\f005';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 0;
+            top: 4px;
+            color: var(--gold-color);
+            font-size: 15px;
+            text-shadow: 0 0 12px rgba(223, 178, 73, 0.6);
         }
         @media (max-width: 640px) {
             .diff-point {
@@ -311,6 +337,13 @@
         }
         .founders-text {
             padding-top: 40px;
+        }
+        .founders-kicker {
+            display: block;
+            color: var(--text-muted);
+            font-size: 15px;
+            font-weight: 400;
+            margin-bottom: 10px;
         }
         .founders-text h2 {
             font-size: clamp(28px, 3.8vw, 42px);
@@ -1046,6 +1079,8 @@
             .community-collage { grid-template-columns: repeat(3, 1fr); }
             .activity-grid { grid-template-columns: repeat(2, 1fr); }
             .founders-grid { grid-template-columns: 1fr; }
+            .founders-image-wrap { order: -1; margin-bottom: 14px; }
+            .founders-text { padding-top: 0; }
             .benefits-list { grid-template-columns: 1fr; }
             .reviews-collage { grid-template-columns: repeat(4, 1fr); }
             .ambient-row { grid-template-columns: repeat(3, 1fr); }
@@ -1065,10 +1100,12 @@
             .vs-them p::before { content: 'תוכניות אחרות: '; color: #555; font-weight: 600; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px; }
             .reviews-collage { grid-template-columns: repeat(2, 1fr); }
             .ambient-row { grid-template-columns: repeat(2, 1fr); }
-            .sales-header { padding: 10px 16px; }
-            .sales-header .logo-image { height: 44px; }
-            .header-cta { padding: 8px 14px; font-size: 13px; }
-            .hero { padding: 40px 16px 70px; }
+            .sales-header { padding: 10px 12px; }
+            .sales-header .logo-image { height: 40px; }
+            .header-cta { padding: 8px 12px; font-size: 11.5px; }
+            .hero { padding: 40px 10px 70px; }
+            .hero .container { padding: 0 10px; }
+            .hero h1 { font-size: 6vw; line-height: 1.25; }
             .mentor-card { padding: 26px 20px; }
         }
     </style>
@@ -1078,7 +1115,7 @@
 <!-- ────────────── Sticky Header (logo only, no escape nav) ────────────── -->
 <header class="sales-header">
     <a href="#" aria-label="ClubRRRR"><img src="ClubRRRRnew logo.png" alt="ClubRRRR" class="logo-image"></a>
-    <a href="#contact" class="header-cta">קבל את הסילבוס</a>
+    <a href="#contact" class="header-cta">לשיחת התאמה וקבלת הסילבוס המלא</a>
 </header>
 
 <!-- ────────────── FOLD 1 — HERO ────────────── -->
@@ -1086,15 +1123,15 @@
     <div class="container">
         <h1>
             התוכנית <span class="gold">המתקדמת בישראל</span><br>
-            ליזמות נדל"ן בארה"ב<br>
-            בשילוב טכנולוגיות מתקדמות וקהילה בועטת:
+            ליזמות נדל"ן בארה"ב וטכנולוגיה<br>
+            <span class="gold">(גם למתחילים בלי ניסיון)</span>
         </h1>
         <p class="hero-promise">
-            איך <strong class="gold">"קלאבר"</strong> עזרה ליותר מ-<strong class="gold">400 ישראלים</strong> בוגרי קורסים שנתקעו אחרי עסקה או 2 בארה"ב
-            להגיע לסקייל של עסקאות ולבנות פורטפוליו נדל"ן בארה"ב
+            איך <strong class="gold">יותר מ-400 ישראלים</strong> בוגרי קורסים שנתקעו אחרי עסקה או 2
+            מצליחים לצאת מהתקיעות ולעשות <strong class="gold">סקייל של עסקאות</strong>
+            בדרך לבניית פורטפוליו נדל"ן בארה"ב
         </p>
-        <p class="hero-fineprint">(בזמן שההון העצמי שלהם "נגמר" בעסקאות)</p>
-        <a href="#contact" class="cta-btn">אני רוצה לקבל את הסילבוס המלא <i class="fas fa-arrow-left"></i></a>
+        <a href="#contact" class="cta-btn">לקביעת שיחת התאמה וקבלת הסילבוס המלא של "קלאבר" <i class="fas fa-arrow-left"></i></a>
     </div>
 </section>
 
@@ -1103,19 +1140,19 @@
     <div class="container">
         <div class="videos-grid">
             <div class="video-card">
-                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/Rsx2KgQ74jc?rel=0&start=3" title="הדר גלעדי ממליץ על התוכנית קלאבר" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div class="video-quote">((ציטוט קצר מתוך הסרטון))</div>
+                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/Rsx2KgQ74jc?rel=0&modestbranding=1&start=3" title="הדר גלעדי ממליץ על התוכנית קלאבר" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
                 <div class="video-caption">הדר גלעדי<small>בוגר מחזור 7</small></div>
-                <div class="video-quote">((ציטוט קצר מתוך הסרטון))</div>
             </div>
             <div class="video-card">
-                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/40muPIJReG8?rel=0&start=67" title="יעל נעים ממליצה על תוכנית" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div class="video-quote">((ציטוט קצר מתוך הסרטון))</div>
+                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/40muPIJReG8?rel=0&modestbranding=1&start=67" title="יעל נעים ממליצה על תוכנית" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
                 <div class="video-caption">יעל נעים<small>בוגרת מחזור 4</small></div>
-                <div class="video-quote">((ציטוט קצר מתוך הסרטון))</div>
             </div>
             <div class="video-card">
+                <div class="video-quote">((ציטוט קצר מתוך הסרטון))</div>
                 <div class="video-wrap" style="background:#111;display:flex;align-items:center;justify-content:center;color:#666;font-size:14px;text-align:center;padding:20px;"><span>((סרטון עדות 3 — להוסיף URL))</span></div>
                 <div class="video-caption">בוגר/ת ClubRRRR<small>בוגר/ת מחזור __</small></div>
-                <div class="video-quote">((ציטוט קצר מתוך הסרטון))</div>
             </div>
         </div>
     </div>
@@ -1124,28 +1161,37 @@
 <!-- ────────────── FOLD 3 — DIFFERENTIATORS ────────────── -->
 <section class="section">
     <div class="container">
-        <h2 class="section-title">מה שונה <span class="gold">קלאבר</span> מתוכניות אחרות:</h2>
+        <h2 class="section-title">במה שונה <span class="gold">קלאבר</span> מתוכניות אחרות ליזמות נדל"ן בארה"ב:</h2>
 
         <div class="diff-points">
             <div class="diff-point">
                 <div class="diff-num">01</div>
                 <div>
-                    <h3>מהעסקה הראשונה ועד <span class="gold">לסקייל</span></h3>
-                    <p>לעשות עסקה אחת בארה"ב זאת לא חוכמה, האתגר הוא איך להמשיך לעסקאות הבאות אחרי שנגמר ההון העצמי — וזה בדיוק מה שקלאבר מלמדת.</p>
+                    <h3>פוקוס חד על <span class="gold">סקייל של עסקאות</span></h3>
+                    <p>לעשות עסקה אחת בארה"ב זאת לא חוכמה, האתגר האמיתי הוא להמשיך לעסקאות הבאות אחרי שנגמר ההון העצמי, <span class="gold">וזה בדיוק מה שלומדים ועושים בקלאבר</span>.</p>
                 </div>
             </div>
             <div class="diff-point">
                 <div class="diff-num">02</div>
                 <div>
-                    <h3>טכנולוגיות מתקדמות, <span class="gold">בלעדיות לחברי התוכנית</span></h3>
-                    <p>סימולטור אימון שיחות אל מול מתווכים והולסלרים, מערכת שעובדת באוף-מרקט, מערכת שעובדת באון-מרקט, ניתוח שווקים ועסקאות, ומערכת SendOffers שמגישה מאות הצעות ביום עם פולואפ חכם.</p>
+                    <h3>גישה בלעדית לטכנולוגיות מתקדמות <span class="gold">שפותחו מהשטח</span></h3>
+                    <ul class="feature-list">
+                        <li>עובדים עם סימולטור אימון שיחות אל מול מתווכים והולסלרים</li>
+                        <li>מערכת שמאתרת עסקאות מתחת למחיר השוק ב-On/Off market על אוטומט</li>
+                        <li>מערכת SendOffers שמגישה מאות הצעות ביום עם פולואפ חכם</li>
+                    </ul>
                 </div>
             </div>
             <div class="diff-point">
                 <div class="diff-num">03</div>
                 <div>
-                    <h3><span class="gold">קהילה מגובשת</span></h3>
-                    <p>מומחים בקהילה לכל תחום — פליפים, מימון, Section 8, Creative Financing — שעוזרים אחד לשני לעשות יותר עסקאות.</p>
+                    <h3>הופכים לחלק מ<span class="gold">קהילה בועטת</span></h3>
+                    <ul class="feature-list">
+                        <li>הרצאות ומיט-אפים ללא עלות (גם אחרי התוכנית)</li>
+                        <li>גישה לצוות מומחים בכל תחום: עו"ד, רואי חשבון, יועצי מס, גופי מימון, ברוקרים והולסלרים</li>
+                        <li>קהילת ווטסאפ מרכזית שבה קלאברים עוזרים אחד לשני בזמן אמת</li>
+                        <li>"קלאבר על הבר": מפגשי קהילה פרונטליים לנטוורקינג, חיבורים ופאנלים מקצועיים</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1168,13 +1214,14 @@
     <div class="container">
         <div class="founders-grid">
             <div class="founders-text">
+                <span class="founders-kicker">למי שעדיין לא מכירים…</span>
                 <h2>אהלן, אנחנו <span class="gold">איתי ודרור</span> 🍺</h2>
-                <p>בשנים האחרונות לקחנו הון עצמי מוגבל והפכנו אותו לפורטפוליו של עשרות נכסים, באמצעות שימוש בטכנולוגיה, שיטות ניתוח ומימון מתקדמות.</p>
-                <p>הקמנו את הפודקאסט המוביל לנדל"ן בארה"ב לפי הדירוגים של <strong class="gold">ספוטיפיי, אפל ויוטיוב</strong> — "<strong>קלאברררר</strong>" — בו אנחנו משתפים סיפורי נדל"ן משוגעים, תובנות מהשטח, הצדדים הפחות זוהרים של התעשייה, והכי חשוב? <strong>מדברים תכל'ס.</strong></p>
+                <p><strong class="white">בשנים האחרונות לקחנו הון עצמי מוגבל והפכנו אותו לפורטפוליו של עשרות נכסים</strong>, באמצעות שימוש בטכנולוגיה, שיטות ניתוח ומימון מתקדמות.</p>
+                <p><strong class="white">הקמנו את הפודקאסט המוביל לנדל"ן בארה"ב</strong> לפי הדירוגים של ספוטיפיי, אפל ויוטיוב, "<strong>קלאברררר</strong>", שבו אנחנו משתפים סיפורי נדל"ן משוגעים, תובנות מהשטח, הצדדים הפחות זוהרים של התעשייה, והכי חשוב? <strong>מדברים תכל'ס.</strong></p>
                 <div class="podcast-badges">
-                    <span class="podcast-badge"><i class="fab fa-spotify"></i> Top Real Estate Podcast</span>
-                    <span class="podcast-badge"><i class="fab fa-apple"></i> Apple Podcasts</span>
-                    <span class="podcast-badge"><i class="fab fa-youtube"></i> YouTube</span>
+                    <span class="podcast-badge"><i class="fas fa-podcast"></i> מעל ל-X פרקים</span>
+                    <span class="podcast-badge"><i class="fas fa-headphones"></i> יותר מ-X האזנות</span>
+                    <span class="podcast-badge"><i class="fab fa-spotify"></i> דירוג X בקטגוריה Y בספוטיפיי</span>
                 </div>
             </div>
             <div class="founders-image-wrap">
@@ -1215,7 +1262,7 @@
                 <div class="stat-anchor" tabindex="0">
                     <div class="stat-num">10</div>
                     <div class="stat-label">מפגשי תרגול<br>עם בוגרים</div>
-                    <div class="stat-tooltip"><strong>10 מפגשי תרגול</strong> עם קלאברים בוגרים — יזמים שחיים נדל"ן בארה"ב ביומיום שלהם.</div>
+                    <div class="stat-tooltip"><strong>10 מפגשי תרגול</strong> עם קלאברים בוגרים, יזמים שחיים נדל"ן בארה"ב ביומיום שלהם.</div>
                 </div>
                 <div class="stat-anchor" tabindex="0">
                     <div class="stat-num">45⁺</div>
@@ -1225,14 +1272,14 @@
                 <div class="stat-anchor" tabindex="0">
                     <div class="stat-num">1</div>
                     <div class="stat-label">מנטור אישי<br>לאורך כל הדרך</div>
-                    <div class="stat-tooltip"><strong>מנטור אישי לליווי צמוד</strong> לכל אורך הדרך, זמין בווטסאפ האישי שלך לכל שאלה. מנטור אישי ולא קבוצתי — אותו מנטור שמלווה אותך לאורך כל הדרך, לא מתחלף בכל שלב.</div>
+                    <div class="stat-tooltip"><strong>מנטור אישי לליווי צמוד</strong> לכל אורך הדרך, זמין בווטסאפ האישי שלך לכל שאלה. מנטור אישי ולא קבוצתי, אותו מנטור שמלווה אותך לאורך כל הדרך ולא מתחלף בכל שלב.</div>
                 </div>
             </div>
 
             <div class="editorial-divider"><i class="fas fa-square"></i></div>
 
             <div class="editorial-section">
-                <h3><span class="gold">SendOffers</span> — טכנולוגיה בלעדית לקלאברים</h3>
+                <h3><span class="gold">SendOffers</span>: טכנולוגיה בלעדית לקלאברים</h3>
                 <p>גישה ייחודית למערכת שפיתחנו לקלאברים בלבד. גישה לכלל המערכות הטכנולוגיות, ללא צורך ברכישת מנוי נפרד</p>
                 <p class="capabilities">
                     סימולטור אימון שיחות <span class="sep">·</span>
@@ -1248,9 +1295,9 @@
 
             <div class="editorial-section">
                 <h3>קהילה <span class="gold">ותמיכה מקצועית</span></h3>
-                <p><strong>קהילת ווטסאפ מרכזית</strong> לתמיכה — קלאברים שעוזרים אחד לשני בזמן אמת</p>
-                <p><strong>"קלאבר על הבר"</strong> — מפגשי קהילה פרונטליים לנטוורקינג, חיבורים ופאנל מקצועי</p>
-                <p><strong>צוות מומחים</strong> — עו"ד, רואי חשבון, יועצי מס, גופי מימון, ברוקרים, הולסלרים</p>
+                <p><strong>קהילת ווטסאפ מרכזית</strong> לתמיכה, קלאברים שעוזרים אחד לשני בזמן אמת</p>
+                <p><strong>"קלאבר על הבר":</strong> מפגשי קהילה פרונטליים לנטוורקינג, חיבורים ופאנל מקצועי</p>
+                <p><strong>צוות מומחים:</strong> עו"ד, רואי חשבון, יועצי מס, גופי מימון, ברוקרים, הולסלרים</p>
             </div>
 
             <p class="editorial-closing">ומה קורה אחרי התוכנית?</p>
@@ -1281,7 +1328,7 @@
                 <div class="activity-icon"><i class="fas fa-people-group"></i></div>
                 <div class="activity-body">
                     <h3>מיטאפ Accelerator שנתי</h3>
-                    <p>כנס שנתי לחברי הקהילה בלבד — תוכן, נטוורקינג ואנרגיה של עשייה.</p>
+                    <p>כנס שנתי לחברי הקהילה בלבד, עם תוכן, נטוורקינג ואנרגיה של עשייה.</p>
                 </div>
             </div>
             <div class="activity-card">
@@ -1289,7 +1336,7 @@
                 <div class="activity-icon"><i class="fab fa-whatsapp"></i></div>
                 <div class="activity-body">
                     <h3>קבוצת וואטסאפ פרטית</h3>
-                    <p>לחברי הקהילה בלבד — מענה לכל שאלה, בכל שעה, מהקהילה כולה.</p>
+                    <p>לחברי הקהילה בלבד, מענה לכל שאלה בכל שעה, מהקהילה כולה.</p>
                 </div>
             </div>
             <div class="activity-card">
@@ -1297,7 +1344,7 @@
                 <div class="activity-icon"><i class="fas fa-handshake"></i></div>
                 <div class="activity-body">
                     <h3>שיתופי פעולה בין בוגרים</h3>
-                    <p>בוגרים סוגרים עסקאות יחד — שותפויות אמיתיות שנולדות בקהילה.</p>
+                    <p>בוגרים סוגרים עסקאות יחד, שותפויות אמיתיות שנולדות בקהילה.</p>
                 </div>
             </div>
             <div class="activity-card">
@@ -1305,7 +1352,7 @@
                 <div class="activity-icon"><i class="fas fa-video"></i></div>
                 <div class="activity-body">
                     <h3>מפגשי זום קהילתיים</h3>
-                    <p>מפגשים עם ערך ותוכן — לומדים, מתעדכנים ומתחברים מכל מקום.</p>
+                    <p>מפגשים עם ערך ותוכן: לומדים, מתעדכנים ומתחברים מכל מקום.</p>
                 </div>
             </div>
             <div class="activity-card">
@@ -1318,7 +1365,7 @@
             </div>
         </div>
 
-        <h3 class="collage-heading">רגעים מהקהילה — <span class="gold">קלאבר</span> זה המקום שבו נרקמות שותפויות ונסגרות עסקאות</h3>
+        <h3 class="collage-heading">רגעים מהקהילה: <span class="gold">קלאבר</span> זה המקום שבו נרקמות שותפויות ונסגרות עסקאות</h3>
         <div class="community-collage">
             <div class="collage-item"><img src="community/collage-1.jpg" alt="מפגש קהילת קלאבר" loading="lazy"></div>
             <div class="collage-item"><img src="community/collage-2.jpg" alt="מפגש קהילת קלאבר" loading="lazy"></div>
@@ -1342,7 +1389,7 @@
         </div>
 
         <div class="center-cta">
-            <a href="#contact" class="cta-btn">אני רוצה לקבל את הסילבוס המלא <i class="fas fa-arrow-left"></i></a>
+            <a href="#contact" class="cta-btn">לקביעת שיחת התאמה וקבלת הסילבוס המלא של "קלאבר" <i class="fas fa-arrow-left"></i></a>
         </div>
     </div>
 </section>
@@ -1356,7 +1403,7 @@
             <div class="diff-point">
                 <div class="diff-num">01</div>
                 <div>
-                    <h3>סגרת עסקה או 2 — <span class="gold">ונתקעת בדרך לסקייל</span></h3>
+                    <h3>סגרת עסקה או 2, <span class="gold">ונתקעת בדרך לסקייל</span></h3>
                     <p>למי שעשה קורס נדל"ן בארה"ב, סגר עסקה או 2 אבל משהו נתקע בדרך לחלום על סקייל של עשרות עסקאות בשנה.</p>
                 </div>
             </div>
@@ -1370,8 +1417,8 @@
             <div class="diff-point">
                 <div class="diff-num">03</div>
                 <div>
-                    <h3>הכסף הגדול — <span class="gold">בלהביא את העסקה בעצמך</span></h3>
-                    <p>משקיעים בנדל"ן בארה"ב/חו"ל שנפל להם האסימון — הכסף הגדול נמצא ביכולת להביא את העסקה בעצמך, לא בלקחת עסקאות מאחרים.</p>
+                    <h3>הכסף הגדול הוא <span class="gold">בלהביא את העסקה בעצמך</span></h3>
+                    <p>משקיעים בנדל"ן בארה"ב/חו"ל שנפל להם האסימון: הכסף הגדול נמצא ביכולת להביא את העסקה בעצמך, לא בלקחת עסקאות מאחרים.</p>
                 </div>
             </div>
         </div>
@@ -1406,25 +1453,25 @@
                 <div class="diff-num">3</div>
                 <div>
                     <h3>יום 3 · <span class="gold">מתרגלים עם בוגרים</span></h3>
-                    <p>סשן תרגול עם קלאברים בוגרים — יזמים שכבר חיים את הנדל"ן בארה"ב ביומיום ומעבירים את זה הלאה.</p>
+                    <p>סשן תרגול עם קלאברים בוגרים, יזמים שכבר חיים את הנדל"ן בארה"ב ביומיום ומעבירים את זה הלאה.</p>
                 </div>
             </div>
             <div class="diff-point">
                 <div class="diff-num">5</div>
                 <div>
                     <h3>יום 5 · <span class="gold">סשן מרכזי עם איתי ודרור</span></h3>
-                    <p>המפגש השבועי המרכזי — סיכום, מענה על שאלות, והכוונה אישית קדימה אל השבוע הבא.</p>
+                    <p>המפגש השבועי המרכזי: סיכום, מענה על שאלות והכוונה אישית קדימה אל השבוע הבא.</p>
                 </div>
             </div>
         </div>
 
         <div class="mentor-card">
             <div class="mentor-icon"><i class="fas fa-user-tie"></i></div>
-            <h3>המעטפת האישית שלך — 7 ימים בשבוע</h3>
+            <h3>המעטפת האישית שלך, 7 ימים בשבוע</h3>
             <p>
                 לכל אורך השבוע יש לך את <strong class="gold">המנטור האישי שלך</strong> לשיחות ופגישות בזום, <strong class="gold">חמ"ל עסקה*</strong> צמוד 7/24 אחד על אחד, ותמיכה מנטלית (כי לפעמים צריך ליטוף, ולפעמים בעיטה :)
             </p>
-            <p class="mentor-note">* חמ"ל עסקה = מוקד תמיכה צמוד לעסקה ספציפית — הצוות זמין סביב השעון לכל שאלה בזמן אמת על העסקה שעל השולחן.</p>
+            <p class="mentor-note">* חמ"ל עסקה = מוקד תמיכה צמוד לעסקה ספציפית. הצוות זמין סביב השעון לכל שאלה בזמן אמת על העסקה שעל השולחן.</p>
         </div>
 
         <div class="center-cta">
@@ -1447,7 +1494,7 @@
             <div class="boom-item-text">
                 <div class="quote-mark">"</div>
                 <p>((עדות מצולמת / טקסט — להוסיף))</p>
-                <div class="author">— בוגר/ת ClubRRRR</div>
+                <div class="author">בוגר/ת ClubRRRR</div>
             </div>
             <div class="video-card">
                 <div class="video-wrap" style="background:#111;display:flex;align-items:center;justify-content:center;color:#666;font-size:14px;text-align:center;padding:20px;"><span>((סרטון עדות))</span></div>
@@ -1456,7 +1503,7 @@
             <div class="boom-item-text">
                 <div class="quote-mark">"</div>
                 <p>((עדות מצולמת / טקסט — להוסיף))</p>
-                <div class="author">— בוגר/ת ClubRRRR</div>
+                <div class="author">בוגר/ת ClubRRRR</div>
             </div>
             <div class="video-card">
                 <div class="video-wrap" style="background:#111;display:flex;align-items:center;justify-content:center;color:#666;font-size:14px;text-align:center;padding:20px;"><span>((סרטון עדות))</span></div>
@@ -1465,7 +1512,7 @@
             <div class="boom-item-text">
                 <div class="quote-mark">"</div>
                 <p>((עדות מצולמת / טקסט — להוסיף))</p>
-                <div class="author">— בוגר/ת ClubRRRR</div>
+                <div class="author">בוגר/ת ClubRRRR</div>
             </div>
             <div class="video-card">
                 <div class="video-wrap" style="background:#111;display:flex;align-items:center;justify-content:center;color:#666;font-size:14px;text-align:center;padding:20px;"><span>((סרטון עדות))</span></div>
@@ -1484,25 +1531,25 @@
             <details class="faq-item">
                 <summary>אני יכול להיכנס לקלאבר גם אם אין לי רקע בתחום?</summary>
                 <div class="faq-answer">
-                    כן. קלאבר בנויה לקחת אותך מאפס ידע ועד לעסקה הראשונה — וגם הלאה, לסקייל. אנחנו לא מניחים שום רקע מוקדם: כל שיעור, כלי ומערכת נבנו כך שגם מי שמעולם לא נגע בנדל"ן בארה"ב יוכל ליישם צעד אחר צעד. מה שכן צריך זה נכונות לבוא לעבוד — את הידע, הכלים והליווי אנחנו נותנים.
+                    כן. קלאבר בנויה לקחת אותך מאפס ידע ועד לעסקה הראשונה, וגם הלאה לסקייל. אנחנו לא מניחים שום רקע מוקדם: כל שיעור, כלי ומערכת נבנו כך שגם מי שמעולם לא נגע בנדל"ן בארה"ב יוכל ליישם צעד אחר צעד. מה שכן צריך זה נכונות לבוא לעבוד, ואת הידע, הכלים והליווי אנחנו נותנים.
                 </div>
             </details>
             <details class="faq-item">
                 <summary>כמה הון עצמי צריך בשביל לעשות עסקה?</summary>
                 <div class="faq-answer">
-                    הרבה פחות ממה שחושבים. בניגוד לישראל — שבה צריך הון עצמי של מיליונים כדי לחיות מנדל"ן — בארה"ב נכנסים בסכומים נמוכים בהרבה, ובחלק מהאסטרטגיות (כמו הבאת עסקה בעצמך ו‑Creative Financing) אפשר להתקדם גם בלי להוציא הון עצמי גדול מהכיס. בקלאבר תלמד בדיוק אילו מסלולים מתאימים לתקציב שלך — מהעסקה הראשונה ועד לסקייל.
+                    הרבה פחות ממה שחושבים. בניגוד לישראל, שבה צריך הון עצמי של מיליונים כדי לחיות מנדל"ן, בארה"ב נכנסים בסכומים נמוכים בהרבה, ובחלק מהאסטרטגיות (כמו הבאת עסקה בעצמך ו‑Creative Financing) אפשר להתקדם גם בלי להוציא הון עצמי גדול מהכיס. בקלאבר תלמד בדיוק אילו מסלולים מתאימים לתקציב שלך, מהעסקה הראשונה ועד לסקייל.
                 </div>
             </details>
             <details class="faq-item">
                 <summary>כמה זמן צריך להשקיע בשביל להצליח?</summary>
                 <div class="faq-answer">
-                    זה לא קסם פסיבי. קלאבר היא 10 שבועות של עבודה אינטנסיבית, ומי שבא לעבוד הוא זה שמצליח. המבנה השבועי בנוי כך שתמיד יש לך משימות ברורות: שיעור מוקלט שאפשר לצפות בו בזמן שלך, סשני תרגול עם קלאברים בוגרים, וסשן מרכזי שבועי עם איתי ודרור. אין דרישת זמן קשיחה, אבל ככל שתשקיע יותר — התוצאות יגיעו מהר יותר. אנחנו נותנים את הידע, הכלים והליווי; את העבודה בפועל עושה את/ה.
+                    זה לא קסם פסיבי. קלאבר היא 10 שבועות של עבודה אינטנסיבית, ומי שבא לעבוד הוא זה שמצליח. המבנה השבועי בנוי כך שתמיד יש לך משימות ברורות: שיעור מוקלט שאפשר לצפות בו בזמן שלך, סשני תרגול עם קלאברים בוגרים, וסשן מרכזי שבועי עם איתי ודרור. אין דרישת זמן קשיחה, אבל ככל שתשקיע יותר התוצאות יגיעו מהר יותר. אנחנו נותנים את הידע, הכלים והליווי, ואת העבודה בפועל עושה את/ה.
                 </div>
             </details>
             <details class="faq-item">
                 <summary>איך עובד הליווי האישי (מנטורינג)?</summary>
                 <div class="faq-answer">
-                    בקלאבר יש לך מנטור אישי — לא קבוצתי. אותו מנטור מלווה אותך לאורך כל הדרך, מכיר אותך ואת העסקאות שלך, וזמין לשיחות ופגישות זום. זה שונה מתוכניות אחרות שמחליפות לך מנטור בכל שלב; אצלנו זה אדם אחד שנמצא איתך מהעסקה הראשונה ועד לסקייל — כולל חמ"ל עסקה צמוד 7/24 ותמיכה מנטלית בדרך (כי לפעמים צריך ליטוף, ולפעמים בעיטה).
+                    בקלאבר יש לך מנטור אישי, לא קבוצתי. אותו מנטור מלווה אותך לאורך כל הדרך, מכיר אותך ואת העסקאות שלך, וזמין לשיחות ופגישות זום. זה שונה מתוכניות אחרות שמחליפות לך מנטור בכל שלב; אצלנו זה אדם אחד שנמצא איתך מהעסקה הראשונה ועד לסקייל, כולל חמ"ל עסקה צמוד 7/24 ותמיכה מנטלית בדרך (כי לפעמים צריך ליטוף, ולפעמים בעיטה).
                 </div>
             </details>
             <details class="faq-item">
@@ -1514,7 +1561,7 @@
             <details class="faq-item">
                 <summary>מה הופך את קלאבר לתוכנית המתקדמת בישראל?</summary>
                 <div class="faq-answer">
-                    השילוב. יש תוכניות שמלמדות תיאוריה, ויש כאלה שנותנות כלי בודד — בקלאבר אתה מקבל את הכל במקום אחד: ליווי של מנטור אישי, מערך טכנולוגי בלעדי, קהילה מגובשת של מומחים לכל תחום (פליפים, מימון, Section 8, Creative Financing), ומסלול ברור מהעסקה הראשונה ועד לסקייל. אנחנו לא עוצרים בלסגור עסקה אחת — המטרה היא לבנות לך מכונה שממשיכה להביא עסקאות גם אחרי שההון העצמי "נגמר".
+                    השילוב. יש תוכניות שמלמדות תיאוריה, ויש כאלה שנותנות כלי בודד. בקלאבר אתה מקבל את הכל במקום אחד: ליווי של מנטור אישי, מערך טכנולוגי בלעדי, קהילה מגובשת של מומחים לכל תחום (פליפים, מימון, Section 8, Creative Financing), ומסלול ברור מהעסקה הראשונה ועד לסקייל. אנחנו לא עוצרים בלסגור עסקה אחת, המטרה היא לבנות לך מכונה שממשיכה להביא עסקאות גם אחרי שההון העצמי "נגמר".
                 </div>
             </details>
         </div>
@@ -1563,7 +1610,7 @@
     <div class="modal-card">
         <button class="modal-close" onclick="closeModal()" aria-label="סגור">✕</button>
         <h3>קבל את הסילבוס המלא</h3>
-        <p>השאר/י פרטים — והסילבוס המלא בדרך אליך באימייל.</p>
+        <p>השאר/י פרטים, והסילבוס המלא בדרך אליך באימייל.</p>
         <a href="#contact" class="cta-btn" onclick="closeModal()">לטופס השארת פרטים <i class="fas fa-arrow-left"></i></a>
     </div>
 </div>
