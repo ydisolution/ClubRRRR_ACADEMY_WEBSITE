@@ -71,7 +71,7 @@
         .section { padding: 90px 0; position: relative; }
         .section-alt { background: var(--dark-bg-2); }
         .section-title {
-            font-size: clamp(28px, 4vw, 44px);
+            font-size: clamp(32px, 4.4vw, 50px);
             font-weight: 800;
             text-align: center;
             margin-bottom: 16px;
@@ -80,7 +80,7 @@
         .section-sub {
             text-align: center;
             color: var(--text-gray);
-            font-size: clamp(15px, 1.6vw, 18px);
+            font-size: clamp(17px, 1.8vw, 21px);
             max-width: 760px;
             margin: 0 auto 50px;
             line-height: 1.7;
@@ -151,9 +151,9 @@
         }
         .hero h1 {
             font-size: clamp(19px, 2.2vw, 26px);
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 24px;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 22px;
             margin-left: auto;
             margin-right: auto;
             text-wrap: balance;
@@ -167,14 +167,15 @@
             filter: drop-shadow(0 0 16px rgba(223, 178, 73, 0.5));
         }
         .hero-promise {
-            font-size: clamp(28px, 4.5vw, 52px);
-            color: var(--text-gray);
-            max-width: 940px;
-            margin: 60px auto 22px;
-            line-height: 2.05;
-            letter-spacing: 0.2px;
+            font-size: clamp(22px, 4.5vw, 52px);
+            color: var(--text-white);
+            font-weight: 800;
+            max-width: 960px;
+            margin: 40px auto 22px;
+            line-height: 1.32;
+            letter-spacing: 0;
         }
-        .hero-promise .gold { font-weight: 700; }
+        .hero-promise .gold { font-weight: 800; }
         .hero-fineprint {
             font-size: 16px;
             color: var(--text-muted);
@@ -220,14 +221,14 @@
             text-align: center;
             color: var(--gold-color);
             font-weight: 600;
-            font-size: 15px;
+            font-size: 17px;
         }
         .video-quote {
             padding: 24px 22px 18px;
             text-align: center;
             color: var(--text-gray);
             font-style: italic;
-            font-size: 15.5px;
+            font-size: 17.5px;
             line-height: 1.6;
             position: relative;
         }
@@ -240,6 +241,17 @@
             line-height: 0.5;
             opacity: 0.6;
             margin-left: 4px;
+        }
+        .video-quote::after {
+            content: '"';
+            font-family: Georgia, serif;
+            font-style: normal;
+            color: var(--gold-color);
+            font-size: 32px;
+            line-height: 0;
+            opacity: 0.6;
+            margin-right: 4px;
+            vertical-align: -0.35em;
         }
         .video-caption small {
             display: block;
@@ -276,7 +288,7 @@
         }
         .diff-point h3 {
             color: var(--text-white);
-            font-size: 26px;
+            font-size: 29px;
             font-weight: 700;
             margin-bottom: 14px;
             line-height: 1.35;
@@ -284,7 +296,7 @@
         .diff-point h3 .gold { color: var(--gold-color); }
         .diff-point p {
             color: var(--text-gray);
-            font-size: 17px;
+            font-size: 19px;
             line-height: 1.85;
             margin: 0;
         }
@@ -297,7 +309,7 @@
             position: relative;
             padding-right: 32px;
             color: var(--text-gray);
-            font-size: 17px;
+            font-size: 19px;
             line-height: 1.7;
             margin-bottom: 14px;
         }
@@ -341,19 +353,19 @@
         .founders-kicker {
             display: block;
             color: var(--text-muted);
-            font-size: 15px;
+            font-size: 17px;
             font-weight: 400;
             margin-bottom: 10px;
         }
         .founders-text h2 {
-            font-size: clamp(28px, 3.8vw, 42px);
+            font-size: clamp(31px, 4vw, 46px);
             font-weight: 800;
             margin-bottom: 40px;
             line-height: 1.2;
         }
         .founders-text p {
             color: var(--text-gray);
-            font-size: 16.5px;
+            font-size: 18.5px;
             line-height: 1.8;
             margin-bottom: 18px;
         }
@@ -461,6 +473,7 @@
             background: rgba(223, 178, 73, 0.03);
         }
         .stat-num {
+            position: relative;
             font-family: 'Jost', sans-serif;
             font-size: clamp(48px, 8vw, 110px);
             font-weight: 200;
@@ -475,6 +488,29 @@
         .stat-anchor:hover .stat-num,
         .stat-anchor:focus-within .stat-num {
             transform: scale(1.06);
+        }
+        .stat-crown {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 100%;
+            margin-bottom: -0.16em;
+            text-align: center;
+            font-size: 0.3em;
+            line-height: 1;
+            -webkit-text-fill-color: var(--gold-color);
+            color: var(--gold-color);
+            filter: drop-shadow(0 0 9px rgba(223, 178, 73, 0.75));
+            transform-origin: center bottom;
+            animation: crownFloat 2.4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes crownFloat {
+            0%, 100% { transform: translateY(0) rotate(-6deg); }
+            50%      { transform: translateY(-5px) rotate(6deg); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .stat-crown { animation: none; }
         }
         .stat-label {
             color: var(--text-gray);
@@ -599,6 +635,44 @@
             font-weight: 400;
         }
         .editorial-section .capabilities .sep { color: var(--gold-color); margin: 0 10px; opacity: 0.7; }
+        .editorial-section .so-brand {
+            display: block;
+            font-family: 'Jost', sans-serif;
+            font-size: clamp(36px, 5.4vw, 58px);
+            font-weight: 700;
+            color: var(--gold-color);
+            letter-spacing: 0.5px;
+            line-height: 1.02;
+            text-shadow: 0 0 28px rgba(223, 178, 73, 0.7), 0 0 60px rgba(223, 178, 73, 0.35);
+            margin-bottom: 8px;
+        }
+        .editorial-section .so-sub {
+            display: block;
+            font-size: clamp(18px, 2vw, 26px);
+            font-weight: 600;
+            color: var(--text-white);
+        }
+        .tech-media {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            max-width: 840px;
+            margin: 32px auto 0;
+        }
+        .tech-media-item {
+            aspect-ratio: 16 / 10;
+            background: #111;
+            border: 1px dashed var(--gold-dim);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+            line-height: 1.6;
+            padding: 16px;
+        }
 
         /* Closing transition */
         .editorial-closing {
@@ -627,7 +701,7 @@
             padding: 90px 0;
         }
         .community-text {
-            font-size: 17px;
+            font-size: 19px;
             color: var(--text-gray);
             line-height: 1.85;
             max-width: 820px;
@@ -646,7 +720,7 @@
         }
         .collage-heading {
             text-align: center;
-            font-size: 20px;
+            font-size: 23px;
             font-weight: 700;
             color: var(--text-white);
             max-width: 760px;
@@ -714,8 +788,8 @@
             backdrop-filter: blur(4px);
         }
         .activity-body { padding: 24px; }
-        .activity-body h3 { color: var(--gold-color); font-size: 20px; margin-bottom: 10px; }
-        .activity-body p { color: var(--text-gray); font-size: 15px; line-height: 1.7; }
+        .activity-body h3 { color: var(--gold-color); font-size: 22px; margin-bottom: 10px; }
+        .activity-body p { color: var(--text-gray); font-size: 17px; line-height: 1.7; }
 
         /* ───────── FOLD 7 — PERSONAS ───────── */
         .personas-grid {
@@ -760,6 +834,83 @@
             color: var(--text-gray);
             font-size: 15.5px;
             line-height: 1.75;
+        }
+
+        /* ───────── WEEK JOURNEY (scroll-drawn path) ───────── */
+        .week-journey {
+            position: relative;
+            max-width: 720px;
+            margin: 55px auto 10px;
+        }
+        .journey-svg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 600px;
+            overflow: visible;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .journey-track-bg {
+            fill: none;
+            stroke: rgba(223, 178, 73, 0.14);
+            stroke-width: 2.5;
+        }
+        .journey-track {
+            fill: none;
+            stroke: var(--gold-color);
+            stroke-width: 3;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 6px rgba(223, 178, 73, 0.75));
+        }
+        .journey-row {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            align-items: center;
+            height: 200px;
+        }
+        .journey-num {
+            position: relative;
+            z-index: 1;
+            justify-self: center;
+            font-family: 'Jost', sans-serif;
+            font-size: 62px;
+            font-weight: 300;
+            line-height: 1;
+            color: var(--gold-color);
+            opacity: 0.45;
+            transition: opacity 0.5s, text-shadow 0.5s, transform 0.5s;
+        }
+        .journey-num.active {
+            opacity: 1;
+            text-shadow: 0 0 22px rgba(223, 178, 73, 0.75);
+            transform: scale(1.08);
+        }
+        .journey-text {
+            text-align: right;
+            padding-right: 26px;
+        }
+        .journey-text h3 {
+            color: var(--text-white);
+            font-size: 25px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.35;
+        }
+        .journey-text h3 .gold { color: var(--gold-color); }
+        .journey-text p {
+            color: var(--text-gray);
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 0;
+        }
+        @media (max-width: 640px) {
+            .week-journey { max-width: 100%; }
+            .journey-num { font-size: 50px; }
+            .journey-text { padding-right: 16px; }
+            .journey-text h3 { font-size: 20px; }
+            .journey-text p { font-size: 15px; }
         }
 
         /* ───────── FOLD 8 — WEEK STRUCTURE ───────── */
@@ -826,13 +977,13 @@
         }
         .mentor-card h3 {
             color: var(--gold-color);
-            font-size: 24px;
+            font-size: 27px;
             font-weight: 800;
             margin-bottom: 14px;
         }
         .mentor-card p {
             color: var(--text-gray);
-            font-size: 17px;
+            font-size: 19px;
             line-height: 1.85;
             max-width: 760px;
             margin: 0 auto;
@@ -841,7 +992,7 @@
             margin: 24px auto 0;
             padding-top: 20px;
             border-top: 1px solid rgba(223, 178, 73, 0.15);
-            font-size: 13.5px;
+            font-size: 15px;
             color: var(--text-muted);
             line-height: 1.75;
             max-width: 700px;
@@ -903,7 +1054,7 @@
             padding: 22px 26px;
             cursor: pointer;
             font-weight: 700;
-            font-size: 17px;
+            font-size: 19px;
             color: var(--text-white);
             list-style: none;
             display: flex;
@@ -925,7 +1076,7 @@
         .faq-answer {
             padding: 0 26px 22px;
             color: var(--text-gray);
-            font-size: 15.5px;
+            font-size: 17.5px;
             line-height: 1.8;
         }
 
@@ -1122,13 +1273,15 @@
 <section class="hero">
     <div class="container">
         <h1>
-            התוכנית <span class="gold">המתקדמת בישראל</span><br>
+            התוכנית המתקדמת בישראל<br>
             ליזמות נדל"ן בארה"ב וטכנולוגיה<br>
-            <span class="gold">(גם למתחילים בלי ניסיון)</span>
+            (גם למתחילים בלי ניסיון)
         </h1>
         <p class="hero-promise">
-            איך <strong class="gold">יותר מ-400 ישראלים</strong> בוגרי קורסים שנתקעו אחרי עסקה או 2
-            מצליחים לצאת מהתקיעות ולעשות <strong class="gold">סקייל של עסקאות</strong>
+            איך יותר מ-400 בוגרי קורסים<br>
+            שנתקעו אחרי עסקה או 2 מצליחים<br>
+            לצאת מהתקיעות ולעשות<br>
+            <span class="gold">סקייל של עסקאות</span><br>
             בדרך לבניית פורטפוליו נדל"ן בארה"ב
         </p>
         <a href="#contact" class="cta-btn">לקביעת שיחת התאמה וקבלת הסילבוס המלא של "קלאבר" <i class="fas fa-arrow-left"></i></a>
@@ -1138,21 +1291,16 @@
 <!-- ────────────── FOLD 2 — PROOF (testimonial videos) ────────────── -->
 <section class="section section-alt">
     <div class="container">
-        <div class="videos-grid">
+        <div class="videos-grid cols-2">
             <div class="video-card">
-                <div class="video-quote">((ציטוט קצר מתוך הסרטון))</div>
-                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/Rsx2KgQ74jc?rel=0&modestbranding=1&start=3" title="הדר גלעדי ממליץ על התוכנית קלאבר" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                <div class="video-caption">הדר גלעדי<small>בוגר מחזור 7</small></div>
-            </div>
-            <div class="video-card">
-                <div class="video-quote">((ציטוט קצר מתוך הסרטון))</div>
-                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/40muPIJReG8?rel=0&modestbranding=1&start=67" title="יעל נעים ממליצה על תוכנית" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div class="video-quote">היום שנה אחרי אנחנו עם 10 נכסים... <strong class="white">עושים את זה במשרה מלאה</strong></div>
+                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/Rsx2KgQ74jc?rel=0&modestbranding=1&start=3" title="יעל נעים ממליצה על תוכנית ClubRRRR" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
                 <div class="video-caption">יעל נעים<small>בוגרת מחזור 4</small></div>
             </div>
             <div class="video-card">
-                <div class="video-quote">((ציטוט קצר מתוך הסרטון))</div>
-                <div class="video-wrap" style="background:#111;display:flex;align-items:center;justify-content:center;color:#666;font-size:14px;text-align:center;padding:20px;"><span>((סרטון עדות 3 — להוסיף URL))</span></div>
-                <div class="video-caption">בוגר/ת ClubRRRR<small>בוגר/ת מחזור __</small></div>
+                <div class="video-quote"><strong class="white">אני מצליח לגייס משקיעים</strong> ולנתח עסקאות ברמה גבוהה מאוד</div>
+                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/40muPIJReG8?rel=0&modestbranding=1&start=67" title="הדר גלעדי ממליץ על התוכנית קלאבר" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div class="video-caption">הדר גלעדי<small>בוגר מחזור 7</small></div>
             </div>
         </div>
     </div>
@@ -1174,10 +1322,10 @@
             <div class="diff-point">
                 <div class="diff-num">02</div>
                 <div>
-                    <h3>גישה בלעדית לטכנולוגיות מתקדמות <span class="gold">שפותחו מהשטח</span></h3>
+                    <h3>גישה בלעדית ל<span class="gold">טכנולוגיות מתקדמות</span> שפותחו מהשטח</h3>
                     <ul class="feature-list">
                         <li>עובדים עם סימולטור אימון שיחות אל מול מתווכים והולסלרים</li>
-                        <li>מערכת שמאתרת עסקאות מתחת למחיר השוק ב-On/Off market על אוטומט</li>
+                        <li><strong class="white">מערכת שמאתרת עסקאות מתחת למחיר השוק</strong> ב-On/Off market על אוטומט</li>
                         <li>מערכת SendOffers שמגישה מאות הצעות ביום עם פולואפ חכם</li>
                     </ul>
                 </div>
@@ -1185,7 +1333,7 @@
             <div class="diff-point">
                 <div class="diff-num">03</div>
                 <div>
-                    <h3>הופכים לחלק מ<span class="gold">קהילה בועטת</span></h3>
+                    <h3>נכנסים לקהילה בועטת</h3>
                     <ul class="feature-list">
                         <li>הרצאות ומיט-אפים ללא עלות (גם אחרי התוכנית)</li>
                         <li>גישה לצוות מומחים בכל תחום: עו"ד, רואי חשבון, יועצי מס, גופי מימון, ברוקרים והולסלרים</li>
@@ -1198,12 +1346,14 @@
 
         <div class="videos-grid cols-2">
             <div class="video-card">
-                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/-ZBtngOEQbQ?rel=0&start=10" title="עדות מה שונה בקלאבר" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                <div class="video-caption">בוגר/ת ClubRRRR</div>
+                <div class="video-quote">אתה רואה כמה דרכים נוספות יש לעשות כסף מנדל"ן</div>
+                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/nT16CXwqrWI?rel=0&modestbranding=1" title="שי מנצור ממליץ על תוכנית קלאבר" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div class="video-caption">שי מנצור<small>בוגר מחזור 8</small></div>
             </div>
             <div class="video-card">
-                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/nT16CXwqrWI?rel=0" title="עדות מה שונה בקלאבר" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                <div class="video-caption">בוגר/ת ClubRRRR</div>
+                <div class="video-quote">מה שקלאבר נותנת זה דבר שאי אפשר למדוד בכסף...</div>
+                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/-ZBtngOEQbQ?rel=0&modestbranding=1&start=10" title="יאיר יבלינוביץ' על קהילת קלאבר" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div class="video-caption">יאיר יבלינוביץ'<small>בוגר מחזור 3</small></div>
             </div>
         </div>
     </div>
@@ -1248,8 +1398,8 @@
 <!-- ────────────── FOLD 5 — WHAT YOU GET ────────────── -->
 <section class="section">
     <div class="container">
-        <h2 class="section-title">אז מה <span class="gold">מקבלים בתוכנית?</span></h2>
-        <p class="section-sub">כל החתיכות בפאזל כך שתוכלו לעשות סקייל של עסקאות נדל"ן בארה"ב<br>(גם אם אין לכם ניסיון בכלל)</p>
+        <h2 class="section-title"><span class="gold">אז מה מקבלים בתוכנית?</span></h2>
+        <p class="section-sub" style="color: var(--text-white); font-weight: 600;">כל החתיכות בפאזל כך שתוכלו לעשות סקייל של עסקאות נדל"ן בארה"ב<br>(גם אם אין לכם ניסיון בכלל)</p>
 
         <div class="benefits-editorial">
 
@@ -1270,7 +1420,7 @@
                     <div class="stat-tooltip"><strong>גישה לכל החיים</strong> ליותר מ-45 שעות של תוכן מוקלט.</div>
                 </div>
                 <div class="stat-anchor" tabindex="0">
-                    <div class="stat-num">1</div>
+                    <div class="stat-num"><span class="stat-crown"><i class="fas fa-crown"></i></span>1</div>
                     <div class="stat-label">מנטור אישי<br>לאורך כל הדרך</div>
                     <div class="stat-tooltip"><strong>מנטור אישי לליווי צמוד</strong> לכל אורך הדרך, זמין בווטסאפ האישי שלך לכל שאלה. מנטור אישי ולא קבוצתי, אותו מנטור שמלווה אותך לאורך כל הדרך ולא מתחלף בכל שלב.</div>
                 </div>
@@ -1279,29 +1429,72 @@
             <div class="editorial-divider"><i class="fas fa-square"></i></div>
 
             <div class="editorial-section">
-                <h3><span class="gold">SendOffers</span>: טכנולוגיה בלעדית לקלאברים</h3>
-                <p>גישה ייחודית למערכת שפיתחנו לקלאברים בלבד. גישה לכלל המערכות הטכנולוגיות, ללא צורך ברכישת מנוי נפרד</p>
-                <p class="capabilities">
-                    סימולטור אימון שיחות <span class="sep">·</span>
-                    מערכת אוף-מרקט <span class="sep">·</span>
-                    מערכת און-מרקט <span class="sep">·</span>
-                    ניתוח שווקים <span class="sep">·</span>
-                    הגשת מאות הצעות <span class="sep">·</span>
-                    פולואפ חכם
-                </p>
+                <h3 class="sendoffers-title"><span class="so-brand">SendOffers</span><span class="so-sub">טכנולוגיה בלעדית לקלאברים</span></h3>
+                <p>גישה ייחודית למערכת שפיתחנו לקלאברים בלבד, ולמערכות טכנולוגיות נוספות, ללא צורך ברכישת מנוי נפרד.</p>
+                <div class="tech-media">
+                    <div class="tech-media-item"><span>((צילום מסך / סרטון של קלאבר מדגים את הטכנולוגיה))</span></div>
+                    <div class="tech-media-item"><span>((צילום מסך / סרטון של קלאבר מדגים את הטכנולוגיה))</span></div>
+                    <div class="tech-media-item"><span>((צילום מסך / סרטון של קלאבר מדגים את הטכנולוגיה))</span></div>
+                </div>
             </div>
 
             <div class="editorial-divider"><i class="fas fa-square"></i></div>
 
             <div class="editorial-section">
-                <h3>קהילה <span class="gold">ותמיכה מקצועית</span></h3>
+                <h3>קהילה מקצועית <span class="gold">וליווי צמוד</span> (במיוחד)</h3>
                 <p><strong>קהילת ווטסאפ מרכזית</strong> לתמיכה, קלאברים שעוזרים אחד לשני בזמן אמת</p>
                 <p><strong>"קלאבר על הבר":</strong> מפגשי קהילה פרונטליים לנטוורקינג, חיבורים ופאנל מקצועי</p>
                 <p><strong>צוות מומחים:</strong> עו"ד, רואי חשבון, יועצי מס, גופי מימון, ברוקרים, הולסלרים</p>
             </div>
 
-            <p class="editorial-closing">ומה קורה אחרי התוכנית?</p>
+        </div>
+    </div>
+</section>
 
+<!-- ────────────── WEEK STRUCTURE (moved before community teaser) ────────────── -->
+<section class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">אז יצאנו ל-10 שבועות של עבודה <span class="gold">בקצב גבוה</span><br>עם סכין בין השיניים, איך נראה שבוע בתוכנית קלאבר מבפנים?</h2>
+
+        <div class="week-journey">
+            <svg class="journey-svg" viewBox="0 0 100 600" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <path class="journey-track-bg" d="M50 64 A36 36 0 0 1 50 136 A36 36 0 0 1 50 64 M50 136 L50 264 A36 36 0 0 1 50 336 A36 36 0 0 1 50 264 M50 336 L50 464 A36 36 0 0 1 50 536 A36 36 0 0 1 50 464"/>
+                <path class="journey-track" d="M50 64 A36 36 0 0 1 50 136 A36 36 0 0 1 50 64 M50 136 L50 264 A36 36 0 0 1 50 336 A36 36 0 0 1 50 264 M50 336 L50 464 A36 36 0 0 1 50 536 A36 36 0 0 1 50 464"/>
+            </svg>
+            <div class="journey-row">
+                <div class="journey-num">1</div>
+                <div class="journey-text">
+                    <h3>יום 1 · <span class="gold">לומדים ומקבלים משימות</span></h3>
+                    <p>צופים בשיעור מוקלט לפי הקצב שלכם, ויוצאים עם משימות ברורות לביצוע בשטח.</p>
+                </div>
+            </div>
+            <div class="journey-row">
+                <div class="journey-num">3</div>
+                <div class="journey-text">
+                    <h3>יום 3 · <span class="gold">מתרגלים עם בוגרים</span></h3>
+                    <p>סשן תרגול עם קלאברים בוגרים, יזמים שכבר חיים את הנדל"ן בארה"ב ביומיום ומעבירים את זה הלאה.</p>
+                </div>
+            </div>
+            <div class="journey-row">
+                <div class="journey-num">5</div>
+                <div class="journey-text">
+                    <h3>יום 5 · <span class="gold">סשן מרכזי עם איתי ודרור</span></h3>
+                    <p>המפגש השבועי המרכזי: סיכום, מענה על שאלות והכוונה אישית קדימה אל השבוע הבא.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mentor-card">
+            <div class="mentor-icon"><i class="fas fa-user-tie"></i></div>
+            <h3>המעטפת האישית שלך, 7 ימים בשבוע</h3>
+            <p>
+                לכל אורך השבוע יש לך את <strong class="gold">המנטור האישי שלך</strong> לשיחות ופגישות בזום, <strong class="gold">חמ"ל עסקה*</strong> צמוד 7/24 אחד על אחד, ותמיכה מנטלית (כי לפעמים צריך ליטוף, ולפעמים בעיטה :)
+            </p>
+            <p class="mentor-note">* חמ"ל עסקה = מוקד תמיכה צמוד לעסקה ספציפית. הצוות זמין סביב השעון לכל שאלה בזמן אמת על העסקה שעל השולחן.</p>
+        </div>
+
+        <div class="center-cta">
+            <button type="button" class="cta-btn" onclick="openModal()">לקבלת הסילבוס המלא <i class="fas fa-arrow-left"></i></button>
         </div>
     </div>
 </section>
@@ -1309,6 +1502,7 @@
 <!-- ────────────── FOLD 6 — COMMUNITY ────────────── -->
 <section class="community-block">
     <div class="container">
+        <p class="editorial-closing" style="margin-top:0; margin-bottom:26px;">ומה קורה אחרי התוכנית?</p>
         <h2 class="section-title">נכנסים לקהילה <span class="gold">בועטת ותומכת</span> איתך לכל החיים</h2>
         <p class="community-text">
             <span class="community-placeholder-note">((איתי — לכתוב כאן טקסט על: מה גרם לכם לפתח את הקהילה, איך היא עוזרת לקלאברים במהלך התוכנית, ואיך היא ממשיכה לעזור לבוגרי קלאבר אחרי התוכנית. לציין את מפגשי הלייב כל שבועיים — תוכן שמתחדש כל הזמן ושמור להם עם גישה לכל החיים.))</span>
@@ -1432,50 +1626,6 @@
                 <div class="video-wrap" style="background:#111;display:flex;align-items:center;justify-content:center;color:#666;font-size:14px;text-align:center;padding:20px;"><span>((סרטון עדות))</span></div>
                 <div class="video-caption">בוגר/ת ClubRRRR</div>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- ────────────── FOLD 8 — WEEK STRUCTURE ────────────── -->
-<section class="section section-alt">
-    <div class="container">
-        <h2 class="section-title">אז יצאנו ל-10 שבועות של עבודה <span class="gold">בקצב גבוה</span><br>עם סכין בין השיניים, איך זה נראה מבפנים?</h2>
-
-        <div class="diff-points">
-            <div class="diff-point">
-                <div class="diff-num">1</div>
-                <div>
-                    <h3>יום 1 · <span class="gold">לומדים ומקבלים משימות</span></h3>
-                    <p>צופים בשיעור מוקלט לפי הקצב שלכם, ויוצאים עם משימות ברורות לביצוע בשטח.</p>
-                </div>
-            </div>
-            <div class="diff-point">
-                <div class="diff-num">3</div>
-                <div>
-                    <h3>יום 3 · <span class="gold">מתרגלים עם בוגרים</span></h3>
-                    <p>סשן תרגול עם קלאברים בוגרים, יזמים שכבר חיים את הנדל"ן בארה"ב ביומיום ומעבירים את זה הלאה.</p>
-                </div>
-            </div>
-            <div class="diff-point">
-                <div class="diff-num">5</div>
-                <div>
-                    <h3>יום 5 · <span class="gold">סשן מרכזי עם איתי ודרור</span></h3>
-                    <p>המפגש השבועי המרכזי: סיכום, מענה על שאלות והכוונה אישית קדימה אל השבוע הבא.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="mentor-card">
-            <div class="mentor-icon"><i class="fas fa-user-tie"></i></div>
-            <h3>המעטפת האישית שלך, 7 ימים בשבוע</h3>
-            <p>
-                לכל אורך השבוע יש לך את <strong class="gold">המנטור האישי שלך</strong> לשיחות ופגישות בזום, <strong class="gold">חמ"ל עסקה*</strong> צמוד 7/24 אחד על אחד, ותמיכה מנטלית (כי לפעמים צריך ליטוף, ולפעמים בעיטה :)
-            </p>
-            <p class="mentor-note">* חמ"ל עסקה = מוקד תמיכה צמוד לעסקה ספציפית. הצוות זמין סביב השעון לכל שאלה בזמן אמת על העסקה שעל השולחן.</p>
-        </div>
-
-        <div class="center-cta">
-            <button type="button" class="cta-btn" onclick="openModal()">לקבלת הסילבוס המלא <i class="fas fa-arrow-left"></i></button>
         </div>
     </div>
 </section>
@@ -1696,6 +1846,46 @@
         // Initial state: RTL default — items 1-4 visible on the right (translateX = 0)
         targetTranslate = 0;
         currentTranslate = 0;
+    })();
+</script>
+
+<script>
+    // Week journey — draw the gold path as the user scrolls through the section
+    (function () {
+        var journey = document.querySelector('.week-journey');
+        if (!journey) return;
+        var path = journey.querySelector('.journey-track');
+        var nums = journey.querySelectorAll('.journey-num');
+        var len = path.getTotalLength();
+        path.style.strokeDasharray = len;
+
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) {
+            path.style.strokeDashoffset = 0;
+            for (var j = 0; j < nums.length; j++) nums[j].classList.add('active');
+            return;
+        }
+        path.style.strokeDashoffset = len;
+
+        function update() {
+            var rect = journey.getBoundingClientRect();
+            var vh = window.innerHeight || document.documentElement.clientHeight;
+            var start = vh * 0.82;   // begin drawing
+            var end = vh * 0.32;     // fully drawn
+            var span = rect.height + (start - end);
+            var p = (start - rect.top) / span;
+            if (p < 0) p = 0;
+            if (p > 1) p = 1;
+            path.style.strokeDashoffset = len * (1 - p);
+            for (var i = 0; i < nums.length; i++) {
+                var t = (i + 0.55) / nums.length;
+                if (p >= t) nums[i].classList.add('active');
+                else nums[i].classList.remove('active');
+            }
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
     })();
 </script>
 
