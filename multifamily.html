@@ -60,6 +60,10 @@
         .module-card p { color: var(--text-gray); font-size: 0.93rem; }
         .note { text-align: center; color: var(--text-gray); font-size: 0.9rem; opacity: 0.7; margin-top: 30px; font-style: italic; }
         /* Multifamily-specific */
+        .cobrand { display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:24px; flex-wrap:wrap; }
+        .cobrand-logo { height:56px; width:auto; }
+        .cobrand-x { color:var(--gold-color); font-size:1.7rem; font-weight:300; }
+        .cobrand-partner { color:var(--text-gray); font-size:0.9rem; border:1px dashed rgba(223,178,73,0.4); border-radius:10px; padding:16px 20px; }
         .hero-timeline { display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin:30px 0 18px; }
         .hero-timeline .tl { background: rgba(223,178,73,0.1); border:1px solid rgba(223,178,73,0.35); border-radius:30px; padding:9px 20px; font-size:0.95rem; color:var(--text-white); }
         .hero-timeline .tl b { color:var(--gold-color); }
@@ -143,7 +147,12 @@
         <!-- HERO -->
         <section class="hero">
             <div class="container">
-                <span class="badge">פתיחה בקרוב · ClubRRRR Multifamily</span>
+                <div class="cobrand">
+                    <img src="ClubRRRRnew logo.png" alt="ClubRRRR" class="cobrand-logo">
+                    <span class="cobrand-x">×</span>
+                    <span class="cobrand-partner">((לוגו Multifamily Lab — להוסיף קובץ))</span>
+                </div>
+                <span class="badge">ClubRRRR Multifamily · פתיחה בקרוב</span>
                 <h1>מבית בודד<br>לאופרטור Multifamily בארה"ב</h1>
                 <p>המסלול שלוקח יזמי נדל"ן ישראלים מעסקאות של בית בודד אל עולם ה-Multifamily: בנייני דירות ומתחמי מגורים בארה"ב. 90 יום של פעולה יומית, צעד אחר צעד, עד שאתה בשוק.</p>
                 <div class="hero-timeline">
@@ -248,32 +257,33 @@
         <section class="course-section alt">
             <div class="container">
                 <h2 class="section-heading">מי מוביל את התוכנית</h2>
+                <p class="section-sub">תוכנית בשיתוף ClubRRRR ו-Multifamily Lab - מנחים שעשו את זה בפועל בשטח בארה"ב.</p>
                 <div class="instructor-grid">
                     <div class="instructor-card">
-                        <div class="av">א</div>
-                        <h3>איתי אהרון</h3>
-                        <p>ממייסדי ClubRRRR, יזם נדל"ן בארה"ב ומנחה הפודקאסט המוביל "קלאברררר". ((להשלים: שנות ניסיון, מספר נכסים/יחידות, היקף פורטפוליו))</p>
+                        <div class="av">נ</div>
+                        <h3>ניסן מוסרי</h3>
+                        <p>מעל 25 שנות פעילות בנדל"ן בארה"ב. השלים 12 עסקאות Multifamily מלאות (Full-Cycle) בהיקף כולל של 1,271 יחידות דיור.</p>
                     </div>
                     <div class="instructor-card">
-                        <div class="av">ד</div>
-                        <h3>דרור</h3>
-                        <p>ממייסדי ClubRRRR, יזם נדל"ן בארה"ב. ((להשלים: שנות ניסיון, התמחות ב-Multifamily/Syndication, היקף עסקאות))</p>
+                        <div class="av">נ</div>
+                        <h3>נתנאל יעקובי</h3>
+                        <p>מעל 15 שנות השקעות בנדל"ן, מתמחה ב-Syndication של Multifamily ובגיוס הון למשקיעים.</p>
                     </div>
                 </div>
-                <p class="note">* הפרטים המקצועיים המדויקים יושלמו על ידכם.</p>
+                <p class="note">* מומלץ לאמת את הפרטים המדויקים מול השותפים לפני פרסום.</p>
             </div>
         </section>
 
         <!-- STATS -->
         <section class="course-section">
             <div class="container">
-                <h2 class="section-heading">המספרים מאחורי ClubRRRR</h2>
+                <h2 class="section-heading">המספרים מאחורי התוכנית</h2>
                 <div class="stats-row">
-                    <div class="stat-box"><div class="num">((X))+</div><div class="lbl">יחידות דיור בניהול הקהילה</div></div>
-                    <div class="stat-box"><div class="num">$((X))M+</div><div class="lbl">היקף נכסים</div></div>
-                    <div class="stat-box"><div class="num">((X))+</div><div class="lbl">בוגרים פעילים בארה"ב</div></div>
+                    <div class="stat-box"><div class="num">1,500+</div><div class="lbl">יחידות דיור בניהול</div></div>
+                    <div class="stat-box"><div class="num">$250M+</div><div class="lbl">היקף נכסים בניהול (AUM)</div></div>
+                    <div class="stat-box"><div class="num">2010</div><div class="lbl">פעילות החל משנת</div></div>
                 </div>
-                <p class="note">* למלא נתונים אמיתיים של ClubRRRR.</p>
+                <p class="note">* נתונים של השותפים ל-Multifamily - מומלץ לאמת לפני פרסום.</p>
             </div>
         </section>
 
@@ -282,8 +292,8 @@
             <div class="container">
                 <h2 class="section-heading">כמה זה שווה?</h2>
                 <div class="price-box">
-                    <p class="big">ליווי אישי 1:1 עם מנטור Multifamily יכול לעלות <b>עשרות אלפי דולרים</b>.</p>
-                    <p class="small">בתוכנית הזו אתה מקבל את אותו עולם תוכן - פלוס קהילה, תבניות וכלי AI - בשבריר מהעלות. ((למלא: מבנה המחיר / טווח / מסלולים))</p>
+                    <p class="big">ליווי אישי 1:1 עם ניסן מוסרי עולה <b>$28,000</b>.</p>
+                    <p class="small">בתוכנית הזו אתה מקבל את אותו עולם תוכן - פלוס קהילה, תבניות וכלי AI - בשבריר מהעלות. ((מבנה המחיר / מסלולים - להשלים))</p>
                 </div>
             </div>
         </section>
@@ -319,12 +329,12 @@
         <!-- TESTIMONIALS -->
         <section class="course-section alt">
             <div class="container">
-                <h2 class="section-heading">בוגרים מספרים</h2>
-                <p class="section-sub">עדויות אמיתיות יתווספו בקרוב.</p>
+                <h2 class="section-heading">סיפורי הצלחה</h2>
+                <p class="section-sub">בוגרים שכבר עשו את המעבר ל-Multifamily.</p>
                 <div class="cards-grid">
-                    <div class="t-card"><div class="t-head"><div class="t-avatar">ב</div><div><h4>בוגר/ת הקורס</h4><span>ClubRRRR Multifamily</span></div></div><p>"עברתי מבית בודד לעסקת Multifamily ראשונה - והתזרים החודשי שינה לי את המשחק."</p></div>
-                    <div class="t-card"><div class="t-head"><div class="t-avatar">ב</div><div><h4>בוגר/ת הקורס</h4><span>ClubRRRR Multifamily</span></div></div><p>"הבנתי סוף סוף איך לגייס משקיעים ולסגור עסקאות גדולות בלי הון עצמי ענק."</p></div>
-                    <div class="t-card"><div class="t-head"><div class="t-avatar">ב</div><div><h4>בוגר/ת הקורס</h4><span>ClubRRRR Multifamily</span></div></div><p>"הפעולה היומית לא נתנה לי להיתקע - תוך 90 יום כבר הגשתי LOI."</p></div>
+                    <div class="t-card"><div class="t-head"><div class="t-avatar">ש</div><div><h4>שי הלוי</h4><span>165 יחידות דיור · ~$20M</span></div></div><p>MBA ורואה חשבון עם מעל 15 שנות ניסיון בארה"ב. בנה פורטפוליו של 165 יחידות דיור בשווי של כ-20 מיליון דולר.</p></div>
+                    <div class="t-card"><div class="t-head"><div class="t-avatar">ג</div><div><h4>גל שפירא</h4><span>Syndications מסחריות</span></div></div><p>עבר מפליפים בישראל לעסקאות Syndication מסחריות בארה"ב, בנה רשת ברוקרים והקים חברת שיפוצים.</p></div>
+                    <div class="t-card"><div class="t-head"><div class="t-avatar">ב</div><div><h4>בוגר/ת נוסף</h4><span>ClubRRRR Multifamily</span></div></div><p>((עדות נוספת - להוסיף))</p></div>
                 </div>
             </div>
         </section>
