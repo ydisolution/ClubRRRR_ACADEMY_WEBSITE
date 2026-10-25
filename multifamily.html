@@ -3,111 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClubRRRR Multifamily - מבית בודד לאופרטור Multifamily בארה"ב | ClubRRRR</title>
+    <title>ClubRRRR Multifamily — מבית בודד לאופרטור Multifamily בארה"ב</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="accessibility.css">
     <link rel="stylesheet" href="language-switcher.css">
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary-color: #DFB249; --gold-color: #DFB249; --dark-bg: #0A0A0A; --card-bg: rgba(255, 255, 255, 0.05); --text-white: #FFFFFF; --text-gray: #CCCCCC; }
-        body { font-family: 'Jost', sans-serif; background: var(--dark-bg); color: var(--text-white); overflow-x: hidden; line-height: 1.6; }
-        .top-bar { background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(18px); padding: 10px 0; text-align: center; }
-        .top-bar p { margin: 0; font-size: 14px; }
-        .top-bar a { color: var(--gold-color); text-decoration: none; font-weight: 600; }
-        .main-header { position: sticky; top: 0; z-index: 1000; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(223, 178, 73, 0.1); }
-        .header-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; max-width: 1400px; margin: 0 auto; }
-        .logo-image { height: 75px; width: auto; transition: transform 0.3s; }
-        .logo-image:hover { transform: scale(1.05); }
-        .nav-menu { display: flex; gap: 40px; list-style: none; align-items: center; }
-        .nav-menu li { position: relative; }
-        .nav-menu a { color: var(--text-white); text-decoration: none; font-size: 18px; font-weight: 500; transition: color 0.3s; position: relative; padding: 10px 0; display: block; }
-        .nav-menu a:hover { color: var(--gold-color); }
-        .nav-menu a::after { content: ''; position: absolute; bottom: -5px; right: 0; width: 0; height: 2px; background: var(--gold-color); transition: width 0.3s; }
-        .nav-menu a:hover::after { width: 100%; }
-        .has-dropdown { position: relative; }
-        .dropdown-menu { position: absolute; top: 100%; right: 0; background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(10px); min-width: 250px; border-radius: 8px; padding: 10px 0; margin-top: 10px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); z-index: 1000; }
-        .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown-item { padding: 12px 25px; color: var(--text-white); text-decoration: none; display: block; transition: all 0.3s; font-size: 15px; text-align: right; border-right: 3px solid transparent; }
-        .dropdown-item:hover { background: rgba(223, 178, 73, 0.15); color: var(--gold-color); border-right-color: var(--gold-color); }
-        .dropdown-item::after { display: none; }
-        .hero { background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(223, 178, 73, 0.1) 100%); padding: 100px 20px 80px; text-align: center; }
-        .hero .badge { display: inline-block; background: rgba(223, 178, 73, 0.15); border: 1px solid var(--gold-color); color: var(--gold-color); font-size: 14px; font-weight: 600; padding: 6px 18px; border-radius: 20px; margin-bottom: 20px; }
-        .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; margin-bottom: 20px; background: linear-gradient(135deg, var(--gold-color) 0%, #FFFFFF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero p { font-size: clamp(1.05rem, 2vw, 1.3rem); color: var(--text-gray); max-width: 840px; margin: 0 auto 10px; line-height: 1.8; }
-        .cta-btn { display: inline-block; padding: 16px 44px; background: linear-gradient(135deg, var(--gold-color) 0%, rgba(223, 178, 73, 0.85) 100%); color: #000; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 1.15rem; transition: transform 0.3s, box-shadow 0.3s; }
-        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(223, 178, 73, 0.35); }
-        .cta-wa { background: linear-gradient(135deg, #25D366, #1da851); color: #fff; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .course-section { padding: 76px 0; }
-        .course-section.alt { background: linear-gradient(135deg, rgba(10,10,10,0.97) 0%, rgba(30,30,30,0.97) 100%); }
-        .section-heading { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; text-align: center; margin-bottom: 16px; color: var(--gold-color); }
-        .section-sub { text-align: center; color: var(--text-gray); max-width: 820px; margin: 0 auto 50px; font-size: 1.1rem; line-height: 1.8; }
-        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
-        .info-card { background: var(--card-bg); border: 1px solid rgba(223, 178, 73, 0.2); border-radius: 16px; padding: 32px 26px; transition: transform 0.3s, border-color 0.3s; }
-        .info-card:hover { transform: translateY(-6px); border-color: var(--gold-color); }
-        .info-card .ic { width: 56px; height: 56px; border-radius: 50%; background: rgba(223, 178, 73, 0.12); border: 1px solid var(--gold-color); color: var(--gold-color); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
-        .info-card h3 { color: var(--gold-color); font-size: 1.25rem; margin-bottom: 10px; }
-        .info-card p { color: var(--text-gray); font-size: 0.98rem; }
-        .module-card { display: flex; gap: 18px; align-items: flex-start; background: var(--card-bg); border: 1px solid rgba(223, 178, 73, 0.2); border-radius: 14px; padding: 22px; }
-        .module-num { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--gold-color); color: #000; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; }
-        .module-card h3 { color: var(--text-white); font-size: 1.1rem; margin-bottom: 6px; }
-        .module-card h3 .day { display:inline-block; background:rgba(223,178,73,0.15); color:var(--gold-color); font-size:0.75rem; font-weight:600; padding:2px 10px; border-radius:20px; margin-right:8px; vertical-align:middle; }
-        .module-card p { color: var(--text-gray); font-size: 0.93rem; }
-        .note { text-align: center; color: var(--text-gray); font-size: 0.9rem; opacity: 0.7; margin-top: 30px; font-style: italic; }
-        /* Multifamily-specific */
-        .cobrand { display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:24px; flex-wrap:wrap; }
-        .cobrand-logo { height:78px; width:auto; }
-        .cobrand-x { color:var(--gold-color); font-size:1.7rem; font-weight:300; }
-        .cobrand-partner { color:var(--text-gray); font-size:0.9rem; border:1px dashed rgba(223,178,73,0.4); border-radius:10px; padding:16px 20px; }
-        .hero-timeline { display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin:30px 0 18px; }
-        .hero-timeline .tl { background: rgba(223,178,73,0.1); border:1px solid rgba(223,178,73,0.35); border-radius:30px; padding:9px 20px; font-size:0.95rem; color:var(--text-white); }
-        .hero-timeline .tl b { color:var(--gold-color); }
-        .prose { max-width:840px; margin:0 auto; text-align:center; }
-        .prose p { color:var(--text-gray); font-size:1.14rem; line-height:1.95; margin-bottom:18px; }
-        .prose strong { color:var(--text-white); }
-        .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:900px; margin:0 auto; text-align:center; }
-        .stat-box .num { font-size:clamp(2.4rem,6vw,3.6rem); font-weight:700; color:var(--gold-color); line-height:1; }
-        .stat-box .lbl { color:var(--text-gray); margin-top:10px; font-size:1rem; }
-        .fit-grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; max-width:1000px; margin:0 auto; }
-        .fit-col { background:var(--card-bg); border:1px solid rgba(223,178,73,0.2); border-radius:16px; padding:30px; }
-        .fit-col.yes { border-color: rgba(223,178,73,0.5); }
-        .fit-col h3 { font-size:1.3rem; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
-        .fit-col.yes h3 { color:var(--gold-color); }
-        .fit-col.no h3 { color:#999; }
-        .fit-col ul { list-style:none; }
-        .fit-col li { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; color:var(--text-gray); font-size:1rem; line-height:1.6; }
-        .fit-col li i { margin-top:4px; flex-shrink:0; }
-        .fit-col.yes li i { color:var(--gold-color); }
-        .fit-col.no li i { color:#777; }
-        .price-box { background: linear-gradient(135deg, rgba(223,178,73,0.1), rgba(10,10,10,0.6)); border:1px solid rgba(223,178,73,0.3); border-radius:18px; padding:44px 34px; max-width:840px; margin:0 auto; text-align:center; }
-        .price-box .big { font-size:1.35rem; color:var(--text-white); margin-bottom:14px; line-height:1.7; }
-        .price-box .big b { color:var(--gold-color); }
-        .price-box .small { color:var(--text-gray); font-size:1rem; }
-        .instructor-grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; max-width:1000px; margin:0 auto; }
-        .instructor-card { background:var(--card-bg); border:1px solid rgba(223,178,73,0.2); border-radius:16px; padding:34px 28px; text-align:center; }
-        .instructor-card .av { width:96px; height:96px; border-radius:50%; margin:0 auto 18px; background:linear-gradient(135deg,var(--gold-color),rgba(223,178,73,0.5)); display:flex; align-items:center; justify-content:center; font-size:2rem; color:#000; font-weight:700; }
-        .instructor-card h3 { color:var(--gold-color); font-size:1.35rem; margin-bottom:8px; }
-        .instructor-card p { color:var(--text-gray); font-size:0.98rem; line-height:1.75; }
-        .t-card { background: var(--card-bg); border: 1px solid rgba(223, 178, 73, 0.2); border-radius: 16px; padding: 28px; }
-        .t-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
-        .t-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-color), rgba(223,178,73,0.6)); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; }
-        .t-head h4 { color: var(--gold-color); font-size: 1.05rem; }
-        .t-head span { color: var(--text-gray); font-size: 0.85rem; }
-        .t-card p { color: var(--text-gray); font-size: 0.98rem; line-height: 1.7; }
-        .cta-section { background: linear-gradient(135deg, rgba(223, 178, 73, 0.08) 0%, rgba(10, 10, 10, 0.8) 100%); border-radius: 20px; padding: 60px 30px; text-align: center; margin: 70px auto; max-width: 1000px; }
-        .cta-section h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--gold-color); margin-bottom: 16px; line-height:1.35; }
-        .cta-section p { color: var(--text-gray); font-size: 1.1rem; margin-bottom: 28px; }
-        .disclaimer { max-width:920px; margin:10px auto 0; color:#777; font-size:0.82rem; line-height:1.7; text-align:center; font-style:italic; }
-        .site-footer { background: #000; padding: 50px 20px; text-align: center; border-top: 1px solid rgba(223, 178, 73, 0.1); }
-        .site-footer img { height: 70px; margin-bottom: 14px; }
-        .site-footer p { color: var(--text-gray); font-size: 0.9rem; }
-        @media (max-width: 1024px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px) { .header-container { flex-direction: column; padding: 15px 20px; gap: 15px; } .nav-menu { flex-wrap: wrap; justify-content: center; gap: 15px; } .cards-grid { grid-template-columns: 1fr; } .stats-row{grid-template-columns:1fr;} .fit-grid{grid-template-columns:1fr;} .instructor-grid{grid-template-columns:1fr;} }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{
+            --gold:#DFB249; --gold-2:#F1D176;
+            --bg:#0A0A0B; --bg-2:#0E0E10; --bg-3:#121216;
+            --wt:#FBFAF8; --gray:#B4B4BA; --muted:#7A7A82;
+            --line:rgba(223,178,73,0.14); --hair:rgba(255,255,255,0.08);
+        }
+        html{scroll-behavior:smooth;}
+        body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--wt);line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+        a{text-decoration:none;color:inherit;}
+        ::selection{background:rgba(223,178,73,0.25);}
+
+        /* ---------- layout helpers ---------- */
+        .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+        .wrap-narrow{max-width:840px;margin:0 auto;padding:0 28px;}
+        .eyebrow{display:inline-block;font-size:13px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:18px;}
+        .eyebrow::before{content:'';display:inline-block;width:26px;height:1px;background:var(--gold);vertical-align:middle;margin-left:12px;opacity:.7;}
+        .display{font-weight:800;line-height:1.08;letter-spacing:-.5px;}
+        .gold{color:var(--gold);}
+        .gold-grad{background:linear-gradient(120deg,var(--gold) 10%,var(--gold-2) 90%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .glow{text-shadow:0 0 34px rgba(223,178,73,.45);}
+        section{position:relative;}
+        .pad{padding:110px 0;}
+        .pad-sm{padding:80px 0;}
+        .bg-2{background:var(--bg-2);}
+        .hair{height:1px;background:var(--hair);border:0;margin:0;}
+
+        /* ---------- header ---------- */
+        .top-bar{background:rgba(0,0,0,.55);backdrop-filter:blur(14px);padding:9px 0;text-align:center;font-size:13px;letter-spacing:.5px;}
+        .top-bar a{color:var(--gold);font-weight:600;}
+        .main-header{position:sticky;top:0;z-index:1000;background:rgba(10,10,11,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--hair);}
+        .header-container{display:flex;justify-content:space-between;align-items:center;padding:14px 40px;max-width:1400px;margin:0 auto;}
+        .logo-image{height:62px;width:auto;transition:transform .3s;}
+        .logo-image:hover{transform:scale(1.04);}
+        .nav-menu{display:flex;gap:34px;list-style:none;align-items:center;}
+        .nav-menu li{position:relative;}
+        .nav-menu a{color:var(--wt);font-size:16px;font-weight:500;transition:color .25s;padding:10px 0;display:block;}
+        .nav-menu a:hover{color:var(--gold);}
+        .has-dropdown .dropdown-menu{position:absolute;top:100%;right:0;background:rgba(14,14,16,.98);backdrop-filter:blur(10px);min-width:240px;border:1px solid var(--line);border-radius:12px;padding:8px 0;margin-top:8px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .28s;box-shadow:0 20px 50px rgba(0,0,0,.5);z-index:1000;}
+        .has-dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
+        .dropdown-item{padding:11px 24px;font-size:14.5px;display:block;transition:all .25s;border-right:2px solid transparent;}
+        .dropdown-item:hover{background:rgba(223,178,73,.1);color:var(--gold);border-right-color:var(--gold);}
+
+        /* ---------- buttons ---------- */
+        .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:linear-gradient(120deg,var(--gold),var(--gold-2));color:#000;border-radius:4px;font-weight:700;font-size:17px;letter-spacing:.3px;transition:transform .3s,box-shadow .3s;box-shadow:0 10px 34px rgba(223,178,73,.28);}
+        .btn:hover{transform:translateY(-3px);box-shadow:0 18px 50px rgba(223,178,73,.45);}
+        .btn i{transition:transform .3s;}
+        .btn:hover i{transform:translateX(-5px);}
+        .link-cta{color:var(--gold);font-weight:600;border-bottom:1px solid rgba(223,178,73,.4);padding-bottom:3px;transition:border-color .25s;}
+        .link-cta:hover{border-color:var(--gold);}
+
+        /* ---------- hero ---------- */
+        .hero{min-height:92vh;display:flex;align-items:center;padding:60px 0 80px;
+            background:
+              radial-gradient(70% 55% at 78% 8%, rgba(223,178,73,.14), transparent 60%),
+              radial-gradient(50% 40% at 10% 90%, rgba(223,178,73,.06), transparent 60%),
+              var(--bg);
+            overflow:hidden;}
+        .hero::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 59h60M59 0v60' stroke='%23ffffff' stroke-opacity='0.02' stroke-width='1'/%3E%3C/svg%3E");pointer-events:none;}
+        .hero .wrap{position:relative;z-index:1;}
+        .hero-logo{height:46px;margin-bottom:34px;opacity:.95;}
+        .hero h1{font-family:'Heebo',sans-serif;font-weight:800;font-size:clamp(2.6rem,6.4vw,5.1rem);line-height:1.04;letter-spacing:-1px;max-width:14ch;margin-bottom:26px;}
+        .hero-sub{font-size:clamp(1.1rem,2vw,1.4rem);color:var(--gray);max-width:620px;line-height:1.7;margin-bottom:44px;font-weight:300;}
+        .hero-sub strong{color:var(--wt);font-weight:600;}
+        /* timeline */
+        .timeline{display:flex;align-items:flex-start;gap:0;max-width:720px;margin-bottom:46px;}
+        .tl-node{flex:1;position:relative;padding-top:26px;}
+        .tl-node::before{content:'';position:absolute;top:0;right:0;left:0;height:1px;background:var(--hair);}
+        .tl-node::after{content:'';position:absolute;top:-5px;right:0;width:11px;height:11px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(223,178,73,.15);}
+        .tl-node .d{font-family:'Jost',sans-serif;font-size:13px;letter-spacing:2px;color:var(--gold);font-weight:500;margin-bottom:5px;}
+        .tl-node .t{font-size:15px;color:var(--wt);font-weight:500;padding-left:14px;}
+        .hero-actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap;}
+
+        /* ---------- section header (editorial, right aligned) ---------- */
+        .sec-head{max-width:760px;margin-bottom:60px;}
+        .sec-head.center{margin-inline:auto;text-align:center;}
+        .sec-head h2{font-weight:800;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.12;letter-spacing:-.5px;}
+        .sec-head p{color:var(--gray);font-size:1.18rem;margin-top:20px;font-weight:300;line-height:1.75;}
+
+        /* ---------- lead / why ---------- */
+        .lead p{font-size:clamp(1.3rem,2.6vw,1.9rem);line-height:1.6;color:var(--wt);font-weight:300;letter-spacing:-.3px;margin-bottom:28px;}
+        .lead p:last-child{margin-bottom:0;}
+        .lead strong{font-weight:600;}
+        .lead .accent{color:var(--gold);}
+
+        /* ---------- approach (3 pillars, editorial not boxed) ---------- */
+        .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+        .pillar{padding:40px 36px 40px 0;border-top:1px solid var(--line);}
+        .pillar:not(:last-child){border-left:1px solid var(--hair);padding-left:36px;}
+        .pillar .pn{font-family:'Jost',sans-serif;font-weight:200;font-size:2rem;color:var(--gold);opacity:.6;margin-bottom:18px;}
+        .pillar h3{font-size:1.35rem;font-weight:700;margin-bottom:12px;}
+        .pillar p{color:var(--gray);font-size:1.02rem;font-weight:300;}
+
+        /* ---------- curriculum (signature: ghost numbers) ---------- */
+        .curri{display:grid;grid-template-columns:1fr 1fr;gap:0 70px;}
+        .step{display:flex;gap:26px;align-items:baseline;padding:28px 0;border-bottom:1px solid var(--hair);}
+        .step .num{font-family:'Jost',sans-serif;font-weight:200;font-size:3.4rem;line-height:.8;color:var(--gold);opacity:.45;min-width:68px;text-align:left;letter-spacing:-2px;transition:opacity .3s;}
+        .step:hover .num{opacity:1;text-shadow:0 0 24px rgba(223,178,73,.5);}
+        .step .body h3{font-size:1.18rem;font-weight:700;margin-bottom:5px;line-height:1.35;}
+        .step .body p{color:var(--gray);font-size:.98rem;font-weight:300;}
+        .day-badge{display:inline-block;font-family:'Jost',sans-serif;font-size:11.5px;letter-spacing:1px;color:#000;background:var(--gold);font-weight:500;padding:2px 10px;border-radius:20px;margin-right:10px;vertical-align:middle;}
+
+        /* ---------- included (clean 2-col list) ---------- */
+        .incl{display:grid;grid-template-columns:1fr 1fr;gap:12px 60px;}
+        .incl-item{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--hair);}
+        .incl-item i{color:var(--gold);font-size:19px;margin-top:4px;flex-shrink:0;width:24px;text-align:center;}
+        .incl-item h4{font-size:1.1rem;font-weight:600;margin-bottom:3px;}
+        .incl-item p{color:var(--gray);font-size:.95rem;font-weight:300;}
+
+        /* ---------- instructors ---------- */
+        .mentors{display:grid;grid-template-columns:1fr 1fr;gap:34px;}
+        .mentor{display:flex;gap:26px;align-items:flex-start;background:linear-gradient(160deg,var(--bg-3),var(--bg-2));border:1px solid var(--line);border-radius:18px;padding:36px;}
+        .mentor .photo{width:88px;height:88px;border-radius:14px;flex-shrink:0;background:linear-gradient(145deg,var(--gold),rgba(223,178,73,.45));display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:2rem;color:#000;font-weight:500;}
+        .mentor .role{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px;}
+        .mentor h3{font-size:1.5rem;font-weight:800;margin-bottom:12px;letter-spacing:-.3px;}
+        .mentor p{color:var(--gray);font-size:1rem;font-weight:300;line-height:1.7;}
+
+        /* ---------- stats ---------- */
+        .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;text-align:center;}
+        .stat{padding:20px 24px;}
+        .stat:not(:last-child){border-left:1px solid var(--hair);}
+        .stat .n{font-family:'Jost',sans-serif;font-weight:200;font-size:clamp(3rem,8vw,5rem);line-height:1;color:var(--gold);letter-spacing:-2px;}
+        .stat .l{color:var(--gray);font-size:1rem;margin-top:14px;font-weight:300;}
+
+        /* ---------- price ---------- */
+        .price{text-align:center;max-width:760px;margin:0 auto;}
+        .price .q{font-size:clamp(1.5rem,3.4vw,2.3rem);font-weight:300;line-height:1.5;letter-spacing:-.3px;}
+        .price .q b{font-weight:800;color:var(--gold);}
+        .price .small{color:var(--gray);font-size:1.1rem;margin-top:20px;font-weight:300;}
+
+        /* ---------- fit / not-fit ---------- */
+        .fit{display:grid;grid-template-columns:1fr 1fr;gap:34px;}
+        .fit-col{border:1px solid var(--line);border-radius:18px;padding:40px;}
+        .fit-col.no{border-color:var(--hair);opacity:.92;}
+        .fit-col h3{font-size:1.4rem;font-weight:700;margin-bottom:26px;display:flex;align-items:center;gap:12px;}
+        .fit-col.yes h3{color:var(--gold);}
+        .fit-col.no h3{color:var(--muted);}
+        .fit-col ul{list-style:none;}
+        .fit-col li{display:flex;gap:14px;align-items:flex-start;padding:13px 0;color:var(--gray);font-size:1.05rem;font-weight:300;line-height:1.6;border-bottom:1px solid var(--hair);}
+        .fit-col li:last-child{border-bottom:0;}
+        .fit-col li i{margin-top:5px;flex-shrink:0;font-size:14px;}
+        .fit-col.yes li i{color:var(--gold);}
+        .fit-col.no li i{color:var(--muted);}
+
+        /* ---------- testimonials ---------- */
+        .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+        .quote{background:var(--bg-3);border:1px solid var(--line);border-radius:18px;padding:34px 30px;position:relative;}
+        .quote .mark{font-family:Georgia,serif;font-size:4rem;line-height:.6;color:var(--gold);opacity:.4;}
+        .quote p{color:var(--gray);font-size:1rem;font-weight:300;line-height:1.7;margin:14px 0 22px;}
+        .quote .who{display:flex;align-items:center;gap:13px;border-top:1px solid var(--hair);padding-top:18px;}
+        .quote .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(145deg,var(--gold),rgba(223,178,73,.5));color:#000;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .quote .who h4{font-size:1rem;color:var(--wt);font-weight:600;}
+        .quote .who span{font-size:.82rem;color:var(--muted);}
+
+        /* ---------- closing ---------- */
+        .closing{text-align:center;padding:130px 0;background:
+            radial-gradient(60% 80% at 50% 0%, rgba(223,178,73,.12), transparent 60%),var(--bg-2);}
+        .closing h2{font-weight:800;font-size:clamp(2.2rem,5.2vw,4rem);line-height:1.12;letter-spacing:-.8px;max-width:16ch;margin:0 auto 20px;}
+        .closing p{color:var(--gray);font-size:1.2rem;font-weight:300;max-width:600px;margin:0 auto 40px;}
+
+        /* ---------- footer / misc ---------- */
+        .disclaimer{max-width:900px;margin:0 auto;padding:48px 28px;color:var(--muted);font-size:.82rem;line-height:1.7;text-align:center;}
+        .site-footer{background:#000;padding:54px 20px;text-align:center;border-top:1px solid var(--hair);}
+        .site-footer img{height:62px;margin-bottom:14px;}
+        .site-footer p{color:var(--muted);font-size:.9rem;}
+        .note{color:var(--muted);font-size:.86rem;font-style:italic;margin-top:30px;}
+
+        /* ---------- responsive ---------- */
+        @media(max-width:900px){
+            .header-container{flex-direction:column;padding:14px 20px;gap:12px;}
+            .nav-menu{flex-wrap:wrap;justify-content:center;gap:14px;}
+            .pillars,.curri,.incl,.mentors,.fit,.quotes{grid-template-columns:1fr;}
+            .pillar{border-left:0!important;padding:30px 0!important;}
+            .stats{grid-template-columns:1fr;}
+            .stat{padding:34px 0;border-left:0!important;border-bottom:1px solid var(--hair);}
+            .timeline{flex-direction:column;gap:22px;}
+            .tl-node{padding-top:22px;}
+            .pad{padding:72px 0;}
+            .closing{padding:84px 0;}
+        }
     </style>
 </head>
 <body>
@@ -139,133 +224,139 @@
                     <li><a href="index.html#contact">צור קשר</a></li>
                 </ul>
             </nav>
-            <a href="index.html" class="logo"><img src="ClubRRRRnew logo.png" alt="ClubRRRR Logo" class="logo-image"></a>
+            <a href="index.html" class="logo"><img src="ClubRRRRnew logo.png" alt="ClubRRRR" class="logo-image"></a>
         </div>
     </header>
 
     <main>
         <!-- HERO -->
         <section class="hero">
-            <div class="container">
-                <div class="cobrand">
-                    <img src="ClubRRRRnew logo.png" alt="ClubRRRR Academy" class="cobrand-logo">
-                </div>
-                <span class="badge">ClubRRRR Academy · פתיחה בקרוב</span>
-                <h1>מבית בודד<br>לאופרטור Multifamily בארה"ב</h1>
-                <p>המסלול שלוקח יזמי נדל"ן ישראלים מעסקאות של בית בודד אל עולם ה-Multifamily: בנייני דירות ומתחמי מגורים בארה"ב. 90 יום של פעולה יומית, צעד אחר צעד, עד שאתה בשוק.</p>
-                <div class="hero-timeline">
-                    <span class="tl"><b>יום 23:</b> שיחת ברוקר ראשונה</span>
-                    <span class="tl"><b>יום 42:</b> LOI ראשון</span>
-                    <span class="tl"><b>יום 90:</b> אופרטור Multifamily</span>
-                </div>
-                <a href="index.html#contact" class="cta-btn">השאירו פרטים</a>
-            </div>
-        </section>
+            <div class="wrap">
+                <img src="ClubRRRRnew logo.png" alt="ClubRRRR Academy" class="hero-logo">
+                <span class="eyebrow">ClubRRRR Academy · פתיחה בקרוב</span>
+                <h1>מבית בודד<br>ל<span class="gold-grad glow">אופרטור Multifamily</span><br>בארה"ב</h1>
+                <p class="hero-sub">המסלול שלוקח יזמי נדל"ן ישראלים מעסקאות של בית בודד אל בנייני דירות ומתחמי מגורים. <strong>90 יום של פעולה יומית</strong> — צעד אחר צעד, עד שאתה בשוק.</p>
 
-        <!-- PROBLEM -->
-        <section class="course-section">
-            <div class="container">
-                <h2 class="section-heading">למה בכלל Multifamily?</h2>
-                <div class="prose">
-                    <p>בבית בודד אתה קונה נכס. ב-Multifamily אתה קונה <strong>עסק שמייצר תזרים</strong> - עם כלכלת קנה מידה, מימון חכם ושווי שנקבע לפי ההכנסה, לא לפי השכן.</p>
-                    <p>הבעיה: בישראל כמעט <strong>אין הכשרה רצינית</strong> שלוקחת יזם מעסקאות של בית בודד אל עסקאות Multifamily אמיתיות בארה"ב. רובם נתקעים - לא יודעים איך לנתח עסקה גדולה, איך לגייס הון, ואיך לדבר עם ברוקרים מסחריים.</p>
-                    <p>כאן נכנסת <strong>ClubRRRR Multifamily</strong>.</p>
+                <div class="timeline">
+                    <div class="tl-node"><div class="d">יום 23</div><div class="t">שיחת ברוקר ראשונה</div></div>
+                    <div class="tl-node"><div class="d">יום 42</div><div class="t">LOI ראשון</div></div>
+                    <div class="tl-node"><div class="d">יום 90</div><div class="t">אופרטור Multifamily</div></div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="index.html#contact" class="btn">השאירו פרטים <i class="fas fa-arrow-left"></i></a>
+                    <a href="#curriculum" class="link-cta">מה לומדים ב-13 שבועות?</a>
                 </div>
             </div>
         </section>
 
-        <!-- VALUE PROP -->
-        <section class="course-section alt">
-            <div class="container">
-                <h2 class="section-heading">הגישה שלנו</h2>
-                <p class="section-sub">לא עוד קורס תיאורטי. גישה ישירה לאנשים שעושים את זה בפועל בארה"ב - וסדרת פעולות יומית שמביאה אותך לשוק תוך 90 יום, כל אחד לפי החוזקות שלו.</p>
-                <div class="cards-grid">
-                    <div class="info-card">
-                        <div class="ic"><i class="fas fa-users-gear"></i></div>
+        <!-- WHY -->
+        <section class="pad">
+            <div class="wrap-narrow lead">
+                <span class="eyebrow">למה Multifamily</span>
+                <p>בבית בודד אתה קונה נכס. ב-Multifamily אתה קונה <strong>עסק שמייצר תזרים</strong> — עם כלכלת קנה מידה, מימון חכם, ושווי שנקבע לפי ההכנסה, לא לפי השכן.</p>
+                <p>הבעיה: בישראל כמעט <span class="accent">אין הכשרה רצינית</span> שלוקחת יזם מעסקאות של בית בודד אל עסקאות Multifamily אמיתיות בארה"ב. רובם נתקעים — לא יודעים לנתח עסקה גדולה, לגייס הון, או לדבר עם ברוקרים מסחריים.</p>
+                <p>כאן נכנסת <strong class="accent">ClubRRRR Multifamily</strong>.</p>
+            </div>
+        </section>
+
+        <hr class="hair">
+
+        <!-- APPROACH -->
+        <section class="pad">
+            <div class="wrap">
+                <div class="sec-head">
+                    <span class="eyebrow">הגישה שלנו</span>
+                    <h2>לא עוד קורס תיאורטי.<br>גישה ישירה לשטח.</h2>
+                </div>
+                <div class="pillars">
+                    <div class="pillar">
+                        <div class="pn">01</div>
                         <h3>גישה ישירה לשטח</h3>
-                        <p>לומדים ממי שקנה, תפעל ומכר יחידות בארה"ב - לא מהתיאוריה, מהמציאות.</p>
+                        <p>לומדים ממי שקנה, תפעל ומכר יחידות בארה"ב — מהמציאות, לא מהתיאוריה.</p>
                     </div>
-                    <div class="info-card">
-                        <div class="ic"><i class="fas fa-calendar-check"></i></div>
+                    <div class="pillar">
+                        <div class="pn">02</div>
                         <h3>פעולה יומית</h3>
-                        <p>כל יום משימה אחת ברורה. במקום "ללמוד ולהתחיל מתישהו" - אתה בשוק מהשבוע הראשון.</p>
+                        <p>כל יום משימה אחת ברורה. במקום "ללמוד ולהתחיל מתישהו" — אתה בשוק מהשבוע הראשון.</p>
                     </div>
-                    <div class="info-card">
-                        <div class="ic"><i class="fas fa-bullseye"></i></div>
+                    <div class="pillar">
+                        <div class="pn">03</div>
                         <h3>תפקיד של GP</h3>
-                        <p>אתה לא משקיע פסיבי - אתה מי שמביא, מבנה ומוביל את העסקה (General Partner).</p>
+                        <p>אתה לא משקיע פסיבי — אתה מי שמביא, מבנה ומוביל את העסקה.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 13-WEEK CURRICULUM -->
-        <section class="course-section">
-            <div class="container">
-                <h2 class="section-heading">תוכנית 13 השבועות</h2>
-                <p class="section-sub">מפת דרכים שלב אחר שלב - מהיסודות ועד להשקה כאופרטור Multifamily.</p>
-                <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
-                    <div class="module-card"><div class="module-num">1</div><div><h3>יסודות ומטרות</h3><p>הצבת יעדים, אבני דרך ותפקידים בצוות.</p></div></div>
-                    <div class="module-card"><div class="module-num">2</div><div><h3>מיתוג מקצועי</h3><p>בניית נוכחות שברוקרים ומוכרים לוקחים ברצינות.</p></div></div>
-                    <div class="module-card"><div class="module-num">3</div><div><h3>בחירת שוק</h3><p>איך לבחור שוק Multifamily מנצח בארה"ב לפי נתונים.</p></div></div>
-                    <div class="module-card"><div class="module-num">4</div><div><h3>קשרים עם ברוקרים <span class="day">יום 23</span></h3><p>לבנות רשת ברוקרים ולהגיע לשיחת הברוקר הראשונה.</p></div></div>
-                    <div class="module-card"><div class="module-num">5</div><div><h3>ניתוח עסקה ו-Underwriting</h3><p>לקרוא עסקה, לחשב תשואות ולזהות סיכונים.</p></div></div>
-                    <div class="module-card"><div class="module-num">6</div><div><h3>הגשת LOI ראשון <span class="day">יום 42</span></h3><p>לבנות הצעה ולהגיש LOI אמיתי על נכס.</p></div></div>
-                    <div class="module-card"><div class="module-num">7</div><div><h3>מו"מ ומבנה עסקה</h3><p>לנהל מו"מ מסחרי ולבנות מבנה עסקה נכון.</p></div></div>
-                    <div class="module-card"><div class="module-num">8</div><div><h3>שותפים ומשקיעים</h3><p>גיוס הון ובניית עסקת Syndication חכמה.</p></div></div>
-                    <div class="module-card"><div class="module-num">9</div><div><h3>מימון מסחרי</h3><p>Agency / Bridge loans, מבני חוב ותנאים.</p></div></div>
-                    <div class="module-card"><div class="module-num">10</div><div><h3>בדיקות נאותות</h3><p>Due Diligence - איך לא להיכנס לעסקה עם הפתעות.</p></div></div>
-                    <div class="module-card"><div class="module-num">11</div><div><h3>מערכות ומעקב</h3><p>אוטומציה, CRM ומעקב אחרי לידים ועסקאות.</p></div></div>
-                    <div class="module-card"><div class="module-num">12</div><div><h3>Value-Add ותפעול</h3><p>השבחת הנכס, הגדלת תזרים ועבודה עם ניהול.</p></div></div>
-                    <div class="module-card"><div class="module-num">13</div><div><h3>מבנה סופי והשקה <span class="day">יום 90</span></h3><p>לסגור את כל החלקים ולצאת לדרך כאופרטור Multifamily.</p></div></div>
+        <!-- CURRICULUM -->
+        <section class="pad bg-2" id="curriculum">
+            <div class="wrap">
+                <div class="sec-head">
+                    <span class="eyebrow">תוכנית הלימודים</span>
+                    <h2>13 שבועות.<br>מהיסודות ועד להשקה.</h2>
+                    <p>מפת דרכים שלב אחר שלב — כל שבוע מקרב אותך לעסקה האמיתית הראשונה.</p>
                 </div>
-                <p class="note">* תוכן מפורט וסילבוס מלא יתעדכנו בהמשך.</p>
-            </div>
-        </section>
-
-        <!-- DELIVERABLES -->
-        <section class="course-section alt">
-            <div class="container">
-                <h2 class="section-heading">מה כלול בתוכנית</h2>
-                <div class="cards-grid">
-                    <div class="info-card"><div class="ic"><i class="fas fa-video"></i></div><h3>90 סרטוני הדרכה יומיים</h3><p>שיעור מעשי קצר לכל יום - בדיוק מה לעשות היום.</p></div>
-                    <div class="info-card"><div class="ic"><i class="fas fa-robot"></i></div><h3>סוכני AI</h3><p>כלים מבוססי AI למחקר שוק וניתוח עסקאות Multifamily.</p></div>
-                    <div class="info-card"><div class="ic"><i class="fas fa-people-group"></i></div><h3>קהילת יזמים</h3><p>קהילה פעילה בישראל ובארה"ב שעוזרים אחד לשני לסגור.</p></div>
-                    <div class="info-card"><div class="ic"><i class="fas fa-user-tie"></i></div><h3>ליווי אישי במחזורים</h3><p>הכוונה צמודה לאורך כל המסע, לא לבד מול המסך.</p></div>
-                    <div class="info-card"><div class="ic"><i class="fas fa-folder-open"></i></div><h3>תבניות ו-Frameworks</h3><p>מסמכים, סקריפטים ומודלים מוכנים לשימוש מיידי.</p></div>
-                    <div class="info-card"><div class="ic"><i class="fas fa-flag-checkered"></i></div><h3>תוכנית 90 יום להמשך</h3><p>מפת דרכים לאחר התוכנית - איך ממשיכים לסקייל.</p></div>
+                <div class="curri">
+                    <div class="step"><div class="num">01</div><div class="body"><h3>יסודות ומטרות</h3><p>הצבת יעדים, אבני דרך ותפקידים בצוות.</p></div></div>
+                    <div class="step"><div class="num">02</div><div class="body"><h3>מיתוג מקצועי</h3><p>נוכחות שברוקרים ומוכרים לוקחים ברצינות.</p></div></div>
+                    <div class="step"><div class="num">03</div><div class="body"><h3>בחירת שוק</h3><p>איך לבחור שוק Multifamily מנצח בארה"ב לפי נתונים.</p></div></div>
+                    <div class="step"><div class="num">04</div><div class="body"><h3>קשרים עם ברוקרים <span class="day-badge">יום 23</span></h3><p>לבנות רשת ברוקרים ולהגיע לשיחה הראשונה.</p></div></div>
+                    <div class="step"><div class="num">05</div><div class="body"><h3>ניתוח עסקה ו-Underwriting</h3><p>לקרוא עסקה, לחשב תשואות ולזהות סיכונים.</p></div></div>
+                    <div class="step"><div class="num">06</div><div class="body"><h3>הגשת LOI ראשון <span class="day-badge">יום 42</span></h3><p>לבנות הצעה ולהגיש LOI אמיתי על נכס.</p></div></div>
+                    <div class="step"><div class="num">07</div><div class="body"><h3>מו"מ ומבנה עסקה</h3><p>לנהל מו"מ מסחרי ולבנות מבנה עסקה נכון.</p></div></div>
+                    <div class="step"><div class="num">08</div><div class="body"><h3>שותפים ומשקיעים</h3><p>גיוס הון ובניית עסקת Syndication חכמה.</p></div></div>
+                    <div class="step"><div class="num">09</div><div class="body"><h3>מימון מסחרי</h3><p>Agency / Bridge loans, מבני חוב ותנאים.</p></div></div>
+                    <div class="step"><div class="num">10</div><div class="body"><h3>בדיקות נאותות</h3><p>Due Diligence — להיכנס לעסקה בלי הפתעות.</p></div></div>
+                    <div class="step"><div class="num">11</div><div class="body"><h3>מערכות ומעקב</h3><p>אוטומציה, CRM ומעקב אחרי לידים ועסקאות.</p></div></div>
+                    <div class="step"><div class="num">12</div><div class="body"><h3>Value-Add ותפעול</h3><p>השבחת הנכס, הגדלת תזרים ועבודה עם ניהול.</p></div></div>
+                    <div class="step" style="grid-column:1 / -1;"><div class="num">13</div><div class="body"><h3>מבנה סופי והשקה <span class="day-badge">יום 90</span></h3><p>לסגור את כל החלקים ולצאת לדרך כאופרטור Multifamily.</p></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- SUPPORT STRUCTURE -->
-        <section class="course-section">
-            <div class="container">
-                <h2 class="section-heading">הליווי השבועי</h2>
-                <p class="section-sub">לא נשארים לבד לרגע - מעטפת תמיכה צמודה לכל אורך הדרך.</p>
-                <div class="cards-grid">
-                    <div class="info-card"><div class="ic"><i class="fas fa-globe"></i></div><h3>מפגש שבועי עם ארה"ב</h3><p>מפגש שבועי עם קהילת היזמים שעושים Multifamily בשטח בארה"ב.</p></div>
-                    <div class="info-card"><div class="ic"><i class="fas fa-handshake"></i></div><h3>מפגש דו-שבועי עם איתי ודרור</h3><p>סשן ממוקד ישראל עם מובילי התוכנית - שאלות, הכוונה וליווי.</p></div>
-                    <div class="info-card"><div class="ic"><i class="fas fa-user-graduate"></i></div><h3>מומחי תוכן</h3><p>Underwriting, ליווי משפטי, Property Management וברוקראז' מסחרי.</p></div>
+        <!-- INCLUDED -->
+        <section class="pad">
+            <div class="wrap">
+                <div class="sec-head">
+                    <span class="eyebrow">מה כלול</span>
+                    <h2>כל מה שצריך כדי לבצע.</h2>
+                </div>
+                <div class="incl">
+                    <div class="incl-item"><i class="fas fa-video"></i><div><h4>90 סרטוני הדרכה יומיים</h4><p>שיעור מעשי קצר לכל יום — בדיוק מה לעשות היום.</p></div></div>
+                    <div class="incl-item"><i class="fas fa-microchip"></i><div><h4>סוכני AI</h4><p>כלים מבוססי AI למחקר שוק וניתוח עסקאות.</p></div></div>
+                    <div class="incl-item"><i class="fas fa-people-group"></i><div><h4>קהילת יזמים</h4><p>קהילה פעילה בישראל ובארה"ב שעוזרים אחד לשני לסגור.</p></div></div>
+                    <div class="incl-item"><i class="fas fa-user-tie"></i><div><h4>ליווי אישי במחזורים</h4><p>הכוונה צמודה לאורך כל המסע, לא לבד מול המסך.</p></div></div>
+                    <div class="incl-item"><i class="fas fa-folder-open"></i><div><h4>תבניות ו-Frameworks</h4><p>מסמכים, סקריפטים ומודלים מוכנים לשימוש מיידי.</p></div></div>
+                    <div class="incl-item"><i class="fas fa-flag-checkered"></i><div><h4>תוכנית 90 יום להמשך</h4><p>מפת דרכים לאחר התוכנית — איך ממשיכים לסקייל.</p></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- INSTRUCTORS -->
-        <section class="course-section alt">
-            <div class="container">
-                <h2 class="section-heading">מי מוביל את התוכנית</h2>
-                <p class="section-sub">תוכנית בשיתוף ClubRRRR ו-Multifamily Lab - מנחים שעשו את זה בפועל בשטח בארה"ב.</p>
-                <div class="instructor-grid">
-                    <div class="instructor-card">
-                        <div class="av">נ</div>
-                        <h3>ניסן מוסרי</h3>
-                        <p>מעל 25 שנות פעילות בנדל"ן בארה"ב. השלים 12 עסקאות Multifamily מלאות (Full-Cycle) בהיקף כולל של 1,271 יחידות דיור.</p>
+        <!-- MENTORS -->
+        <section class="pad bg-2">
+            <div class="wrap">
+                <div class="sec-head">
+                    <span class="eyebrow">מי מוביל</span>
+                    <h2>מנטורים שעשו את זה בפועל.</h2>
+                    <p>תוכנית בשיתוף פעולה — ליווי של יזמים שבנו פורטפוליו Multifamily אמיתי בארה"ב.</p>
+                </div>
+                <div class="mentors">
+                    <div class="mentor">
+                        <div class="photo">נ</div>
+                        <div>
+                            <div class="role">מנטור</div>
+                            <h3>ניסן מוסרי</h3>
+                            <p>מעל 25 שנות פעילות בנדל"ן בארה"ב. השלים 12 עסקאות Multifamily מלאות (Full-Cycle) בהיקף כולל של 1,271 יחידות דיור.</p>
+                        </div>
                     </div>
-                    <div class="instructor-card">
-                        <div class="av">נ</div>
-                        <h3>נתנאל יעקובי</h3>
-                        <p>מעל 15 שנות השקעות בנדל"ן, מתמחה ב-Syndication של Multifamily ובגיוס הון למשקיעים.</p>
+                    <div class="mentor">
+                        <div class="photo">נ</div>
+                        <div>
+                            <div class="role">מנטור</div>
+                            <h3>נתנאל יעקובי</h3>
+                            <p>מעל 15 שנות השקעות בנדל"ן, מתמחה ב-Syndication של Multifamily ובגיוס הון למשקיעים.</p>
+                        </div>
                     </div>
                 </div>
                 <p class="note">* מומלץ לאמת את הפרטים המדויקים מול השותפים לפני פרסום.</p>
@@ -273,46 +364,47 @@
         </section>
 
         <!-- STATS -->
-        <section class="course-section">
-            <div class="container">
-                <h2 class="section-heading">המספרים מאחורי התוכנית</h2>
-                <div class="stats-row">
-                    <div class="stat-box"><div class="num">1,500+</div><div class="lbl">יחידות דיור בניהול</div></div>
-                    <div class="stat-box"><div class="num">$250M+</div><div class="lbl">היקף נכסים בניהול (AUM)</div></div>
-                    <div class="stat-box"><div class="num">2010</div><div class="lbl">פעילות החל משנת</div></div>
-                </div>
-                <p class="note">* נתונים של השותפים ל-Multifamily - מומלץ לאמת לפני פרסום.</p>
-            </div>
-        </section>
-
-        <!-- PRICE / VALUE -->
-        <section class="course-section alt">
-            <div class="container">
-                <h2 class="section-heading">כמה זה שווה?</h2>
-                <div class="price-box">
-                    <p class="big">ליווי אישי 1:1 עם ניסן מוסרי עולה <b>$28,000</b>.</p>
-                    <p class="small">בתוכנית הזו אתה מקבל את אותו עולם תוכן - פלוס קהילה, תבניות וכלי AI - בשבריר מהעלות. ((מבנה המחיר / מסלולים - להשלים))</p>
+        <section class="pad-sm">
+            <div class="wrap">
+                <div class="stats">
+                    <div class="stat"><div class="n">1,500+</div><div class="l">יחידות דיור בניהול</div></div>
+                    <div class="stat"><div class="n">$250M+</div><div class="l">היקף נכסים בניהול</div></div>
+                    <div class="stat"><div class="n">2010</div><div class="l">פעילות החל משנת</div></div>
                 </div>
             </div>
         </section>
 
-        <!-- FIT / NOT FIT -->
-        <section class="course-section">
-            <div class="container">
-                <h2 class="section-heading">למי זה מתאים (ולמי לא)</h2>
-                <div class="fit-grid">
+        <hr class="hair">
+
+        <!-- PRICE -->
+        <section class="pad">
+            <div class="wrap price">
+                <span class="eyebrow">כמה זה שווה</span>
+                <p class="q">ליווי אישי 1:1 עם ניסן מוסרי עולה <b>$28,000</b>. כאן אתה מקבל את אותו עולם תוכן — פלוס קהילה, תבניות וכלי AI.</p>
+                <p class="small">מבנה המחיר והמסלולים ייחשפו בפתיחת ההרשמה.</p>
+            </div>
+        </section>
+
+        <!-- FIT -->
+        <section class="pad bg-2">
+            <div class="wrap">
+                <div class="sec-head center">
+                    <span class="eyebrow">בדיקת התאמה</span>
+                    <h2>למי זה מתאים (ולמי לא)</h2>
+                </div>
+                <div class="fit">
                     <div class="fit-col yes">
-                        <h3><i class="fas fa-circle-check"></i> זה בשבילך אם...</h3>
+                        <h3><i class="fas fa-circle-check"></i> זה בשבילך אם…</h3>
                         <ul>
                             <li><i class="fas fa-check"></i> אתה כבר קונה בתים בודדים ורוצה לעבור ל-Multifamily</li>
-                            <li><i class="fas fa-check"></i> אתה רוצה תפקיד של GP (מי שמביא ומוביל עסקה), לא השקעה פסיבית</li>
+                            <li><i class="fas fa-check"></i> אתה רוצה תפקיד של GP — לא השקעה פסיבית</li>
                             <li><i class="fas fa-check"></i> אתה מוכן לפעולה יומית לאורך 90 יום</li>
                             <li><i class="fas fa-check"></i> האנגלית שלך מספיקה לשיחות עסקיות בארה"ב</li>
-                            <li><i class="fas fa-check"></i> אתה מחפש מבנה ומערכת - לא עוד השראה</li>
+                            <li><i class="fas fa-check"></i> אתה מחפש מבנה ומערכת — לא עוד השראה</li>
                         </ul>
                     </div>
                     <div class="fit-col no">
-                        <h3><i class="fas fa-circle-xmark"></i> זה לא בשבילך אם...</h3>
+                        <h3><i class="fas fa-circle-xmark"></i> זה לא בשבילך אם…</h3>
                         <ul>
                             <li><i class="fas fa-xmark"></i> אתה מחפש תשואה פסיבית בלי לעבוד</li>
                             <li><i class="fas fa-xmark"></i> אתה לא מוכן ליצור קשר עם ברוקרים ומשקיעים</li>
@@ -325,26 +417,42 @@
         </section>
 
         <!-- TESTIMONIALS -->
-        <section class="course-section alt">
-            <div class="container">
-                <h2 class="section-heading">סיפורי הצלחה</h2>
-                <p class="section-sub">בוגרים שכבר עשו את המעבר ל-Multifamily.</p>
-                <div class="cards-grid">
-                    <div class="t-card"><div class="t-head"><div class="t-avatar">ש</div><div><h4>שי הלוי</h4><span>165 יחידות דיור · ~$20M</span></div></div><p>MBA ורואה חשבון עם מעל 15 שנות ניסיון בארה"ב. בנה פורטפוליו של 165 יחידות דיור בשווי של כ-20 מיליון דולר.</p></div>
-                    <div class="t-card"><div class="t-head"><div class="t-avatar">ג</div><div><h4>גל שפירא</h4><span>Syndications מסחריות</span></div></div><p>עבר מפליפים בישראל לעסקאות Syndication מסחריות בארה"ב, בנה רשת ברוקרים והקים חברת שיפוצים.</p></div>
-                    <div class="t-card"><div class="t-head"><div class="t-avatar">ב</div><div><h4>בוגר/ת נוסף</h4><span>ClubRRRR Multifamily</span></div></div><p>((עדות נוספת - להוסיף))</p></div>
+        <section class="pad">
+            <div class="wrap">
+                <div class="sec-head">
+                    <span class="eyebrow">סיפורי הצלחה</span>
+                    <h2>בוגרים שכבר עשו את המעבר.</h2>
+                </div>
+                <div class="quotes">
+                    <div class="quote">
+                        <div class="mark">"</div>
+                        <p>MBA ורואה חשבון עם מעל 15 שנות ניסיון בארה"ב. בנה פורטפוליו של 165 יחידות דיור בשווי של כ-20 מיליון דולר.</p>
+                        <div class="who"><div class="av">ש</div><div><h4>שי הלוי</h4><span>165 יחידות · ~$20M</span></div></div>
+                    </div>
+                    <div class="quote">
+                        <div class="mark">"</div>
+                        <p>עבר מפליפים בישראל לעסקאות Syndication מסחריות בארה"ב, בנה רשת ברוקרים והקים חברת שיפוצים.</p>
+                        <div class="who"><div class="av">ג</div><div><h4>גל שפירא</h4><span>Syndications מסחריות</span></div></div>
+                    </div>
+                    <div class="quote">
+                        <div class="mark">"</div>
+                        <p>((עדות נוספת — להוסיף סיפור של בוגר ClubRRRR Multifamily.))</p>
+                        <div class="who"><div class="av">ב</div><div><h4>בוגר/ת נוסף</h4><span>ClubRRRR Multifamily</span></div></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- CLOSING CTA -->
-        <div class="cta-section">
-            <h2>בעוד 90 יום תהיה במקום אחר.<br>השאלה היא אם תבחר לאן.</h2>
-            <p>רוצה להתייעץ לפני שמצטרפים? השאירו פרטים ונחזור אליכם עם כל המידע על ClubRRRR Multifamily.</p>
-            <a href="index.html#contact" class="cta-btn">השאירו פרטים</a>
-        </div>
+        <!-- CLOSING -->
+        <section class="closing">
+            <div class="wrap">
+                <h2>בעוד 90 יום תהיה במקום אחר.<br>השאלה היא אם תבחר <span class="gold-grad glow">לאן</span>.</h2>
+                <p>רוצה להתייעץ לפני שמצטרפים? השאירו פרטים ונחזור אליכם עם כל המידע על ClubRRRR Multifamily.</p>
+                <a href="index.html#contact" class="btn">השאירו פרטים <i class="fas fa-arrow-left"></i></a>
+            </div>
+        </section>
 
-        <p class="disclaimer">אין באמור משום הבטחה לתשואה או לתוצאה כלשהי. השקעות נדל"ן כרוכות בסיכון, כולל אובדן הון. התכנים הם לימודיים בלבד ואינם מהווים ייעוץ השקעות, ייעוץ מס או ייעוץ משפטי. כל החלטת השקעה היא באחריות המשתתף בלבד.</p>
+        <p class="disclaimer">אין באמור משום הבטחה לתשואה או לתוצאה כלשהי. השקעות נדל"ן כרוכות בסיכון, כולל אובדן הון. התכנים לימודיים בלבד ואינם מהווים ייעוץ השקעות, מס או ייעוץ משפטי. כל החלטת השקעה היא באחריות המשתתף בלבד.</p>
     </main>
 
     <footer class="site-footer">
